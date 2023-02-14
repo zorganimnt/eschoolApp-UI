@@ -15,33 +15,4 @@ class AuthService {
     print(body); 
     return response;
   }
-
-  Future<void> login(String cin, String password) async {
-    final response = await post('login', {
-      'cin': cin,
-      'password': password,
-    });
-
-    if (response.statusCode == 200) {
-      final data = json.decode(response.body);
-      return data['data']['token']; 
-    } else {
-      return null; 
-    }
-  }
-
-  Future<void> register(String cin, String password, String role) async {
-    final response = await post('register', {
-      'cin': cin,
-      'password': password,
-      'role': role, 
-    });
-
-    if (response.statusCode == 200) {
-      final data = json.decode(response.body);
-       return data['data']['token'];  
-    } else {
-     
-    }
-  }
 }
