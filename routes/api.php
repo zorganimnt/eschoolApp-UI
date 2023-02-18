@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\StudentController;
+use App\Http\Controllers\API\ParentController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -37,11 +39,34 @@ Route::middleware('auth:sanctum')->controller(AuthController::class)->group(func
     Route::get('/users', 'index')->name('index');
 });
 
-// Create Student
+
+
+// Student routes
+Route::controller(StudentController::class)->group(function () {
+    Route::post('getStudents', 'getStudents');
+    Route::post('getStudentByCIN', 'getStudentByCIN');
+
+
+});
+// parent routes
+
+Route::controller(ParentController::class)->group(function () {
+    Route::post('getParents', 'getParents');
+    Route::post('getParentByCIN', 'getParentByCIN');
+    Route::post('addChildByCIN', 'addChildByCIN');
+    Route::post('deleteChildByCIN', 'deleteChildByCIN');
+    Route::post('getChildren', 'getChildren');
+    Route::post('getChildByCIN', 'getChildByCIN');
+
+
+});
+
+
+// user routes
 
 Route::controller(StudentController::class)->group(function () {
-    Route::post('createStudent', 'createStudent');
-    
+    Route::post('getUsers', 'getUsers');
+
 
 });
 

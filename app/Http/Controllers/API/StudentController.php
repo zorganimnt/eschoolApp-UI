@@ -9,25 +9,26 @@ use Validator;
 
 class StudentController extends BaseController
 {
-    public function createStudent(Request $request)
+    public function getStudentByCIN(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            
-            'name' => 'required',
-            'phone' => 'required',
-            'university' => 'required',
-            'etablisment' => 'required',
-            'birthday' => 'required',
+            'cin' => 'required',
         ]);
 
         if ($validator->fails()) {
-            return $this->sendError('Input invalide', $validator->errors());
+            return $this->sendError('CIN invalide...!', $validator->errors());
         }
 
-        $input = $request->all(); 
-        $student = Student::create($input);
-        //$success['token'] = $student->createToken('MyApp')->plainTextToken;
-        $success= $input;
-        return $this->sendResponse($success, 'Etudiant enregister avec success');
+        $getStudent = Student::where('student_cin', $request['cin'])->first();
+        if($getStudent) {
+            return $this->sendResponse($getStudent, null);
+        } 
+        return $this->sendError("Étudiant n'existe pas...!", $validator->errors());
+    }
+
+    public function getStudents(Request $request)
+    {
+        $success = Student::all();
+        return $this->sendResponse($success, null);
     }
 }

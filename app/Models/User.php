@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
 
-     
+
     protected $fillable = [
         'cin',
         'role',
@@ -35,4 +35,14 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function student()
+    {
+        return $this->hasOne(Student::class);
+    }
+
+    public function parent()
+    {
+        return $this->hasOne(Parents::class);
+    }
 }
