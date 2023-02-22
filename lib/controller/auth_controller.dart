@@ -1,12 +1,10 @@
 import 'dart:convert';
 
-import 'package:eschoolapp/service/authService.dart';
+import 'package:eschoolapp/service/api.dart';
 import 'package:eschoolapp/view/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart';
-
-final authService = AuthService();
 
 class AuthController extends GetxController {
   TextEditingController cin = TextEditingController();
@@ -15,37 +13,25 @@ class AuthController extends GetxController {
 
   var error = ''.obs;
   var token = ''.obs;
-  
-  final AuthService _api = AuthService(); 
 
-   Future<void> login() async {
+  // hedhi amalna biha instance lel api men class API fel dossier service
+  final API _api = API();
+
+  Future<void> login() async {
     final response = await _api.post('login', {
       'cin': cin.text,
       'password': password.text,
     });
-
+    var data = json.decode(response.body);
     if (response.statusCode == 200) {
-      final data = json.decode(response.body);
-      print(data); 
-      Get.to(HomeScreeen(token: data['data']['token'], role : data['data']['role'] )) ; 
+     // net3ada lel home screen w m3aya token :p
+     // token houwa passport mte3K fel serveur
+     // ay action te3mlha serveur yaaml verification lel token
+     // raison de securité
+     Get.to(HomeScreeen(token: data ['data']['token']));
+      Get.snackbar('Success', data['message']);
     } else {
-      Get.snackbar('Erreur', 'Informations invalide'); 
-    }
-  }
-  
-
-  Future<void> register() async {
-    final response = await _api.post('register', {
-      'cin': cin.text,
-      'password': password.text,
-      'role': role.text, 
-    });
-
-    if (response.statusCode == 200) {
-      final data = json.decode(response.body);
-      Get.to(HomeScreeen(token: data['data']['token'], role : data['data']['role'] )) ; 
-    } else {
-      Get.snackbar('Erreur', 'Informations invalide'); 
+      Get.snackbar('Erreur', data['message']);
     }
   }
 }

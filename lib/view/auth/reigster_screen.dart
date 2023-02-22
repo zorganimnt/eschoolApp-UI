@@ -1,7 +1,9 @@
 import 'package:eschoolapp/controller/auth_controller.dart';
+import 'package:eschoolapp/controller/register_controller.dart';
 import 'package:eschoolapp/utils/color.dart';
-import 'package:eschoolapp/view/auth/dropdown_degree.dart';
-import 'package:eschoolapp/view/auth/dropdown_speciality.dart';
+import 'package:eschoolapp/view/auth/compenents/dropdown_degree.dart';
+import 'package:eschoolapp/view/auth/compenents/dropdown_speciality.dart';
+import 'package:eschoolapp/view/auth/compenents/dropdown_university.dart';
 import 'package:eschoolapp/view/auth/login_screen.dart';
 import 'package:eschoolapp/widgets/custom_button.dart';
 import 'package:eschoolapp/widgets/custom_input_field.dart';
@@ -11,7 +13,7 @@ import 'package:get/get.dart';
 class RegisterScreen extends StatelessWidget {
   final String role;
   RegisterScreen({super.key, required this.role});
-  AuthController controller = Get.find();
+  RegisterController controller = Get.find(); 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<AuthController>(
@@ -71,7 +73,7 @@ class RegisterScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 18,),  
+                SizedBox(height: 18,),
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Row(
@@ -92,7 +94,7 @@ class RegisterScreen extends StatelessWidget {
                   ),
                 ),
                 CustomTextFormField(
-                  controller: controller.cin,
+                  controller: controller.fullNameParent,
                   hintText: 'Nom et prénom',
                   prefixIcon: Icon(Icons.person_rounded),
                 ),
@@ -100,7 +102,7 @@ class RegisterScreen extends StatelessWidget {
                   height: 10,
                 ),
                 CustomTextFormField(
-                  controller: controller.cin,
+                  controller: controller.phoneParent,
                   hintText: 'Numéro de téléphone',
                   prefixIcon: Icon(Icons.phone_rounded),
                 ),
@@ -108,7 +110,7 @@ class RegisterScreen extends StatelessWidget {
                   height: 10,
                 ),
                 CustomTextFormField(
-                  controller: controller.cin,
+                  controller: controller.emailParent,
                   hintText: 'Adresse e-mail',
                   prefixIcon: Icon(Icons.email_rounded),
                 ),
@@ -139,7 +141,7 @@ class RegisterScreen extends StatelessWidget {
                   ),
                 ),
                 CustomTextFormField(
-                  controller: controller.cin,
+                  controller: controller.cinUser,
                   hintText: 'Numéro de CIN',
                
                   prefixIcon: Icon(Icons.numbers_rounded),
@@ -148,7 +150,7 @@ class RegisterScreen extends StatelessWidget {
                   height: 10,
                 ),
                 CustomTextFormField(
-                  controller: controller.cin,
+                  controller: controller.passUser,
                   hintText: 'Mot de passe',
                   prefixIcon: Icon(Icons.lock_rounded),
                   isPassword: true,
@@ -165,7 +167,7 @@ class RegisterScreen extends StatelessWidget {
                   height: 52,
                   color: primaryColor,
                   onPressed: () {
-                    controller.register();
+                    controller.parentRegister();
                   },
                   child: Text(
                    "Confirmer",
@@ -236,7 +238,7 @@ Form _buildFormStudentRegister(context) {
                   ),
                 ),
                 CustomTextFormField(
-                  controller: controller.cin,
+                  controller: controller.fullNameStudent,
                   hintText: 'Nom et prénom',
                   prefixIcon: Icon(Icons.person_rounded),
                 ),
@@ -244,7 +246,7 @@ Form _buildFormStudentRegister(context) {
                   height: 10,
                 ),
                 CustomTextFormField(
-                  controller: controller.cin,
+                  controller: controller.phoneStudent,
                   hintText: 'Numéro de téléphone',
                   prefixIcon: Icon(Icons.phone_rounded),
                 ),
@@ -252,20 +254,42 @@ Form _buildFormStudentRegister(context) {
                   height: 10,
                 ),
                 CustomTextFormField(
-                  controller: controller.cin,
+                  controller: controller.emailStudent,
                   hintText: 'Adresse e-mail',
                   prefixIcon: Icon(Icons.email_rounded),
                 ),
                  const SizedBox(
                   height: 10,
                 ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Row(
+                    children: [
+                       CircleAvatar(
+                        radius: 18,
+                        backgroundColor: Colors.grey.withOpacity(0.2),
+                        child: Icon(Icons.book, 
+                        size: 19,
+                        color: Colors.black54,),
+                      ),
+                      SizedBox(width: 8,),
+                      Text(
+                        "Information d'éducation",
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ],
+                  ),
+                ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.symmetric(horizontal : 20.0),
               child: Column(
                 children: [
+                 
                   DropDownDegree(),
                   SizedBox(height: 10,), 
-                  DropDownSpec()
+                  DropDownSpec(), 
+                    SizedBox(height: 10,), 
+                  DropDownUniver(), 
                 ],
               ),
             ),
@@ -296,7 +320,7 @@ Form _buildFormStudentRegister(context) {
                   ),
                 ),
                 CustomTextFormField(
-                  controller: controller.cin,
+                  controller: controller.cinUser,
                   hintText: 'Numéro de CIN',
                
                   prefixIcon: Icon(Icons.numbers_rounded),
@@ -305,7 +329,7 @@ Form _buildFormStudentRegister(context) {
                   height: 10,
                 ),
                 CustomTextFormField(
-                  controller: controller.cin,
+                  controller: controller.passUser,
                   hintText: 'Mot de passe',
                   prefixIcon: Icon(Icons.lock_rounded),
                   isPassword: true,
@@ -316,13 +340,13 @@ Form _buildFormStudentRegister(context) {
               height: 12,
             ),
             SizedBox(
-              width: MediaQuery.of(context).size.width / 1.1,
+              width: MediaQuery.of(context).size.width ,
               child: CustomButton(
-                radius: 45,
+                radius: 20,
                   height: 52,
                   color: primaryColor,
                   onPressed: () {
-                    controller.register();
+                    controller.studentRegister();
                   },
                   child: Text(
                    "Confirmer",

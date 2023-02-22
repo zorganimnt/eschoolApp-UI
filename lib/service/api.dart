@@ -3,7 +3,7 @@ import 'dart:ffi';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
-class AuthService {
+class API {
   final String _baseUrl = 'http://127.0.0.1:8000/api';
   final _client = http.Client();
 

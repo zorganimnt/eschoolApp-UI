@@ -5,9 +5,18 @@ import 'package:get/get.dart';
 
 const List<String> category = <String>[
   'Séléctioner votre niveaux',
-  'Licence',
-  'Mastere',
-  'Ingenieurie'
+  '1er Licence',
+  '1er Cycle Prépa',
+  '1er Mastere de Recherche',
+  '1er Mastere Proffesionnel',
+  '1er Cycle Ingénieur',
+  '2éme Licence',
+  '2éme Cycle Prépa',
+  '2éme Mastere de Recherche',
+  '2éme Mastere Proffessionel',
+  '2éme Cycle Ingénieur',
+  '3éme Licence',
+  '3éme Cycle Ingénieur'
 ];
 
 class DropDownDegree extends StatefulWidget {
@@ -24,7 +33,6 @@ class _DropDownDegreeState extends State<DropDownDegree> {
   Widget build(BuildContext context) {
     return DropdownButton<String>(
       isExpanded: true,
-    
       value: dropdownValue,
       icon: const Icon(Icons.keyboard_arrow_down_rounded),
       elevation: 16,

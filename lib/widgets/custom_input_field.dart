@@ -124,27 +124,27 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         ),
         border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(
-              Radius.circular(90.0),
+              Radius.circular(20.0),
             ),
             borderSide: BorderSide.none),
         disabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(90.0)),
+          borderRadius: BorderRadius.all(Radius.circular(20.0)),
           borderSide: BorderSide(color: Colors.grey),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(90.0)),
+          borderRadius: BorderRadius.all(Radius.circular(20.0)),
           borderSide: BorderSide(color: Colors.grey),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(90.0)),
+          borderRadius: BorderRadius.all(Radius.circular(20.0)),
           borderSide: BorderSide(color: Colors.black),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(90.0)),
+          borderRadius: BorderRadius.all(Radius.circular(20.0)),
           borderSide: BorderSide(color: Colors.red),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(90.0)),
+          borderRadius: BorderRadius.all(Radius.circular(20.0)),
           borderSide: BorderSide(color: Colors.red),
         ),
       ),

@@ -3,21 +3,34 @@ import 'package:eschoolapp/utils/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-const List<String> category = <String>[
-  'Séléctioner votre spécialité',
-  'Informatique',
-  'Économie et gestion',
-  'Éléctronique'
+const List<String> university= <String>[
+  'Séléctionner votre université',
+  'Université de Bizert',
+  'Université de Tunis',
+  'Université de Kef',
+  'Université de Sousse',
+  'Université de Nabeul',
+  'Université de Monastir',
+  'Université de Kairouen',
+  'Université de Mahdia',
+  'Université de Sidi Bouzid',
+  'Université de Gafsa',
+  'Université de Kasserine',
+  'Université de Jandouba',
+  'Université de Béja',
+  'Université de Mednine',
+  'Université de Tozeur',
+ 
 ];
 
-class DropDownSpec extends StatefulWidget {
-  DropDownSpec({super.key});
+class DropDownUniver extends StatefulWidget {
+  DropDownUniver({super.key});
   @override
-  State<DropDownSpec> createState() => _DropDownSpecState();
+  State<DropDownUniver> createState() => _DropDownUniverState();
 }
 
-class _DropDownSpecState extends State<DropDownSpec> {
-  String dropdownValue = category.first;
+class _DropDownUniverState extends State<DropDownUniver> {
+  String dropdownValue = university.first;
   RegisterController controller = Get.find();
 
   @override
@@ -35,11 +48,11 @@ class _DropDownSpecState extends State<DropDownSpec> {
       onChanged: (String? value) {
         setState(() {
           dropdownValue = value!;
-          controller.specialityStudent = value;
+          controller.univerStudent = value;
           print(controller.specialityStudent);
         });
       },
-      items: category.map<DropdownMenuItem<String>>((String value) {
+      items: university.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
           child: Padding(

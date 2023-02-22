@@ -17,7 +17,7 @@ class LoginScreen extends StatelessWidget {
         init: AuthController(),
         builder: (_) {
           return Scaffold(
-              appBar: AppBar(
+            appBar: AppBar(
               backgroundColor: Colors.transparent,
               elevation: 0,
               iconTheme: IconThemeData(color: primaryColor),
@@ -26,8 +26,10 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset("assets/icons/login-logo.png", width: 250,), 
-                
+                  Image.asset(
+                    "assets/icons/login-logo.png",
+                    width: 250,
+                  ),
                   _buildFormLogin(context),
                 ],
               ),
@@ -38,60 +40,59 @@ class LoginScreen extends StatelessWidget {
 
   Form _buildFormLogin(context) {
     return Form(
-                  child:  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Column(
-              children: [
-              
-                CustomTextFormField(
-                    controller: controller.cin,
-                    hintText: 'Numéro de CIN',
-               
-                    prefixIcon: Icon(Icons.numbers_rounded),
-                ),
-                const SizedBox(
-                    height: 10,
-                ),
-                CustomTextFormField(
-                    controller: controller.cin,
-                    hintText: 'Mot de passe',
-                    prefixIcon: Icon(Icons.lock_rounded),
-                    isPassword: true,
-                ),
-                     const SizedBox(
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          children: [
+            CustomTextFormField(
+              controller: controller.cin,
+              hintText: 'Numéro de CIN',
+              prefixIcon: Icon(Icons.numbers_rounded),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            CustomTextFormField(
+              controller: controller.password,
+              hintText: 'Mot de passe',
+              prefixIcon: Icon(Icons.lock_rounded),
+              isPassword: true,
+            ),
+            const SizedBox(
               height: 12,
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width,
               child: CustomButton(
-                radius: 45,
-                    height: 52,
-                    color: primaryColor,
-                    onPressed: () {
-                      controller.register();
-                    },
-                    child: Text(
-                     "Connexion",
-                     style: TextStyle(
-                         color: Colors.white,
-                         fontWeight: FontWeight.w500,
-                         fontSize: 18),
-                        )),
+                  radius: 45,
+                  height: 52,
+                  color: primaryColor,
+                  onPressed: () {
+                    controller.login();
+                  },
+                  child: Text(
+                    "Connexion",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18),
+                  )),
             ),
-            SizedBox(height: 12,), 
+            SizedBox(
+              height: 12,
+            ),
             InkWell(
-              onTap: (() {
-                
-              }),
-              child: Text("J'oublie le mot de passe.", 
-              style: TextStyle(
-                fontSize: 15,
-                decoration: TextDecoration.underline,
-                color: Colors.deepPurple
-              ),))
-              ],
-            ),
-                  ),
-                );
+                onTap: (() {}),
+                child: Text(
+                  "J'oublie le mot de passe.",
+                  style: TextStyle(
+                      fontSize: 15,
+                      decoration: TextDecoration.underline,
+                      color: Colors.deepPurple),
+                ))
+          ],
+        ),
+      ),
+    );
   }
 }
