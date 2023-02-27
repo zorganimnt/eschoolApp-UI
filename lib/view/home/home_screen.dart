@@ -16,20 +16,7 @@ class HomeScreeen extends StatelessWidget {
     return Scaffold(
         appBar: buildAppBar(),
         drawer: buildDrawer(),
-        floatingActionButton: FloatingActionButton(onPressed: (() => parentController.getParentProfile())),
-        // hedhi Obx Widget 3ibara bech tarbtelna bin controller w view
-        // ay haja tsir fel controller hiya li yabda fibelha
-        // soit info soit variable tbadel ....
-        body: Obx((() => parentController.loading.value
-            ? const CircularProgressIndicator()
-            : Column(   
-                children: [
-                  Text("nom parent: "),
-                  SelectableText(
-                    parentController.parentModel.value.nameParent.toString(),
-                  )
-                ],
-              ))));
+        body: Center(child: Text("hedhi home")));
   }
 
   AppBar buildAppBar() {

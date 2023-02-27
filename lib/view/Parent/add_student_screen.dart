@@ -7,6 +7,11 @@ import 'package:get/get.dart';
 class AddStudentScreen extends StatelessWidget {
   AddStudentScreen({super.key});
 
+  // initilisation lel varibale student controller
+  // wa9tha najem na3rf chnouwa ysir fel controller
+  // njib data
+  // nchouf data
+  // ay 7arka f controller na3refha bel OBX louta bech najem nafichi data soit name soit lkol
   StudentController studentController = Get.put(StudentController());
   @override
   Widget build(BuildContext context) {
@@ -57,20 +62,23 @@ class AddStudentScreen extends StatelessWidget {
 
   Column buildSearchStudent() {
     return Column(
-              children: [
-                TextFormField(
-                  // depend lel textInput hazina l value li nektb fih w lawejna bih fel base aal li etudiant li aandou cin hedhika
-                  controller: studentController.cin,
-                  decoration: const InputDecoration(hintText: "Recherche..."),
-                ),
-                TextButton(
-                    onPressed: () {
-                      // clica aala lawej aficha l student depend lel cin mte3ou
-                      studentController.getStudentByCin();
-                    },
-                    child: Text("lawej"))
-              ],
-            );
+      children: [
+        TextFormField(
+          // depend lel textInput hazina l value li nektb fih w lawejna bih fel base aal li etudiant li aandou cin hedhika
+          controller: studentController.cin,
+          decoration: const InputDecoration(
+              hintText: "Ekteb CIN...", prefixIcon: Icon(Icons.search_rounded)),
+        ),
+        TextButton(
+            onPressed: () {
+              // clica aala lawej aficha l student depend lel cin mte3ou
+              studentController.getStudentByCin();
+            },
+            child: Expanded(
+                child: Text(
+                    "Clicki hne bch nedi 3al method getStudentByCin() li mawjouda fi west StudentController li deja 3malt menha instance fel Interface hedhi (add_student_screen.dart)")))
+      ],
+    );
   }
 }
 
