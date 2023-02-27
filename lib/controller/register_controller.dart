@@ -73,12 +73,12 @@ class RegisterController extends GetxController {
       "speciality": specialityStudent!,
       "degree": degreeStudent!
     });
-    var msg = json.decode(response.body);
+    var data = json.decode(response.body);
     if (response.statusCode == 200) {
       //final data = json.decode(response.body);
-      Get.snackbar('Success', msg['message']);
+      Get.snackbar('Success', data['message']);
     } else {
-      Get.snackbar('Erreur', msg['message']);
+      Get.snackbar('Erreur', data['message']);
     }
   }
 }

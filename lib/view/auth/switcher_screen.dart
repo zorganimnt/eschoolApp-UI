@@ -1,6 +1,7 @@
 import 'dart:ffi';
 import 'dart:ui';
 
+import 'package:eschoolapp/controller/student_controller.dart';
 import 'package:eschoolapp/utils/color.dart';
 import 'package:eschoolapp/view/auth/login_screen.dart';
 import 'package:eschoolapp/view/auth/reigster_screen.dart';
@@ -10,17 +11,21 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class SwitcherScreen extends StatelessWidget {
-  const SwitcherScreen({super.key});
-
+  SwitcherScreen({super.key});
+  StudentController controller = Get.put(StudentController()); 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+
+      
+              
               Image.asset(
                 "assets/icons/logo-app.png",
                 width: 400,

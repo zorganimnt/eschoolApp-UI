@@ -1,7 +1,9 @@
 import 'package:eschoolapp/controller/auth_controller.dart';
 import 'package:eschoolapp/controller/register_controller.dart';
+import 'package:eschoolapp/view/Parent/add_student_screen.dart';
 import 'package:eschoolapp/view/auth/login_screen.dart';
 import 'package:eschoolapp/view/auth/switcher_screen.dart';
+import 'package:eschoolapp/view/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.nunitoSansTextTheme(),
         primarySwatch: Colors.blue,
       ),
-      home: SwitcherScreen(),
+      home: HomeScreeen(),
     );
   }
 }

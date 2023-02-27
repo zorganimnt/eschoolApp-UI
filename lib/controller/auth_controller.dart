@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:eschoolapp/service/api.dart';
+import 'package:eschoolapp/service/save_token.dart';
 import 'package:eschoolapp/view/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,18 +19,16 @@ class AuthController extends GetxController {
   final API _api = API();
 
   Future<void> login() async {
-    final response = await _api.post('login', {
+    var loginData = {
       'cin': cin.text,
       'password': password.text,
-    });
+    };
+    final response = await _api.post('login', loginData);
     var data = json.decode(response.body);
     if (response.statusCode == 200) {
-     // net3ada lel home screen w m3aya token :p
-     // token houwa passport mte3K fel serveur
-     // ay action te3mlha serveur yaaml verification lel token
-     // raison de securité
-     Get.to(HomeScreeen(token: data ['data']['token']));
-      Get.snackbar('Success', data['message']);
+      await saveValue("token", data['data']['token']).then((value) {
+        Storage.isTokenSaved.value = true;
+      });
     } else {
       Get.snackbar('Erreur', data['message']);
     }
