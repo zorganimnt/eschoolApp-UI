@@ -74,9 +74,8 @@ class AddStudentScreen extends StatelessWidget {
               // clica aala lawej aficha l student depend lel cin mte3ou
               studentController.getStudentByCin();
             },
-            child: Expanded(
-                child: Text(
-                    "Clicki hne bch nedi 3al method getStudentByCin() li mawjouda fi west StudentController li deja 3malt menha instance fel Interface hedhi (add_student_screen.dart)")))
+            child: Text(
+                "Clicki "))
       ],
     );
   }

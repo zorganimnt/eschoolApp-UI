@@ -17,7 +17,7 @@ class API {
     return response;
   }
 
-  // tekhou cin comme parametre 
+  // tekhou cin comme parametre
   static Future<dynamic> getStudentByCinAPI(cin) async {
     // hedhi zedt"ha men andi ki yabda projet fel internet
     // kifech tnajem l app taarf est-ce que user
@@ -27,11 +27,11 @@ class API {
       // hadherna l url
       // ps li houwa b method get donc lazemni n3adi parametre fel url mouch fel body
       // '?' ba3dha parapmetre cin=kedhe thb tzid parametre ekher thot &
-      String theUrl = '$_baseUrl/getStudentByCIN?cin=$cin';
+      String theUrl = '$_baseUrl/getStudentByCIN';
       try {
         // o5tna response bch tjiblna l data depend lel url li da5eltou
         final response = await _client
-            .get(Uri.parse(theUrl))
+            .post(Uri.parse(theUrl), body: cin)
             .timeout(const Duration(seconds: 10));
         // timeout just ken saret mochkla direct y5arejna b exception li hiya fet wa9t
         // mta3 request w ykantrek men serveur
