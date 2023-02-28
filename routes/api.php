@@ -44,7 +44,7 @@ Route::middleware('auth:sanctum')->controller(AuthController::class)->group(func
 // Student routes
 Route::controller(StudentController::class)->group(function () {
     Route::post('getStudents', 'getStudents');
-    Route::post('getStudentByCIN', 'getStudentByCIN');
+    Route::get('getStudentByCIN', 'getStudentByCIN');
 
 
 });
@@ -52,7 +52,7 @@ Route::controller(StudentController::class)->group(function () {
 
 Route::controller(ParentController::class)->group(function () {
     Route::post('getParents', 'getParents');
-    Route::post('getParentByCIN', 'getParentByCIN');
+    Route::get('getParentByCIN', 'getParentByCIN');
     Route::post('addChildByCIN', 'addChildByCIN');
     Route::post('deleteChildByCIN', 'deleteChildByCIN');
     Route::post('getChildren', 'getChildren');

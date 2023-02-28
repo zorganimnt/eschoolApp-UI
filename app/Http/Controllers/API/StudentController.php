@@ -19,10 +19,15 @@ class StudentController extends BaseController
             return $this->sendError('CIN invalide...!', $validator->errors());
         }
 
+        if ($request['cin'] == 'all') {
+            $success = Student::all();
+            return $this->sendResponse($success, null);
+        }
+
         $getStudent = Student::where('student_cin', $request['cin'])->first();
-        if($getStudent) {
+        if ($getStudent) {
             return $this->sendResponse($getStudent, null);
-        } 
+        }
         return $this->sendError("Étudiant n'existe pas...!", $validator->errors());
     }
 

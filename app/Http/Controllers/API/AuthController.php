@@ -33,10 +33,10 @@ class AuthController extends BaseController
             $validator = Validator::make($request->all(), [
                 'cin' => 'required|digits:8',
                 'role' => 'required|alpha', 
-                'name' => 'required|alpha|min:3',
+                'name' => 'required|min:3',
                 'phone' => 'required|digits:8',
                 'mail' => 'required|email',
-                'university' => 'required|alpha',
+                'university' => 'required',
                 'degree' => 'required',
                 'speciality' => 'required',
                 'password' => 'required|min:6',
@@ -54,7 +54,7 @@ class AuthController extends BaseController
             $authInput['cin'] = $request['cin'];
             $authInput['role'] = $request['role'];
             $authInput['password'] = bcrypt($request['password']);
-            $user = User::create($authInput);
+            $user = User::create($authInput); 
 
             // student table 
             $studentInput['student_id']= $user['id'];
@@ -77,11 +77,11 @@ class AuthController extends BaseController
         // parent ken hat coordonnés chnouwa yssirrr
         if ($request['role'] == 'parent') {
             $validator = Validator::make($request->all(), [
-                'cin' => 'required',
+                'cin' => 'required|digits:8',
                 'role' => 'required', 
-                'name' => 'required|regex:/^[a-zA-Z]+$/',
-                'phone' => 'required',
-                'mail' => 'required',
+                'name' => 'required',
+                'phone' => 'required|digits:8',
+                'mail' => 'required|email',
                 'password' => 'required',
              ]);
             if ($validator->fails()) {
