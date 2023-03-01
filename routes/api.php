@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\StudentController;
 use App\Http\Controllers\API\ParentController;
+use App\Http\Controllers\API\NoteController;
 
 
 /*
@@ -44,7 +45,7 @@ Route::middleware('auth:sanctum')->controller(AuthController::class)->group(func
 // Student routes
 Route::controller(StudentController::class)->group(function () {
     Route::post('getStudents', 'getStudents');
-    Route::get('getStudentByCIN', 'getStudentByCIN');
+    Route::post('getStudentByCIN', 'getStudentByCIN');
 
 
 });
@@ -66,6 +67,17 @@ Route::controller(ParentController::class)->group(function () {
 
 Route::controller(StudentController::class)->group(function () {
     Route::post('getUsers', 'getUsers');
+
+
+});
+
+
+// note routes
+
+Route::controller(NoteController::class)->group(function () {
+    Route::get('getNote', 'getNote');
+    Route::post('addNote', 'addNote');
+
 
 
 });
