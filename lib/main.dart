@@ -4,6 +4,7 @@ import 'package:eschoolapp/view/Parent/add_student_screen.dart';
 import 'package:eschoolapp/view/auth/login_screen.dart';
 import 'package:eschoolapp/view/auth/switcher_screen.dart';
 import 'package:eschoolapp/view/home/home_screen.dart';
+import 'package:eschoolapp/view/note/list_note.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,7 +30,11 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.nunitoSansTextTheme(),
         primarySwatch: Colors.blue,
       ),
-      home: HomeScreeen(),
+      //home: HomeScreeen(), 
+      //home : SwitcherScreen(),
+      // li hachtk biha nehi l comment o zid l commnt aa lebkiya
+      home: ListNoteScreen(),
+       // hedhi badelha dima bel page li testi fiha bech tsahel aala rouhk direct ki debegu tbenlk
     );
   }
 }

@@ -1,5 +1,3 @@
-import 'dart:ffi';
-import 'dart:ui';
 
 import 'package:eschoolapp/controller/student_controller.dart';
 import 'package:eschoolapp/utils/color.dart';
