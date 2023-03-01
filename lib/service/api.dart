@@ -49,6 +49,25 @@ class API {
     }
   }
 
+   static Future<dynamic> getNotes() async {
+    // String token = await getValue('token');
+    if (await checkConnectionInternet()) {
+      String theUrl = '$_baseUrl/getNote';
+      try {
+        final response = await _client
+            .get(Uri.parse(theUrl))
+            .timeout(const Duration(seconds: 10));
+        return json.decode(response.body);
+      } on TimeoutException catch (_) {
+        Get.snackbar("Error", "Time Out");
+        return null;
+      }
+    } else {
+      Get.snackbar("Error", "Internet disconnected");
+      return null;
+    }
+  }
+
 // hedhi mouch taw
   static Future<dynamic> getParentInfo(cin) async {
     // String token = await getValue('token');

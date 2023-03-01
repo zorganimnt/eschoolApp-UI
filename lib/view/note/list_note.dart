@@ -1,3 +1,4 @@
+import 'package:eschoolapp/controller/note_controller.dart';
 import 'package:eschoolapp/controller/tab_note_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,120 +19,130 @@ List<Note> _notes = [
 class ListNoteScreen extends StatelessWidget {
   ListNoteScreen({super.key});
   TabNoteController tabController = Get.put(TabNoteController());
+  NoteController controller = Get.put(NoteController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // hedhi bech nafichi bih esemi les tables (ds, o ghirou bech najem navigi binethom)
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(100.0),
-        child: AppBar(
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(30.0),
-            child: TabBar(
-              indicatorWeight: 2,
-              labelColor: Colors.black,
-              indicatorColor: Colors.pink,
-              isScrollable: true,
-              controller: tabController.tbcontroller,
-              tabs: tabController.myTabs,
-              indicatorSize: TabBarIndicatorSize.label,
+        // hedhi bech nafichi bih esemi les tables (ds, o ghirou bech najem navigi binethom)
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(100.0),
+          child: AppBar(
+            bottom: PreferredSize(
+              preferredSize: const Size.fromHeight(30.0),
+              child: TabBar(
+                indicatorWeight: 2,
+                labelColor: Colors.black,
+                indicatorColor: Colors.pink,
+                isScrollable: true,
+                controller: tabController.tbcontroller,
+                tabs: tabController.myTabs,
+                indicatorSize: TabBarIndicatorSize.label,
+              ),
             ),
+            elevation: 1,
+            iconTheme: IconThemeData(color: Colors.deepPurple),
+            backgroundColor: Colors.white,
+            title: Text(
+              "Liste Notes",
+              style: TextStyle(color: Colors.black87),
+            ),
+            centerTitle: true,
           ),
-          elevation: 1,
-          iconTheme: IconThemeData(color: Colors.deepPurple),
-          backgroundColor: Colors.white,
-          title: Text(
-            "Liste Notes",
-            style: TextStyle(color: Colors.black87),
-          ),
-          centerTitle: true,
         ),
-      ),
-      body: TabBarView(controller: tabController.tbcontroller, children: [
-        // li bech nafichih hne dpend lel tab controller li aamltha fel controller
-        // TabBarView hedhi Item mte3ha hiya 3ibara list ,
-        // fiha padding 1 , 2, 3, 4 w kol padding fi tab (ds, examen , orale, tp)
-        // aya mela chedli rouhk hhhhhh bara aya
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                const Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text(
-                          "Matiere",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        Text("Note",
-                            style: TextStyle(fontWeight: FontWeight.bold)),
-                      ],
-                    ),
-                    SizedBox(height: 4),
-                    Divider(
-                      height: 1.5,
-                    ),
-                    SizedBox(height: 6),
-                  ],
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height,
-                  child: ListView.builder(
-                      itemCount: _notes.length,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
+        body: Obx(
+          () => controller.loading.value
+              ? CircularProgressIndicator()
+              : TabBarView(controller: tabController.tbcontroller, children: [
+                  // li bech nafichih hne dpend lel tab controller li aamltha fel controller
+                  // TabBarView hedhi Item mte3ha hiya 3ibara list ,
+                  // fiha padding 1 , 2, 3, 4 w kol padding fi tab (ds, examen , orale, tp)
+                  // aya mela chedli rouhk hhhhhh bara aya
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          Column(
                             children: [
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
-                                  Text(_notes[index].nameMatiere),
-                                  Text(_notes[index].noteStudent)
+                                  Text(
+                                    "Matiere",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  Text("Note",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold)),
                                 ],
                               ),
                               SizedBox(height: 4),
                               Divider(
                                 height: 1.5,
-                              )
+                              ),
+                              SizedBox(height: 6),
                             ],
                           ),
-                        );
-                      }),
-                ),
-              ],
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ListView.builder(
-              itemCount: 2,
-              itemBuilder: (context, index) {
-                return Text("hne nafichi l Examen");
-              }),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ListView.builder(
-              itemCount: 2,
-              itemBuilder: (context, index) {
-                return Text("hne nafichi l Orale");
-              }),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ListView.builder(
-              itemCount: 2,
-              itemBuilder: (context, index) {
-                return Text("hne nafichi l TP");
-              }),
-        ),
-      ]),
-    );
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height,
+                            child: ListView.builder(
+                                itemCount: controller.noteList.length,
+                                itemBuilder: (context, index) {
+                                  return Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            Text(controller
+                                                .noteList[index].matiere
+                                                .toString()),
+                                            Text(controller.noteList[index].note
+                                                .toString())
+                                          ],
+                                        ),
+                                        SizedBox(height: 4),
+                                        Divider(
+                                          height: 1.5,
+                                        )
+                                      ],
+                                    ),
+                                  );
+                                }),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ListView.builder(
+                        itemCount: 2,
+                        itemBuilder: (context, index) {
+                          return Text("hne nafichi l Examen");
+                        }),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ListView.builder(
+                        itemCount: 2,
+                        itemBuilder: (context, index) {
+                          return Text("hne nafichi l Orale");
+                        }),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ListView.builder(
+                        itemCount: 2,
+                        itemBuilder: (context, index) {
+                          return Text("hne nafichi l TP");
+                        }),
+                  ),
+                ]),
+        ));
   }
 }
