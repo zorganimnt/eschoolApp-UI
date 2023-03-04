@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:eschoolapp/service/api.dart';
 import 'package:eschoolapp/service/save_token.dart';
-import 'package:eschoolapp/view/home/home_screen.dart';
+import 'package:eschoolapp/view/home/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart';

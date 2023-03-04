@@ -1,41 +1,115 @@
+import 'package:eschoolapp/controller/home_controller.dart';
 import 'package:eschoolapp/controller/parent_controller.dart';
 import 'package:eschoolapp/model/parent.dart';
 import 'package:eschoolapp/utils/color.dart';
 import 'package:eschoolapp/view/Parent/add_student_screen.dart';
 import 'package:eschoolapp/view/Parent/get_students_screen.dart';
+import 'package:eschoolapp/view/home/components/calendar_screen.dart';
+import 'package:eschoolapp/view/home/components/documents_screen.dart';
+import 'package:eschoolapp/view/home/components/home_screen.dart';
+import 'package:eschoolapp/view/home/components/profile_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class HomeScreeen extends StatelessWidget {
-  final String? token;
-  final String? role;
-  HomeScreeen({super.key, this.token, this.role});
+class MainScreeen extends StatelessWidget {
+  MainScreeen({
+    super.key,
+  });
   final ParentController parentController = Get.put(ParentController());
+  final HomeController controller = Get.put(HomeController());
 
+  final List<Widget> _widgetContent = <Widget>[
+    const HomeScreen(),
+     CalendarScreen(),
+    const DocumentsScreen(),
+    const ProfileScreen()
+  ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: buildAppBar(),
-        drawer: buildDrawer(),
-        body: Center(child: Text("hedhi home")));
+    return GetBuilder<HomeController>(builder: (_) {
+      return Scaffold(
+          bottomNavigationBar: _buildBottomAppBar(),
+          appBar: buildAppBar(),
+          drawer: buildDrawer(),
+          body: _widgetContent.elementAt(controller.selectedIndex));
+    });
   }
 
   AppBar buildAppBar() {
     return AppBar(
-      backgroundColor: Colors.white,
-      actions: const [
+      elevation: 0.0,
+      backgroundColor: Colors.transparent,
+      actions:  [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.0),
-          child: InkWell(
-            child: Icon(
-              Icons.notifications_outlined,
-              color: Colors.grey,
-              size: 25,
+          child: IconButton(
+            icon: Stack(
+              //alignment: AlignmentDirectional.topEnd,
+              children: [
+                Positioned(
+                  top: 2,
+                  left: 3.5,
+                  child: CircleAvatar(
+                
+                   // child: Text("2"),
+                    radius: 4.5,
+                  backgroundColor: Colors.red,
+                  ),
+                ),
+                SvgPicture.asset(
+                  "assets/icons/notif-icon.svg",
+                  width: 24.5,
+                
+                ),
+              ],
             ),
+            onPressed: () {
+             // controller.onChangeItem(pageIndex);
+            },
           ),
         )
       ],
-      iconTheme: IconThemeData(color: primaryColor),
+      iconTheme: IconThemeData(color: Colors.black87,
+      size: 24),
+    );
+  }
+
+  BottomAppBar _buildBottomAppBar() {
+    return BottomAppBar(
+      elevation: 0,
+      color: Colors.transparent,
+      shape: CircularNotchedRectangle(),
+      notchMargin: 5,
+      child: SizedBox(
+        height: 70,
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            BottomNavItem(
+              controller: controller,
+              pageIndex: 0,
+              icon: "assets/icons/btm_nv/home-icon.svg",
+            ),
+            BottomNavItem(
+              controller: controller,
+              pageIndex: 1,
+              icon: "assets/icons/btm_nv/calendar-icon.svg",
+            ),
+            BottomNavItem(
+              controller: controller,
+              pageIndex: 2,
+              icon: "assets/icons/btm_nv/document-icon.svg",
+            ),
+            BottomNavItem(
+              controller: controller,
+              pageIndex: 3,
+              icon: "assets/icons/btm_nv/profile-icon.svg",
+            ),
+          ],
+        ),
+      ),
     );
   }
 
@@ -137,6 +211,45 @@ class HomeScreeen extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
+      ],
+    );
+  }
+}
+
+class BottomNavItem extends StatelessWidget {
+  final int pageIndex;
+  final String icon;
+
+  const BottomNavItem({
+    Key? key,
+    required this.controller,
+    required this.pageIndex,
+    required this.icon,
+  }) : super(key: key);
+
+  final HomeController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        IconButton(
+          icon: SvgPicture.asset(
+            icon,
+            width: 28,
+            color: controller.isSelected(pageIndex) ? Colors.deepPurple : null,
+          ),
+          onPressed: () {
+            controller.onChangeItem(pageIndex);
+          },
+        ),
+        controller.isSelected(pageIndex)
+            ? CircleAvatar(
+                radius: 2,
+                backgroundColor: Colors.deepPurple,
+              )
+            : Container(),
       ],
     );
   }

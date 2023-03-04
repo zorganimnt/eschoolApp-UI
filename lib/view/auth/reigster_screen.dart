@@ -1,9 +1,9 @@
 import 'package:eschoolapp/controller/auth_controller.dart';
 import 'package:eschoolapp/controller/register_controller.dart';
 import 'package:eschoolapp/utils/color.dart';
-import 'package:eschoolapp/view/auth/compenents/dropdown_degree.dart';
-import 'package:eschoolapp/view/auth/compenents/dropdown_speciality.dart';
-import 'package:eschoolapp/view/auth/compenents/dropdown_university.dart';
+import 'package:eschoolapp/view/auth/components/dropdown_degree.dart';
+import 'package:eschoolapp/view/auth/components/dropdown_speciality.dart';
+import 'package:eschoolapp/view/auth/components/dropdown_university.dart';
 import 'package:eschoolapp/view/auth/login_screen.dart';
 import 'package:eschoolapp/widgets/custom_button.dart';
 import 'package:eschoolapp/widgets/custom_input_field.dart';
