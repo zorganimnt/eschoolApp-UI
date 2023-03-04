@@ -3,6 +3,7 @@ import 'package:eschoolapp/controller/parent_controller.dart';
 import 'package:eschoolapp/model/parent.dart';
 import 'package:eschoolapp/utils/color.dart';
 import 'package:eschoolapp/view/Parent/add_student_screen.dart';
+import 'package:eschoolapp/view/Parent/get_students_screen.dart';
 import 'package:eschoolapp/view/home/components/calendar_screen.dart';
 import 'package:eschoolapp/view/home/components/documents_screen.dart';
 import 'package:eschoolapp/view/home/components/home_screen.dart';
@@ -165,9 +166,14 @@ class MainScreeen extends StatelessWidget {
                     ),
                   ),
                   separator(),
-                  const DrawerItem(
-                    icon: Icons.list_rounded,
-                    text: 'Liste mes enfants',
+                  InkWell(
+                    onTap: (() {
+                      Get.to(ListChildrenScreen());
+                    }),
+                    child: const DrawerItem(
+                      icon: Icons.list_rounded,
+                      text: 'Liste mes enfants',
+                    ),
                   ),
                   separator(),
                   const DrawerItem(

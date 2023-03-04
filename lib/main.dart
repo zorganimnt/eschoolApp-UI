@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'view/Parent/get_students_screen.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -27,11 +29,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        textTheme: GoogleFonts.nunitoSansTextTheme(),
+       //textTheme: GoogleFonts.nunitoSansTextTheme(),
         primarySwatch: Colors.blue,
       ),
       home: MainScreeen(), 
       //home : SwitcherScreen(),
+      home : ListChildrenScreen (), //  bech yafichi wledou
       // li hachtk biha nehi l comment o zid l commnt aa lebkiya
       //home: ListNoteScreen(),
        // hedhi badelha dima bel page li testi fiha bech tsahel aala rouhk direct ki debegu tbenlk
