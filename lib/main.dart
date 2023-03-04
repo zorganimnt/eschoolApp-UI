@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       ),
       home: MainScreeen(), 
       //home : SwitcherScreen(),
-      home : ListChildrenScreen (), //  bech yafichi wledou
+      
       // li hachtk biha nehi l comment o zid l commnt aa lebkiya
       //home: ListNoteScreen(),
        // hedhi badelha dima bel page li testi fiha bech tsahel aala rouhk direct ki debegu tbenlk
