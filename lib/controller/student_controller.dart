@@ -13,6 +13,8 @@ class StudentController extends GetxController {
   TextEditingController cin = TextEditingController();
   RxBool loading = false.obs;
   Rx<StudentModel> studentModel = StudentModel().obs;
+  // list li bech nhit fiha etudiants
+  var childrenList = List<StudentModel>.empty().obs;
 
   // hedhi method bech traja3li StudentModel
   //9bal kona najoutiwhom fi west tableaux fi 3oudh tab sta3mlna model
@@ -45,4 +47,35 @@ class StudentController extends GetxController {
     // o hedhi return null 3al if li raj3t json==null
     return null;
   }
+
+  
+  @override
+  void onInit() {
+    super.onInit();
+    getChildren();
+  }
+
+  var cinParent = "11220099"; // suppose li hdhe cin conecté.. hedhi ki yabda parent conecté automatiquement bech tet7at ps cin enregister kif aaml connexion asmaa jarabli exmp jdid bch nfhm
+  Future<StudentModel?> getChildren() async {
+    loading.value = true;
+
+    dynamic json = await API.getChildren(cinParent);
+    if (json != null) {
+      if (json['success']) {
+         json['data'].forEach((item) {
+          childrenList.add(StudentModel.fromJson(item));
+
+        });
+        print(childrenList[0].nameStudent);  // bech nchouf yeprinti esmk men DB  walee
+        loading.value = false;
+
+      } else {
+        loading.value = false;
+        Get.snackbar("Error", json['message'] ?? '');
+        return null;
+      }
+    }
+    return null;
+  }
+
 }
