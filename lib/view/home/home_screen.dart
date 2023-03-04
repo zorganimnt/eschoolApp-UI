@@ -2,6 +2,7 @@ import 'package:eschoolapp/controller/parent_controller.dart';
 import 'package:eschoolapp/model/parent.dart';
 import 'package:eschoolapp/utils/color.dart';
 import 'package:eschoolapp/view/Parent/add_student_screen.dart';
+import 'package:eschoolapp/view/Parent/get_students_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -91,9 +92,14 @@ class HomeScreeen extends StatelessWidget {
                     ),
                   ),
                   separator(),
-                  const DrawerItem(
-                    icon: Icons.list_rounded,
-                    text: 'Liste mes enfants',
+                  InkWell(
+                    onTap: (() {
+                      Get.to(ListChildrenScreen());
+                    }),
+                    child: const DrawerItem(
+                      icon: Icons.list_rounded,
+                      text: 'Liste mes enfants',
+                    ),
                   ),
                   separator(),
                   const DrawerItem(
