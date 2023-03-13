@@ -6,6 +6,7 @@ use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\StudentController;
 use App\Http\Controllers\API\ParentController;
 use App\Http\Controllers\API\NoteController;
+use App\Http\Controllers\API\ProfController;
 
 
 /*
@@ -77,6 +78,15 @@ Route::controller(StudentController::class)->group(function () {
 Route::controller(NoteController::class)->group(function () {
     Route::get('getNote', 'getNote');
     Route::post('addNote', 'addNote');
+
+
+
+});
+
+//prof routes
+Route::controller(ProfController::class)->group(function () {
+    Route::get('getProf', 'getProf');
+    Route::post('addProf', 'addProf');
 
 
 
