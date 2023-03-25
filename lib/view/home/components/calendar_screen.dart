@@ -7,7 +7,14 @@ class CalendarScreen extends StatelessWidget {
     super.key,
   });
   CalendarController controller = Get.put(CalendarController());
-
+  var listDay = [
+    'Lundi',
+    'Mardi',
+    'Mercredi',
+    'Jeudi',
+    'Vendredi',
+    'Samedi'
+  ];
   @override
   Widget build(BuildContext context) {
     return GetBuilder<CalendarController>(builder: (_) {
@@ -50,7 +57,7 @@ class CalendarScreen extends StatelessWidget {
       height: 90,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 7,
+        itemCount: 6,
         itemBuilder: ((context, index) {
           return Column(
             children: [
@@ -72,7 +79,7 @@ class CalendarScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Text(
-                            "TUE",
+                            listDay[index],
                             style: TextStyle(
                               fontSize: 11,
                               color: controller.isSelectedDate(index)
@@ -81,7 +88,7 @@ class CalendarScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            (index + 10).toString(),
+                            (index + 6).toString(),
                             style: TextStyle(
                                 color: controller.isSelectedDate(index)
                                     ? Colors.white

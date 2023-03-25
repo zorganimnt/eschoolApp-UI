@@ -68,7 +68,8 @@ class MainScreeen extends StatelessWidget {
              // controller.onChangeItem(pageIndex);
             },
           ),
-        )
+          
+        ),
       ],
       iconTheme: IconThemeData(color: Colors.black87,
       size: 24),

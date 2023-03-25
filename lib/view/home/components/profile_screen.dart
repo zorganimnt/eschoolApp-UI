@@ -1,7 +1,15 @@
-import 'dart:ffi';
-
 import 'package:eschoolapp/utils/color.dart';
+import 'package:eschoolapp/widgets/show_dialog.dart';
 import 'package:flutter/material.dart';
+
+Future<void> _editDialog(context, dialogContent) async {
+  return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return dialogContent;
+      });
+}
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -56,32 +64,30 @@ class ProfileScreen extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            buildContantInfo(),
+            buildContantInfo(context),
             SizedBox(
               height: 20,
             ),
             ParametreItemWidget(
               icon: Icons.lock_outline_rounded,
               title: "Change mot de passe",
-              direction: () {
-                
-              },
+              direction: () {},
             ),
-            SizedBox(height: 10,),
-              ParametreItemWidget(
+            SizedBox(
+              height: 10,
+            ),
+            ParametreItemWidget(
               icon: Icons.support_agent_outlined,
               title: "Contact support",
-              direction: () {
-                
-              },
+              direction: () {},
             ),
-            SizedBox(height: 10,),
-              ParametreItemWidget(
+            SizedBox(
+              height: 10,
+            ),
+            ParametreItemWidget(
               icon: Icons.help_outline,
               title: "Besoin d'aide",
-              direction: () {
-                
-              },
+              direction: () {},
             )
           ],
         ),
@@ -89,7 +95,7 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Container buildContantInfo() {
+  Container buildContantInfo(context) {
     return Container(
       height: 180,
       decoration: BoxDecoration(boxShadow: [
@@ -130,10 +136,43 @@ class ProfileScreen extends StatelessWidget {
                       SizedBox(
                         width: 8,
                       ),
-                      Icon(
-                        Icons.edit_outlined,
-                        color: Colors.grey,
-                        size: 14,
+                      InkWell(
+                        onTap: () {
+                          _editDialog(
+                              context,
+                              ShowDialog(
+                                title: Text("Modifier nom"),
+                                body: TextField(
+                                  keyboardType: TextInputType.number,
+                                  textAlignVertical: TextAlignVertical.center,
+                                  autofocus: true,
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.symmetric(
+                                          horizontal: 10, vertical: 10),
+                                    
+                                      hintText: "Enter numéro",
+                                      hintStyle:
+                                          TextStyle(color: Colors.grey[300]!),
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              width: 1,
+                                              color: Colors.grey[300]!)),
+                                      border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              width: 1,
+                                              color: Colors.grey[300]!)),
+                                      focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              width: 1,
+                                              color: Colors.grey[300]!))),
+                                ),
+                              ));
+                        },
+                        child: Icon(
+                          Icons.edit_outlined,
+                          color: Colors.grey,
+                          size: 14,
+                        ),
                       )
                     ],
                   )
@@ -361,17 +400,20 @@ class ProfileScreen extends StatelessWidget {
 }
 
 class ParametreItemWidget extends StatelessWidget {
-  final IconData icon; 
-  final String title; 
-  final  Function()? direction; 
+  final IconData icon;
+  final String title;
+  final Function()? direction;
   const ParametreItemWidget({
-    Key? key, required this.icon, required this.title, this.direction,
+    Key? key,
+    required this.icon,
+    required this.title,
+    this.direction,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap:  direction,
+      onTap: direction,
       child: Container(
         height: 50,
         decoration: BoxDecoration(boxShadow: [

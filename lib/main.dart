@@ -5,6 +5,7 @@ import 'package:eschoolapp/view/auth/login_screen.dart';
 import 'package:eschoolapp/view/auth/switcher_screen.dart';
 import 'package:eschoolapp/view/home/main_screen.dart';
 import 'package:eschoolapp/view/note/list_note.dart';
+import 'package:eschoolapp/view/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,11 +30,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-       //textTheme: GoogleFonts.nunitoSansTextTheme(),
+       textTheme: GoogleFonts.nunitoSansTextTheme(),
         primarySwatch: Colors.blue,
       ),
-      home: MainScreeen(), 
-      //home : SwitcherScreen(),
+      //home: MainScreeen(), 
+      home : WelcomePage(),
       
       // li hachtk biha nehi l comment o zid l commnt aa lebkiya
       //home: ListNoteScreen(),
