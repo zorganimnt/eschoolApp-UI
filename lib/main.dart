@@ -1,5 +1,7 @@
 import 'package:eschoolapp/controller/auth_controller.dart';
 import 'package:eschoolapp/controller/register_controller.dart';
+import 'package:eschoolapp/routes/app_pages.dart';
+import 'package:eschoolapp/routes/app_routes.dart';
 import 'package:eschoolapp/view/Parent/add_student_screen.dart';
 import 'package:eschoolapp/view/auth/login_screen.dart';
 import 'package:eschoolapp/view/auth/switcher_screen.dart';
@@ -34,8 +36,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       //home: MainScreeen(), 
-      home : WelcomePage(),
-      
+     // home : WelcomePage(),
+     getPages: AppPages.pages,
+      initialRoute: AppRoutes.welcome,
       // li hachtk biha nehi l comment o zid l commnt aa lebkiya
       //home: ListNoteScreen(),
        // hedhi badelha dima bel page li testi fiha bech tsahel aala rouhk direct ki debegu tbenlk

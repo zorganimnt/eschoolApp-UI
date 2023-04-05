@@ -11,8 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class RegisterScreen extends StatelessWidget {
-  final String role;
-  RegisterScreen({super.key, required this.role});
+  final String? role;
+  RegisterScreen({super.key,  this.role});
   RegisterController controller = Get.find(); 
   @override
   Widget build(BuildContext context) {
