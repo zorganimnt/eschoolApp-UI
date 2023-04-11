@@ -11,6 +11,7 @@ import 'package:eschoolapp/view/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 import 'view/Parent/get_students_screen.dart';
 
@@ -29,19 +30,29 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      builder: (context, widget) => ResponsiveWrapper.builder(
+        BouncingScrollWrapper.builder(context, widget!),
+        defaultScale: true,
+        breakpoints: [
+          const ResponsiveBreakpoint.resize(450, name: MOBILE),
+          const ResponsiveBreakpoint.autoScale(800,
+              name: TABLET, scaleFactor: 0.9),
+          const ResponsiveBreakpoint.autoScale(1000,
+              name: TABLET, scaleFactor: 0.9),
+          const ResponsiveBreakpoint.autoScale(1200,
+              name: DESKTOP, scaleFactor: 0.9),
+          const ResponsiveBreakpoint.autoScale(2460,
+              name: "4K", scaleFactor: 1.5),
+        ],
+      ),
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Eschool-app',
       theme: ThemeData(
-       textTheme: GoogleFonts.nunitoSansTextTheme(),
+        textTheme: GoogleFonts.nunitoSansTextTheme(),
         primarySwatch: Colors.blue,
       ),
-      //home: MainScreeen(), 
-     // home : WelcomePage(),
-     getPages: AppPages.pages,
+      getPages: AppPages.pages,
       initialRoute: AppRoutes.welcome,
-      // li hachtk biha nehi l comment o zid l commnt aa lebkiya
-      //home: ListNoteScreen(),
-       // hedhi badelha dima bel page li testi fiha bech tsahel aala rouhk direct ki debegu tbenlk
     );
   }
 }
