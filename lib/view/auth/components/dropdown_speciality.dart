@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 const List<String> category = <String>[
-  'Séléctioner votre spécialité',
-  'Génie Logiciel',
-  'Réseaux',
-  'Dévelopement Web', 
-  'Dévelopement Mobile', 
+  "J'utilise ce siteweb comme étant ...",
+  'Étudiant',
+  'Parent',
+  'Formateur', 
   'Autre'
 ];
 
