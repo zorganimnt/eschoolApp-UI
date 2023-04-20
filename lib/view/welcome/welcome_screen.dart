@@ -17,447 +17,932 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        
-        appBar: ResponsiveWrapper.of(context).isSmallerThan("TABLET")? AppBar(
-          backgroundColor: Colors.transparent,
-          iconTheme: IconThemeData(color: Colors.black87),
-          elevation: 0,
-       
-          actions: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: _buildLoginRegister(),
-            )
-          ],
-        ) : wAppbar(context) ,
+        appBar: ResponsiveWrapper.of(context).isSmallerThan("TABLET")
+            ? AppBar(
+                backgroundColor: Colors.transparent,
+                iconTheme: IconThemeData(color: Colors.black87),
+                elevation: 0,
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: _buildLoginRegister(),
+                  )
+                ],
+              )
+            : wAppbar(context),
         drawer: _buildDrawerWelcome(),
         body: SingleChildScrollView(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(
-                height: 50,
-              ),
-              ResponsiveWrapper.of(context).isSmallerThan("TABLET")? 
-              _mobileLandingSection1():
-              _webLandingSection1(context),
-              SizedBox(
-                height: 50,
-              ),
-               ResponsiveWrapper.of(context).isSmallerThan("TABLET")? 
-              Padding(
-                padding: const EdgeInsets.symmetric( horizontal : 25.0),
-                child: Column(
-                  children: [
-                    Container(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                           Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                             children: [
-                               CircleAvatar(
-                                backgroundColor: Colors.white.withOpacity(0.5),
-                                radius: 30,
-                                 child: Icon(
-                                  LineIcons.book,
-                                  size: 30,
-                                  color: Colors.blue,
-                                                         ),
-                               ),
-                               SizedBox(width: 10,), 
-                                Text("10K+",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 30,
-                                    color: primaryColor)),
-                             ],
-                           ),
-                           SizedBox(height: 10,), 
-                              Text(
-                              "Total Courses",
-                              style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 18,
+              Column(
+                children: [
+                  SizedBox(
+                    height: 50,
+                  ),
+                  ResponsiveWrapper.of(context).isSmallerThan("TABLET")
+                      ? _mobileLandingSection1()
+                      : _webLandingSection1(context),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  ResponsiveWrapper.of(context).isSmallerThan("TABLET")
+                      ? Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                          child: Column(
+                            children: [
+                              Container(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        CircleAvatar(
+                                          backgroundColor:
+                                              Colors.white.withOpacity(0.5),
+                                          radius: 30,
+                                          child: Icon(
+                                            LineIcons.book,
+                                            size: 30,
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text("10K+",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 30,
+                                                color: primaryColor)),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      "Total Courses",
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                height: 120,
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                    color: Colors.deepPurple.withOpacity(0.1),
+                                    borderRadius: BorderRadius.circular(15)),
                               ),
+                              SizedBox(
+                                height: 22,
+                              ),
+                              Container(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        CircleAvatar(
+                                          backgroundColor:
+                                              Colors.white.withOpacity(0.5),
+                                          radius: 30,
+                                          child: Icon(
+                                            LineIcons.book,
+                                            size: 30,
+                                            color: Colors.deepOrange,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text("500+",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 30,
+                                                color: primaryColor)),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      "Expert Formateur",
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                height: 120,
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                    color: Colors.deepPurple.withOpacity(0.1),
+                                    borderRadius: BorderRadius.circular(15)),
+                              ),
+                              SizedBox(
+                                height: 22,
+                              ),
+                              Container(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        CircleAvatar(
+                                          backgroundColor:
+                                              Colors.white.withOpacity(0.5),
+                                          radius: 30,
+                                          child: Icon(
+                                            LineIcons.university,
+                                            size: 30,
+                                            color: Colors.deepPurple,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text("800+",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 30,
+                                                color: primaryColor)),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      "Total Etudiants",
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                height: 120,
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                    color: Colors.deepPurple.withOpacity(0.1),
+                                    borderRadius: BorderRadius.circular(15)),
+                              )
+                            ],
+                          ),
+                        )
+                      : _webLandingSection2(context),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    child: Container(
+                      color: primaryColor.withOpacity(0.1),
+                      height: 1000,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Les Formation Disponible",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 25),
                             ),
-
-                        ],
+                            Text(
+                              "Notre centre de formation fournit plusieurs formations..",
+                              style: TextStyle(color: Colors.grey),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Container(
+                                  height: 40,
+                                  width: 180,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.white),
+                                  child: Center(
+                                      child: Text(
+                                    "Voir tout les formations",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: primaryColor),
+                                  )),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 20,), 
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Container(
+                                  height: 400,
+                                  width: 350,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(20.0),
+                                        child: Container(
+                                          height: 200,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/icons/dev.jpeg"),
+                                                  fit: BoxFit.cover)),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 20.0),
+                                        child: Row(
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Container(
+                                                  height: 30,
+                                                  width: 100,
+                                                  decoration: BoxDecoration(
+                                                      color: Colors.deepOrange
+                                                          .withOpacity(0.5),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              15)),
+                                                  child: Center(
+                                                      child: Text(
+                                                    "Informatique",
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  )),
+                                                ),
+                                                SizedBox(
+                                                  height: 10,
+                                                ),
+                                                Text(
+                                                  "Dévelopement mobile et web",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 16),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              CircleAvatar(
+                                                  radius: 17,
+                                                  backgroundColor: Colors.blue
+                                                      .withOpacity(0.1),
+                                                  child: Icon(LineIcons.user)),
+                                              SizedBox(
+                                                width: 4,
+                                              ),
+                                              Text("Foulen x"),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              CircleAvatar(
+                                                  radius: 17,
+                                                  backgroundColor: Colors.orange
+                                                      .withOpacity(0.1),
+                                                  child: Icon(
+                                                      LineIcons.dollarSign)),
+                                              SizedBox(
+                                                width: 4,
+                                              ),
+                                              Text("400 DT"),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              CircleAvatar(
+                                                  radius: 17,
+                                                  backgroundColor: Colors.red
+                                                      .withOpacity(0.1),
+                                                  child: Icon(LineIcons.clock)),
+                                              SizedBox(
+                                                width: 4,
+                                              ),
+                                              Text("3 Mois"),
+                                            ],
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  height: 400,
+                                  width: 350,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(20.0),
+                                        child: Container(
+                                          height: 200,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/icons/marketing.jpeg"),
+                                                  fit: BoxFit.cover)),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 20.0),
+                                        child: Row(
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Container(
+                                                  height: 30,
+                                                  width: 100,
+                                                  decoration: BoxDecoration(
+                                                      color: Colors.green
+                                                          .withOpacity(0.5),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              15)),
+                                                  child: Center(
+                                                      child: Text(
+                                                    "Marketing",
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  )),
+                                                ),
+                                                SizedBox(
+                                                  height: 10,
+                                                ),
+                                                Text(
+                                                  "Marketing digitale",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 16),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              CircleAvatar(
+                                                  radius: 17,
+                                                  backgroundColor: Colors.blue
+                                                      .withOpacity(0.1),
+                                                  child: Icon(LineIcons.user)),
+                                              SizedBox(
+                                                width: 4,
+                                              ),
+                                              Text("Foulen x"),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              CircleAvatar(
+                                                  radius: 17,
+                                                  backgroundColor: Colors.orange
+                                                      .withOpacity(0.1),
+                                                  child: Icon(
+                                                      LineIcons.dollarSign)),
+                                              SizedBox(
+                                                width: 4,
+                                              ),
+                                              Text("400 DT"),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              CircleAvatar(
+                                                  radius: 17,
+                                                  backgroundColor: Colors.red
+                                                      .withOpacity(0.1),
+                                                  child: Icon(LineIcons.clock)),
+                                              SizedBox(
+                                                width: 4,
+                                              ),
+                                              Text("3 Mois"),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                              height: 400,
+                              width: 350,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(20.0),
+                                    child: Container(
+                                      height: 200,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(15),
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  "assets/icons/dev.jpeg"),
+                                              fit: BoxFit.cover)),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal : 20.0),
+                                    child: Row(
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              height: 30,
+                                              width: 100,
+                                              decoration: BoxDecoration(
+                                                color: Colors.deepOrange.withOpacity(0.5), 
+                                                borderRadius: BorderRadius.circular(15)
+                                              ),
+                                              child: Center(child: Text("Informatique", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),)),
+                                            ), 
+                                            SizedBox(height: 10,), 
+                                            Text("Dévelopement mobile et web", 
+                                            style: TextStyle(fontWeight: FontWeight.bold, 
+                                            fontSize: 16),),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          CircleAvatar(
+                                              radius: 17,
+                                              backgroundColor:
+                                                  Colors.blue.withOpacity(0.1),
+                                              child: Icon(LineIcons.user)),
+                                              SizedBox(width: 4,),
+                                          Text("Foulen x"),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          CircleAvatar(
+                                              radius: 17,
+                                              backgroundColor: Colors.orange
+                                                  .withOpacity(0.1),
+                                              child:
+                                                  Icon(LineIcons.dollarSign)),
+                                                   SizedBox(width: 4,),
+                                          Text("400 DT"),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          CircleAvatar(
+                                              radius: 17,
+                                              backgroundColor:
+                                                  Colors.red.withOpacity(0.1),
+                                              child: Icon(LineIcons.clock)),
+                                               SizedBox(width: 4,),
+                                          Text("3 Mois"),
+                                        ],
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
+                            )
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                      height: 120,
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(color: Colors.deepPurple.withOpacity(0.1), 
-                      borderRadius: BorderRadius.circular(15)),
                     ),
-                    SizedBox(height: 22,), 
-                    Container(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                           Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                             children: [
-                               CircleAvatar(
-                                backgroundColor: Colors.white.withOpacity(0.5),
-                                radius: 30,
-                                 child: Icon(
-                                  LineIcons.book,
-                                  size: 30,
-                                  color: Colors.deepOrange,
-                                                         ),
-                               ),
-                               SizedBox(width: 10,), 
-                                Text("500+",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 30,
-                                    color: primaryColor)),
-                             ],
-                           ),
-                           SizedBox(height: 10,), 
-                              Text(
-                              "Expert Formateur",
-                              style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 18,
-                              ),
-                            ),
-
-                        ],
-                      ),
-                      height: 120,
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(color: Colors.deepPurple.withOpacity(0.1), 
-                      borderRadius: BorderRadius.circular(15)),
-                    ), 
-                    SizedBox(height: 22,), 
-                    Container(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                           Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                             children: [
-                               CircleAvatar(
-                                backgroundColor: Colors.white.withOpacity(0.5),
-                                radius: 30,
-                                 child: Icon(
-                                  LineIcons.university,
-                                  size: 30,
-                                  color: Colors.deepPurple,
-                                                         ),
-                               ),
-                               SizedBox(width: 10,), 
-                                Text("800+",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 30,
-                                    color: primaryColor)),
-                             ],
-                           ),
-                           SizedBox(height: 10,), 
-                              Text(
-                              "Total Etudiants",
-                              style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 18,
-                              ),
-                            ),
-
-                        ],
-                      ),
-                      height: 120,
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(color: Colors.deepPurple.withOpacity(0.1), 
-                      borderRadius: BorderRadius.circular(15)),
-                    )
-                  ],
-                ),
-              ) : 
-              _webLandingSection2(context),
+                  )
+                ],
+              ),
               SizedBox(
                 height: 40,
-              )
+              ),
+              _buildFooterSection()
             ],
           ),
         ));
   }
 
+  Container _buildFooterSection() {
+    return Container(
+      height: 240,
+      color: Colors.blueAccent.withOpacity(0.2),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          SizedBox(
+            height: 150,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Image.asset(
+                  'assets/icons/logo-app.png',
+                  width: 100,
+                ),
+                Text("Decsription ..."),
+                Text("Social media")
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 150,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  "Lien",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text("Home"),
+                Text("About"),
+                Text("Our process"),
+                Text("Services"),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 150,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  "Lien",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text("Home"),
+                Text("About"),
+                Text("Our process"),
+                Text("Services"),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 150,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  "Lien",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text("Home"),
+                Text("About"),
+                Text("Our process"),
+                Text("Services"),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   Padding _mobileLandingSection1() {
     return Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-            
-                children: [
-                    Image.asset(
-                'assets/icons/educ.png',
-                width: 250,
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        children: [
+          Image.asset(
+            'assets/icons/educ.png',
+            width: 250,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Obtenir une éducation de qualité est maintenant plus facile",
+                style: TextStyle(
+                    fontSize: 42,
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 20,), 
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                            "Obtenir une éducation de qualité est maintenant plus facile",
-                            style: TextStyle(
-                                fontSize: 42,
-                                color: Colors.black87,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "Fournit le dernier système d'apprentissage en ligne et des matériels qui aident à développer vos connaissances",
-                            style: TextStyle(fontSize: 15, color: Colors.grey),
-                          ),
-                    ],
-                  ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        //mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            height: 50,
-                            width: 120,
-                            decoration: BoxDecoration(
-                                color: primaryColor,
-                                borderRadius: BorderRadius.circular(15)),
-                            child: Center(
-                                child: Text(
-                              "Commencer",
-                              style: TextStyle(color: Colors.white),
-                            )),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Container(
-                            height: 50,
-                            width: 120,
-                            decoration: BoxDecoration(
-                                color: Colors.grey.withOpacity(0.1),
-                                borderRadius: BorderRadius.circular(15)),
-                            child: Center(
-                                child: Text(
-                              "Plus détails",
-                              style: TextStyle(color: primaryColor),
-                            )),
-                          )
-                        ],
-                      )
-                ],
+              SizedBox(
+                height: 10,
               ),
-            );
+              Text(
+                "Fournit le dernier système d'apprentissage en ligne et des matériels qui aident à développer vos connaissances",
+                style: TextStyle(fontSize: 15, color: Colors.grey),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            //mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: 50,
+                width: 120,
+                decoration: BoxDecoration(
+                    color: primaryColor,
+                    borderRadius: BorderRadius.circular(15)),
+                child: Center(
+                    child: Text(
+                  "Commencer",
+                  style: TextStyle(color: Colors.white),
+                )),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Container(
+                height: 50,
+                width: 120,
+                decoration: BoxDecoration(
+                    color: Colors.grey.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(15)),
+                child: Center(
+                    child: Text(
+                  "Plus détails",
+                  style: TextStyle(color: primaryColor),
+                )),
+              )
+            ],
+          )
+        ],
+      ),
+    );
   }
 
   Padding _webLandingSection2(BuildContext context) {
     return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40.0),
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          child: Icon(
-                            LineIcons.book,
-                            size: 40,
-                            color: Colors.blue,
-                          ),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(5)),
-                          height: 80,
-                          width: 80,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("10K+",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 35,
-                                    color: primaryColor)),
-                            Text(
-                              "Total Courses",
-                              style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          child: Icon(
-                            LineIcons.university,
-                            size: 40,
-                            color: Colors.deepOrange,
-                          ),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(5)),
-                          height: 80,
-                          width: 80,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("500+",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 35,
-                                    color: primaryColor)),
-                            Text(
-                              "Expert Formateurs",
-                              style:
-                                  TextStyle(color: Colors.grey, fontSize: 20),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          child: Icon(
-                            LineIcons.users,
-                            size: 40,
-                            color: Colors.deepPurple,
-                          ),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(5)),
-                          height: 80,
-                          width: 80,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("800+",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 35,
-                                    color: primaryColor)),
-                            Text(
-                              "Total Étudiants",
-                              style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
-                    )
-                  ],
+      padding: const EdgeInsets.symmetric(horizontal: 40.0),
+      child: Container(
+        height: 150,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+            color: primaryColor.withOpacity(0.1),
+            borderRadius: BorderRadius.circular(10)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Row(
+              children: [
+                Container(
+                  child: Icon(
+                    LineIcons.book,
+                    size: 40,
+                    color: Colors.blue,
+                  ),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(5)),
+                  height: 80,
+                  width: 80,
                 ),
-                height: 150,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                    color: primaryColor.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(10)),
-              ),
-            );
+                SizedBox(
+                  width: 10,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("10K+",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 35,
+                            color: primaryColor)),
+                    Text(
+                      "Total Courses",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+            Row(
+              children: [
+                Container(
+                  child: Icon(
+                    LineIcons.university,
+                    size: 40,
+                    color: Colors.deepOrange,
+                  ),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(5)),
+                  height: 80,
+                  width: 80,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("500+",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 35,
+                            color: primaryColor)),
+                    Text(
+                      "Expert Formateurs",
+                      style: TextStyle(color: Colors.grey, fontSize: 20),
+                    ),
+                  ],
+                )
+              ],
+            ),
+            Row(
+              children: [
+                Container(
+                  child: Icon(
+                    LineIcons.users,
+                    size: 40,
+                    color: Colors.deepPurple,
+                  ),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(5)),
+                  height: 80,
+                  width: 80,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("800+",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 35,
+                            color: primaryColor)),
+                    Text(
+                      "Total Étudiants",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            )
+          ],
+        ),
+      ),
+    );
   }
 
   Row _webLandingSection1(BuildContext context) {
     return Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 2.7,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Obtenir une éducation de qualité est maintenant plus facile",
-                        style: TextStyle(
-                            fontSize: 45,
-                            color: Colors.black87,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        "Fournit le dernier système d'apprentissage en ligne et des matériels qui aident à développer vos connaissances",
-                        style: TextStyle(fontSize: 16, color: Colors.grey),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        //mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            height: 50,
-                            width: 120,
-                            decoration: BoxDecoration(
-                                color: primaryColor,
-                                borderRadius: BorderRadius.circular(15)),
-                            child: Center(
-                                child: Text(
-                              "Commencer",
-                              style: TextStyle(color: Colors.white),
-                            )),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Container(
-                            height: 50,
-                            width: 120,
-                            decoration: BoxDecoration(
-                                color: Colors.grey.withOpacity(0.1),
-                                borderRadius: BorderRadius.circular(15)),
-                            child: Center(
-                                child: Text(
-                              "Plus détails",
-                              style: TextStyle(color: primaryColor),
-                            )),
-                          )
-                        ],
-                      )
-                    ],
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        SizedBox(
+          width: MediaQuery.of(context).size.width / 2.7,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Obtenir une éducation de qualité est maintenant plus facile",
+                style: TextStyle(
+                    fontSize: 45,
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                "Fournit le dernier système d'apprentissage en ligne et des matériels qui aident à développer vos connaissances",
+                style: TextStyle(fontSize: 16, color: Colors.grey),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                //mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 50,
+                    width: 120,
+                    decoration: BoxDecoration(
+                        color: primaryColor,
+                        borderRadius: BorderRadius.circular(15)),
+                    child: Center(
+                        child: Text(
+                      "Commencer",
+                      style: TextStyle(color: Colors.white),
+                    )),
                   ),
-                ),
-                SizedBox(
-                  width: 100,
-                ),
-                Image.asset(
-                  'assets/icons/educ.png',
-                  width: 460,
-                ),
-              ],
-            );
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    height: 50,
+                    width: 120,
+                    decoration: BoxDecoration(
+                        color: Colors.grey.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(15)),
+                    child: Center(
+                        child: Text(
+                      "Plus détails",
+                      style: TextStyle(color: primaryColor),
+                    )),
+                  )
+                ],
+              )
+            ],
+          ),
+        ),
+        SizedBox(
+          width: 100,
+        ),
+        Image.asset(
+          'assets/icons/educ.png',
+          width: 460,
+        ),
+      ],
+    );
   }
 
   Drawer _buildDrawerWelcome() {
     return Drawer(
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(20.0, 40,20,0),
+        padding: const EdgeInsets.fromLTRB(20.0, 40, 20, 0),
         child: ListView(
           children: [
-            Image.asset('assets/icons/logo-app.png', width: 50,), 
+            Image.asset(
+              'assets/icons/logo-app.png',
+              width: 50,
+            ),
             InkWell(
               onTap: () {
                 Get.toNamed(AppRoutes.info);
@@ -491,7 +976,9 @@ class WelcomePage extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            Divider(height: 1.5,), 
+            Divider(
+              height: 1.5,
+            ),
             SizedBox(
               height: 10,
             ),
@@ -523,10 +1010,12 @@ class WelcomePage extends StatelessWidget {
                 ],
               ),
             ),
-           SizedBox(
+            SizedBox(
               height: 10,
             ),
-            Divider(height: 1.5,), 
+            Divider(
+              height: 1.5,
+            ),
             SizedBox(
               height: 10,
             ),
@@ -558,10 +1047,12 @@ class WelcomePage extends StatelessWidget {
                 ],
               ),
             ),
-             SizedBox(
+            SizedBox(
               height: 10,
             ),
-            Divider(height: 1.5,), 
+            Divider(
+              height: 1.5,
+            ),
             SizedBox(
               height: 10,
             ),
@@ -675,49 +1166,48 @@ class WelcomePage extends StatelessWidget {
 
   Row _buildLoginRegister() {
     return Row(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Get.to(LoginScreen());
-                    },
-                    borderRadius: BorderRadius.circular(15),
-                    child: Container(
-                      decoration: BoxDecoration(color: Colors.transparent),
-                      child: Text(
-                        "Connexion",
-                        style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            color: primaryColor),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Get.to(RegisterScreen());
-                    },
-                    borderRadius: BorderRadius.circular(15),
-                    child: Container(
-                      height: 40,
-                      width: 80,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: primaryColor),
-                      child: Center(
-                        child: Text(
-                          "Inscription",
-                          style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              );
+      children: [
+        InkWell(
+          onTap: () {
+            Get.to(LoginScreen());
+          },
+          borderRadius: BorderRadius.circular(15),
+          child: Container(
+            decoration: BoxDecoration(color: Colors.transparent),
+            child: Text(
+              "Connexion",
+              style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                  color: primaryColor),
+            ),
+          ),
+        ),
+        SizedBox(
+          width: 15,
+        ),
+        InkWell(
+          onTap: () {
+            Get.to(RegisterScreen());
+          },
+          borderRadius: BorderRadius.circular(15),
+          child: Container(
+            height: 40,
+            width: 80,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10), color: primaryColor),
+            child: Center(
+              child: Text(
+                "Inscription",
+                style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }
