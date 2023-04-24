@@ -24,6 +24,7 @@ class AppPages {
       page: () => WelcomePage(),
     ),
     GetPage(
+      title: "Eschoolapp - Inscription",
       name: AppRoutes.register,
       page: () => RegisterScreen(),
     ),

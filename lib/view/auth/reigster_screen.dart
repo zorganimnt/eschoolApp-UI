@@ -9,6 +9,7 @@ import 'package:eschoolapp/view/auth/components/dropdown_university.dart';
 import 'package:eschoolapp/view/auth/login_screen.dart';
 import 'package:eschoolapp/widgets/custom_button.dart';
 import 'package:eschoolapp/widgets/custom_input_field.dart';
+import 'package:eschoolapp/widgets/deffault_app_bar.dart';
 import 'package:eschoolapp/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -25,99 +26,126 @@ class RegisterScreen extends StatelessWidget {
         init: AuthController(),
         builder: (_) {
           return Scaffold(
-            appBar: AppBar(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              iconTheme: IconThemeData(color: primaryColor),
-            ),
+            appBar: DeffaultAppBar(),
             body: SafeArea(
               child: Center(
                 child: SingleChildScrollView(
-                    padding:
-                          ResponsiveWrapper.of(context).isSmallerThan("DESKTOP")
-                              ? const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 10)
-                              : const EdgeInsets.symmetric(
-                                  horizontal: 300, vertical: 10),
                   child: Padding(
                     padding: const EdgeInsets.all(12.0),
-                    child: Column(
-                      // mainAxisAlignment: MainAxisAlignment.center,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                                                Padding(
-                                                  padding: const EdgeInsets.symmetric( horizontal : 20.0),
-                                                  child: DropDownSpec(),
-                                                ),
-
-                        SizedBox(
-                          height: 20,
-                        ),
-                        WidgetTextField(
-                            context: context,
-                            hintText: "Foulen ben Foulen",
-                            label: "Nom et prénom",
-                            isPassword: true,
-                            icon: LineIcons.user),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        WidgetTextField(
-                            context: context,
-                            hintText: "Rue, Ville, Région",
-                            label: "Adresse",
-                            isPassword: true,
-                            icon: LineIcons.mapAlt),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        WidgetTextField(
-                            context: context,
-                            hintText: "1234XXXX",
-                            label: "Carte CIN",
-                            isPassword: true,
-                            icon: LineIcons.key),
-                        
-                                         
-
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Divider(
-                          height: 1.5,
+                        Container(
+                          width: MediaQuery.of(context).size.width / 2.8,
+                          height: 500,
+                          decoration: BoxDecoration(
+                              color: Colors.black.withOpacity(0.3),
+                              borderRadius: BorderRadius.circular(15),
+                              image: DecorationImage(
+                                  image:
+                                      AssetImage('assets/icons/register.jpeg'),
+                                  fit: BoxFit.cover)),
                         ),
                         SizedBox(
-                          height: 20,
-                        ),
-                        WidgetTextField(
-                            context: context,
-                            hintText: "foulen",
-                            label: "Nom d'utilisateur",
-                            isPassword: true,
-                            icon: LineIcons.user),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        WidgetTextField(
-                            context: context,
-                            hintText: "XXXXX",
-                            label: "Mot de passe",
-                            isPassword: true,
-                            icon: LineIcons.lock),
-                            SizedBox(height: 20,), 
-                          Container(
-                            width: double.infinity,
-                            //margin: const EdgeInsets.symmetric(horizontal: 20),
-                            child: CustomTextButton(
-                              onPressed: () {
-                              //  Get.toNamed(AppRoutes.home);
-                              },
-                              child: const Text(
-                                "Inscription",
+                          width: MediaQuery.of(context).size.width / 2.4,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Créer votre compte Eschoolapp gratuitement",
                                 style: TextStyle(
-                                    fontSize: 15, color: Colors.white),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black54),
                               ),
-                            ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              WidgetTextField(
+                                  context: context,
+                                  hintText: "Foulen",
+                                  label: "Nom",
+                                  isPassword: true,
+                                  icon: LineIcons.user),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              WidgetTextField(
+                                  context: context,
+                                  hintText: "Ben Foulen",
+                                  label: "Prénom",
+                                  isPassword: true,
+                                  icon: LineIcons.user),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              WidgetTextField(
+                                  context: context,
+                                  hintText: "20100200",
+                                  label: "Numéro de téléphone",
+                                  isPassword: true,
+                                  icon: LineIcons.phone),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Divider(
+                                height: 1.5,
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              WidgetTextField(
+                                  context: context,
+                                  hintText: "exemple@email.com",
+                                  label: "Adresse E-mail",
+                                  isPassword: true,
+                                  icon: LineIcons.envelope),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              WidgetTextField(
+                                  context: context,
+                                  hintText: "XXXXX",
+                                  label: "Mot de passe",
+                                  isPassword: true,
+                                  icon: LineIcons.lock),
+                               SizedBox(
+                                height: 20,
+                              ),
+                              Divider(
+                                height: 1.5,
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text("Je suis : ", style: TextStyle(fontWeight: FontWeight.bold),), 
+                                  SizedBox(width: 8,), 
+                                  RoleDropDown(),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                width: double.infinity,
+                                //margin: const EdgeInsets.symmetric(horizontal: 20),
+                                child: CustomTextButton(
+                                  onPressed: () {
+                                    //  Get.toNamed(AppRoutes.home);
+                                  },
+                                  child: const Text(
+                                    "Créer un compte",
+                                    style: TextStyle(
+                                        fontSize: 15, color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
+                        ),
                       ],
                     ),
                   ),
@@ -393,7 +421,7 @@ class RegisterScreen extends StatelessWidget {
                       SizedBox(
                         height: 10,
                       ),
-                      DropDownSpec(),
+                     // DropDownSpec(),
                       SizedBox(
                         height: 10,
                       ),

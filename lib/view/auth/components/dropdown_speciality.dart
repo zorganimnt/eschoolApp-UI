@@ -4,20 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 const List<String> category = <String>[
-  "J'utilise ce siteweb comme étant ...",
-  'Étudiant',
+  'Séléctioner',
+  'Apprenant',
   'Parent',
   'Formateur', 
-  'Autre'
 ];
 
-class DropDownSpec extends StatefulWidget {
-  DropDownSpec({super.key});
+class RoleDropDown extends StatefulWidget {
+  RoleDropDown({super.key});
   @override
-  State<DropDownSpec> createState() => _DropDownSpecState();
+  State<RoleDropDown> createState() => _RoleDropDownState();
 }
 
-class _DropDownSpecState extends State<DropDownSpec> {
+class _RoleDropDownState extends State<RoleDropDown> {
   String dropdownValue = category.first;
   RegisterController controller = Get.find();
 
@@ -25,7 +24,7 @@ class _DropDownSpecState extends State<DropDownSpec> {
   Widget build(BuildContext context) {
     return DropdownButton<String>(
       menuMaxHeight: MediaQuery.of(context).size.height/2,
-      isExpanded: true,
+      isExpanded: false,
       value: dropdownValue,
       icon: const Icon(Icons.keyboard_arrow_down_rounded),
       elevation: 16,
