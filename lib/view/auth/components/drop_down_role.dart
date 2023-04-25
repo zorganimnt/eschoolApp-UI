@@ -36,8 +36,8 @@ class _RoleDropDownState extends State<RoleDropDown> {
       onChanged: (String? value) {
         setState(() {
           dropdownValue = value!;
-          controller.specialityStudent = value;
-          print(controller.specialityStudent);
+          controller.role.value = value;
+          print(controller.role.value);
         });
       },
       items: category.map<DropdownMenuItem<String>>((String value) {

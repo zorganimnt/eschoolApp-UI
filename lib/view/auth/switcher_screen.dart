@@ -67,7 +67,7 @@ class SwitcherScreen extends StatelessWidget {
                       height: 50,
                       color: Colors.white,
                       onPressed: (() {
-                        Get.to(RegisterScreen(role: "parent"));
+                        Get.to(RegisterScreen());
                       }),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -101,7 +101,7 @@ class SwitcherScreen extends StatelessWidget {
                       height: 50,
                       color: Colors.white,
                       onPressed: (() {
-                        Get.to(RegisterScreen(role: "student"));
+                        Get.to(RegisterScreen());
                       }),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,

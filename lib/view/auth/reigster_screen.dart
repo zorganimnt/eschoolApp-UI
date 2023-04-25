@@ -4,9 +4,10 @@ import 'package:eschoolapp/controller/auth_controller.dart';
 import 'package:eschoolapp/controller/register_controller.dart';
 import 'package:eschoolapp/utils/color.dart';
 import 'package:eschoolapp/view/auth/components/dropdown_degree.dart';
-import 'package:eschoolapp/view/auth/components/dropdown_speciality.dart';
+import 'package:eschoolapp/view/auth/components/drop_down_role.dart';
 import 'package:eschoolapp/view/auth/components/dropdown_university.dart';
 import 'package:eschoolapp/view/auth/login_screen.dart';
+import 'package:eschoolapp/view/auth/next_step_register.dart';
 import 'package:eschoolapp/widgets/custom_button.dart';
 import 'package:eschoolapp/widgets/custom_input_field.dart';
 import 'package:eschoolapp/widgets/deffault_app_bar.dart';
@@ -17,8 +18,7 @@ import 'package:line_icons/line_icons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 class RegisterScreen extends StatelessWidget {
-  final String? role;
-  RegisterScreen({super.key, this.role});
+  RegisterScreen({super.key});
   RegisterController controller = Get.find();
   @override
   Widget build(BuildContext context) {
@@ -134,7 +134,7 @@ class RegisterScreen extends StatelessWidget {
                                 //margin: const EdgeInsets.symmetric(horizontal: 20),
                                 child: CustomTextButton(
                                   onPressed: () {
-                                    //  Get.toNamed(AppRoutes.home);
+                                   Get.to(NextStepRegister(role: controller.role.value)); 
                                   },
                                   child: const Text(
                                     "Créer un compte",

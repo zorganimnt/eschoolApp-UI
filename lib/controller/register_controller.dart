@@ -19,9 +19,8 @@ class RegisterController extends GetxController {
   TextEditingController? emailStudent = TextEditingController();
   TextEditingController? phoneStudent = TextEditingController();
   String? degreeStudent;
-  String? specialityStudent;
   String? univerStudent;
-
+  RxString role = ''.obs; 
   // send data student
 
   // parent register
@@ -70,7 +69,7 @@ class RegisterController extends GetxController {
       "mail": emailStudent!.text,
       "password": passUser!.text,
       "university": univerStudent!,
-      "speciality": specialityStudent!,
+      "speciality": role,
       "degree": degreeStudent!
     });
     var data = json.decode(response.body);

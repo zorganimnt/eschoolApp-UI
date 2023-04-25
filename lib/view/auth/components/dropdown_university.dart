@@ -49,7 +49,7 @@ class _DropDownUniverState extends State<DropDownUniver> {
         setState(() {
           dropdownValue = value!;
           controller.univerStudent = value;
-          print(controller.specialityStudent);
+          //print(controller.specialityStudent);
         });
       },
       items: university.map<DropdownMenuItem<String>>((String value) {
