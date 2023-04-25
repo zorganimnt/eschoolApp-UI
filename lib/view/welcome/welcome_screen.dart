@@ -4,6 +4,7 @@ import 'package:eschoolapp/utils/color.dart';
 import 'package:eschoolapp/view/auth/login_screen.dart';
 import 'package:eschoolapp/view/auth/reigster_screen.dart';
 import 'package:eschoolapp/view/information/information_screen.dart';
+import 'package:eschoolapp/view/welcome/components/formation_widget.dart';
 import 'package:eschoolapp/view/welcome/widget_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -240,326 +241,76 @@ class WelcomePage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 20,), 
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Column(
                               children: [
-                                Container(
-                                  height: 400,
-                                  width: 350,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(20.0),
-                                        child: Container(
-                                          height: 200,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(15),
-                                              image: DecorationImage(
-                                                  image: AssetImage(
-                                                      "assets/icons/dev.jpeg"),
-                                                  fit: BoxFit.cover)),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 20.0),
-                                        child: Row(
-                                          children: [
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Container(
-                                                  height: 30,
-                                                  width: 100,
-                                                  decoration: BoxDecoration(
-                                                      color: Colors.deepOrange
-                                                          .withOpacity(0.5),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              15)),
-                                                  child: Center(
-                                                      child: Text(
-                                                    "Informatique",
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  )),
-                                                ),
-                                                SizedBox(
-                                                  height: 10,
-                                                ),
-                                                Text(
-                                                  "Dévelopement mobile et web",
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 16),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              CircleAvatar(
-                                                  radius: 17,
-                                                  backgroundColor: Colors.blue
-                                                      .withOpacity(0.1),
-                                                  child: Icon(LineIcons.user)),
-                                              SizedBox(
-                                                width: 4,
-                                              ),
-                                              Text("Foulen x"),
-                                            ],
-                                          ),
-                                          Row(
-                                            children: [
-                                              CircleAvatar(
-                                                  radius: 17,
-                                                  backgroundColor: Colors.orange
-                                                      .withOpacity(0.1),
-                                                  child: Icon(
-                                                      LineIcons.dollarSign)),
-                                              SizedBox(
-                                                width: 4,
-                                              ),
-                                              Text("400 DT"),
-                                            ],
-                                          ),
-                                          Row(
-                                            children: [
-                                              CircleAvatar(
-                                                  radius: 17,
-                                                  backgroundColor: Colors.red
-                                                      .withOpacity(0.1),
-                                                  child: Icon(LineIcons.clock)),
-                                              SizedBox(
-                                                width: 4,
-                                              ),
-                                              Text("3 Mois"),
-                                            ],
-                                          )
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  height: 400,
-                                  width: 350,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(20.0),
-                                        child: Container(
-                                          height: 200,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(15),
-                                              image: DecorationImage(
-                                                  image: AssetImage(
-                                                      "assets/icons/marketing.jpeg"),
-                                                  fit: BoxFit.cover)),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 20.0),
-                                        child: Row(
-                                          children: [
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Container(
-                                                  height: 30,
-                                                  width: 100,
-                                                  decoration: BoxDecoration(
-                                                      color: Colors.green
-                                                          .withOpacity(0.5),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              15)),
-                                                  child: Center(
-                                                      child: Text(
-                                                    "Marketing",
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  )),
-                                                ),
-                                                SizedBox(
-                                                  height: 10,
-                                                ),
-                                                Text(
-                                                  "Marketing digitale",
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 16),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              CircleAvatar(
-                                                  radius: 17,
-                                                  backgroundColor: Colors.blue
-                                                      .withOpacity(0.1),
-                                                  child: Icon(LineIcons.user)),
-                                              SizedBox(
-                                                width: 4,
-                                              ),
-                                              Text("Foulen x"),
-                                            ],
-                                          ),
-                                          Row(
-                                            children: [
-                                              CircleAvatar(
-                                                  radius: 17,
-                                                  backgroundColor: Colors.orange
-                                                      .withOpacity(0.1),
-                                                  child: Icon(
-                                                      LineIcons.dollarSign)),
-                                              SizedBox(
-                                                width: 4,
-                                              ),
-                                              Text("400 DT"),
-                                            ],
-                                          ),
-                                          Row(
-                                            children: [
-                                              CircleAvatar(
-                                                  radius: 17,
-                                                  backgroundColor: Colors.red
-                                                      .withOpacity(0.1),
-                                                  child: Icon(LineIcons.clock)),
-                                              SizedBox(
-                                                width: 4,
-                                              ),
-                                              Text("3 Mois"),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                              height: 400,
-                              width: 350,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Column(
+                                Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(20.0),
-                                    child: Container(
-                                      height: 200,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(15),
-                                          image: DecorationImage(
-                                              image: AssetImage(
-                                                  "assets/icons/dev.jpeg"),
-                                              fit: BoxFit.cover)),
+                                  children: const [
+                                    FormationWidget(
+                                      image: 'assets/icons/dev.jpeg',
+                                      title: 'Dévelopement Fullstack',
+                                      categorie: 'Informatique',
+                                      bgCategorie: Colors.deepOrange,
+                                      formateur: 'Foulen x',
+                                      prix: '420 DT',
+                                      dure: '4 Mois',
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal : 20.0),
-                                    child: Row(
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              height: 30,
-                                              width: 100,
-                                              decoration: BoxDecoration(
-                                                color: Colors.deepOrange.withOpacity(0.5), 
-                                                borderRadius: BorderRadius.circular(15)
-                                              ),
-                                              child: Center(child: Text("Informatique", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),)),
-                                            ), 
-                                            SizedBox(height: 10,), 
-                                            Text("Dévelopement mobile et web", 
-                                            style: TextStyle(fontWeight: FontWeight.bold, 
-                                            fontSize: 16),),
-                                          ],
-                                        ),
-                                      ],
+                                    FormationWidget(
+                                      image: 'assets/icons/marketing.jpeg',
+                                      title: 'Digitale Marketing',
+                                      categorie: 'Marketing',
+                                      bgCategorie: Colors.deepPurple,
+                                      formateur: 'Foulen x',
+                                      prix: '200 DT',
+                                      dure: '2 Mois',
                                     ),
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          CircleAvatar(
-                                              radius: 17,
-                                              backgroundColor:
-                                                  Colors.blue.withOpacity(0.1),
-                                              child: Icon(LineIcons.user)),
-                                              SizedBox(width: 4,),
-                                          Text("Foulen x"),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          CircleAvatar(
-                                              radius: 17,
-                                              backgroundColor: Colors.orange
-                                                  .withOpacity(0.1),
-                                              child:
-                                                  Icon(LineIcons.dollarSign)),
-                                                   SizedBox(width: 4,),
-                                          Text("400 DT"),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          CircleAvatar(
-                                              radius: 17,
-                                              backgroundColor:
-                                                  Colors.red.withOpacity(0.1),
-                                              child: Icon(LineIcons.clock)),
-                                               SizedBox(width: 4,),
-                                          Text("3 Mois"),
-                                        ],
-                                      )
-                                    ],
-                                  )
-                                ],
-                              ),
-                            )
+                                    FormationWidget(
+                                      image: 'assets/icons/dev.jpeg',
+                                      title: 'Développement mobile',
+                                      categorie: 'Informatique',
+                                      bgCategorie: Colors.deepOrange,
+                                      formateur: 'Foulen x',
+                                      prix: '390 DT',
+                                      dure: '3 Mois',
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 40,), 
+                                 Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: const [
+                                    FormationWidget(
+                                      image: 'assets/icons/dev.jpeg',
+                                      title: 'Dévelopement Fullstack',
+                                      categorie: 'Informatique',
+                                      bgCategorie: Colors.deepOrange,
+                                      formateur: 'Foulen x',
+                                      prix: '420 DT',
+                                      dure: '4 Mois',
+                                    ),
+                                    FormationWidget(
+                                      image: 'assets/icons/marketing.jpeg',
+                                      title: 'Digitale Marketing',
+                                      categorie: 'Marketing',
+                                      bgCategorie: Colors.deepPurple,
+                                      formateur: 'Foulen x',
+                                      prix: '200 DT',
+                                      dure: '2 Mois',
+                                    ),
+                                    FormationWidget(
+                                      image: 'assets/icons/dev.jpeg',
+                                      title: 'Développement mobile',
+                                      categorie: 'Informatique',
+                                      bgCategorie: Colors.deepOrange,
+                                      formateur: 'Foulen x',
+                                      prix: '390 DT',
+                                      dure: '3 Mois',
+                                    ),
+                                  ],
+                                ),
                               ],
                             ),
                           ],
