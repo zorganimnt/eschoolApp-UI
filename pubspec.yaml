@@ -45,6 +45,7 @@ dependencies:
   shared_preferences: ^2.1.0
   line_icons: ^2.0.1
   responsive_framework: ^0.2.0
+  fl_chart: ^0.62.0
 
 dev_dependencies:
   flutter_test:

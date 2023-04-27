@@ -13,4 +13,5 @@ class AppRoutes {
   static const String complaint = '/complaint';
   static const String gestnews = '/gestnews';
   static const String info = '/info';
+  static const String homeDashboard = '/home-dashboard';
 }

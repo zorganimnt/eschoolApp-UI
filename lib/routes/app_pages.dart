@@ -2,6 +2,7 @@ import 'package:eschoolapp/controller/home_controller.dart';
 import 'package:eschoolapp/routes/app_routes.dart';
 import 'package:eschoolapp/view/auth/login_screen.dart';
 import 'package:eschoolapp/view/auth/reigster_screen.dart';
+import 'package:eschoolapp/view/dashboard/home/home_dashboard_screen.dart';
 import 'package:eschoolapp/view/home/components/home_screen.dart';
 import 'package:eschoolapp/view/home/main_screen.dart';
 import 'package:eschoolapp/view/information/information_screen.dart';
@@ -41,6 +42,13 @@ class AppPages {
       page: () => InfoScreen(),
     
     ),
+
+     GetPage(
+      name: AppRoutes.homeDashboard,
+      page: () => DashboardHomeScreen(),
+    
+    ),
+   
    
   ];
 }

@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       getPages: AppPages.pages,
-      initialRoute: AppRoutes.welcome,
+      initialRoute: AppRoutes.homeDashboard,
     );
   }
 }
