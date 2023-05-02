@@ -1,6 +1,7 @@
 import 'package:eschoolapp/controller/home_controller.dart';
 import 'package:eschoolapp/routes/app_routes.dart';
 import 'package:eschoolapp/view/auth/login_screen.dart';
+import 'package:eschoolapp/view/auth/next_step_register.dart';
 import 'package:eschoolapp/view/auth/reigster_screen.dart';
 import 'package:eschoolapp/view/dashboard/home/home_dashboard_screen.dart';
 import 'package:eschoolapp/view/home/components/home_screen.dart';
@@ -25,7 +26,6 @@ class AppPages {
       page: () => WelcomePage(),
     ),
     GetPage(
-      title: "Eschoolapp - Inscription",
       name: AppRoutes.register,
       page: () => RegisterScreen(),
     ),
@@ -40,6 +40,12 @@ class AppPages {
      GetPage(
       name: AppRoutes.info,
       page: () => InfoScreen(),
+    
+    ),
+
+     GetPage(
+      name: AppRoutes.nextStepRegister, 
+      page: () => const NextStepRegister(),
     
     ),
 

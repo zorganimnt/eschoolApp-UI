@@ -2,7 +2,7 @@ class AppRoutes {
   AppRoutes._();
 
   // AUTH ROUTES
-  static const String welcome = '/welcome';
+  static const String welcome = '/';
   static const String login = '/login';
   static const String register = '/register';
 
@@ -14,4 +14,5 @@ class AppRoutes {
   static const String gestnews = '/gestnews';
   static const String info = '/info';
   static const String homeDashboard = '/home-dashboard';
+   static const String nextStepRegister= '/next-step-register';
 }

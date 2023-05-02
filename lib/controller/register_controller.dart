@@ -1,83 +1,55 @@
 import 'dart:convert';
 
+import 'package:eschoolapp/routes/app_routes.dart';
 import 'package:eschoolapp/service/api.dart';
+import 'package:eschoolapp/utils/notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:line_icons/line_icons.dart';
 
 class RegisterController extends GetxController {
-  //SingingCharacter? type = SingingCharacter.customer;
-
-  // ==== declare variable ==== /
-  // auth register for indicate role
-  TextEditingController? roleUser = TextEditingController();
-  TextEditingController? cinUser = TextEditingController();
-  TextEditingController? passUser = TextEditingController();
-  // student register
-
-  TextEditingController? fullNameStudent = TextEditingController();
-  TextEditingController? emailStudent = TextEditingController();
-  TextEditingController? phoneStudent = TextEditingController();
-  String? degreeStudent;
-  String? univerStudent;
+  // USER INPUT CONTROLLER
+  TextEditingController? nameUser = TextEditingController();
+  TextEditingController? lastNameUser = TextEditingController();
+  TextEditingController? phoneUser = TextEditingController();
+  TextEditingController? emailUser = TextEditingController();
+  TextEditingController? passwordUser = TextEditingController();
   RxString role = ''.obs; 
-  // send data student
+  // CIRCLE PROGRESS CONDITION
+  RxBool isLoading = RxBool(false);
 
-  // parent register
-  TextEditingController? fullNameParent = TextEditingController();
-  TextEditingController? emailParent = TextEditingController();
-  TextEditingController? phoneParent = TextEditingController();
-
-  var error = ''.obs;
-  var token = ''.obs;
-  final API _api = API();
-
-  // hedhi mta3 parent register
-  Future<void> parentRegister() async {
-    // postina l request fi raj3et response fi response
-    final response = await _api.post('register', {
-      "cin": cinUser!.text,
-      "role": "parent",
-      "name": fullNameParent!.text,
-      "phone": phoneParent!.text,
-      "mail": emailParent!.text,
-      "password": passUser!.text,
-    });
-
-    // baed decodit body mta3 response puisque li hiya JSON
-    var msg = json.decode(response.body);
-
-    // o nchouf resultat mte3 response ken 200 raw OK t3adet sans faute
-    if (response.statusCode == 200) {
-      // ken 200 cv nwalou naamlou variable nhotou fih data ken hachti bihom
-      //final data = json.decode(response.body);
-      Get.snackbar('Success', msg['message']);
-    } else {
-      // sinn t5arej erreur sous forme snackbar
-      // hiya zeda widget o najmou nbadlou fiha
-      Get.snackbar('Erreur', msg['message']);
+  // HANDLE REGISTER USER INPUT
+  reigsterUser() async {
+    FocusManager.instance.primaryFocus?.unfocus();
+    if (nameUser!.text.isEmpty ||
+        lastNameUser!.text.isEmpty ||
+        phoneUser!.text.isEmpty ||
+        emailUser!.text.isEmpty ||
+        passwordUser!.text.isEmpty) {
+      showError(
+          "Error", "Informations est vide", LineIcons.exclamationTriangle);
+      isLoading.value = false;
+      return;
     }
-  }
-
-  //kif kif hedhi
-  Future<void> studentRegister() async {
-    final response = await _api.post('register', {
-      "cin": cinUser!.text,
-      "role": "student",
-      "name": fullNameStudent!.text,
-      "phone": phoneStudent!.text,
-      "mail": emailStudent!.text,
-      "password": passUser!.text,
-      "university": univerStudent!,
-      "speciality": role,
-      "degree": degreeStudent!
-    });
-    var data = json.decode(response.body);
-    if (response.statusCode == 200) {
-      //final data = json.decode(response.body);
-      Get.snackbar('Success', data['message']);
-    } else {
-      Get.snackbar('Erreur', data['message']);
+    var data = {
+      "name": nameUser!.text,
+      "lastName": lastNameUser!.text,
+      "phone": phoneUser!.text,
+      "email": emailUser!.text,
+      "password": passwordUser!.text,
+      "role" : role.value
+    };
+    print(data);
+    dynamic json = await API.registerUserService(data);
+    if (json != null) {
+      if (json['success']) {
+        Get.offAllNamed(AppRoutes.nextStepRegister);
+      } else {
+        showError("Error", json['message'], LineIcons.exclamationTriangle);
+      }
     }
+
+    return null;
   }
 }

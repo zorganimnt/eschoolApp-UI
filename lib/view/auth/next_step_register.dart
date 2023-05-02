@@ -8,33 +8,35 @@ import 'package:line_icons/line_icon.dart';
 import 'package:line_icons/line_icons.dart';
 
 class NextStepRegister extends StatelessWidget {
-  final String role;
-  const NextStepRegister({super.key, required this.role});
+  final String? role;
+  const NextStepRegister({super.key, this.role});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DeffaultAppBar(),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width / 2.8,
-                height: 500,
-                decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.3),
-                    borderRadius: BorderRadius.circular(15),
-                    image: DecorationImage(
-                        image: AssetImage('assets/icons/register.jpeg'),
-                        fit: BoxFit.cover)),
-              ),
-              if (role == "Apprenant") _registerApprenant(context),
-              if (role == "Parent") _registerParent(context),
-              if (role == "Formateur") _registerFormateur(context)
-            ],
+      appBar: const DeffaultAppBar(),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width / 2.8,
+                  height: 500,
+                  decoration: BoxDecoration(
+                      color: Colors.black.withOpacity(0.3),
+                      borderRadius: BorderRadius.circular(15),
+                      image: DecorationImage(
+                          image: AssetImage('assets/icons/register.jpeg'),
+                          fit: BoxFit.cover)),
+                ),
+                if (role == "Apprenant") _registerApprenant(context),
+                if (role == "Parent") _registerParent(context),
+                if (role == "Formateur") _registerFormateur(context)
+              ],
+            ),
           ),
         ),
       ),
