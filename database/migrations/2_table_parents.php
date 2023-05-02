@@ -15,10 +15,8 @@ return new class extends Migration {
         Schema::create('parents', function (Blueprint $table) {
             $table->unsignedBigInteger('parent_id');
             $table->foreign('parent_id')->references('id')->on('users');
-            $table->String('parent_cin');
-            $table->String('parent_name');
-            $table->String('parent_phone');
-            $table->String('parent_mail');
+            $table->String('parent_child_email');
+            $table->String('parent_statut');
             $table->timestamps();
         });
     }

@@ -20,9 +20,13 @@ class User extends Authenticatable
 
 
     protected $fillable = [
-        'cin',
+        'email',
         'role',
+        'name', 
+        'lastName', 
+        'phone',
         'password',
+
 
     ];
 
@@ -36,13 +40,19 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function student()
+    public function apprenant()
     {
-        return $this->hasOne(Student::class);
+        return $this->hasOne(Apprenant::class);
     }
 
     public function parent()
     {
         return $this->hasOne(Parents::class);
     }
+
+    public function formateur()
+    {
+        return $this->hasOne(Formateur::class);
+    }
+
 }

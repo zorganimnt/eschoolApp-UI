@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Parents;
+use App\Models\Prof;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -18,7 +20,8 @@ class ProfController extends Controller
             return $this->sendError('CIN invalide...!', $validator->errors());
         }
         if ($request ['cin']=='all') {
-            return $this->sendResponse($Prof::all(), null);
+            $prof = Prof::all(); 
+            return $this->sendResponse($prof, null);
         }
         $getprof = Prof::where('prof_cin', $request['cin'])->first();
         if ($getprof) {
@@ -57,7 +60,7 @@ class ProfController extends Controller
             'prof_cin' => 'required',
         ]);
 
-        $prof = Prof::where('student_parent', $request['parent_cin']);
+        $student = Prof::where('student_parent', $request['parent_cin']);
         if ($student) {
             $parent = Parents::where('parent_cin', $request['parent_cin'])->first();
             if ($parent) {

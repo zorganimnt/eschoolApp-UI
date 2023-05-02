@@ -5,19 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Parents extends Model
+class Formateur extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'parent_id',
-        'parent_child_email',
-        'parent_statut'
+        'formateur_id',
+        'formateur_speciality',
+        'formateur_cv',
+        'formateur_statut'
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-   
+
 }

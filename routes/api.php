@@ -27,6 +27,8 @@ use App\Http\Controllers\API\ProfController;
 /** ---------Register and Login ----------- */
 Route::controller(AuthController::class)->group(function () {
     Route::post('register', 'register');
+    Route::post('register-user', 'registerUser');
+
     Route::post('login', 'login');
     Route::post('users', 'login')->name('index');
 

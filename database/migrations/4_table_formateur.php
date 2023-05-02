@@ -12,15 +12,12 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('Prof', function (Blueprint $table) {
-            $table->foreign('prof_id');
-            $table->String('prof_cin');
-            $table->String('prof_name');
-            $table->String('prof_phone');
-            $table->String('prof_mail');
-            $table->String('prof_passwword');
-            $table->String('prof_matiere');
-            $table->String('prof_classe');
+        Schema::create('formateurs', function (Blueprint $table) {
+            $table->unsignedBigInteger('formateur_id');
+            $table->foreign('formateur_id')->references('id')->on('users');
+            $table->String('formateur_speciality');
+            $table->String('formateur_cv');
+            $table->String('formateur_statut');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('Profs');
+        Schema::dropIfExists('students');
     }
 };

@@ -3,137 +3,163 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Formateur;
+use App\Models\Instructor;
 use App\Models\Parents;
-use App\Models\Student;
+use App\Models\Apprenant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Database\Eloquent\ModelNotFoundException as Exception; 
+use Illuminate\Database\Eloquent\ModelNotFoundException as Exception;
 
 use Validator;
 
 class AuthController extends BaseController
-
 {
     /**
-    * Register api
-    *
-    * @return \Illuminate\Http\Response
-    */
+     * Register api
+     *
+     * @return \Illuminate\Http\Response
+     */
 
-  
+
     // hedhi bech taaml register lel user 
+
+    public function registerUser(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'role' => 'required|alpha',
+            'name' => 'required|alpha|min:3',
+            'lastName' => 'required|alpha|min:3',
+            'phone' => 'required|digits:8',
+            'email' => 'required|email',
+            'password' => 'required|min:6'
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError('Informations Incorrect', $validator->errors());
+        }
+
+        $isExist = User::where('email', $request['email'])->first();
+        if ($isExist) {
+            return $this->sendError('Utilisateur déja existe', $validator->errors());
+        }
+
+        $userInput['role'] = $request['role'];
+        $userInput['email'] = $request['email'];
+        $userInput['name'] = $request['name'];
+        $userInput['lastName'] = $request['lastName'];
+        $userInput['phone'] = $request['phone'];
+        $userInput['password'] = bcrypt($request['password']);
+        $user = User::create($userInput);
+        if ($user)
+            return $this->sendResponse($user, 'Utilisateur enregistrer avec success');
+        return $this->sendError("Erreur est servenue");
+
+    }
     public function register(Request $request)
     {   
-
-
-        // tawa nlawjou chkounou l user li hat cooredoné bech najemou nzidouh fi table li ynesbou 
-        if ($request['role'] == 'student') {
-            $validator = Validator::make($request->all(), [
-                'cin' => 'required|digits:8',
-                'role' => 'required|alpha', 
-                'name' => 'required|min:3',
-                'phone' => 'required|digits:8',
-                'mail' => 'required|email',
-                'university' => 'required',
-                'degree' => 'required',
-                'speciality' => 'required',
-                'password' => 'required|min:6',
-             ]);
-            // check rules li l fou9 ken ghalta ykharjou direct b erreur
-            if ($validator->fails()) {
-                return $this->sendError('Informations incorrect...!', $validator->errors());       
-            }
-            // check student mawjoud wale; ken mawjoud nafes cin raw inscrit men 9bal
-            $isStudentExist = User::where('cin', $request['cin'])->first();
-            if ($isStudentExist) {
-                return $this->sendError('CIN déja existe...!', $validator->errors()); 
-            } 
-            // user table
-            $authInput['cin'] = $request['cin'];
-            $authInput['role'] = $request['role'];
-            $authInput['password'] = bcrypt($request['password']);
-            $user = User::create($authInput); 
-
-            // student table 
-            $studentInput['student_id']= $user['id'];
-            $studentInput['student_parent'] = "0";
-            $studentInput['student_cin'] = $request['cin'];
-            $studentInput['student_name'] = $request['name'];
-            $studentInput['student_phone'] = $request['phone'];
-            $studentInput['student_mail'] = $request['mail'];
-            $studentInput['student_university'] = $request['university'];
-            $studentInput['student_degree'] = $request['degree'];
-            $studentInput['student_speciality'] = $request['speciality'];
-            // b3athna data lel table students
-            Student::create($studentInput);
-            $success= $studentInput; 
-            $success['token'] =  $user->createToken('MyApp')->plainTextToken;
-            return $this->sendResponse($success, 'Étudiant enregistrer avec succées...!');
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError('Informations Incorrect', $validator->errors());
         }
+        $userByID = User::where('id', $request['user_id'])->first();
+        $role = $userByID->role; 
+        switch ($role) {
+            // APPRENANT REGISTER
+            case 'Apprenant':
 
+                // VALIDATE APPRENANT INPUT
+                $validator = Validator::make($request->all(), [
+                    'apprenant_id' => 'required',
+                    'apprenant_date_birth' => 'required',
+                    'apprenant_level_school' => 'required',
+                ]);
+                if ($validator->fails()) {
+                    return $this->sendError('Informations Incorrect', $validator->errors());
+                }
+                $isExist = Apprenant::where('apprenant_id', $request['apprenant_id'])->first();
+                if ($isExist) {
+                    return $this->sendError('Apprenant déja existe', $validator->errors());
+                }
+                // SEND APPRENANT INPUT
+                $apprenantInput['apprenant_id'] = $request['apprenant_id'];
+                $apprenantInput['apprenant_date_birth'] = $request['apprenant_date_birth'];
+                $apprenantInput['apprenant_level_school'] = $request['apprenant_level_school'];
+                $apprenant = Apprenant::create($apprenantInput);
+                if ($apprenant) {
+                    return $this->sendResponse($apprenant, 'Apprenant enregistrer avec success');
+                } else {
+                    return $this->sendError('Erreur est servenue', null);
+                }
+            // PARENT REGISTER
+            case 'Parent':
 
-        // parent ken hat coordonnés chnouwa yssirrr
-        if ($request['role'] == 'parent') {
-            $validator = Validator::make($request->all(), [
-                'cin' => 'required|digits:8',
-                'role' => 'required', 
-                'name' => 'required',
-                'phone' => 'required|digits:8',
-                'mail' => 'required|email',
-                'password' => 'required',
-             ]);
-            if ($validator->fails()) {
-                return $this->sendError('Informations incorrect...!', $validator->errors());       
-            }
-             // check parent mawjoud wale; ken mawjoud nafes cin raw inscrit men 9bal
-             $isParentExist = User::where('cin', $request['cin'])->first();
-             if ($isParentExist) {
-                 return $this->sendError('CIN déja existe...!', $validator->errors()); 
-             } 
-            // user data handle
-            $authInput['cin'] = $request['cin'];
-            $authInput['role'] = $request['role'];
-            $authInput['password'] = bcrypt($request['password']);
-            $user = User::create($authInput);
+                // VALIDATE PARENT INPUT
+                $validator = Validator::make($request->all(), [
+                    'user_id' => 'required',
+                    'child_email' => 'required',
+                ]);
+                if ($validator->fails()) {
+                    return $this->sendError('Informations parent incorrect', $validator->errors());
+                }
+                $isExist = User::where('email', $request['child_email'])->first();
+                if (!$isExist) {
+                    return $this->sendError('Enfant non trouvale', null);
+                }
+                // SEND PARENT INPUT
+                $parentInput['parent_id'] = $request['user_id'];
+                $parentInput['parent_child_email'] = $request['child_email'];
+                $parent = Parents::create($parentInput);
+                if ($parent) {
+                    return $this->sendResponse($parent, 'Parent enregistrer avec success');
+                } else {
+                    return $this->sendError('Erreur est servenue', null);
+                }
 
-            // parent data handle
-            $parentInput['parent_id']= $user['id'];
-            $parentInput['parent_cin'] = $request['cin'];
-            $parentInput['parent_name'] = $request['name'];
-            $parentInput['parent_phone'] = $request['phone'];
-            $parentInput['parent_mail'] = $request['mail'];
+            // FORMATEUR REGISTER
+            case 'Formateur':
+                // VALIDATOR FORMATER INPUT
+                $validator = Validator::make($request->all(), [
+                    'formateur_speciality' => 'required',
+                    'formateur_cv' => 'required',
+                ]);
+                if ($validator->fails()) {
+                    return $this->sendError('INVALID CREDENTIALS', $validator->errors());
+                }
 
-            // ab3eeethli data mta3 parent
-            Parents::create($parentInput);
-            $success= $parentInput; 
-            $success['token'] =  $user->createToken('MyApp')->plainTextToken;
-            return $this->sendResponse($success, 'Parent enregistrer avec succées...!');
+                // SEND FORMATER INPUT
+                $formateurInput['formateur_id'] = $request['formateur_id'];
+                $formateurInput['formateur_speciality'] = $request['formateur_speciality'];
+                $formateurInput['formateur_cv'] = $request['formateur_cv'];
+                $formateur = Formateur::create($formateurInput);
+                if ($formateur) {
+                    return $this->sendResponse($formateur, 'Formateur enregistrer avec success');
+                } else {
+                    return $this->sendError('Erreur est servenue', null);
+                }
+            default:
+                return $this->sendError('INVALID ROLE', null);
         }
-
-        return $this->sendError("Role non acceptable ...!");       
-        // 
     }
 
     /**
-    * Login api
-    *
-    * @return \Illuminate\Http\Response
-    */
+     * Login api
+     *
+     * @return \Illuminate\Http\Response
+     */
 
-    // hedhi bech ta3ml login selon CIN et Mot de passe 
     public function login(Request $request)
-    {   
-        // ken zouz cv bech y3adih sinon erreur 
-        if(Auth::attempt(['cin' => $request->cin, 'password' => $request->password]))
-        {   
-            $user = Auth::user(); 
-            $success['token'] =  $user->createToken('MyApp')->plainTextToken; 
-            $success['role'] =  $user->role;
+    {
+        if (Auth::attempt(['email' => $request->cin, 'password' => $request->password])) {
+            $user = Auth::user();
+            $success['token'] = $user->createToken('MyApp')->plainTextToken;
+            $success['role'] = $user->role;
             return $this->sendResponse($success, 'Connexion valider avec success');
-        } else { 
-            return $this->sendError('Erreur.', ['error'=>'Erreur']);
-        } 
+        } else {
+            return $this->sendError('Erreur.', ['error' => 'Erreur']);
+        }
     }
 }
