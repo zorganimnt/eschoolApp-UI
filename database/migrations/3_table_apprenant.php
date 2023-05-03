@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::create('apprenants', function (Blueprint $table) {
             $table->unsignedBigInteger('apprenant_id');
-            $table->foreign('apprenant_id')->references('id')->on('users');
+            $table->foreign('apprenant_id')->references('id')->on('users')->onDelete('cascade');
             $table->String('apprenant_date_birth');
             $table->String('apprenant_level_school');
             $table->String('apprenant_statut');

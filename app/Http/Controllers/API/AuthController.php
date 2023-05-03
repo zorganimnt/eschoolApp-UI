@@ -58,7 +58,7 @@ class AuthController extends BaseController
 
     }
     public function register(Request $request)
-    {   
+    {
         $validator = Validator::make($request->all(), [
             'user_id' => 'required',
         ]);
@@ -66,14 +66,14 @@ class AuthController extends BaseController
             return $this->sendError('Informations Incorrect', $validator->errors());
         }
         $userByID = User::where('id', $request['user_id'])->first();
-        $role = $userByID->role; 
+        $role = $userByID->role;
         switch ($role) {
             // APPRENANT REGISTER
             case 'Apprenant':
 
                 // VALIDATE APPRENANT INPUT
                 $validator = Validator::make($request->all(), [
-                    'apprenant_id' => 'required',
+
                     'apprenant_date_birth' => 'required',
                     'apprenant_level_school' => 'required',
                 ]);
@@ -85,9 +85,10 @@ class AuthController extends BaseController
                     return $this->sendError('Apprenant déja existe', $validator->errors());
                 }
                 // SEND APPRENANT INPUT
-                $apprenantInput['apprenant_id'] = $request['apprenant_id'];
+                $apprenantInput['apprenant_id'] = $request['user_id'];
                 $apprenantInput['apprenant_date_birth'] = $request['apprenant_date_birth'];
                 $apprenantInput['apprenant_level_school'] = $request['apprenant_level_school'];
+                $apprenantInput['apprenant_statut'] = $request['apprenant_statut'];
                 $apprenant = Apprenant::create($apprenantInput);
                 if ($apprenant) {
                     return $this->sendResponse($apprenant, 'Apprenant enregistrer avec success');
@@ -131,7 +132,7 @@ class AuthController extends BaseController
                 }
 
                 // SEND FORMATER INPUT
-                $formateurInput['formateur_id'] = $request['formateur_id'];
+                $formateurInput['formateur_id'] = $request['user_id'];
                 $formateurInput['formateur_speciality'] = $request['formateur_speciality'];
                 $formateurInput['formateur_cv'] = $request['formateur_cv'];
                 $formateur = Formateur::create($formateurInput);
@@ -153,13 +154,18 @@ class AuthController extends BaseController
 
     public function login(Request $request)
     {
-        if (Auth::attempt(['email' => $request->cin, 'password' => $request->password])) {
-            $user = Auth::user();
-            $success['token'] = $user->createToken('MyApp')->plainTextToken;
-            $success['role'] = $user->role;
-            return $this->sendResponse($success, 'Connexion valider avec success');
-        } else {
-            return $this->sendError('Erreur.', ['error' => 'Erreur']);
+        try {
+            if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+                $user = Auth::user();
+                $success['token'] = $user->createToken('MyApp')->plainTextToken;
+                $success['role'] = $user->role;
+                $success['id'] = $user->id; 
+                return $this->sendResponse($success, 'Connexion valider avec success');
+            }
+        } catch (Exception $e) {
+            return $this->sendError('Erreur est servenue', $e);
         }
+
+        return $this->sendError('Erreur est servenue', null);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\AdminController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
@@ -94,3 +95,8 @@ Route::controller(ProfController::class)->group(function () {
 
 });
 
+
+Route::controller(AdminController::class)->group(function () {
+    Route::post('get-user', 'getUser'); 
+    Route::post('delete-user', 'deleteUser'); 
+});
