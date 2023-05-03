@@ -17,13 +17,13 @@ class API {
   // REGISTER USER
   static Future<dynamic> registerUserService(var data) async {
     String theUrl = '$url/register-user';
-    print(theUrl); 
+    print(theUrl);
     try {
       Response response =
           await client.post(theUrl, data: convert.jsonEncode(data));
       return response.data;
     } catch (e) {
-      print(e.toString()); 
+      print(e.toString());
       showError("Erreur", "Erreur est servenue", LineIcons.exclamationCircle);
     }
   }
@@ -31,11 +31,82 @@ class API {
   // REGISTER USER BY ROLE
   static Future<dynamic> registerUserByRole(var data) async {
     String theUrl = '$url/register';
+    print(theUrl);
     try {
       Response response =
           await client.post(theUrl, data: convert.jsonEncode(data));
       return response.data;
     } catch (e) {
+      print(e.toString());
+      showError("Erreur", "Erreur est servenue", LineIcons.exclamationCircle);
+    }
+  }
+
+  // GET USERS
+  static Future<dynamic> getUserService(var data) async {
+    String theUrl = '$url/get-user';
+    print(theUrl);
+    try {
+      Response response =
+          await client.post(theUrl, data: convert.jsonEncode(data));
+      return response.data;
+    } catch (e) {
+      print(e.toString());
+      showError("Erreur", "Erreur est servenue", LineIcons.exclamationCircle);
+    }
+  }
+
+  // ADD EMPLOYER
+  static Future<dynamic> addEmployerService(var data) async {
+    String theUrl = '$url/register';
+    print(theUrl);
+    try {
+      Response response =
+          await client.post(theUrl, data: convert.jsonEncode(data));
+      return response.data;
+    } catch (e) {
+      print(e.toString());
+      showError("Erreur", "Erreur est servenue", LineIcons.exclamationCircle);
+    }
+  }
+
+  static Future<dynamic> loginService(var data) async {
+    String theUrl = '$url/login';
+    print(theUrl);
+    try {
+      Response response =
+          await client.post(theUrl, data: convert.jsonEncode(data));
+      return response.data;
+    } catch (e) {
+      print(e.toString());
+      showError("Erreur", "Erreur est servenue", LineIcons.exclamationCircle);
+    }
+  }
+
+  // UPDATE USER
+  static Future<dynamic> updateUserService(var data) async {
+    String theUrl = '$url/register';
+    print(theUrl);
+    try {
+      Response response =
+          await client.post(theUrl, data: convert.jsonEncode(data));
+      return response.data;
+    } catch (e) {
+      print(e.toString());
+      showError("Erreur", "Erreur est servenue", LineIcons.exclamationCircle);
+    }
+  }
+
+  // DELETE USER
+  static Future<dynamic> deleteUserService(var data) async {
+    String theUrl = '$url/delete-user';
+    print(theUrl);
+    try {
+      Response response =
+          await client.post(theUrl, data: convert.jsonEncode(data));
+      return response.data;
+    } catch (e) {
+      print(e.toString());
       showError("Erreur", "Erreur est servenue", LineIcons.exclamationCircle);
     }
   }

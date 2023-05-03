@@ -1,16 +1,22 @@
+import 'package:eschoolapp/controller/register_controller.dart';
 import 'package:eschoolapp/utils/color.dart';
+import 'package:eschoolapp/utils/dialog.dart';
+import 'package:eschoolapp/view/auth/components/drop_down_niveau.dart';
 import 'package:eschoolapp/view/auth/components/drop_down_role.dart';
+import 'package:eschoolapp/view/auth/reigster_screen.dart';
 import 'package:eschoolapp/widgets/custom_button.dart';
 import 'package:eschoolapp/widgets/deffault_app_bar.dart';
 import 'package:eschoolapp/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:line_icons/line_icon.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class NextStepRegister extends StatelessWidget {
-  final String? role;
-  const NextStepRegister({super.key, this.role});
-
+  final String? role; 
+  final RegisterController controller = Get.put(RegisterController()); 
+  NextStepRegister({super.key,  this.role});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,9 +38,11 @@ class NextStepRegister extends StatelessWidget {
                           image: AssetImage('assets/icons/register.jpeg'),
                           fit: BoxFit.cover)),
                 ),
-                if (role == "Apprenant") _registerApprenant(context),
+                if (role == "Apprenant")
+                  _registerApprenant(context),
                 if (role == "Parent") _registerParent(context),
-                if (role == "Formateur") _registerFormateur(context)
+                if (role == "Formateur")
+                  _registerFormateur(context)
               ],
             ),
           ),
@@ -44,6 +52,8 @@ class NextStepRegister extends StatelessWidget {
   }
 
   SizedBox _registerApprenant(BuildContext context) {
+    var maskFormatter = MaskTextInputFormatter(
+        mask: '##/##/####', filter: {"#": RegExp(r'[0-9]')});
     return SizedBox(
       width: MediaQuery.of(context).size.width / 2.4,
       child: Column(
@@ -61,20 +71,16 @@ class NextStepRegister extends StatelessWidget {
             height: 20,
           ),
           WidgetTextField(
+              inputFormatters: [maskFormatter],
               context: context,
               hintText: "DD/MM/YYYY",
               label: "Date de naissance",
-              isPassword: true,
+              controller: controller.birthDay,
               icon: LineIcons.birthdayCake),
           SizedBox(
             height: 15,
           ),
-          WidgetTextField(
-              context: context,
-              hintText: "Entrer votre niveau scolaire",
-              label: "Niveau Scolaire",
-              isPassword: true,
-              icon: LineIcons.school),
+        LevelDropDown(),
           SizedBox(
             height: 20,
           ),
@@ -83,7 +89,9 @@ class NextStepRegister extends StatelessWidget {
             //margin: const EdgeInsets.symmetric(horizontal: 20),
             child: CustomTextButton(
               onPressed: () {
-                //  Get.toNamed(AppRoutes.home);
+                controller.registerApprenant();
+                showConfirmation(context); 
+              
               },
               child: const Text(
                 "Confirmer",
@@ -169,13 +177,17 @@ class NextStepRegister extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextButton(onPressed: () {}, child: Row(
-                children: [
-                  Icon(LineIcons.file), 
-                  SizedBox(width: 8,), 
-                  Text('Upload CV'),
-                ],
-              )),
+              TextButton(
+                  onPressed: () {},
+                  child: Row(
+                    children: [
+                      Icon(LineIcons.file),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      Text('Upload CV'),
+                    ],
+                  )),
             ],
           ),
           SizedBox(

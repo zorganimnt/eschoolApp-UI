@@ -1,7 +1,17 @@
+import 'package:eschoolapp/service/api.dart';
+import 'package:eschoolapp/utils/notifications.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/state_manager.dart';
+import 'package:line_icons/line_icons.dart';
 
 class DashboardController extends GetxController {
+  @override
+  void onInit() {
+    getUsers("all");
+    super.onInit();
+  }
+
   RxBool homeSelected = RxBool(true);
   RxBool menu2 = RxBool(false);
   RxBool menu3 = RxBool(false);
@@ -106,5 +116,70 @@ class DashboardController extends GetxController {
         break;
       default:
     }
+  }
+
+  List<int> id = [];
+  List<String> nom = [];
+  List<String> prenom = [];
+  List<String> email = [];
+  List<String> role = [];
+  List<String> statut = [];
+  List<String> phone = [];
+
+  RxBool isLoading = RxBool(false);
+  getUsers(user) async {
+    isLoading.value = true;
+    nom.clear();
+    prenom.clear();
+    email.clear();
+    role.clear();
+    statut.clear();
+    phone.clear();
+    FocusManager.instance.primaryFocus?.unfocus();
+
+    var data = {
+      "user": user,
+    };
+    print(data);
+    dynamic json = await API.getUserService(data);
+    isLoading.value = false;
+    if (json != null) {
+      if (json['success']) {
+        List<dynamic> data = json['data'];
+        data.forEach((element) {
+          id.add(element['id']);
+          nom.add(element['name']);
+          prenom.add(element['lastName']);
+          email.add(element['email']);
+          phone.add(element['phone']);
+          role.add(element['role']);
+          // role.add(element['statut']);
+        });
+      } else {
+        showError("Error", json['message'], LineIcons.exclamationTriangle);
+      }
+    }
+    isLoading.value = false;
+    return null;
+  }
+
+  deleteUser(user) async {
+   
+    var data = {
+      "user_id": user,
+    };
+    print(data);
+    dynamic json = await API.deleteUserService(data);
+    isLoading.value = false;
+    if (json != null) {
+      if (json['success']) {
+        showSuccess("Success", "Utilisateur supprimer", LineIcons.checkCircle); 
+        
+      } else {
+        showError("Error", json['message'], LineIcons.exclamationTriangle);
+      }
+    }
+    isLoading.value = false;
+    return null;
   }
 }

@@ -146,17 +146,20 @@ class RegisterScreen extends StatelessWidget {
                           width: double.infinity,
                           //margin: const EdgeInsets.symmetric(horizontal: 20),
                           child: CustomTextButton(
-                            onPressed: () {
-                              controller.reigsterUser();
-                              Get.to(NextStepRegister(
-                                  role: controller.role.value));
-                            },
-                            child: const Text(
-                              "Créer un compte",
-                              style:
-                                  TextStyle(fontSize: 15, color: Colors.white),
-                            ),
-                          ),
+                              onPressed: () {
+                                controller.reigsterUser();
+                              },
+                              child: Obx(
+                                () => controller.isLoading.value
+                                    ? CircularProgressIndicator(
+                                      color: Colors.white,
+                                    )
+                                    : Text(
+                                        "Créer un compte",
+                                        style: TextStyle(
+                                            fontSize: 15, color: Colors.white),
+                                      ),
+                              )),
                         ),
                       ],
                     ),

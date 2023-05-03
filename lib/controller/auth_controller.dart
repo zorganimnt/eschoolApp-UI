@@ -1,21 +1,49 @@
 import 'dart:convert';
 
+import 'package:eschoolapp/routes/app_routes.dart';
 import 'package:eschoolapp/service/api.dart';
+import 'package:eschoolapp/utils/notifications.dart';
 import 'package:eschoolapp/view/home/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart';
+import 'package:line_icons/line_icons.dart';
 
 class AuthController extends GetxController {
-  TextEditingController cin = TextEditingController();
+  TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
-  TextEditingController role = TextEditingController();
   var error = ''.obs;
   var token = ''.obs;
 
-  // hedhi amalna biha instance lel api men class API fel dossier service
   final API _api = API();
-
-  
-
+  RxBool isLoading = RxBool(false);
+  handleLogin() async {
+    isLoading.value = true;
+    FocusManager.instance.primaryFocus?.unfocus();
+    if (email.text.length < 3 || password.text.length < 6) {
+      showError(
+          "Error", "Informations est vide", LineIcons.exclamationTriangle);
+      isLoading.value = false;
+      return;
+    }
+    var data = {"email": email.text, "password": password.text};
+    print(data);
+    dynamic json = await API.loginService(data);
+    isLoading.value = false;
+    if (json != null) {
+      if (json['success']) {
+        if(json['data']['role']=='Admin')
+        {
+          Get.offAllNamed(AppRoutes.homeDashboard); 
+        }
+        else{
+          showError("Erreur", "Vous n'avez pas le droit", LineIcons.exclamation); 
+        }
+      } else {
+        showError("Error", json['message'], LineIcons.exclamationTriangle);
+      }
+    }
+    isLoading.value = false;
+    return null;
+  }
 }

@@ -47,6 +47,7 @@ dependencies:
   fl_chart: ^0.62.0
   dio: ^5.1.1
   image_picker_web: ^3.0.0+1
+  mask_text_input_formatter: ^2.4.0
 
 dev_dependencies:
   flutter_test:

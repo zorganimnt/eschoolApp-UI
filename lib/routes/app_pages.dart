@@ -45,7 +45,7 @@ class AppPages {
 
      GetPage(
       name: AppRoutes.nextStepRegister, 
-      page: () => const NextStepRegister(),
+      page: () =>  NextStepRegister(),
     
     ),
 

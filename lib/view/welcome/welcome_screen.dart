@@ -13,6 +13,40 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class WelcomePage extends StatelessWidget {
+  Future<void> _showConfirmationParticip(context) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Confirmation"),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[Text("Confirmer votre particiption")],
+            ),
+          ),
+          actions: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text("Anuler")),
+                TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text("Confirmer")),
+              ],
+            )
+          ],
+        );
+      },
+    );
+  }
+
   WelcomePage({Key? key}) : super(key: key);
   final _controller = PageController();
   @override
@@ -206,8 +240,10 @@ class WelcomePage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30),
                     child: Container(
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),   color: primaryColor.withOpacity(0.1),),
-                    
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: primaryColor.withOpacity(0.1),
+                      ),
                       height: 1000,
                       child: Padding(
                         padding: const EdgeInsets.all(20.0),
@@ -248,9 +284,13 @@ class WelcomePage extends StatelessWidget {
                             Column(
                               children: [
                                 Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: const [
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
                                     FormationWidget(
+                                      onPressed: () {
+                                        _showConfirmationParticip(context);
+                                      },
                                       image: 'assets/icons/dev.jpeg',
                                       title: 'Dévelopement Fullstack',
                                       categorie: 'Informatique',
@@ -260,6 +300,9 @@ class WelcomePage extends StatelessWidget {
                                       dure: '4 Mois',
                                     ),
                                     FormationWidget(
+                                      onPressed: () {
+                                        _showConfirmationParticip(context);
+                                      },
                                       image: 'assets/icons/marketing.jpeg',
                                       title: 'Digitale Marketing',
                                       categorie: 'Marketing',
@@ -279,9 +322,12 @@ class WelcomePage extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: 40,), 
-                                 Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                SizedBox(
+                                  height: 40,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
                                   children: const [
                                     FormationWidget(
                                       image: 'assets/icons/dev.jpeg',
@@ -921,7 +967,7 @@ class WelcomePage extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
-            Get.to(LoginScreen());
+           Get.toNamed(AppRoutes.login); 
           },
           borderRadius: BorderRadius.circular(15),
           child: Container(

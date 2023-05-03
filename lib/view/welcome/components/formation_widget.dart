@@ -10,6 +10,7 @@ class FormationWidget extends StatelessWidget {
   final String prix;
   final String dure;
   final Color bgCategorie;
+  final void Function()? onPressed;
 
   const FormationWidget({
     Key? key,
@@ -20,6 +21,7 @@ class FormationWidget extends StatelessWidget {
     required this.dure,
     required this.categorie,
     required this.bgCategorie,
+    this.onPressed,
   }) : super(key: key);
 
   @override
@@ -48,7 +50,7 @@ class FormationWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
                       height: 30,
@@ -63,10 +65,13 @@ class FormationWidget extends StatelessWidget {
                             color: Colors.white, fontWeight: FontWeight.bold),
                       )),
                     ),
-
                     TextButton(
-                      
-                      onPressed: () {}, child: Text('Participer', style: TextStyle(fontWeight: FontWeight.bold, color: primaryColor),))
+                        onPressed: onPressed,
+                        child: Text(
+                          'Participer',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, color: primaryColor),
+                        ))
                   ],
                 ),
                 SizedBox(
@@ -74,8 +79,7 @@ class FormationWidget extends StatelessWidget {
                 ),
                 Text(
                   title,
-                  style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
               ],
             ),
@@ -88,7 +92,11 @@ class FormationWidget extends StatelessWidget {
                   CircleAvatar(
                       radius: 16,
                       backgroundColor: Colors.blue.withOpacity(0.1),
-                      child: Icon(LineIcons.user, size: 15, color: Colors.blue.shade900,)),
+                      child: Icon(
+                        LineIcons.user,
+                        size: 15,
+                        color: Colors.blue.shade900,
+                      )),
                   SizedBox(
                     width: 4,
                   ),
@@ -100,7 +108,11 @@ class FormationWidget extends StatelessWidget {
                   CircleAvatar(
                       radius: 16,
                       backgroundColor: Colors.orange.withOpacity(0.1),
-                      child: Icon(LineIcons.dollarSign, size: 15, color: Colors.yellow.shade900,)),
+                      child: Icon(
+                        LineIcons.dollarSign,
+                        size: 15,
+                        color: Colors.yellow.shade900,
+                      )),
                   SizedBox(
                     width: 4,
                   ),
@@ -112,7 +124,11 @@ class FormationWidget extends StatelessWidget {
                   CircleAvatar(
                       radius: 16,
                       backgroundColor: Colors.red.withOpacity(0.1),
-                      child: Icon(LineIcons.clock, size: 15, color: Colors.red.shade900,)),
+                      child: Icon(
+                        LineIcons.clock,
+                        size: 15,
+                        color: Colors.red.shade900,
+                      )),
                   SizedBox(
                     width: 4,
                   ),

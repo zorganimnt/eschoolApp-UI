@@ -1,10 +1,7 @@
 import 'package:eschoolapp/controller/home_controller.dart';
-import 'package:eschoolapp/controller/parent_controller.dart';
 import 'package:eschoolapp/model/parent.dart';
 import 'package:eschoolapp/utils/color.dart';
 
-import 'package:eschoolapp/view/home/components/calendar_screen.dart';
-import 'package:eschoolapp/view/home/components/documents_screen.dart';
 import 'package:eschoolapp/view/home/components/home_screen.dart';
 import 'package:eschoolapp/view/home/components/profile_screen.dart';
 import 'package:flutter/material.dart';
@@ -15,13 +12,10 @@ class MainScreeen extends StatelessWidget {
   MainScreeen({
     super.key,
   });
-  final ParentController parentController = Get.put(ParentController());
   final HomeController controller = Get.put(HomeController());
 
   final List<Widget> _widgetContent = <Widget>[
     const HomeScreen(),
-     CalendarScreen(),
-    const DocumentsScreen(),
     const ProfileScreen()
   ];
   @override

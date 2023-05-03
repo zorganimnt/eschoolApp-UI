@@ -12,75 +12,69 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
-  AuthController controller = Get.find();
+  AuthController controller = Get.put(AuthController());
   @override
   Widget build(BuildContext context) {
-    // return get build khater sta3mlt GetX
-    // w staghnit aal statefullwidget jemla
-    return GetBuilder<AuthController>(
-        init: AuthController(),
-        builder: (_) {
-          return Scaffold(
-              appBar: AppBar(
-                backgroundColor: Colors.transparent,
-                elevation: 0,
-                iconTheme: IconThemeData(color: primaryColor),
-              ),
-              body: SafeArea(
-                child: Center(
-                  child: SingleChildScrollView(
-                    padding:
-                        ResponsiveWrapper.of(context).isSmallerThan("DESKTOP")
-                            ? const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 10)
-                            : const EdgeInsets.symmetric(
-                                horizontal: 300, vertical: 10),
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                       
-                          WidgetTextField(
-                              context: context,
-                              label: "Adresse e-mail",
-                              hintText: "foulen@eschoolapp.tn",
-                              icon: LineIcons.envelope),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          WidgetTextField(
-                              context: context,
-                              hintText: "xxxxxx",
-                              label: "Mot de passe",
-                              isPassword: true,
-                              icon: LineIcons.key),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Container(
-                            width: double.infinity,
-                            //margin: const EdgeInsets.symmetric(horizontal: 20),
-                            child: CustomTextButton(
-                              onPressed: () {
-                                Get.toNamed(AppRoutes.home);
-                              },
-                              child: const Text(
-                                "Connexion",
-                                style: TextStyle(
-                                    fontSize: 15, color: Colors.white),
-                              ),
-                            ),
-                          ),
-                       
-                        
-                        ],
-                      ),
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          iconTheme: IconThemeData(color: primaryColor),
+        ),
+        body: SafeArea(
+          child: Center(
+            child: SingleChildScrollView(
+              padding: ResponsiveWrapper.of(context).isSmallerThan("DESKTOP")
+                  ? const EdgeInsets.symmetric(horizontal: 20, vertical: 10)
+                  : const EdgeInsets.symmetric(horizontal: 300, vertical: 10),
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    WidgetTextField(
+                        controller: controller.email,
+                        context: context,
+                        label: "Adresse e-mail",
+                        hintText: "foulen@eschoolapp.tn",
+                        icon: LineIcons.envelope),
+                    SizedBox(
+                      height: 20,
                     ),
-                  ),
+                    WidgetTextField(
+                        controller: controller.password,
+                        context: context,
+                        hintText: "xxxxxx",
+                        label: "Mot de passe",
+                        isPassword: true,
+                        icon: LineIcons.key),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      width: double.infinity,
+                      child: CustomTextButton(
+                          onPressed: () {
+                            controller.handleLogin();
+                          },
+                          child: Obx(
+                            () => controller.isLoading.value
+                                ? CircularProgressIndicator(
+                                    color: Colors.white,
+                                  )
+                                : Text(
+                                    "Connexion",
+                                    style: TextStyle(
+                                        fontSize: 15, color: Colors.white),
+                                  ),
+                          )),
+                    ),
+                  ],
                 ),
-              ));
-        });
+              ),
+            ),
+          ),
+        ));
   }
 
   Form _buildFormLogin(context) {
@@ -90,8 +84,8 @@ class LoginScreen extends StatelessWidget {
         child: Column(
           children: [
             CustomTextFormField(
-              controller: controller.cin,
-              hintText: "Nom d'utilisateur",
+              controller: controller.email,
+              hintText: "Adresse e-mail",
               prefixIcon: Icon(Icons.numbers_rounded),
             ),
             const SizedBox(
@@ -113,7 +107,7 @@ class LoginScreen extends StatelessWidget {
                   height: 52,
                   color: primaryColor,
                   onPressed: () {
-                   // controller.login();
+                    // controller.login();
                   },
                   child: Text(
                     "Connexion",

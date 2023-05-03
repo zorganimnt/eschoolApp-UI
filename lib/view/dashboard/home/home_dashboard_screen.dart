@@ -46,12 +46,14 @@ class DashboardHomeScreen extends StatelessWidget {
                         BoxDecoration(color: Colors.grey.withOpacity(0.05)),
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
-                      child: Column(
-                        children: [
-                          _buildHead(context),
-                          _dashboardAdmin
-                              .elementAt(dashboardController.selectedIndex)
-                        ],
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            _buildHead(context),
+                            _dashboardAdmin
+                                .elementAt(dashboardController.selectedIndex)
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -151,100 +153,102 @@ class DashboardHomeScreen extends StatelessWidget {
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width * 0.2,
       decoration: BoxDecoration(color: Colors.grey.withOpacity(0.17)),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(40.0),
-            child: Image.asset(
-              'assets/icons/logo-app.png',
-              width: 250,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(40.0),
+              child: Image.asset(
+                'assets/icons/logo-app.png',
+                width: 250,
+              ),
             ),
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              MenuItem(
-                dashboardController: dashboardController,
-                pageIndex: 0,
-                text: "Acceuil",
-                icon: LineIcons.home,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                child: Divider(
-                  height: 2,
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                MenuItem(
+                  dashboardController: dashboardController,
+                  pageIndex: 0,
+                  text: "Acceuil",
+                  icon: LineIcons.home,
                 ),
-              ),
-              MenuItem(
-                dashboardController: dashboardController,
-                pageIndex: 1,
-                text: "Utilisateurs",
-                icon: LineIcons.users,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                child: Divider(
-                  height: 2,
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: Divider(
+                    height: 2,
+                  ),
                 ),
-              ),
-              MenuItem(
-                dashboardController: dashboardController,
-                pageIndex: 2,
-                text: "Inscription",
-                icon: LineIcons.list,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                child: Divider(
-                  height: 2,
+                MenuItem(
+                  dashboardController: dashboardController,
+                  pageIndex: 1,
+                  text: "Utilisateurs",
+                  icon: LineIcons.users,
                 ),
-              ),
-              MenuItem(
-                dashboardController: dashboardController,
-                pageIndex: 3,
-                text: "Formation",
-                icon: LineIcons.school,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                child: Divider(
-                  height: 2,
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: Divider(
+                    height: 2,
+                  ),
                 ),
-              ),
-              MenuItem(
-                dashboardController: dashboardController,
-                pageIndex: 4,
-                text: "Chat",
-                icon: LineIcons.facebookMessenger,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                child: Divider(
-                  height: 2,
+                MenuItem(
+                  dashboardController: dashboardController,
+                  pageIndex: 2,
+                  text: "Inscription",
+                  icon: LineIcons.list,
                 ),
-              ),
-              MenuItem(
-                dashboardController: dashboardController,
-                pageIndex: 5,
-                text: "Avis",
-                icon: LineIcons.star,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                child: Divider(
-                  height: 2,
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: Divider(
+                    height: 2,
+                  ),
                 ),
-              ),
-              MenuItem(
-                dashboardController: dashboardController,
-                pageIndex: 6,
-                text: "Statistique",
-                icon: LineIcons.percentage,
-              ),
-            ],
-          ),
-        ],
+                MenuItem(
+                  dashboardController: dashboardController,
+                  pageIndex: 3,
+                  text: "Formation",
+                  icon: LineIcons.school,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: Divider(
+                    height: 2,
+                  ),
+                ),
+                MenuItem(
+                  dashboardController: dashboardController,
+                  pageIndex: 4,
+                  text: "Chat",
+                  icon: LineIcons.facebookMessenger,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: Divider(
+                    height: 2,
+                  ),
+                ),
+                MenuItem(
+                  dashboardController: dashboardController,
+                  pageIndex: 5,
+                  text: "Avis",
+                  icon: LineIcons.star,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: Divider(
+                    height: 2,
+                  ),
+                ),
+                MenuItem(
+                  dashboardController: dashboardController,
+                  pageIndex: 6,
+                  text: "Statistique",
+                  icon: LineIcons.percentage,
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
