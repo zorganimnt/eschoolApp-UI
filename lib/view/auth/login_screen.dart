@@ -4,6 +4,7 @@ import 'package:eschoolapp/utils/color.dart';
 import 'package:eschoolapp/view/auth/reigster_screen.dart';
 import 'package:eschoolapp/widgets/custom_button.dart';
 import 'package:eschoolapp/widgets/custom_input_field.dart';
+import 'package:eschoolapp/widgets/deffault_app_bar.dart';
 import 'package:eschoolapp/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,11 +17,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          iconTheme: IconThemeData(color: primaryColor),
-        ),
+        appBar:DeffaultAppBar(),
         body: SafeArea(
           child: Center(
             child: SingleChildScrollView(

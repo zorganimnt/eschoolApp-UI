@@ -19,7 +19,7 @@ Future<void> showConfirmation(context) async {
           TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
-                Get.offAllNamed(AppRoutes.welcome); 
+               // Get.offAllNamed(AppRoutes.welcome); 
               },
               child: Text("D'accord"))
         ],

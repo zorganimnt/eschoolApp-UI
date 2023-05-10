@@ -19,15 +19,13 @@ class DashboardHomeScreen extends StatelessWidget {
       Get.put(DashboardController());
 
   final List<Widget> _dashboardAdmin = <Widget>[
-    const AcceuilScreen(),
-    ListUsers(
-    
-    ),
-    const ListInscri(),
-    const ListFormation(),
+    AcceuilScreen(),
+    ListUsers(),
+    ListInscri(),
+    ListFormation(),
     const ChatScreen(),
-    const ListAvis(),
-     PieChartSample1()
+    ListAvis(),
+    PieChartSample1()
   ];
 
   final List<Widget> _dashboardEmployer = <Widget>[];
@@ -98,7 +96,7 @@ class DashboardHomeScreen extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            "Jihene Abidi",
+                            'Jihene Abidi',
                             style: TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold),
                           ),
@@ -112,7 +110,7 @@ class DashboardHomeScreen extends StatelessWidget {
                           )
                         ],
                       ),
-                      Text("Admin",
+                      Text(dashboardController.roleUser.value,
                           style: TextStyle(
                               fontSize: 13,
                               color: Colors.grey,
@@ -121,25 +119,38 @@ class DashboardHomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              InkWell(
-                onTap: () {},
-                child: Container(
-                  width: 150,
-                  height: 50,
-                  child: Center(
-                    child: Text(
-                      "Modifier profile",
-                      style: TextStyle(
-                          color: primaryColor, fontWeight: FontWeight.bold),
+              Row(
+                children: [
+                  InkWell(
+                    onTap: () {},
+                    child: Container(
+                      width: 150,
+                      height: 50,
+                      child: Center(
+                        child: Text(
+                          "Modifier profile",
+                          style: TextStyle(
+                              color: primaryColor, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(color: primaryColor, spreadRadius: 0.5)
+                          ],
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15)),
                     ),
                   ),
-                  decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(color: primaryColor, spreadRadius: 0.5)
-                      ],
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)),
-                ),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.logout_rounded,
+                        color: primaryColor,
+                      ))
+                ],
               )
             ],
           ),

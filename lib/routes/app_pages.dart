@@ -4,6 +4,7 @@ import 'package:eschoolapp/view/auth/login_screen.dart';
 import 'package:eschoolapp/view/auth/next_step_register.dart';
 import 'package:eschoolapp/view/auth/reigster_screen.dart';
 import 'package:eschoolapp/view/dashboard/home/home_dashboard_screen.dart';
+import 'package:eschoolapp/view/formation/formation_screen.dart';
 import 'package:eschoolapp/view/home/components/home_screen.dart';
 import 'package:eschoolapp/view/home/main_screen.dart';
 import 'package:eschoolapp/view/information/information_screen.dart';
@@ -54,6 +55,12 @@ class AppPages {
       page: () => DashboardHomeScreen(),
     
     ),
+      GetPage(
+      name: AppRoutes.formation,
+      page: () => FormationScreen(),
+    
+    ),
+   
    
    
   ];

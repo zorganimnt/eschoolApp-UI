@@ -56,9 +56,22 @@ class API {
     }
   }
 
+   static Future<dynamic> getUserByRole(var data) async {
+    String theUrl = '$url/get-user-by-role';
+    try {
+      Response response =
+          await client.post(theUrl, data: convert.jsonEncode(data));
+      return response.data;
+    } catch (e) {
+      print(e.toString());
+      showError("Erreur", "Erreur est servenue", LineIcons.exclamationCircle);
+    }
+  }
+
+
   // ADD EMPLOYER
   static Future<dynamic> addEmployerService(var data) async {
-    String theUrl = '$url/register';
+    String theUrl = '$url/add-employer';
     print(theUrl);
     try {
       Response response =
@@ -109,5 +122,21 @@ class API {
       print(e.toString());
       showError("Erreur", "Erreur est servenue", LineIcons.exclamationCircle);
     }
+  }
+
+
+  // MODIFIER UN UTILISATEUR
+  static Future<dynamic> modifyUserService(var data) async {
+    String theUrl = '$url/modify-user';
+    print(theUrl);
+    try {
+      Response response =
+          await client.post(theUrl, data: convert.jsonEncode(data));
+      return response.data;
+    } catch (e) {
+      print(e.toString());
+      showError("Erreur", "Erreur est servenue", LineIcons.exclamationCircle);
+    }
+    
   }
 }

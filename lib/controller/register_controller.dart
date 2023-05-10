@@ -70,7 +70,7 @@ class RegisterController extends GetxController {
   }
 
   // HANDLE APPRENANT INPUT
-  registerApprenant() async {
+  registerApprenant(context) async {
     isLoading.value = true;
     int userID = await getValue('userID');
     FocusManager.instance.primaryFocus?.unfocus();
@@ -91,9 +91,7 @@ class RegisterController extends GetxController {
     isLoading.value = false;
     if (json != null) {
       if (json['success']) {
-        Get.to(NextStepRegister(
-          role: role.value,
-        ));
+       showConfirmation(context);
       } else {
         showError("Error", json['message'], LineIcons.exclamationTriangle);
       }
@@ -163,4 +161,30 @@ class RegisterController extends GetxController {
     isLoading.value = false;
     return null;
   }
+
+
+  Future<void> showConfirmation(context) async {
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text("Succées"),
+        content: SingleChildScrollView(
+          child: ListBody(
+            children: <Widget>[Text("Inscription en cours de traitement")],
+          ),
+        ),
+        actions: <Widget>[
+          TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+               // Get.offAllNamed(AppRoutes.welcome); 
+              },
+              child: Text("D'accord"))
+        ],
+      );
+    },
+  );
+}
 }

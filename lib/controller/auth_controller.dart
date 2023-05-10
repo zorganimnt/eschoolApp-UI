@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:eschoolapp/routes/app_routes.dart';
 import 'package:eschoolapp/service/api.dart';
 import 'package:eschoolapp/utils/notifications.dart';
+import 'package:eschoolapp/utils/storage.dart';
 import 'package:eschoolapp/view/home/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -32,12 +33,12 @@ class AuthController extends GetxController {
     isLoading.value = false;
     if (json != null) {
       if (json['success']) {
-        if(json['data']['role']=='Admin')
-        {
-          Get.offAllNamed(AppRoutes.homeDashboard); 
-        }
-        else{
-          showError("Erreur", "Vous n'avez pas le droit", LineIcons.exclamation); 
+        if (json['data']['role'] == 'Admin') {
+        
+          Get.offAllNamed(AppRoutes.homeDashboard);
+        } else {
+          showError(
+              "Erreur", "Vous n'avez pas le droit", LineIcons.exclamation);
         }
       } else {
         showError("Error", json['message'], LineIcons.exclamationTriangle);

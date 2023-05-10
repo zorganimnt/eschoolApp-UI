@@ -6,6 +6,7 @@ import 'package:eschoolapp/view/auth/reigster_screen.dart';
 import 'package:eschoolapp/view/information/information_screen.dart';
 import 'package:eschoolapp/view/welcome/components/formation_widget.dart';
 import 'package:eschoolapp/view/welcome/widget_page.dart';
+import 'package:eschoolapp/widgets/deffault_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
@@ -64,7 +65,7 @@ class WelcomePage extends StatelessWidget {
                   )
                 ],
               )
-            : wAppbar(context),
+            : DeffaultAppBar(),
         drawer: _buildDrawerWelcome(),
         body: SingleChildScrollView(
           child: Column(
@@ -262,104 +263,31 @@ class WelcomePage extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Container(
-                                  height: 40,
-                                  width: 180,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8),
-                                      color: Colors.white),
-                                  child: Center(
-                                      child: Text(
-                                    "Voir tout les formations",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: primaryColor),
-                                  )),
+                                InkWell(
+                                  onTap: () {
+                                    Get.toNamed(AppRoutes.formation);
+                                  },
+                                  child: Container(
+                                    height: 40,
+                                    width: 180,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        color: Colors.white),
+                                    child: Center(
+                                        child: Text(
+                                      "Voir tout les formations",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: primaryColor),
+                                    )),
+                                  ),
                                 ),
                               ],
                             ),
                             SizedBox(
                               height: 20,
                             ),
-                            Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    FormationWidget(
-                                      onPressed: () {
-                                        _showConfirmationParticip(context);
-                                      },
-                                      image: 'assets/icons/dev.jpeg',
-                                      title: 'Dévelopement Fullstack',
-                                      categorie: 'Informatique',
-                                      bgCategorie: Colors.deepOrange,
-                                      formateur: 'Mourad M.',
-                                      prix: '420 DT',
-                                      dure: '4 Mois',
-                                    ),
-                                    FormationWidget(
-                                      onPressed: () {
-                                        _showConfirmationParticip(context);
-                                      },
-                                      image: 'assets/icons/marketing.jpeg',
-                                      title: 'Digitale Marketing',
-                                      categorie: 'Marketing',
-                                      bgCategorie: Colors.deepPurple,
-                                      formateur: 'Ramzi A.',
-                                      prix: '200 DT',
-                                      dure: '2 Mois',
-                                    ),
-                                    FormationWidget(
-                                      image: 'assets/icons/dev.jpeg',
-                                      title: 'Développement mobile',
-                                      categorie: 'Informatique',
-                                      bgCategorie: Colors.deepOrange,
-                                      formateur: 'Ahlem N.',
-                                      prix: '390 DT',
-                                      dure: '3 Mois',
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 40,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: const [
-                                    FormationWidget(
-                                      image: 'assets/icons/dev.jpeg',
-                                      title: 'Dévelopement Fullstack',
-                                      categorie: 'Informatique',
-                                      bgCategorie: Colors.deepOrange,
-                                      formateur: 'Naim R.',
-                                      prix: '420 DT',
-                                      dure: '4 Mois',
-                                    ),
-                                    FormationWidget(
-                                      image: 'assets/icons/marketing.jpeg',
-                                      title: 'Digitale Marketing',
-                                      categorie: 'Marketing',
-                                      bgCategorie: Colors.deepPurple,
-                                      formateur: 'Ghazi W.',
-                                      prix: '200 DT',
-                                      dure: '2 Mois',
-                                    ),
-                                    FormationWidget(
-                                      image: 'assets/icons/dev.jpeg',
-                                      title: 'Développement mobile',
-                                      categorie: 'Informatique',
-                                      bgCategorie: Colors.deepOrange,
-                                      formateur: 'Oumaima B.',
-                                      prix: '390 DT',
-                                      dure: '3 Mois',
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                            buildFormationCatalogue(context),
                           ],
                         ),
                       ),
@@ -374,6 +302,88 @@ class WelcomePage extends StatelessWidget {
             ],
           ),
         ));
+  }
+
+  Column buildFormationCatalogue(BuildContext context) {
+    return Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  FormationWidget(
+                                    onPressed: () {
+                                      _showConfirmationParticip(context);
+                                    },
+                                    image: 'assets/icons/dev.jpeg',
+                                    title: 'Dévelopement Fullstack',
+                                    categorie: 'Informatique',
+                                    bgCategorie: Colors.deepOrange,
+                                    formateur: 'Mourad M.',
+                                    prix: '420 DT',
+                                    dure: '4 Mois',
+                                  ),
+                                  FormationWidget(
+                                    onPressed: () {
+                                      _showConfirmationParticip(context);
+                                    },
+                                    image: 'assets/icons/marketing.jpeg',
+                                    title: 'Digitale Marketing',
+                                    categorie: 'Marketing',
+                                    bgCategorie: Colors.deepPurple,
+                                    formateur: 'Ramzi A.',
+                                    prix: '200 DT',
+                                    dure: '2 Mois',
+                                  ),
+                                  FormationWidget(
+                                    image: 'assets/icons/dev.jpeg',
+                                    title: 'Développement mobile',
+                                    categorie: 'Informatique',
+                                    bgCategorie: Colors.deepOrange,
+                                    formateur: 'Ahlem N.',
+                                    prix: '390 DT',
+                                    dure: '3 Mois',
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 40,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: const [
+                                  FormationWidget(
+                                    image: 'assets/icons/dev.jpeg',
+                                    title: 'Dévelopement Fullstack',
+                                    categorie: 'Informatique',
+                                    bgCategorie: Colors.deepOrange,
+                                    formateur: 'Naim R.',
+                                    prix: '420 DT',
+                                    dure: '4 Mois',
+                                  ),
+                                  FormationWidget(
+                                    image: 'assets/icons/marketing.jpeg',
+                                    title: 'Digitale Marketing',
+                                    categorie: 'Marketing',
+                                    bgCategorie: Colors.deepPurple,
+                                    formateur: 'Ghazi W.',
+                                    prix: '200 DT',
+                                    dure: '2 Mois',
+                                  ),
+                                  FormationWidget(
+                                    image: 'assets/icons/dev.jpeg',
+                                    title: 'Développement mobile',
+                                    categorie: 'Informatique',
+                                    bgCategorie: Colors.deepOrange,
+                                    formateur: 'Oumaima B.',
+                                    prix: '390 DT',
+                                    dure: '3 Mois',
+                                  ),
+                                ],
+                              ),
+                            ],
+                          );
   }
 
   Container _buildFooterSection() {

@@ -4,20 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 const List<String> speciality = <String>[
-  'Séléctioner',
+  'Séléctioner votre spécialité',
   'Informatique',
   'Marketing',
   'Design', 
-  'Editing', 
+  'Montage', 
+  'Autre'
 ];
 
-class RoleDropDown extends StatefulWidget {
-  RoleDropDown({super.key});
+class DropDownSpeciality extends StatefulWidget {
+  DropDownSpeciality({super.key});
   @override
-  State<RoleDropDown> createState() => _RoleDropDownState();
+  State<DropDownSpeciality> createState() => _DropDownSpecialityState();
 }
 
-class _RoleDropDownState extends State<RoleDropDown> {
+class _DropDownSpecialityState extends State<DropDownSpeciality> {
   String dropdownValue = speciality.first;
   RegisterController controller = Get.find();
 
@@ -25,7 +26,7 @@ class _RoleDropDownState extends State<RoleDropDown> {
   Widget build(BuildContext context) {
     return DropdownButton<String>(
       menuMaxHeight: MediaQuery.of(context).size.height/2,
-      isExpanded: false,
+      isExpanded: true,
       value: dropdownValue,
       icon: const Icon(Icons.keyboard_arrow_down_rounded),
       elevation: 16,

@@ -1,5 +1,7 @@
+import 'package:eschoolapp/routes/app_routes.dart';
 import 'package:eschoolapp/utils/color.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class DeffaultAppBar extends StatelessWidget with PreferredSizeWidget {
   const DeffaultAppBar({super.key});
@@ -30,7 +32,9 @@ class DeffaultAppBar extends StatelessWidget with PreferredSizeWidget {
                     children: [
                       InkWell(
                         borderRadius: BorderRadius.circular(10),
-                        onTap: () {},
+                        onTap: () {
+                          Get.toNamed(AppRoutes.welcome);
+                        },
                         child: Text(
                           "Acceuil",
                           style: TextStyle(
@@ -51,8 +55,7 @@ class DeffaultAppBar extends StatelessWidget with PreferredSizeWidget {
                       InkWell(
                         borderRadius: BorderRadius.circular(10),
                         onTap: () {
-                          // zid hedhi
-                          //   Get.to(InfoScreen());
+                          Get.toNamed(AppRoutes.formation);
                         },
                         child: Text("Formation",
                             style: TextStyle(
@@ -84,7 +87,7 @@ class DeffaultAppBar extends StatelessWidget with PreferredSizeWidget {
       children: [
         InkWell(
           onTap: () {
-            //  Get.to(LoginScreen());
+           Get.toNamed(AppRoutes.login);
           },
           borderRadius: BorderRadius.circular(15),
           child: Container(
@@ -103,7 +106,7 @@ class DeffaultAppBar extends StatelessWidget with PreferredSizeWidget {
         ),
         InkWell(
           onTap: () {
-            //  Get.to(RegisterScreen());
+            Get.toNamed(AppRoutes.register);
           },
           borderRadius: BorderRadius.circular(15),
           child: Container(

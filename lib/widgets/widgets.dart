@@ -8,6 +8,7 @@ Widget WidgetTextField(
     required String label,
     required IconData? icon,
     TextEditingController? controller,
+    AutovalidateMode? autovalidateMode = AutovalidateMode.onUserInteraction, 
     String? hintText,
     bool isPassword = false,
     TextInputType textInputType = TextInputType.text,
@@ -17,6 +18,7 @@ Widget WidgetTextField(
     FormFieldValidator<String>? validator,
     bool enable = true,
     int? maxLenght,
+    String? initialValue,
     List<TextInputFormatter>? inputFormatters,
     ValueChanged<String>? onChanged}) {
   return IntrinsicHeight(
@@ -40,6 +42,7 @@ Widget WidgetTextField(
           : const SizedBox.shrink(),
       Flexible(
         child: TextFormField(
+          initialValue : initialValue, 
           controller: controller,
           textInputAction: TextInputAction.next,
           obscureText: isPassword,
@@ -47,7 +50,7 @@ Widget WidgetTextField(
           autocorrect: !isPassword,
           keyboardType: textInputType,
           onChanged: onChanged,
-          autovalidateMode: AutovalidateMode.always,
+          autovalidateMode: autovalidateMode,
           validator: validator,
           enabled: enable,
           maxLength: maxLenght,
@@ -56,6 +59,7 @@ Widget WidgetTextField(
             FocusScope.of(context).nextFocus();
           },
           decoration: InputDecoration(
+            
             hintText: hintText,
             labelText: label,
             labelStyle: const TextStyle(fontSize: 15, color: Colors.black),

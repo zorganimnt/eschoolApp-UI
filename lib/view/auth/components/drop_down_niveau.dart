@@ -5,6 +5,10 @@ import 'package:get/get.dart';
 
 const List<String> level = <String>[
   'Séléctioner votre niveau',
+  'Primaire', 
+  'Collège', 
+  'Lycée', 
+  'Sans Bac', 
   'Bac',
   'Bac+1',
   'Bac+2',
