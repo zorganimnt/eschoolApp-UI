@@ -3,18 +3,20 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Apprenant;
 use App\Models\Employer;
+use App\Models\Formateur;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Validator;
+use Vtiful\Kernel\Format;
 
 class AdminController extends BaseController
 {
-    // CRUD USER
+    // AJOUTER EMPLOYER
     public function addEmployer(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'role' => 'required|alpha',
             'name' => 'required|alpha|min:3',
             'lastName' => 'required|alpha|min:3',
             'phone' => 'required|digits:8',
@@ -45,16 +47,15 @@ class AdminController extends BaseController
 
     }
 
+    // MODIFIER UN UTILISATEUR
     public function modifyUser(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'user_id' => 'required',
-            'role' => 'required|alpha',
             'name' => 'required|alpha|min:3',
             'lastName' => 'required|alpha|min:3',
             'phone' => 'required|digits:8',
             'email' => 'required|email',
-            'password' => 'required|min:6'
         ]);
         if ($validator->fails()) {
             return $this->sendError('Informations Incorrect', $validator->errors());
@@ -67,12 +68,16 @@ class AdminController extends BaseController
                 'lastName' => $request['lastName'],
                 'phone' => $request['phone'],
                 'email' => $request['email'],
+
             ]);
+            return $this->sendResponse($user, "Utilisateur modifier");
         } else {
             return $this->sendError('Erreur est servenue', $validator->errors());
         }
 
     }
+
+    // SUPPRIMER UN UTILISATEUR
     public function deleteUser(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -90,6 +95,8 @@ class AdminController extends BaseController
         }
 
     }
+
+    // RECURPER UN UTILISATEUR OU TOUT LES UTILISATEUR
     public function getUser(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -98,7 +105,7 @@ class AdminController extends BaseController
         if ($validator->fails()) {
             return $this->sendError('Informations Incorrect', $validator->errors());
         }
-        if($request['user']=="all") {
+        if ($request['user'] == "all") {
             $success = User::all();
             return $this->sendResponse($success, null);
         } else {
@@ -108,8 +115,57 @@ class AdminController extends BaseController
 
     }
 
-    // CRUD FORMATION
 
+    // RECÉPURER UN/TOUT LES UTILISATEUR SELON ROLE
+    public function getUserByRole(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'user' => 'required',
+            'role' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError('Informations Incorrect', $validator->errors());
+        }
+
+        switch ($request['role']) {
+            case 'Apprenant':
+                if ($request['user'] == "all") {
+                    $success = Apprenant::all();
+                    return $this->sendResponse($success, null);
+                } else {
+                    $user = Apprenant::where('apprenant_id', $request['user'])->first();
+                    return $this->sendResponse($user, null);
+                }
+
+            case 'Formateur':
+                if ($request['user'] == "all") {
+                    $success = Formateur::all();
+                    return $this->sendResponse($success, null);
+                } else {
+                    $user = Formateur::where('formateur_id', $request['user'])->first();
+                    return $this->sendResponse($user, null);
+                }
+
+
+            case 'Parent':
+                if ($request['user'] == "all") {
+                    $success = parent::all();
+                    return $this->sendResponse($success, null);
+                } else {
+                    $user = parent::where('parent_id', $request['user'])->first();
+                    return $this->sendResponse($user, null);
+                }
+
+
+
+            default:
+                return $this->sendError('Erreur est servenue', $validator->errors());
+        }
+
+    }
+
+
+    // AJOUTER UNE FORMATION
     public function addFormation(Request $request)
     {
         $validator = Validator::make($request->all(), [

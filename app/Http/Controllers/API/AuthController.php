@@ -24,14 +24,12 @@ class AuthController extends BaseController
      */
 
 
-    // hedhi bech taaml register lel user 
-
     public function registerUser(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'role' => 'required|alpha',
-            'name' => 'required|alpha|min:3',
-            'lastName' => 'required|alpha|min:3',
+            'name' => 'required|min:3',
+            'lastName' => 'required|min:3',
             'phone' => 'required|digits:8',
             'email' => 'required|email',
             'password' => 'required|min:6'
