@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Apprenant;
 use App\Models\Employer;
 use App\Models\Formateur;
+use App\Models\Parents;
+
 use App\Models\User;
 use Illuminate\Http\Request;
 use Validator;
@@ -116,6 +118,27 @@ class AdminController extends BaseController
     }
 
 
+    public function searchUserBar(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required',
+        ]);
+
+
+        if ($validator->fails()) {
+            return $this->sendError('Informations Incorrect', $validator->errors());
+        }
+
+        $search = $request['email'];
+
+        $users = User::where('email', 'LIKE', '%' . $search . '%')
+            ->get();
+        return $this->sendResponse($users, null); 
+
+    }
+
+
+
     // RECÉPURER UN/TOUT LES UTILISATEUR SELON ROLE
     public function getUserByRole(Request $request)
     {
@@ -149,13 +172,21 @@ class AdminController extends BaseController
 
             case 'Parent':
                 if ($request['user'] == "all") {
-                    $success = parent::all();
+                    $success = Parents::all();
                     return $this->sendResponse($success, null);
                 } else {
-                    $user = parent::where('parent_id', $request['user'])->first();
+                    $user = Parents::where('parent_id', $request['user'])->first();
                     return $this->sendResponse($user, null);
                 }
 
+            case 'Employer':
+                if ($request['user'] == "all") {
+                    $success = Employer::all();
+                    return $this->sendResponse($success, null);
+                } else {
+                    $user = Employer::where('parent_id', $request['user'])->first();
+                    return $this->sendResponse($user, null);
+                }
 
 
             default:

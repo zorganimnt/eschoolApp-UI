@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::create('formateurs', function (Blueprint $table) {
             $table->unsignedBigInteger('formateur_id');
-            $table->foreign('formateur_id')->references('id')->on('users');
+            $table->foreign('formateur_id')->references('id')->on('users')->onDelete('cascade');
             $table->String('formateur_speciality');
             $table->String('formateur_cv');
             $table->String('formateur_statut');

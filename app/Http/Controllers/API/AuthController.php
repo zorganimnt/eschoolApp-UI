@@ -111,6 +111,7 @@ class AuthController extends BaseController
                 // SEND PARENT INPUT
                 $parentInput['parent_id'] = $request['user_id'];
                 $parentInput['parent_child_email'] = $request['child_email'];
+                $parentInput['parent_statut'] = $request['parent_statut'];
                 $parent = Parents::create($parentInput);
                 if ($parent) {
                     return $this->sendResponse($parent, 'Parent enregistrer avec success');
@@ -133,6 +134,7 @@ class AuthController extends BaseController
                 $formateurInput['formateur_id'] = $request['user_id'];
                 $formateurInput['formateur_speciality'] = $request['formateur_speciality'];
                 $formateurInput['formateur_cv'] = $request['formateur_cv'];
+                $formateurInput['formateur_statut'] = $request['formateur_statut'];
                 $formateur = Formateur::create($formateurInput);
                 if ($formateur) {
                     return $this->sendResponse($formateur, 'Formateur enregistrer avec success');

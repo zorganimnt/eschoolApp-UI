@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::create('parents', function (Blueprint $table) {
             $table->unsignedBigInteger('parent_id');
-            $table->foreign('parent_id')->references('id')->on('users');
+            $table->foreign('parent_id')->references('id')->on('users')->onDelete('cascade');
             $table->String('parent_child_email');
             $table->String('parent_statut');
             $table->timestamps();

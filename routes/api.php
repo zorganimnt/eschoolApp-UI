@@ -98,6 +98,7 @@ Route::controller(ProfController::class)->group(function () {
 
 Route::controller(AdminController::class)->group(function () {
     Route::post('get-user', 'getUser');
+    Route::post('search-user', 'searchUserBar');
     Route::post('add-employer', 'addEmployer');
     Route::post('modify-user', 'modifyUser');
     Route::post('get-user-by-role', 'getUserByRole');
