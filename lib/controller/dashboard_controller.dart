@@ -11,7 +11,6 @@ class DashboardController extends GetxController {
   @override
   void onInit() {
     getUsers("all");
-    getApprenant('all');
     super.onInit();
   }
 
@@ -95,15 +94,33 @@ class DashboardController extends GetxController {
     switch (index) {
       case 0:
         apprenantSelected = !apprenantSelected;
+        parentSelected = false;
+        formateurSelected = false;
+        employerSelected = false;
+        apprenantSelected ? getApprenant('all') : getUsers('all');
         break;
       case 1:
         parentSelected = !parentSelected;
+        apprenantSelected = false;
+        formateurSelected = false;
+        employerSelected = false;
+        parentSelected ? getParent('all') : getUsers('all');
         break;
       case 3:
         formateurSelected = !formateurSelected;
+        parentSelected = false;
+        apprenantSelected = false;
+        employerSelected = false;
+        formateurSelected ? getFormateur('all') : getUsers('all');
+        // formateurSelected? API.getUserByRole('Formateur') : null ;
         break;
       case 2:
         employerSelected = !employerSelected;
+        formateurSelected = false;
+        parentSelected = false;
+        apprenantSelected = false;
+        employerSelected ? getEmployer('all') : getUsers('all');
+        //  employerSelected? API.getUserByRole('Formateur') : null ;
         break;
       default:
     }
@@ -180,26 +197,16 @@ class DashboardController extends GetxController {
   List<String> prenom = [];
   List<String> email = [];
   List<String> role = [];
-  List<String> dateBirth = [];
-
   List<String> statut = [];
   List<String> phone = [];
-
   RxBool isLoading = RxBool(false);
 
   // RECÉPURER TOUT LES UTILISATEURS
   getUsers(user) async {
-   
     isLoading.value = true;
-    id.clear();
-    nom.clear();
-    prenom.clear();
-    email.clear();
-    role.clear();
-    statut.clear();
-    phone.clear();
+    clearAllList();
 
-    FocusManager.instance.primaryFocus?.unfocus();
+   // FocusManager.instance.primaryFocus?.unfocus();
 
     var data = {
       "user": user,
@@ -227,10 +234,87 @@ class DashboardController extends GetxController {
     return null;
   }
 
-  // RECUPÉRER LA LISTE DES APPRENANTS
-  getApprenant(user) async {
+  TextEditingController searchEmail = TextEditingController();
+  searchUser() async {
     isLoading.value = true;
+    clearAllList();
+
+   // FocusManager.instance.primaryFocus?.unfocus();
+
+    var data = {
+      "email": searchEmail.text,
+    };
+    print(data);
+    dynamic json = await API.searchUserService(data);
+    isLoading.value = false;
+    if (json != null) {
+      if (json['success']) {
+        List<dynamic> data = json['data'];
+        print(data); 
+        for (var element in data) {
+          id.add(element['id']);
+          nom.add(element['name']);
+          prenom.add(element['lastName']);
+          email.add(element['email']);
+          phone.add(element['phone']);
+          role.add(element['role']);
+        }
+        update();
+      } else {
+        showError("Error", json['message'], LineIcons.exclamationTriangle);
+      }
+    }
+    isLoading.value = false;
+    return null;
+  }
+
+  getOneUser(user) async {
+    isLoading.value = true;
+
+    FocusManager.instance.primaryFocus?.unfocus();
+
+    var data = {
+      "user": user,
+    };
+    print(data);
+    dynamic json = await API.getUserService(data);
+    isLoading.value = false;
+    if (json != null) {
+      if (json['success']) {
+        print(json);
+        id.add(json['data']['id']);
+        nom.add(json['data']['name']);
+        prenom.add(json['data']['lastName']);
+        email.add(json['data']['email']);
+        phone.add(json['data']['phone']);
+        role.add(json['data']['role']);
+        update();
+      } else {
+        showError("Error", json['message'], LineIcons.exclamationTriangle);
+      }
+    }
+    isLoading.value = false;
+    return null;
+  }
+
+  // RECUPÉRER LA LISTE DES APPRENANTS
+  List<String> dateBirth = [];
+
+  void clearAllList() {
     dateBirth.clear();
+    childEmail.clear();
+    id.clear();
+    nom.clear();
+    prenom.clear();
+    email.clear();
+    role.clear();
+    statut.clear();
+    phone.clear();
+  }
+
+  getApprenant(user) async {
+    clearAllList();
+    isLoading.value = true;
 
     FocusManager.instance.primaryFocus?.unfocus();
 
@@ -241,8 +325,92 @@ class DashboardController extends GetxController {
     if (json != null) {
       if (json['success']) {
         List<dynamic> data = json['data'];
+        print(data);
         for (var element in data) {
           dateBirth.add(element['apprenant_date_birth']);
+          getOneUser(element['apprenant_id']);
+        }
+        update();
+      } else {
+        showError("Error", json['message'], LineIcons.exclamationTriangle);
+      }
+    }
+    isLoading.value = false;
+    return null;
+  }
+
+  // LISTE DES PARENTS
+  List<String> childEmail = [];
+
+  getParent(user) async {
+    isLoading.value = true;
+    clearAllList();
+    FocusManager.instance.primaryFocus?.unfocus();
+
+    var data = {"user": user, "role": "Parent"};
+    print(data);
+    dynamic json = await API.getUserByRole(data);
+
+    isLoading.value = false;
+    if (json != null) {
+      if (json['success']) {
+        List<dynamic> data = json['data'];
+        print(data);
+        for (var element in data) {
+          childEmail.add(element['parent_child_email']);
+          getOneUser(element['parent_id']);
+        }
+        update();
+      } else {
+        showError("Error", json['message'], LineIcons.exclamationTriangle);
+      }
+    }
+    isLoading.value = false;
+    return null;
+  }
+
+  getFormateur(user) async {
+    isLoading.value = true;
+    clearAllList();
+    FocusManager.instance.primaryFocus?.unfocus();
+
+    var data = {"user": user, "role": "Formateur"};
+    print(data);
+    dynamic json = await API.getUserByRole(data);
+
+    isLoading.value = false;
+    if (json != null) {
+      if (json['success']) {
+        List<dynamic> data = json['data'];
+        print(data);
+        for (var element in data) {
+          getOneUser(element['formateur_id']);
+        }
+        update();
+      } else {
+        showError("Error", json['message'], LineIcons.exclamationTriangle);
+      }
+    }
+    isLoading.value = false;
+    return null;
+  }
+
+  getEmployer(user) async {
+    isLoading.value = true;
+    clearAllList();
+    FocusManager.instance.primaryFocus?.unfocus();
+
+    var data = {"user": user, "role": "Employer"};
+    print(data);
+    dynamic json = await API.getUserByRole(data);
+
+    isLoading.value = false;
+    if (json != null) {
+      if (json['success']) {
+        List<dynamic> data = json['data'];
+        print(data);
+        for (var element in data) {
+          getOneUser(element['employer_id']);
         }
         update();
       } else {

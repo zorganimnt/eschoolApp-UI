@@ -139,4 +139,18 @@ class API {
     }
     
   }
+
+   static Future<dynamic> searchUserService(var data) async {
+    String theUrl = '$url/search-user';
+    print(theUrl);
+    try {
+      Response response =
+          await client.post(theUrl, data: convert.jsonEncode(data));
+      return response.data;
+    } catch (e) {
+      print(e.toString());
+      showError("Erreur", "Erreur est servenue", LineIcons.exclamationCircle);
+    }
+    
+  }
 }

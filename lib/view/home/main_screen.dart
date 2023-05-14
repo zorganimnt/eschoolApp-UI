@@ -3,7 +3,6 @@ import 'package:eschoolapp/model/parent.dart';
 import 'package:eschoolapp/utils/color.dart';
 
 import 'package:eschoolapp/view/home/components/home_screen.dart';
-import 'package:eschoolapp/view/home/components/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -16,7 +15,6 @@ class MainScreeen extends StatelessWidget {
 
   final List<Widget> _widgetContent = <Widget>[
     const HomeScreen(),
-    const ProfileScreen()
   ];
   @override
   Widget build(BuildContext context) {

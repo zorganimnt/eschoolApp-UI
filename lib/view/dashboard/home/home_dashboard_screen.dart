@@ -6,6 +6,7 @@ import 'package:eschoolapp/view/dashboard/home/screens/list_avis.dart';
 import 'package:eschoolapp/view/dashboard/home/screens/list_formation.dart';
 import 'package:eschoolapp/view/dashboard/home/screens/list_inscri.dart';
 import 'package:eschoolapp/view/dashboard/home/screens/list_users.dart';
+import 'package:eschoolapp/view/dashboard/home/screens/profile_screen.dart';
 import 'package:eschoolapp/view/dashboard/home/screens/stat_screen.dart';
 import 'package:eschoolapp/view/dashboard/home/screens/test_stat.dart';
 import 'package:eschoolapp/widgets/widgets.dart';
@@ -25,7 +26,8 @@ class DashboardHomeScreen extends StatelessWidget {
     ListFormation(),
     const ChatScreen(),
     ListAvis(),
-    PieChartSample1()
+    PieChartSample1(),
+    ProfileScreen()
   ];
 
   final List<Widget> _dashboardEmployer = <Widget>[];
@@ -77,82 +79,53 @@ class DashboardHomeScreen extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(
-          width: 430,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Row(
+        Padding(
+          padding: const EdgeInsets.only(right: 20.0),
+          child: InkWell(
+            onTap: () {
+              dashboardController.onChangeItem(7);
+            },
+            child: SizedBox(
+              width: 200,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 14.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.verified,
+                              size: 17,
+                              color: Colors.blueAccent,
+                            ),
+                            SizedBox(
+                              width: 4,
+                            ),
+                            Text(
+                              'Jihene Abidi',
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                        Text("Admin",
+                            style: TextStyle(
+                                fontSize: 13,
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold))
+                      ],
+                    ),
+                  ),
                   CircleAvatar(
                       radius: 24,
                       backgroundImage: AssetImage('assets/icons/pdp1.png')),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            'Jihene Abidi',
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            width: 4,
-                          ),
-                          Icon(
-                            Icons.verified,
-                            size: 17,
-                            color: Colors.blueAccent,
-                          )
-                        ],
-                      ),
-                      Text(dashboardController.roleUser.value,
-                          style: TextStyle(
-                              fontSize: 13,
-                              color: Colors.grey,
-                              fontWeight: FontWeight.bold))
-                    ],
-                  ),
                 ],
               ),
-              Row(
-                children: [
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                      width: 150,
-                      height: 50,
-                      child: Center(
-                        child: Text(
-                          "Modifier profile",
-                          style: TextStyle(
-                              color: primaryColor, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(color: primaryColor, spreadRadius: 0.5)
-                          ],
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15)),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.logout_rounded,
-                        color: primaryColor,
-                      ))
-                ],
-              )
-            ],
+            ),
           ),
         ),
       ],
@@ -256,6 +229,7 @@ class DashboardHomeScreen extends StatelessWidget {
                   text: "Statistique",
                   icon: LineIcons.percentage,
                 ),
+               
               ],
             ),
           ],

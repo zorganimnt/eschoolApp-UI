@@ -45,6 +45,12 @@ class ListUsers extends StatelessWidget {
                               SizedBox(
                                 width: 350,
                                 child: WidgetTextField(
+                                  onChanged: (value) {
+                                     value==""? controller.getUsers('all') : 
+                                    controller.searchUser();
+                                   
+                                  },
+                                  controller: controller.searchEmail,
                                     context: context,
                                     label: "Recherche",
                                     hintText: "Rechercher un utilisateur",
@@ -334,7 +340,6 @@ class ListUsers extends StatelessWidget {
   }
 
   colorByRole(role) {
-    print(role);
     switch (role) {
       case 'Apprenant':
         return Colors.orange.withOpacity(0.2);

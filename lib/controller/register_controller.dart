@@ -24,7 +24,7 @@ class RegisterController extends GetxController {
 
   RxString role = ''.obs;
   RxString niveau = ''.obs;
-  RxString speciality= ''.obs;
+  RxString speciality = ''.obs;
 
   // CIRCLE PROGRESS CONDITION
   RxBool isLoading = RxBool(false);
@@ -91,7 +91,7 @@ class RegisterController extends GetxController {
     isLoading.value = false;
     if (json != null) {
       if (json['success']) {
-       showConfirmation(context);
+        showConfirmation(context);
       } else {
         showError("Error", json['message'], LineIcons.exclamationTriangle);
       }
@@ -104,7 +104,7 @@ class RegisterController extends GetxController {
     isLoading.value = true;
     int userID = await getValue('userID');
     FocusManager.instance.primaryFocus?.unfocus();
-    if (birthDay!.text.isEmpty || niveau.value == '') {
+    if (emailChild!.text.isEmpty) {
       showError(
           "Error", "Informations est vide", LineIcons.exclamationTriangle);
       isLoading.value = false;
@@ -113,6 +113,7 @@ class RegisterController extends GetxController {
     var data = {
       "user_id": userID,
       "child_email": emailChild!.text,
+      "parent_statut" : "En Cours"
     };
     print(data);
     dynamic json = await API.registerUserByRole(data);
@@ -134,7 +135,7 @@ class RegisterController extends GetxController {
     isLoading.value = true;
     int userID = await getValue('userID');
     FocusManager.instance.primaryFocus?.unfocus();
-    if (birthDay!.text.isEmpty || niveau.value == '') {
+    if (speciality.value == '') {
       showError(
           "Error", "Informations est vide", LineIcons.exclamationTriangle);
       isLoading.value = false;
@@ -144,7 +145,7 @@ class RegisterController extends GetxController {
       "user_id": userID,
       "formateur_speciality": speciality.value,
       "formateur_cv": "cv",
-    
+      "formateur_statut" : "En Cours"
     };
     print(data);
     dynamic json = await API.registerUserByRole(data);
@@ -162,29 +163,28 @@ class RegisterController extends GetxController {
     return null;
   }
 
-
   Future<void> showConfirmation(context) async {
-  return showDialog<void>(
-    context: context,
-    barrierDismissible: false, // user must tap button!
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text("Succées"),
-        content: SingleChildScrollView(
-          child: ListBody(
-            children: <Widget>[Text("Inscription en cours de traitement")],
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Succées"),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[Text("Inscription en cours de traitement")],
+            ),
           ),
-        ),
-        actions: <Widget>[
-          TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-               // Get.offAllNamed(AppRoutes.welcome); 
-              },
-              child: Text("D'accord"))
-        ],
-      );
-    },
-  );
-}
+          actions: <Widget>[
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  // Get.offAllNamed(AppRoutes.welcome);
+                },
+                child: Text("D'accord"))
+          ],
+        );
+      },
+    );
+  }
 }

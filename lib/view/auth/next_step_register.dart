@@ -121,6 +121,7 @@ class NextStepRegister extends StatelessWidget {
             height: 20,
           ),
           WidgetTextField(
+            controller: controller.emailChild,
               context: context,
               hintText: "exemple@mail.com",
               label: "E-mail de votre enfant",
