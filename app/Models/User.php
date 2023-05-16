@@ -22,8 +22,8 @@ class User extends Authenticatable
     protected $fillable = [
         'email',
         'role',
-        'name', 
-        'lastName', 
+        'name',
+        'lastName',
         'phone',
         'password',
 
@@ -53,6 +53,11 @@ class User extends Authenticatable
     public function formateur()
     {
         return $this->hasOne(Formateur::class);
+    }
+
+    public function formation()
+    {
+        return $this->hasOne(Formation::class);
     }
 
 }

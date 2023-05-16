@@ -78,7 +78,7 @@ class AuthController extends BaseController
                 if ($validator->fails()) {
                     return $this->sendError('Informations Incorrect', $validator->errors());
                 }
-                $isExist = Apprenant::where('apprenant_id', $request['apprenant_id'])->first();
+                $isExist = Apprenant::where('apprenant_id', $request['user_id'])->first();
                 if ($isExist) {
                     return $this->sendError('Apprenant déja existe', $validator->errors());
                 }
@@ -108,6 +108,10 @@ class AuthController extends BaseController
                 if (!$isExist) {
                     return $this->sendError('Enfant non trouvale', null);
                 }
+                $parentIsExist = Parents::where('parent_id', $request['user_id'])->first();
+                if ($parentIsExist) {
+                    return $this->sendError('Parent déja existe', $validator->errors());
+                }
                 // SEND PARENT INPUT
                 $parentInput['parent_id'] = $request['user_id'];
                 $parentInput['parent_child_email'] = $request['child_email'];
@@ -129,7 +133,10 @@ class AuthController extends BaseController
                 if ($validator->fails()) {
                     return $this->sendError('INVALID CREDENTIALS', $validator->errors());
                 }
-
+                $isExist = Formateur::where('formateur_id', $request['user_id'])->first();
+                if ($isExist) {
+                    return $this->sendError('Formateur déja existe', $validator->errors());
+                }
                 // SEND FORMATER INPUT
                 $formateurInput['formateur_id'] = $request['user_id'];
                 $formateurInput['formateur_speciality'] = $request['formateur_speciality'];
@@ -157,10 +164,12 @@ class AuthController extends BaseController
         try {
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
                 $user = Auth::user();
-                $success['token'] = $user->createToken('MyApp')->plainTextToken;
-                $success['role'] = $user->role;
-                $success['id'] = $user->id; 
-                return $this->sendResponse($success, 'Connexion valider avec success');
+                $token = $user->createToken('MyApp')->plainTextToken;
+            
+                return $this->sendResponse([
+                    "user_data" => $user, 
+                    "token" => $token
+                ], 'Connexion valider avec success');
             }
         } catch (Exception $e) {
             return $this->sendError('Erreur est servenue', $e);

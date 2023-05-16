@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Apprenant;
 use App\Models\Employer;
 use App\Models\Formateur;
+use App\Models\Formation;
 use App\Models\Parents;
 
 use App\Models\User;
@@ -48,6 +49,7 @@ class AdminController extends BaseController
         return $this->sendError("Erreur est servenue");
 
     }
+
 
     // MODIFIER UN UTILISATEUR
     public function modifyUser(Request $request)
@@ -133,7 +135,7 @@ class AdminController extends BaseController
 
         $users = User::where('email', 'LIKE', '%' . $search . '%')
             ->get();
-        return $this->sendResponse($users, null); 
+        return $this->sendResponse($users, null);
 
     }
 
@@ -153,7 +155,8 @@ class AdminController extends BaseController
         switch ($request['role']) {
             case 'Apprenant':
                 if ($request['user'] == "all") {
-                    $success = Apprenant::all();
+                    // $success = Apprenant::all();
+                    $success = User::join('apprenants', 'users.id', '=', 'apprenants.apprenant_id')->get();
                     return $this->sendResponse($success, null);
                 } else {
                     $user = Apprenant::where('apprenant_id', $request['user'])->first();
@@ -162,7 +165,9 @@ class AdminController extends BaseController
 
             case 'Formateur':
                 if ($request['user'] == "all") {
-                    $success = Formateur::all();
+                    //$success = Formateur::all();
+                    $success = User::join('formateurs', 'users.id', '=', 'formateurs.formateur_id')->get();
+
                     return $this->sendResponse($success, null);
                 } else {
                     $user = Formateur::where('formateur_id', $request['user'])->first();
@@ -172,7 +177,8 @@ class AdminController extends BaseController
 
             case 'Parent':
                 if ($request['user'] == "all") {
-                    $success = Parents::all();
+                    // $success = Parents::all();
+                    $success = User::join('parents', 'users.id', '=', 'parents.parent_id')->get();
                     return $this->sendResponse($success, null);
                 } else {
                     $user = Parents::where('parent_id', $request['user'])->first();
@@ -200,27 +206,221 @@ class AdminController extends BaseController
     public function addFormation(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'formation_name' => 'required',
+            'formation_title' => 'required',
             'formation_price' => 'required',
             'formation_formateur' => 'required',
             'formation_duree' => 'required',
-            'formation_photo' => 'required'
+            'formation_picture' => 'required',
+            'formation_category' => 'required'
         ]);
+
+        if ($validator->fails()) {
+            return $this->sendError('Informations Incorrect', $validator->errors());
+        }
+
+        $isExist = User::where('id', $request['formation_formateur'])->first();
+        if (!$isExist) {
+            return $this->sendError('Utilisateur non trouvable', $validator->errors());
+        }
+
+        $isFormateur = User::where('id', $request['formation_formateur'])->where('role', 'Formateur')->first();
+        if (!$isFormateur) {
+            return $this->sendError("Vous n'avez pas le deroit", $validator->errors());
+        }
+
+
+        $formationInput['formation_title'] = $request['formation_title'];
+        $formationInput['formation_price'] = $request['formation_price'];
+        $formationInput['formation_duree'] = $request['formation_duree'];
+        $formationInput['formation_formateur'] = $request['formation_formateur'];
+        $formationInput['formation_category'] = $request['formation_category'];
+        $formationInput['formation_picture'] = $request['formation_picture'];
+
+        $formation = Formation::create($formationInput);
+        if ($formation)
+            return $this->sendResponse($formation, 'Formation créer avec success');
+
+        return $this->sendError("Erreur est servenue");
 
     }
 
-    public function updateFormation(Request $request)
+
+    public function getFormation(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'formation' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError('Informations Incorrect', $validator->errors());
+        }
+        if ($request['formation'] == "all") {
+            $success = Formation::all();
+            return $this->sendResponse($success, null);
+        } else {
+            $formation = Formation::where('id', $request['formation'])->first();
+            return $this->sendResponse($formation, null);
+        }
+    }
+
+    public function searchFormation(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+        ]);
+
+
+        if ($validator->fails()) {
+            return $this->sendError('Informations Incorrect', $validator->errors());
+        }
+
+        $search = $request['title'];
+
+        $users = Formation::where('formation_title', 'LIKE', $search . '%')->get();
+        return $this->sendResponse($users, null);
+    }
+
+    public function modifyFormation(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'formation_id' => 'required',
+            'formation_title' => 'required',
+            'formation_price' => 'required',
+            'formation_formateur' => 'required',
+            'formation_category' => 'required',
+            'formation_duree' => 'required',
+            'formation_picture' => 'required',
+
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError('Informations Incorrect', $validator->errors());
+        }
+
+        $isExist = User::where('id', $request['formation_formateur'])->first();
+        if (!$isExist) {
+            return $this->sendError('Utilisateur non trouvable', $validator->errors());
+        }
+        $isFormateur = User::where('id', $request['formation_formateur'])->where('role', 'Formateur')->first();
+
+        if (!$isFormateur) {
+            return $this->sendError("Utilisateur n'avez pas le deroit", $validator->errors());
+        }
+
+        $formation = Formation::where('id', $request['formation_id'])->first();
+
+        if ($formation) {
+            $formation->update([
+                'formation_title' => $request['formation_title'],
+                'formation_price' => $request['formation_price'],
+                'formation_formateur' => $request['formation_formateur'],
+                'formation_category' => $request['formation_category'],
+                'formation_duree' => $request['formation_duree'],
+                'formation_picture' => $request['formation_picture'],
+            ]);
+            return $this->sendResponse($formation, "Formation modifier");
+        } else {
+            return $this->sendError('Erreur est servenue', $validator->errors());
+        }
 
     }
     public function deleteFormation(Request $request)
     {
-
+        $validator = Validator::make($request->all(), [
+            'formation_id' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError('Informations Incorrect', $validator->errors());
+        }
+        $formation = Formation::where('id', $request['formation_id'])->first();
+        if ($formation) {
+            $formation->delete();
+            return $this->sendResponse([], "formation supprimer");
+        } else {
+            return $this->sendError('Erreur est servenue', $validator->errors());
+        }
     }
 
-    public function getFormation(Request $request)
+
+    public function modifyStatusUser(Request $request)
     {
-
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required',
+            'action' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError('Informations Incorrect', $validator->errors());
+        }
+        $user = User::where('id', $request['user_id'])->first();
+        if (!$user) {
+            return $this->sendError('Utilisateur non trouvable', $validator->errors());
+        }
+        switch ($user->role) {
+            case 'Apprenant':
+               // $apprenant = Apprenant::where('apprenant_id', $request['user_id'])->first();
+                switch ($request['action']) {
+                    case 1:
+                        Apprenant::where('apprenant_id', $request['user_id'])->update([
+                            'apprenant_statut' => "ACCEPTED",
+                        ]);
+                        return $this->sendResponse([], "Apprenant Accepté");
+                    case 0:
+                        Apprenant::where('apprenant_id', $request['user_id'])->update([
+                            'apprenant_statut' => "DECLINED",
+                        ]);
+                        return $this->sendResponse([], "Apprenant Refusé");
+                    default:
+                        return $this->sendError('Action non acceptable', $validator->errors());
+                }
+            case 'Formateur':
+                $formateur = Formateur::where('formateur_id', $user->id)->first();
+                switch ($request['action']) {
+                    case 1:
+                        $formateur->update([
+                            'formateur_statut' => "ACCEPTED",
+                        ]);
+                        return $this->sendResponse([], "Formateur Accepté");
+                    case 0:
+                        $formateur->update([
+                            'formateur_statut' => "DECLINED",
+                        ]);
+                        return $this->sendResponse([], "Formateur Refusé");
+                    default:
+                        return $this->sendError('Action non acceptable', $validator->errors());
+                }
+            case 'Parent':
+                $parent = Parents::where('parent_id', $user->id)->first();
+                switch ($request['action']) {
+                    case 1:
+                        $parent->update([
+                            'parent_statut' => "ACCPETED",
+                        ]);
+                        return $this->sendResponse([], "Parent Accepté");
+                    case 0:
+                        $parent->update([
+                            'parent_statut' => "DECLINED",
+                        ]);
+                        return $this->sendResponse([], "Parent Refusé");
+                    default:
+                        return $this->sendError('Action non acceptable', $validator->errors());
+                }
+            default:
+                return $this->sendError('Erreur est servenue', $validator->errors());
+        }
     }
 
+    public function declineRegister(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'formation_id' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError('Informations Incorrect', $validator->errors());
+        }
+        $formation = Formation::where('id', $request['formation_id'])->first();
+        if ($formation) {
+            $formation->delete();
+            return $this->sendResponse([], "formation supprimer");
+        } else {
+            return $this->sendError('Erreur est servenue', $validator->errors());
+        }
+    }
 }

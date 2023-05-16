@@ -16,4 +16,10 @@ class Formation extends Model
         'formation_duree', 
         'formation_picture',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
 }

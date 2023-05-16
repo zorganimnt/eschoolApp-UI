@@ -97,10 +97,27 @@ Route::controller(ProfController::class)->group(function () {
 
 
 Route::controller(AdminController::class)->group(function () {
+
+    // CREATE API //
+    Route::post('add-employer', 'addEmployer');
+    Route::post('add-formation', 'addFormation');
+
+    // MODIFY API //
+    Route::post('modify-user', 'modifyUser');
+    Route::post('modify-formation', 'modifyFormation');
+    Route::post('modify-status-user', 'modifyStatusUser');
+    // READ API // 
     Route::post('get-user', 'getUser');
     Route::post('search-user', 'searchUserBar');
-    Route::post('add-employer', 'addEmployer');
-    Route::post('modify-user', 'modifyUser');
     Route::post('get-user-by-role', 'getUserByRole');
+    Route::post('get-formation', 'getFormation');
+    Route::post('search-formation', 'searchFormation');
+
+
+    // DELETE API // 
     Route::post('delete-user', 'deleteUser');
+    Route::post('delete-formation', 'deleteFormation');
+
+
+    
 });
