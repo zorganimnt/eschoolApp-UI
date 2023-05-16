@@ -33,7 +33,7 @@ class AuthController extends GetxController {
     isLoading.value = false;
     if (json != null) {
       if (json['success']) {
-        if (json['data']['role'] == 'Admin') {
+        if (json['data']['user_data']['role'] == 'Admin') {
         
           Get.offAllNamed(AppRoutes.homeDashboard);
         } else {

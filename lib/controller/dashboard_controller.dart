@@ -234,6 +234,38 @@ class DashboardController extends GetxController {
     return null;
   }
 
+   getFormation(user) async {
+    isLoading.value = true;
+    clearAllList();
+
+   // FocusManager.instance.primaryFocus?.unfocus();
+
+    var data = {
+      "user": user,
+    };
+    print(data);
+    dynamic json = await API.getUserService(data);
+    isLoading.value = false;
+    if (json != null) {
+      if (json['success']) {
+        List<dynamic> data = json['data'];
+        for (var element in data) {
+          id.add(element['id']);
+          nom.add(element['name']);
+          prenom.add(element['lastName']);
+          email.add(element['email']);
+          phone.add(element['phone']);
+          role.add(element['role']);
+        }
+        update();
+      } else {
+        showError("Error", json['message'], LineIcons.exclamationTriangle);
+      }
+    }
+    isLoading.value = false;
+    return null;
+  }
+
   TextEditingController searchEmail = TextEditingController();
   searchUser() async {
     isLoading.value = true;

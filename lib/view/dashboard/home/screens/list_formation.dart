@@ -1,4 +1,5 @@
 import 'package:eschoolapp/controller/dashboard_controller.dart';
+import 'package:eschoolapp/controller/formation_controller.dart';
 import 'package:eschoolapp/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,10 +8,10 @@ import 'package:line_icons/line_icons.dart';
 class ListFormation extends StatelessWidget {
   ListFormation({super.key});
 
-  final DashboardController controller = Get.put(DashboardController());
+  final FormationController controller = Get.put(FormationController());
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<DashboardController>(
+    return GetBuilder<FormationController>(
         builder: (_) => Padding(
               padding: const EdgeInsets.all(12.0),
               child: SingleChildScrollView(
@@ -42,9 +43,13 @@ class ListFormation extends StatelessWidget {
                               SizedBox(
                                 width: 350,
                                 child: WidgetTextField(
+                                  onChanged: (value) {
+                                   value==""? controller.getFormation('all') :  controller.searchFormation(value); 
+                                  },
+                                 
                                     context: context,
                                     label: "Recherche",
-                                    hintText: "Rechercher un utilisateur",
+                                    hintText: "Rechercher une formation",
                                     icon: LineIcons.search),
                               ),
                             ],
@@ -52,74 +57,28 @@ class ListFormation extends StatelessWidget {
                           SizedBox(
                             height: 20,
                           ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                color: Colors.grey.withOpacity(0.3),
-                                width: double.infinity,
-                                height: 50,
-                                child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Text(
-                                        "ID",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "Titre",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "Formateur",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "Durée",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "Prix",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "Action",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ]),
-                              ),
-                              SizedBox(
-                                height: MediaQuery.of(context).size.height,
-                                child: ListView.builder(
-                                    itemCount: 3,
-                                    itemBuilder: (context, index) {
-                                      return Container(
+                          DataTable(
+                            columns: controller.columns,
+                            rows: controller.rows,
+                          ),
+
+                          /*  Container(
                                         color: Colors.white,
                                         width: double.infinity,
                                         height: 50,
                                         child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
-                                            children: const [
-                                              Text("88"),
-                                              Text("Dévelopement mobile"),
-                                              Text("Foulen"),
-                                              Text("3 mois"),
-                                              Text("200 DT"),
+                                    
+                                            children:  [
+                                              Text(controller.id[index].toString()),
+                                              Text(controller.title[index]),
+                                              SizedBox(width: 30,), 
+                                              Text(controller.formateur[index].toString()),
+                                           SizedBox(width: 30,), 
+                                              Text(controller.duree[index]),
+                                              Text('${controller.price[index]}DT'),
                                               Text("modifier"),
                                             ]),
-                                      );
-                                    }),
-                              )
-                            ],
-                          )
+                                      ); */
                         ],
                       ),
                     ),
