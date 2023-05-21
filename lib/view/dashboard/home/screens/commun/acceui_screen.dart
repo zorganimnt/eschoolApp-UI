@@ -1,12 +1,11 @@
 import 'package:eschoolapp/controller/dashboard_controller.dart';
 import 'package:eschoolapp/utils/validators.dart';
-import 'package:eschoolapp/view/dashboard/home/screens/add_employer.dart';
 import 'package:eschoolapp/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
-import '../../../auth/components/pick_image.dart';
+import '../../../../auth/components/pick_image.dart';
 
 class AcceuilScreen extends StatelessWidget {
   AcceuilScreen({super.key});
