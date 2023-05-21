@@ -313,7 +313,8 @@ class WelcomePage extends StatelessWidget {
                                 children: [
                                   FormationWidget(
                                     onPressed: () {
-                                      _showConfirmationParticip(context);
+                                      Get.to(LoginScreen());
+                                     // _showConfirmationParticip(context);
                                     },
                                     image: 'assets/icons/dev.jpeg',
                                     title: 'Dévelopement Fullstack',

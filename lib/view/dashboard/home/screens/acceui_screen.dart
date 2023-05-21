@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
+import '../../../auth/components/pick_image.dart';
+
 class AcceuilScreen extends StatelessWidget {
   AcceuilScreen({super.key});
   DashboardController controller = Get.put(DashboardController());
@@ -44,10 +46,12 @@ class AcceuilScreen extends StatelessWidget {
                   UserItemDashboard(
                     icon: LineIcons.school,
                     color: Colors.orange.shade900,
-                    title: "Apprenant",
+                    title: "Formation",
                     number: "400",
                     addPerson: true,
-                    onAddPressed: () {},
+                    onAddPressed: () {
+                      addFormat(context);
+                    },
                   ),
                   SizedBox(
                     width: 20,
@@ -196,6 +200,101 @@ class AcceuilScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).pop();
                      controller.addEmployer(); 
+                    },
+                    child: Text("Confirmer")),
+              ],
+            )
+          ],
+        );
+      },
+    );
+  }
+  Future<void> addFormat(context) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          scrollable: true,
+          title: Text("Ajouter Formation"),
+          content: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListBody(children: [
+               Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                    SizedBox(height: 150, child: PickPhoto()),
+                    ],
+                    ),
+              WidgetTextField(
+                  validator: Validators.validateNotNullOrEmpty,
+                  controller: controller.titleFormation,
+                  context: context,
+                  hintText: "Nom du formation",
+                  label: "Nom du formation",
+                  icon: LineIcons.graduationCap),
+              SizedBox(
+                height: 15,
+              ),
+              WidgetTextField(
+                  validator: Validators.validateNotNullOrEmpty,
+                  controller: controller.categoryFormation,
+                  context: context,
+                  hintText: "Catégorie de formation",
+                  label: "Catégorie de formation",
+                  icon: LineIcons.userGraduate),
+              SizedBox(
+                height: 15,
+              ),
+              WidgetTextField(
+                  validator: Validators.validateNotNullOrEmpty,
+                  controller: controller.dureeFormation,
+                  context: context,
+                  hintText: "duree du formation",
+                  label: "duree du formation",
+                  icon: LineIcons.calendarTimes),
+                        SizedBox(
+                height: 15,
+              ),
+              WidgetTextField(
+                  validator: Validators.validateNotNullOrEmpty,
+                  controller: controller.priceFormation,
+                  context: context,
+                  hintText: "prix du formation",
+                  label: "prix du formation",
+                  icon: LineIcons.tag),
+              SizedBox(
+                height: 20,
+                
+              ),
+              Divider(
+                height: 1.5,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              WidgetTextField(
+                  validator: Validators.validateEmail,
+                  controller: controller.formateurFormation,
+                  context: context,
+                  hintText: "E-mail formateur",
+                  label: "Adresse E-mail",
+                  icon: LineIcons.envelope),
+            ]),
+          ),
+          actions: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text("Anuller")),
+                TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                     controller.addFormation(); 
                     },
                     child: Text("Confirmer")),
               ],

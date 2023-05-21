@@ -5,6 +5,8 @@ class AppRoutes {
   static const String welcome = '/';
   static const String login = '/login';
   static const String register = '/register';
+  static const String Participer = '/participer';
+
 
   // APP ROUTES
   static const String home = '/home';
@@ -14,6 +16,7 @@ class AppRoutes {
   static const String gestnews = '/gestnews';
   static const String info = '/info';
   static const String homeDashboard = '/home-dashboard';
+  static const String Home = '/home_dash-emp';
   static const String nextStepRegister = '/next-step-register';
   static const String formation = '/formation-catalogue';
 }

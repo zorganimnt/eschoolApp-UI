@@ -11,6 +11,7 @@ class ListUsers extends StatelessWidget {
   ListUsers({super.key});
 
   final DashboardController controller = Get.put(DashboardController());
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<DashboardController>(
@@ -214,7 +215,7 @@ class ListUsers extends StatelessWidget {
                                 child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
-                                    children: [
+                                    children: const [
                                       Text(
                                         "ID",
                                         style: TextStyle(
@@ -260,47 +261,31 @@ class ListUsers extends StatelessWidget {
                                               width: double.infinity,
                                               height: 50,
                                               child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceAround,
+                                                  mainAxisAlignment:MainAxisAlignment.spaceAround,
                                                   children: [
-                                                    Text(controller.id[index]
-                                                        .toString()),
+                                                    Text(controller.id[index].toString()),
                                                     Text(controller.nom[index]),
-                                                    Text(controller
-                                                        .prenom[index]),
-                                                    Text(controller
-                                                        .email[index]),
-                                                    Text(controller
-                                                        .phone[index]),
+                                                    Text(controller.prenom[index]),
+                                                    Text(controller.email[index]),
+                                                    Text(controller.phone[index]),
                                                     Row(
                                                       children: [
                                                         InkWell(
                                                           onTap: () {
                                                             showInformationUser(
                                                               context,
-                                                              controller
-                                                                  .id[index],
-                                                              controller
-                                                                  .nom[index],
-                                                              controller.prenom[
-                                                                  index],
-                                                              controller
-                                                                  .phone[index],
-                                                              controller
-                                                                  .email[index],
-                                                              controller
-                                                                  .role[index],
+                                                              controller.id[index],
+                                                              controller.nom[index],
+                                                              controller.prenom[index],
+                                                              controller.phone[index],
+                                                              controller.email[index],
+                                                              controller.role[index],
                                                             );
                                                             controller.putValue(
-                                                              controller
-                                                                  .nom[index],
-                                                              controller.prenom[
-                                                                  index],
-                                                              controller
-                                                                  .phone[index],
-                                                              controller
-                                                                  .email[index],
+                                                              controller.nom[index],
+                                                              controller.prenom[index],
+                                                              controller.phone[index],
+                                                              controller.email[index],
                                                             );
                                                           },
                                                           child: Icon(

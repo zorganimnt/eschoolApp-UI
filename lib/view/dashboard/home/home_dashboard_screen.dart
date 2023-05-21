@@ -8,6 +8,7 @@ import 'package:eschoolapp/view/dashboard/home/screens/list_inscri.dart';
 import 'package:eschoolapp/view/dashboard/home/screens/list_users.dart';
 import 'package:eschoolapp/view/dashboard/home/screens/profile_screen.dart';
 import 'package:eschoolapp/view/dashboard/home/screens/stat_screen.dart';
+
 import 'package:eschoolapp/view/dashboard/home/screens/test_stat.dart';
 import 'package:eschoolapp/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class DashboardHomeScreen extends StatelessWidget {
     ListUsers(),
     ListInscri(),
     ListFormation(),
-    const ChatScreen(),
+     //ChatScreen(),
     ListAvis(),
     PieChartSample1(),
     ProfileScreen()
@@ -32,11 +33,20 @@ class DashboardHomeScreen extends StatelessWidget {
 
   final List<Widget> _dashboardEmployer = <Widget>[];
 
+
+
+
+  bool _isProfileBoxVisible = false;
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<DashboardController>(
         builder: (_) => Scaffold(
-              body: Row(
+              body: Stack(
+                alignment: Alignment.topRight,
+                children: [
+                  
+                  Row(  
                 children: [
                   _buildMenu(context),
                   Container(
@@ -59,7 +69,9 @@ class DashboardHomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            ));
+            
+                ],
+              )));
   }
 
   Row _buildHead(BuildContext context) {
@@ -83,10 +95,12 @@ class DashboardHomeScreen extends StatelessWidget {
           padding: const EdgeInsets.only(right: 20.0),
           child: InkWell(
             onTap: () {
+              _isProfileBoxVisible = !_isProfileBoxVisible;
               dashboardController.onChangeItem(7);
             },
             child: SizedBox(
-              width: 200,
+              //color: Colors.red,
+              width: MediaQuery.of(context).size.width * .22,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -96,7 +110,7 @@ class DashboardHomeScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Row(
-                          children: [
+                          children: const [
                             Icon(
                               Icons.verified,
                               size: 17,
@@ -106,7 +120,7 @@ class DashboardHomeScreen extends StatelessWidget {
                               width: 4,
                             ),
                             Text(
-                              'Jihene Abidi',
+                              'Rania Ben Ammar',
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold),
                             ),
@@ -121,8 +135,8 @@ class DashboardHomeScreen extends StatelessWidget {
                     ),
                   ),
                   CircleAvatar(
-                      radius: 24,
-                      backgroundImage: AssetImage('assets/icons/pdp1.png')),
+                      radius: 30,
+                      backgroundImage: AssetImage('assets/icons/bb.jpg')),
                 ],
               ),
             ),

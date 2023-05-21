@@ -12,6 +12,7 @@ import 'package:eschoolapp/view/welcome/welcome_screen.dart';
 import 'package:get/get.dart';
 
 
+
 class AppPages {
   AppPages._();
 
@@ -30,6 +31,8 @@ class AppPages {
       name: AppRoutes.register,
       page: () => RegisterScreen(),
     ),
+
+    
 
     // APP PAGES
     GetPage(

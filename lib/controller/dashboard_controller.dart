@@ -13,6 +13,16 @@ class DashboardController extends GetxController {
     getUsers("all");
     super.onInit();
   }
+ 
+
+ //RxBool isLoading = RxBool(false);
+  TextEditingController titleFormation = TextEditingController();
+  TextEditingController photoFormation = TextEditingController();
+  TextEditingController priceFormation = TextEditingController();
+  TextEditingController formateurFormation = TextEditingController();
+  TextEditingController dureeFormation = TextEditingController();
+  TextEditingController categoryFormation = TextEditingController();
+
 
   RxString nameUser = ''.obs;
   RxString lastNameUser = ''.obs;
@@ -532,5 +542,38 @@ class DashboardController extends GetxController {
     phoneInChange.value = false;
 
     return null;
+  }
+
+  // Méthode pour ajouter une formation
+    addFormation() async {
+    var data = {
+      "formation_title": titleFormation.text,
+      "formation_picture": photoFormation.text,
+      "formation_price": priceFormation.text,
+      "formation_formateur": formateurFormation.text,
+      "formation_duree": dureeFormation.text,
+      "categoryFormation": categoryFormation.text,
+      //"formation_duree": dureeFormation.value
+    };
+    try {
+      dynamic json = await API.addFormationService(data);
+      if (json != null) {
+        if (json['success']) {
+          showSuccess("Success", "Formation ajouté avec succées",
+              LineIcons.checkCircle);
+        } else {
+          showError("Error", json['message'], LineIcons.exclamationTriangle);
+        }
+      }
+    } catch (e) {
+      showError(
+          "Erreur est servenue", e.toString(), LineIcons.exclamationTriangle);
+    } finally {
+      titleFormation.clear();
+      photoFormation.clear();
+      priceFormation.clear();
+      formateurFormation.clear();
+      isLoading.value = false;
+    }
   }
 }

@@ -10,7 +10,7 @@ class Storage {
     isTokenSaved.value = token != null;
   }
 }
-
+//pour garder les données dans la cache
 Future<void> saveValue(String key, dynamic value) async {
   final prefs = await SharedPreferences.getInstance();
   if (value is int) {
