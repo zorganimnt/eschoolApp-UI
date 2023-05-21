@@ -60,4 +60,8 @@ class User extends Authenticatable
         return $this->hasOne(Formation::class);
     }
 
+    public function cours()
+    {
+        return $this->hasOne(Cours::class);
+    }
 }

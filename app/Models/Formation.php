@@ -9,6 +9,7 @@ class Formation extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'formation_id',
         'formation_title',
         'formation_category',
         'formation_price',
