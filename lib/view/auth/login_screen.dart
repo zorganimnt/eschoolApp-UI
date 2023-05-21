@@ -48,24 +48,24 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(
                       height: 20,
                     ),
-                    Container(
-                      width: double.infinity,
-                      child: CustomTextButton(
-                          onPressed: () {
-                            controller.handleLogin();
-                          },
-                          child: Obx(
-                            () => controller.isLoading.value
-                                ? CircularProgressIndicator(
-                                    color: Colors.white,
-                                  )
-                                : Text(
-                                    "Connexion",
-                                    style: TextStyle(
-                                        fontSize: 15, color: Colors.white),
-                                  ),
-                          )),
-                    ),
+                   SizedBox(
+                     width: double.infinity,
+                     child: CustomTextButton(
+                         onPressed: () {
+                           controller.handleLogin();
+                         },
+                         child: Obx(
+                           () => controller.isLoading.value
+                               ? CircularProgressIndicator(
+                                   color: Colors.white,
+                                 )
+                               : Text(
+                                   "Connexion",
+                                   style: TextStyle(
+                                       fontSize: 15, color: Colors.white),
+                                 ),
+                         )),
+                   ),
                   ],
                 ),
               ),

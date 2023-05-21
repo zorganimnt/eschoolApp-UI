@@ -47,4 +47,10 @@ class AuthController extends GetxController {
     isLoading.value = false;
     return null;
   }
+
+  RxBool isOnHover = RxBool(false);
+  void changeHover(value) {
+    isOnHover.value = value; 
+    update(); 
+  }
 }
