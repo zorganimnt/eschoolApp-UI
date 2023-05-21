@@ -93,74 +93,80 @@ class ListFormation extends StatelessWidget {
                                               Text("modifier"),
                                             ]),
                                       ); */
-                          //  SizedBox(
-                          //       height: MediaQuery.of(context).size.height,
-                          //       child: ListView.builder(
-                          //           itemCount: controller.id.length,
-                          //           itemBuilder: (context, index) {
-                          //             return controller.role[index] == 'Admin'
-                          //                 ? SizedBox()
-                          //                 : Container(
-                          //                     width: double.infinity,
-                          //                     height: 50,
-                          //                     child: Row(
-                          //                         mainAxisAlignment:
-                          //                             MainAxisAlignment.spaceAround,
-                          //                         children: [
-                          //                           Text(controller.id[index].toString()),
-                          //                           Text(controller.formationnom[index]),
-                          //                           Text(controller.formationphoto[index]),
-                          //                           Text(controller.formationprix[index].toString()),
-                          //                           Text(controller.formationformateur[index]),
-                          //                           Text(controller.formationformateur[index]),
-                          //                           Text(controller.formationduree[index]),
-                          //                           Text(controller.formationcategory[index]),
-                          //                           Row(
-                          //                             children: [
-                          //                               InkWell(
-                          //                                 onTap: () {
-                          //                                   showInformationFormation(
-                          //                                     context,
-                          //                                     controller.id[index],
-                          //                                     controller.formationnom[index],
-                          //                                     controller.formationphoto[index],
-                          //                                     controller.formationprix[index],
-                          //                                     controller.formationformateur[index],
-                          //                                     controller.formationduree[index],
-                          //                                     controller.formationcategory[index],
-                          //                                     controller.role[index],
-                          //                                   );
-                          //                                   controller.putValue(
-                          //                                     controller.formationnom[index],
-                          //                                     controller.formationphoto[index],
-                          //                                     controller.formationprix[index],
-                          //                                     controller.formationformateur[index],
-                          //                                     controller.formationduree[index],
-                          //                                     controller.formationcategory[index],
 
-                          //                                   );
-                          //                                 },
-                          //                                 child: Icon(
-                          //                                   LineIcons.eye,color: Colors.grey.shade800,
-                          //                                 ),
-                          //                               ),
-                          //                               InkWell(
-                          //                                 onTap: () {
-                          //                                   showConfirmationDelete(
-                          //                                     context,controller.id[index]);
-                          //                                 },
-                          //                                 child: Icon(
-                          //                                   LineIcons.trash,
-                          //                                   color: Colors
-                          //                                       .redAccent,
-                          //                                 ),
-                          //                               ),
-                          //                             ],
-                          //                           )
-                          //                         ]),
-                          //                   );
-                          //           }),
-                          //     )
+
+                           SizedBox(
+                                height: MediaQuery.of(context).size.height,
+                                child: ListView.builder(
+                                    itemCount: controller.id.length,
+                                    itemBuilder: (context, index) {
+                                      return controller.role[index] == 'Admin'
+                                          ? SizedBox()
+                                          : Container(
+                                              width: double.infinity,
+                                              height: 50,
+                                              child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.spaceAround,
+                                                  children: [
+                                                    Text(controller.id[index].toString()),
+                                                    Text(controller.formationnom[index]),
+                                                    Text(controller.formationphoto[index]),
+                                                   // Text(controller.formationprix[index]),
+                                                    Text(controller.formationformateur[index]),
+                                                    Text(controller.formationformateur[index]),
+                                                    Text(controller.formationduree[index]),
+                                                    Text(controller.formationcategory[index]),
+
+                                                    Row(
+                                                      children: [
+                                                        InkWell(
+                                                          onTap: () {
+                                                            showInformationFormation(
+                                                              context,
+                                                              controller.id[index],
+                                                              controller.formationnom[index],
+                                                              controller.formationphoto[index],
+                                                              controller.formationprix[index],
+                                                              controller.formationformateur[index],
+                                                              controller.formationduree[index],
+                                                              controller.formationcategory[index],
+                                                              controller.role[index],
+                                                            );
+                                                            controller.putValue(
+                                                              controller.formationnom[index],
+                                                              controller.formationphoto[index],
+                                                              controller.formationprix[index],
+                                                              controller.formationformateur[index],
+                                                              controller.formationduree[index],
+                                                              controller.formationcategory[index],
+
+                                                            );
+                                                          },
+                                                          child: Icon(
+                                                            LineIcons.eye,
+                                                            color: Colors
+                                                                .grey.shade800,
+                                                          ),
+                                                        ),
+                                                        InkWell(
+                                                          onTap: () {
+                                                            showConfirmationDelete(
+                                                                context,
+                                                                controller
+                                                                    .id[index]);
+                                                          },
+                                                          child: Icon(
+                                                            Icons.close,
+                                                            color: Colors.redAccent,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    )
+                                                  ]),
+                                            );
+                                    }),
+                              )
                         ],
                       ),
                     ),

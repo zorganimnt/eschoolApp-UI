@@ -11,6 +11,7 @@ class ListUsers extends StatelessWidget {
   ListUsers({super.key});
 
   final DashboardController controller = Get.put(DashboardController());
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<DashboardController>(
@@ -214,7 +215,7 @@ class ListUsers extends StatelessWidget {
                                 child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
-                                    children: [
+                                    children: const [
                                       Text(
                                         "ID",
                                         style: TextStyle(

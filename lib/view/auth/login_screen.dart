@@ -66,6 +66,22 @@ class LoginScreen extends StatelessWidget {
                                   ),
                           )),
                     ),
+
+                    SizedBox(
+                      height: 34,
+                    ),
+
+                    InkWell(
+                     onTap: () {
+                                      Get.to(RegisterScreen());
+                                        },
+                                        child: Container(
+                                          height: 30,
+                                          width: MediaQuery.of(context).size.width * 1 ,
+                                          child: Center(child: Text("Si vous n'avez pas un compte ? cliquer ici ", style: TextStyle(color: Color.fromARGB(255, 57, 99, 238),),)),
+                                          
+                                          ), 
+                                     ),
                   ],
                 ),
               ),

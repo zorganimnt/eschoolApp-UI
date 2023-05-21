@@ -39,7 +39,7 @@ class ProfileScreen extends StatelessWidget {
                           CircleAvatar(
                             radius: 60,
                             backgroundImage:
-                                AssetImage("assets/icons/pdp1.png"),
+                                AssetImage("assets/icons/bb.jpg"),
                           ),
                           controller.isHover.value
                               ? Stack(

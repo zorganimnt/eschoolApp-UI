@@ -30,7 +30,7 @@ class DashboardHomeScreen extends StatelessWidget {
     ListUsers(),
     ListInscri(),
     ListFormation(),
-    const ChatScreen(),
+     //ChatScreen(),
     ListAvis(),
     const PieChartSample1(),
     ProfileScreen(),
@@ -57,10 +57,47 @@ class DashboardHomeScreen extends StatelessWidget {
 
   bool _isProfileBoxVisible = false;
 
+
+
+
+  bool _isProfileBoxVisible = false;
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<DashboardController>(
         builder: (_) => Scaffold(
+<<<<<<< HEAD
+              body: Stack(
+                alignment: Alignment.topRight,
+                children: [
+                  
+                  Row(  
+                children: [
+                  _buildMenu(context),
+                  Container(
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    decoration:
+                        BoxDecoration(color: Colors.grey.withOpacity(0.05)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            _buildHead(context),
+                            _dashboardAdmin
+                                .elementAt(dashboardController.selectedIndex)
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            
+                ],
+              )));
+=======
                 body: Stack(
               alignment: Alignment.topRight,
               children: [
@@ -99,6 +136,7 @@ class DashboardHomeScreen extends StatelessWidget {
                 ),
               ],
             )));
+>>>>>>> main
   }
 
   Row _buildHead(BuildContext context) {
@@ -127,7 +165,8 @@ class DashboardHomeScreen extends StatelessWidget {
               dashboardController.onChangeItem(7);
             },
             child: SizedBox(
-              width: 200,
+              //color: Colors.red,
+              width: MediaQuery.of(context).size.width * .22,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -147,7 +186,7 @@ class DashboardHomeScreen extends StatelessWidget {
                               width: 4,
                             ),
                             Text(
-                              'Jihene Abidi',
+                              'Rania Ben Ammar',
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold),
                             ),
@@ -161,9 +200,15 @@ class DashboardHomeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+<<<<<<< HEAD
+                  CircleAvatar(
+                      radius: 30,
+                      backgroundImage: AssetImage('assets/icons/bb.jpg')),
+=======
                   const CircleAvatar(
                       radius: 24,
                       backgroundImage: AssetImage('assets/icons/pdp1.png')),
+>>>>>>> main
                 ],
               ),
             ),

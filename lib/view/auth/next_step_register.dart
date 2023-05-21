@@ -37,7 +37,7 @@ class NextStepRegister extends StatelessWidget {
                       color: Colors.black.withOpacity(0.3),
                       borderRadius: BorderRadius.circular(15),
                       image: DecorationImage(
-                          image: AssetImage('assets/icons/user-registration.png'),
+                          image: AssetImage('assets/icons/reg.png'),
                           fit: BoxFit.cover)),
                 ),
                 if (role == "Apprenant") _registerApprenant(context),
