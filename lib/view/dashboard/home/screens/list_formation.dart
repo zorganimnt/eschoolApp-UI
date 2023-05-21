@@ -112,7 +112,7 @@ class ListFormation extends StatelessWidget {
                                                     Text(controller.id[index].toString()),
                                                     Text(controller.formationnom[index]),
                                                     Text(controller.formationphoto[index]),
-                                                    Text(controller.formationprix[index]),
+                                                   // Text(controller.formationprix[index]),
                                                     Text(controller.formationformateur[index]),
                                                     Text(controller.formationformateur[index]),
                                                     Text(controller.formationduree[index]),
@@ -185,7 +185,7 @@ class ListFormation extends StatelessWidget {
       builder: (BuildContext context) {
         return AlertDialog(
           scrollable: true,
-          title: Text(role??""),
+          title: Text(role),
           content: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Obx(
@@ -323,7 +323,6 @@ class ListFormation extends StatelessWidget {
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
-        print("delete clicked !");
         return AlertDialog(
           title: Text("Confirmation"),
           content: SingleChildScrollView(
@@ -442,7 +441,7 @@ class ListFormation extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).pop();
                      controller.addFormation(); 
-                     controller.getFormation("all");
+                     //controller.getFormation("all");
                     },
                     child: Text("Confirmer")),
               ],
@@ -516,7 +515,7 @@ class ModifyInputItem extends StatelessWidget {
             : InkWell(
                 onTap: () {
                   controller.modifyFormation(inputIndex);
-                   //print(controller.nameInChange.value);
+                  // print(controller.nameInChange.value);
                 },
                 child: Icon(LineIcons.edit))
       ],

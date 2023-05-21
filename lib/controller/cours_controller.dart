@@ -1,6 +1,4 @@
-import 'package:eschoolapp/main.dart';
 import 'package:eschoolapp/service/api.dart';
-import 'package:eschoolapp/utils/color.dart';
 import 'package:eschoolapp/utils/notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

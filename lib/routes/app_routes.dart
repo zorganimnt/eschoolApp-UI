@@ -16,7 +16,7 @@ class AppRoutes {
   static const String gestnews = '/gestnews';
   static const String info = '/info';
   static const String homeDashboard = '/home-dashboard';
-  static const String Home = '/home_dash-emp';
+    static const String dashboardEmployer = '/dashboard-employer';
   static const String nextStepRegister = '/next-step-register';
   static const String formation = '/formation-catalogue';
 }

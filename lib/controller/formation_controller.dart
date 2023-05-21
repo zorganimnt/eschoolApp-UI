@@ -18,7 +18,7 @@ class FormationController extends GetxController {
   List<int> id = [];
   List<String> formationnom = [];
   List<String> formationphoto = [];
-  List<String> formationprix = [];
+  List<double> formationprix = [];
   List<String> formationformateur = [];
   List<String> formationduree = [];
   List<String> formationcategory = [];
@@ -47,28 +47,41 @@ class FormationController extends GetxController {
       "categoryFormation": categoryFormation.text,
       //"formation_duree": dureeFormation.value
     };
-    try {
-      dynamic json = await API.addFormationService(data);
-      if (json != null) {
-        if (json['success']) {
-          showSuccess("Success", "Formation ajouté avec succées",
-              LineIcons.checkCircle);
-        } else {
-          showError("Error", json['message'], LineIcons.exclamationTriangle);
-        }
+    // try {
+    //   dynamic json = await API.addFormationService(data);
+    //   if (json != null) {
+    //     if (json['success']) {
+    //       showSuccess("Success", "Formation ajouté avec succées",
+    //           LineIcons.checkCircle);
+    //     } else {
+    //       showError("Error", json['message'], LineIcons.exclamationTriangle);
+    //     }
+    //   }
+    // } catch (e) {
+    //   showError(
+    //       "Erreur est servenue", e.toString(), LineIcons.exclamationTriangle);
+    // } finally {
+    //   titleFormation.clear();
+    //   photoFormation.clear();
+    //   priceFormation.clear();
+    //   formateurFormation.clear();
+    //   dureeFormation.clear();
+    //   categoryFormation.clear();
+    //   isLoading.value = false;
+    // }
+    print(data);
+    dynamic json = await API.addFormationService(data);
+    isLoading.value = false;
+    if (json != null) {
+      if (json['success']) {
+        showSuccess(
+            "Success", "Formation ajouté avec succées", LineIcons.checkCircle);
+      } else {
+        showError("Error", json['message'], LineIcons.exclamationTriangle);
       }
-    } catch (e) {
-      showError(
-          "Erreur est servenue", e.toString(), LineIcons.exclamationTriangle);
-    } finally {
-      titleFormation.clear();
-      photoFormation.clear();
-      priceFormation.clear();
-      formateurFormation.clear();
-      dureeFormation.clear();
-      categoryFormation.clear();
-      isLoading.value = false;
     }
+    isLoading.value = false;
+    return null;
   }
 
 // Méthode pour rechercher une formation
@@ -124,7 +137,9 @@ class FormationController extends GetxController {
                     color: Colors.grey,
                     size: 21,
                   ),
-                  onPressed: () {},
+                  onPressed: (
+                    //controller.addFormation Function() ; 
+                  ) {},
                 ),
                 SizedBox(
                   width: 10,
@@ -381,20 +396,15 @@ class FormationController extends GetxController {
 
   List<DataColumn> columns = const [
     DataColumn(
-        label: Text(
-      'ID',
-      style: TextStyle(fontWeight: FontWeight.bold),
-    )),
+        label: Text('ID', style: TextStyle(fontWeight: FontWeight.bold),)),
     DataColumn(
         label: Text('Titre', style: TextStyle(fontWeight: FontWeight.bold))),
     DataColumn(
-        label:
-            Text('Catégorie', style: TextStyle(fontWeight: FontWeight.bold))),
+        label: Text('Catégorie', style: TextStyle(fontWeight: FontWeight.bold))),
     DataColumn(
         label: Text('Prix', style: TextStyle(fontWeight: FontWeight.bold))),
     DataColumn(
-        label:
-            Text('Formateur', style: TextStyle(fontWeight: FontWeight.bold))),
+        label:Text('Formateur', style: TextStyle(fontWeight: FontWeight.bold))),
     DataColumn(
         label: Text('Durée', style: TextStyle(fontWeight: FontWeight.bold))),
     DataColumn(
@@ -402,12 +412,12 @@ class FormationController extends GetxController {
     DataColumn(
         label: Text('Action', style: TextStyle(fontWeight: FontWeight.bold))),
   ];
-  /*     id.add(element['id']);
-            title.add(element['formation_title']);
-            price.add(element['formation_price']);
-            photo.add(element['formation_picture']);
-            formateur.add(element['formation_formateur']);
-            category.add(element['formation_category']);
-            duree.add(element['formation_duree']); */
+      //  id.add(element['id']);
+      //       title.add(element['formation_title']);
+      //       price.add(element['formation_price']);
+      //       photo.add(element['formation_picture']);
+      //       formateur.add(element['formation_formateur']);
+      //       category.add(element['formation_category']);
+      //       duree.add(element['formation_duree']); 
 
 }

@@ -5,9 +5,8 @@
 // import '../../../../utils/validators.dart';
 // import '../../../../widgets/widgets.dart';
 
-
-// class ChatScreen extends StatelessWidget {
-//    ChatScreen({super.key});
+// class CoursScreen extends StatelessWidget {
+//    CoursScreen({super.key});
   
 // final CoursController controller = Get.put(CoursController());
 //   @override

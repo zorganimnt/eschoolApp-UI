@@ -261,7 +261,8 @@ class ListUsers extends StatelessWidget {
                                               width: double.infinity,
                                               height: 50,
                                               child: Row(
-                                                  mainAxisAlignment:MainAxisAlignment.spaceAround,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.spaceAround,
                                                   children: [
                                                     Text(controller.id[index].toString()),
                                                     Text(controller.nom[index]),
@@ -290,16 +291,13 @@ class ListUsers extends StatelessWidget {
                                                           },
                                                           child: Icon(
                                                             LineIcons.eye,
-                                                            color: Colors
-                                                                .grey.shade800,
+                                                            color: Colors.grey.shade800,
                                                           ),
                                                         ),
                                                         InkWell(
                                                           onTap: () {
                                                             showConfirmationDelete(
-                                                                context,
-                                                                controller
-                                                                    .id[index]);
+                                                              context,controller.id[index]);
                                                           },
                                                           child: Icon(
                                                             LineIcons.trash,

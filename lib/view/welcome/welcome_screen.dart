@@ -5,6 +5,7 @@ import 'package:eschoolapp/view/auth/login_screen.dart';
 import 'package:eschoolapp/view/auth/reigster_screen.dart';
 import 'package:eschoolapp/view/information/information_screen.dart';
 import 'package:eschoolapp/view/welcome/components/formation_widget.dart';
+import 'package:eschoolapp/view/welcome/components/guide_widget.dart';
 import 'package:eschoolapp/view/welcome/widget_page.dart';
 import 'package:eschoolapp/widgets/deffault_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -510,33 +511,35 @@ class WelcomePage extends StatelessWidget {
           Row(
             //mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
+              InkWell(
+                    onTap: () {
+                    Get.to(GuideWidget());
+                    },
+             child: Container(
                 height: 50,
-                width: 120,
+                width: 180,
                 decoration: BoxDecoration(
                     color: primaryColor,
                     borderRadius: BorderRadius.circular(15)),
                 child: Center(
-                    child: Text(
-                  "Commencer",
-                  style: TextStyle(color: Colors.white),
+                    child: Text("Plus détails",style: TextStyle(color: Colors.white),
                 )),
-              ),
+              ),),
               SizedBox(
                 width: 10,
               ),
-              Container(
-                height: 50,
-                width: 120,
-                decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(15)),
-                child: Center(
-                    child: Text(
-                  "Plus détails",
-                  style: TextStyle(color: primaryColor),
-                )),
-              )
+              // Container(
+              //   height: 50,
+              //   width: 120,
+              //   decoration: BoxDecoration(
+              //       color: Colors.grey.withOpacity(0.1),
+              //       borderRadius: BorderRadius.circular(15)),
+              //   child: Center(
+              //       child: Text(
+              //     "Plus détails",
+              //     style: TextStyle(color: primaryColor),
+              //   )),
+              // )
             ],
           )
         ],
@@ -696,39 +699,74 @@ class WelcomePage extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              Row(
+              //Row(
                 //mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 50,
-                    width: 120,
-                    decoration: BoxDecoration(
-                        color: primaryColor,
-                        borderRadius: BorderRadius.circular(15)),
-                    child: Center(
-                        child: Text(
-                      "Commencer",
-                      style: TextStyle(color: Colors.white),
-                    )),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Container(
-                    height: 50,
-                    width: 120,
-                    decoration: BoxDecoration(
-                        color: Colors.grey.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(15)),
-                    child: Center(
-                        child: Text(
-                      "Plus détails",
-                      style: TextStyle(color: primaryColor),
-                    )),
-                  )
-                ],
-              )
+              //   children: [
+              //     Container(
+              //       height: 50,
+              //       width: 120,
+              //       decoration: BoxDecoration(
+              //           color: primaryColor,
+              //           borderRadius: BorderRadius.circular(15)),
+              //       child: Center(
+              //           child: Text(
+              //         "Commencer",
+              //         style: TextStyle(color: Colors.white),
+              //       )),
+              //     ),
+              //     SizedBox(
+              //       width: 10,
+              //     ),
+              //     Container(
+              //       height: 50,
+              //       width: 120,
+              //       decoration: BoxDecoration(
+              //           color: Colors.grey.withOpacity(0.1),
+              //           borderRadius: BorderRadius.circular(15)),
+              //       child: Center(
+              //           child: Text(
+              //         "Plus détails",
+              //         style: TextStyle(color: primaryColor),
+              //       )),
+              //     )
+              //   ],
+              // )
+
+              Row(
+            //mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InkWell(
+                    onTap: () {
+                    Get.to(GuideWidget());
+                    },
+             child: Container(
+                height: 50,
+                width: 180,
+                decoration: BoxDecoration(
+                    color: primaryColor,
+                    borderRadius: BorderRadius.circular(15)),
+                child: Center(
+                    child: Text("Plus détails",style: TextStyle(color: Colors.white),
+                )),
+              ),),
+              SizedBox(
+                width: 10,
+              ),
+              // Container(
+              //   height: 50,
+              //   width: 120,
+              //   decoration: BoxDecoration(
+              //       color: Colors.grey.withOpacity(0.1),
+              //       borderRadius: BorderRadius.circular(15)),
+              //   child: Center(
+              //       child: Text(
+              //     "Plus détails",
+              //     style: TextStyle(color: primaryColor),
+              //   )),
+              // )
             ],
+          )
+          ],
           ),
         ),
         SizedBox(
@@ -945,7 +983,6 @@ class WelcomePage extends StatelessWidget {
                       InkWell(
                         borderRadius: BorderRadius.circular(10),
                         onTap: () {
-                          // zid hedhi
                           Get.to(InfoScreen());
                         },
                         child: Text("Formation",

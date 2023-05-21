@@ -36,10 +36,9 @@ class AuthController extends GetxController {
         if (json['data']['user_data']['role'] == 'Admin') {
         
           Get.offAllNamed(AppRoutes.homeDashboard);
-
-        } else if (json['data']['user_data']['role'] == 'Employer') {
+           } else if (json['data']['user_data']['role'] == 'Employer') {
           // Ajoutez ici la logique pour rediriger vers la page employerdashboard
-           Get.offAllNamed(AppRoutes.homeDashboard);
+           Get.offAllNamed(AppRoutes.dashboardEmployer);
         } else {
           showError(
               "Erreur", "Vous n'avez pas le droit", LineIcons.exclamation);

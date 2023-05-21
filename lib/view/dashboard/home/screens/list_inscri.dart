@@ -205,6 +205,11 @@ class ListInscri extends StatelessWidget {
                                             fontWeight: FontWeight.bold),
                                       ),
                                       Text(
+                                        "Paiment",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(
                                         "E-mail",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
