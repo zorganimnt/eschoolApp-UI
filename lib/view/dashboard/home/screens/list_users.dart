@@ -261,60 +261,42 @@ class ListUsers extends StatelessWidget {
                                               height: 50,
                                               child: Row(
                                                   mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceAround,
+                                                      MainAxisAlignment.spaceAround,
                                                   children: [
-                                                    Text(controller.id[index]
-                                                        .toString()),
+                                                    Text(controller.id[index].toString()),
                                                     Text(controller.nom[index]),
-                                                    Text(controller
-                                                        .prenom[index]),
-                                                    Text(controller
-                                                        .email[index]),
-                                                    Text(controller
-                                                        .phone[index]),
+                                                    Text(controller.prenom[index]),
+                                                    Text(controller.email[index]),
+                                                    Text(controller.phone[index]),
                                                     Row(
                                                       children: [
                                                         InkWell(
                                                           onTap: () {
                                                             showInformationUser(
                                                               context,
-                                                              controller
-                                                                  .id[index],
-                                                              controller
-                                                                  .nom[index],
-                                                              controller.prenom[
-                                                                  index],
-                                                              controller
-                                                                  .phone[index],
-                                                              controller
-                                                                  .email[index],
-                                                              controller
-                                                                  .role[index],
+                                                              controller.id[index],
+                                                              controller.nom[index],
+                                                              controller.prenom[index],
+                                                              controller.phone[index],
+                                                              controller.email[index],
+                                                              controller.role[index],
                                                             );
                                                             controller.putValue(
-                                                              controller
-                                                                  .nom[index],
-                                                              controller.prenom[
-                                                                  index],
-                                                              controller
-                                                                  .phone[index],
-                                                              controller
-                                                                  .email[index],
+                                                              controller.nom[index],
+                                                              controller.prenom[index],
+                                                              controller.phone[index],
+                                                              controller.email[index],
                                                             );
                                                           },
                                                           child: Icon(
                                                             LineIcons.eye,
-                                                            color: Colors
-                                                                .grey.shade800,
+                                                            color: Colors.grey.shade800,
                                                           ),
                                                         ),
                                                         InkWell(
                                                           onTap: () {
                                                             showConfirmationDelete(
-                                                                context,
-                                                                controller
-                                                                    .id[index]);
+                                                              context,controller.id[index]);
                                                           },
                                                           child: Icon(
                                                             LineIcons.trash,

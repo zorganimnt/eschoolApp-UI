@@ -99,7 +99,7 @@ class API {
     }
   }
 
-  // SUPPRIMER UN TILISATEUR
+  // SUPPRIMER UN UTILISATEUR
   static Future<dynamic> deleteUserService(var data) async {
     String theUrl = '$url/delete-user';
     print(theUrl);
@@ -202,19 +202,19 @@ class API {
   }
 
     // AJOUTER UNE FORMATION
-  static Future<dynamic> getInscriService(var data) async {
-    String theUrl = '$url/add-formation';
-    print(theUrl);
-    try {
-      Response response =
-          await client.post(theUrl, data: convert.jsonEncode(data));
-      return response.data;
-    } catch (e) {
-      print(e.toString());
-      showError("Erreur", "Erreur est servenue", LineIcons.exclamationCircle);
-    }
-  }
-
+  // static Future<dynamic> getInscriService(var data) async {
+  //   String theUrl = '$url/add-formation';
+  //   print(theUrl);
+  //   try {
+  //     Response response =
+  //         await client.post(theUrl, data: convert.jsonEncode(data));
+  //     return response.data;
+  //   } catch (e) {
+  //     print(e.toString());
+  //     showError("Erreur", "Erreur est servenue", LineIcons.exclamationCircle);
+  //   }
+  // }
+// RECHERCHER UNE FORMATION
  static Future<dynamic> searchFormationService(var data) async {
     String theUrl = '$url/search-formation';
     print(theUrl);
@@ -229,4 +229,59 @@ class API {
   }
   // ******** END FORMATION API ********* //
 
+
+  // ************ Cours API ************ //
+ // RECUPÉRER UNE/DES FORMATION
+  static Future<dynamic> getCoursService(var data) async {
+    String theUrl = '$url/get-cours';
+    print(theUrl);
+    try {
+      Response response =
+          await client.post(theUrl, data: convert.jsonEncode(data));
+      return response.data;
+    } catch (e) {
+      print(e.toString());
+      showError("Erreur", "Erreur est servenue", LineIcons.exclamationCircle);
+    }
+  }
+ // MODIFIER UNE FORMATION
+  static Future<dynamic> modifyCoursService(var data) async {
+    String theUrl = '$url/modify-cours';
+    print(theUrl);
+    try {
+      Response response =
+          await client.post(theUrl, data: convert.jsonEncode(data));
+      return response.data;
+    } catch (e) {
+      print(e.toString());
+      showError("Erreur", "Erreur est servenue", LineIcons.exclamationCircle);
+    }
+  }
+   // SUPPRIMER UNE FORMATION
+  static Future<dynamic> deleteCoursService(var data) async {
+    String theUrl = '$url/delete-cours';
+    print(theUrl);
+    try {
+      Response response =
+          await client.post(theUrl, data: convert.jsonEncode(data));
+      return response.data;
+    } catch (e) {
+      print(e.toString());
+      showError("Erreur", "Erreur est servenue", LineIcons.exclamationCircle);
+    }
+  }
+    // AJOUTER UNE FORMATION
+  static Future<dynamic> addCoursService(var data) async {
+    String theUrl = '$url/add-cours';
+    print(theUrl);
+    try {
+      Response response =
+          await client.post(theUrl, data: convert.jsonEncode(data));
+      return response.data;
+    } catch (e) {
+      print(e.toString());
+      showError("Erreur", "Erreur est servenue", LineIcons.exclamationCircle);
+    }
+  }
+ // ******** END Cours API ************ //
 }

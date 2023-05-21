@@ -100,14 +100,7 @@ class ProfileScreen extends StatelessWidget {
                       ));
                       },
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    ParametreItemWidget(
-                      icon: Icons.logout_outlined,
-                      title: "Déconnexion",
-                      direction: () {},
-                    ),
+
                   ],
                 ),
               ),

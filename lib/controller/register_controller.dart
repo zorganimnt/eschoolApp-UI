@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:eschoolapp/routes/app_routes.dart';
 import 'package:eschoolapp/service/api.dart';
 import 'package:eschoolapp/utils/notifications.dart';
@@ -100,7 +99,7 @@ class RegisterController extends GetxController {
     return null;
   }
 
-  registerParent() async {
+  registerParent(context) async {
     isLoading.value = true;
     int userID = await getValue('userID');
     FocusManager.instance.primaryFocus?.unfocus();
@@ -120,9 +119,10 @@ class RegisterController extends GetxController {
     isLoading.value = false;
     if (json != null) {
       if (json['success']) {
-        Get.to(NextStepRegister(
-          role: role.value,
-        ));
+        // Get.to(NextStepRegister(
+        //   role: role.value,
+        // ));
+        showConfirmation(context);
       } else {
         showError("Error", json['message'], LineIcons.exclamationTriangle);
       }
@@ -131,7 +131,7 @@ class RegisterController extends GetxController {
     return null;
   }
 
-  registerFormateur() async {
+  registerFormateur(context) async {
     isLoading.value = true;
     int userID = await getValue('userID');
     FocusManager.instance.primaryFocus?.unfocus();
@@ -152,9 +152,10 @@ class RegisterController extends GetxController {
     isLoading.value = false;
     if (json != null) {
       if (json['success']) {
-        Get.to(NextStepRegister(
-          role: role.value,
-        ));
+        // Get.to(NextStepRegister(
+        //   role: role.value,
+        // ));
+        showConfirmation(context);
       } else {
         showError("Error", json['message'], LineIcons.exclamationTriangle);
       }
@@ -179,7 +180,7 @@ class RegisterController extends GetxController {
             TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
-                  // Get.offAllNamed(AppRoutes.welcome);
+                  Get.offAllNamed(AppRoutes.welcome);
                 },
                 child: Text("D'accord"))
           ],
