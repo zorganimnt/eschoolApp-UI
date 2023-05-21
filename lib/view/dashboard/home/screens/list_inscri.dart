@@ -61,7 +61,7 @@ class ListInscri extends StatelessWidget {
                                 color: Colors.grey.withOpacity(0.3),
                                 width: double.infinity,
                                 height: 50,
-                                child: Row(
+                                child: const Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
                                     children: [
@@ -81,6 +81,11 @@ class ListInscri extends StatelessWidget {
                                             fontWeight: FontWeight.bold),
                                       ),
                                       Text(
+                                        "Paiment",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(
                                         "E-mail",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
@@ -91,7 +96,7 @@ class ListInscri extends StatelessWidget {
                               SizedBox(
                                 height: MediaQuery.of(context).size.height,
                                 child: ListView.builder(
-                                    itemCount: 2,
+                                    itemCount: 4,
                                     itemBuilder: (context, index) {
                                       return Container(
                                         color: Colors.white,

@@ -38,7 +38,7 @@ class RegisterScreen extends StatelessWidget {
                         color: Colors.black.withOpacity(0.3),
                         borderRadius: BorderRadius.circular(15),
                         image: DecorationImage(
-                            image: AssetImage('assets/icons/register.jpeg'),
+                            image: AssetImage('assets/icons/user-registration.png'),
                             fit: BoxFit.cover)),
                   ),
                   SizedBox(

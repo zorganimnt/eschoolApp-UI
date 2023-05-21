@@ -17,7 +17,7 @@ class NoteModel {
   NoteModel.fromJson(Map<String, dynamic> json) {
     devoir = json['devoir']; // lahne njibou ely fy controller l back 
     matiere = json['matiere'];
-    note = json['note'];// saye
+    note = json['note'];// 
     prof = json['prof'];
     student = json['student'];
   }

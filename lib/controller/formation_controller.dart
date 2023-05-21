@@ -5,6 +5,8 @@ import 'package:eschoolapp/utils/notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:get/state_manager.dart';
+
 
 class FormationController extends GetxController {
   @override
@@ -12,16 +14,25 @@ class FormationController extends GetxController {
     getFormation("all");
     super.onInit();
   }
-
+  List<String> role = [];
+  List<int> id = [];
+  List<String> formationnom = [];
+  List<String> formationphoto = [];
+  List<double> formationprix = [];
+  List<String> formationformateur = [];
+  List<String> formationduree = [];
+  List<String> formationcategory = [];
   RxBool isLoading = RxBool(false);
   TextEditingController titleFormation = TextEditingController();
   TextEditingController photoFormation = TextEditingController();
   TextEditingController priceFormation = TextEditingController();
   TextEditingController formateurFormation = TextEditingController();
+  TextEditingController dureeFormation = TextEditingController();
+  TextEditingController categoryFormation = TextEditingController();
 
   List<String> formateurNames = [];
-  RxString dureeFormation = ''.obs;
-  RxString categoryFormation = ''.obs;
+  // RxString dureeFormation = ''.obs;
+  // RxString categoryFormation = ''.obs;
 
   TextEditingController searchBar = TextEditingController();
 
@@ -32,30 +43,48 @@ class FormationController extends GetxController {
       "formation_picture": photoFormation.text,
       "formation_price": priceFormation.text,
       "formation_formateur": formateurFormation.text,
-      "formation_duree": dureeFormation.value
+      "formation_duree": dureeFormation.text,
+      "categoryFormation": categoryFormation.text,
+      //"formation_duree": dureeFormation.value
     };
-    try {
-      dynamic json = await API.addFormationService(data);
-      if (json != null) {
-        if (json['success']) {
-          showSuccess("Success", "Formation ajouté avec succées",
-              LineIcons.checkCircle);
-        } else {
-          showError("Error", json['message'], LineIcons.exclamationTriangle);
-        }
+    // try {
+    //   dynamic json = await API.addFormationService(data);
+    //   if (json != null) {
+    //     if (json['success']) {
+    //       showSuccess("Success", "Formation ajouté avec succées",
+    //           LineIcons.checkCircle);
+    //     } else {
+    //       showError("Error", json['message'], LineIcons.exclamationTriangle);
+    //     }
+    //   }
+    // } catch (e) {
+    //   showError(
+    //       "Erreur est servenue", e.toString(), LineIcons.exclamationTriangle);
+    // } finally {
+    //   titleFormation.clear();
+    //   photoFormation.clear();
+    //   priceFormation.clear();
+    //   formateurFormation.clear();
+    //   dureeFormation.clear();
+    //   categoryFormation.clear();
+    //   isLoading.value = false;
+    // }
+    print(data);
+    dynamic json = await API.addFormationService(data);
+    isLoading.value = false;
+    if (json != null) {
+      if (json['success']) {
+        showSuccess(
+            "Success", "Formation ajouté avec succées", LineIcons.checkCircle);
+      } else {
+        showError("Error", json['message'], LineIcons.exclamationTriangle);
       }
-    } catch (e) {
-      showError(
-          "Erreur est servenue", e.toString(), LineIcons.exclamationTriangle);
-    } finally {
-      titleFormation.clear();
-      photoFormation.clear();
-      priceFormation.clear();
-      formateurFormation.clear();
-      isLoading.value = false;
     }
+    isLoading.value = false;
+    return null;
   }
 
+// Méthode pour rechercher une formation
   Future<void> searchFormation(value) async {
     RxString nomFormateur = ''.obs; 
     rows.clear();
@@ -108,7 +137,9 @@ class FormationController extends GetxController {
                     color: Colors.grey,
                     size: 21,
                   ),
-                  onPressed: () {},
+                  onPressed: (
+                    //controller.addFormation Function() ; 
+                  ) {},
                 ),
                 SizedBox(
                   width: 10,
@@ -268,28 +299,112 @@ class FormationController extends GetxController {
     ));
   }
 
-  // Méthode pour afficher une/des formation
 
-  // Méthode pour supprimer une formation
+  // Méthode pour modifier une formation
+  
+  // MODIFIER UNE FORMATION
+  RxBool nameFormationInChange = RxBool(false);
+  RxBool PictureFormationInChnage = RxBool(false);
+  RxBool PriceFormationInChange = RxBool(false);
+  RxBool FormateurFormationInChange = RxBool(false);
+  RxBool DureeFormationInChange = RxBool(false);
+  RxBool CategoryFormationInChange = RxBool(false);
 
-  // Méthode pour recherche une formation
+  TextEditingController changeNameFormation = TextEditingController();
+  TextEditingController changePictureFormation = TextEditingController();
+  TextEditingController changePriceFormation = TextEditingController();
+  TextEditingController changeFormateurFormation = TextEditingController();
+  TextEditingController changeDureeFormation = TextEditingController();
+  TextEditingController changeCategoryFormation = TextEditingController();
+
+  void putValue(name, picture, price, formateur, duree, category) {
+    changeNameFormation.text = name;
+    changePictureFormation.text = picture;
+    changePriceFormation.text = price;
+    changeFormateurFormation.text = formateur;
+    changeDureeFormation.text = duree;
+    changeCategoryFormation.text = category;
+
+    update();
+  }
+    void modifyFormation(inputID) {
+    switch (inputID) {
+      case 1:
+        nameFormationInChange.value = !nameFormationInChange.value;
+
+        break;
+      case 2:
+        PictureFormationInChnage.value = !PictureFormationInChnage.value;
+
+        break;
+      case 3:
+        PriceFormationInChange.value = !PriceFormationInChange.value;
+
+        break;
+      case 4:
+        FormateurFormationInChange.value = !FormateurFormationInChange.value;
+
+        break;
+      case 5:
+        DureeFormationInChange.value = !DureeFormationInChange.value;
+
+        break;
+         case 6:
+        CategoryFormationInChange.value = !CategoryFormationInChange.value;
+
+        break;
+      default:
+    }
+  }
+
+  updateFormation(id) async {
+    var data = {
+      "formation_id": id,
+      "formation_title": titleFormation.text,
+      "formation_picture": photoFormation.text,
+      "formation_price": priceFormation.text,
+      "formation_formateur": formateurFormation.text,
+      "formation_duree": dureeFormation.text,
+      "categoryFormation": categoryFormation.text,
+    };
+    print(data);
+    dynamic json = await API.modifyFormationService(data);
+    isLoading.value = false;
+    if (json != null) {
+      if (json['success']) {
+        showSuccess("Success", "Formation modifier avec succées",
+            LineIcons.checkCircle);
+      } else {
+        showError("Error", json['message'], LineIcons.exclamationTriangle);
+      }
+    }
+    isLoading.value = false;
+    changeNameFormation.clear();
+    changePictureFormation.clear();
+    changePriceFormation.clear();
+    changeFormateurFormation.clear();
+    changeDureeFormation.clear();
+    PictureFormationInChnage.value = false;
+    PriceFormationInChange.value = false;
+    FormateurFormationInChange.value = false;
+    DureeFormationInChange.value = false;
+    CategoryFormationInChange.value = false;
+
+    return null;
+  }
+
 
   List<DataColumn> columns = const [
     DataColumn(
-        label: Text(
-      'ID',
-      style: TextStyle(fontWeight: FontWeight.bold),
-    )),
+        label: Text('ID', style: TextStyle(fontWeight: FontWeight.bold),)),
     DataColumn(
         label: Text('Titre', style: TextStyle(fontWeight: FontWeight.bold))),
     DataColumn(
-        label:
-            Text('Catégorie', style: TextStyle(fontWeight: FontWeight.bold))),
+        label: Text('Catégorie', style: TextStyle(fontWeight: FontWeight.bold))),
     DataColumn(
         label: Text('Prix', style: TextStyle(fontWeight: FontWeight.bold))),
     DataColumn(
-        label:
-            Text('Formateur', style: TextStyle(fontWeight: FontWeight.bold))),
+        label:Text('Formateur', style: TextStyle(fontWeight: FontWeight.bold))),
     DataColumn(
         label: Text('Durée', style: TextStyle(fontWeight: FontWeight.bold))),
     DataColumn(
@@ -297,12 +412,12 @@ class FormationController extends GetxController {
     DataColumn(
         label: Text('Action', style: TextStyle(fontWeight: FontWeight.bold))),
   ];
-  /*     id.add(element['id']);
-            title.add(element['formation_title']);
-            price.add(element['formation_price']);
-            photo.add(element['formation_picture']);
-            formateur.add(element['formation_formateur']);
-            category.add(element['formation_category']);
-            duree.add(element['formation_duree']); */
+      //  id.add(element['id']);
+      //       title.add(element['formation_title']);
+      //       price.add(element['formation_price']);
+      //       photo.add(element['formation_picture']);
+      //       formateur.add(element['formation_formateur']);
+      //       category.add(element['formation_category']);
+      //       duree.add(element['formation_duree']); 
 
 }
