@@ -8,7 +8,10 @@ use App\Http\Controllers\API\StudentController;
 use App\Http\Controllers\API\ParentController;
 use App\Http\Controllers\API\NoteController;
 use App\Http\Controllers\API\ProfController;
+use App\Http\Controllers\API\FormateurController;
+=======
 use App\Http\Controllers\api\CoursController;
+
 
 
 
@@ -109,7 +112,7 @@ Route::controller(AdminController::class)->group(function () {
     Route::post('modify-user', 'modifyUser');
     Route::post('modify-formation', 'modifyFormation');
     Route::post('modify-status-user', 'modifyStatusUser');
-    // READ API // 
+    // READ API //
     Route::post('get-user', 'getUser');
     Route::post('search-user', 'searchUserBar');
     Route::post('get-user-by-role', 'getUserByRole');
@@ -117,16 +120,23 @@ Route::controller(AdminController::class)->group(function () {
     Route::post('search-formation', 'searchFormation');
 
 
-    // DELETE API // 
+    // DELETE API //
     Route::post('delete-user', 'deleteUser');
     Route::post('delete-formation', 'deleteFormation');
 
 
 
+
+});
+
+
+Route::controller(FormateurController::class)->group(function () {
+
     
 });
 
 Route::controller(CoursController::class)->group(function () {
+
 
     // CREATE API //
     Route::post('add-cours', 'addCours');
@@ -134,13 +144,18 @@ Route::controller(CoursController::class)->group(function () {
     // MODIFY API //
     Route::post('modify-cours', 'modifyCours');
 
+    // READ API //
+    Route::post('get-cours', 'getCours');
+
+    // DELETE API //
+
     // READ API // 
     Route::post('get-cours', 'getCours');
 
     // DELETE API // 
+
     Route::post('delete-cours', 'deleteCours');
 
-
-
-
 });
+
+

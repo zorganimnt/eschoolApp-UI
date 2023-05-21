@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Cours extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'cours_id',
         'formation_title',
@@ -16,8 +17,15 @@ class Cours extends Model
         'cours_support',
     ];
 
+
+    //public function user()
+    //{
+     //   return $this->belongsTo(User::class);
+   //     }
+
     // public function user()
     // {
     //     return $this->belongsTo(User::class);
     // }
+
 }

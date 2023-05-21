@@ -16,9 +16,9 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('formation_formateur');
             $table->foreign('formation_formateur')->references('id')->on('users')->onDelete('cascade');
-            $table->string('formation_title'); 
-            $table->double('formation_price'); 
-            $table->string('formation_category'); 
+            $table->string('formation_title');
+            $table->double('formation_price');
+            $table->string('formation_category');
             $table->string('formation_duree');
             $table->string('formation_picture');
             $table->timestamps();
