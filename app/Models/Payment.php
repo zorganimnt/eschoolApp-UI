@@ -15,5 +15,6 @@ class Payment extends Model
         'payment_amount',
         'formation_id',
         'apprenant_id',
+        'parent_id',
     ];
 }

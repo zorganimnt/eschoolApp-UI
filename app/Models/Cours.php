@@ -17,8 +17,15 @@ class Cours extends Model
         'cours_support',
     ];
 
+
     //public function user()
     //{
      //   return $this->belongsTo(User::class);
    //     }
+
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
+
 }

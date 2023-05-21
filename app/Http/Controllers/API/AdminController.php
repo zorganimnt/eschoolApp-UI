@@ -217,17 +217,14 @@ class AdminController extends BaseController
         if ($validator->fails()) {
             return $this->sendError('Informations Incorrect', $validator->errors());
         }
-
         $isExist = User::where('id', $request['formation_formateur'])->first();
         if (!$isExist) {
             return $this->sendError('Utilisateur non trouvable', $validator->errors());
         }
-
         $isFormateur = User::where('id', $request['formation_formateur'])->where('role', 'Formateur')->first();
         if (!$isFormateur) {
             return $this->sendError("Vous n'avez pas le deroit", $validator->errors());
         }
-
 
         $formationInput['formation_title'] = $request['formation_title'];
         $formationInput['formation_price'] = $request['formation_price'];
@@ -239,12 +236,10 @@ class AdminController extends BaseController
         $formation = Formation::create($formationInput);
         if ($formation)
             return $this->sendResponse($formation, 'Formation créer avec success');
-
         return $this->sendError("Erreur est servenue");
-
     }
 
-
+    // RECUPPERER LA LISTE DES FORMATIONS
     public function getFormation(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -262,13 +257,12 @@ class AdminController extends BaseController
         }
     }
 
+    // RECHERCHER UNE FORMATION
     public function searchFormation(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required',
         ]);
-
-
         if ($validator->fails()) {
             return $this->sendError('Informations Incorrect', $validator->errors());
         }
@@ -279,6 +273,7 @@ class AdminController extends BaseController
         return $this->sendResponse($users, null);
     }
 
+    // MODIFIER UNE FORMATION
     public function modifyFormation(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -322,6 +317,7 @@ class AdminController extends BaseController
         }
 
     }
+    // SUPPRIMER UNE FORMATION
     public function deleteFormation(Request $request)
     {
         $validator = Validator::make($request->all(), [
