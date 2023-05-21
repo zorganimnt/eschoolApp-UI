@@ -8,6 +8,8 @@ use App\Http\Controllers\API\StudentController;
 use App\Http\Controllers\API\ParentController;
 use App\Http\Controllers\API\NoteController;
 use App\Http\Controllers\API\ProfController;
+use App\Http\Controllers\api\CoursController;
+
 
 
 /*
@@ -102,6 +104,7 @@ Route::controller(AdminController::class)->group(function () {
     Route::post('add-employer', 'addEmployer');
     Route::post('add-formation', 'addFormation');
 
+
     // MODIFY API //
     Route::post('modify-user', 'modifyUser');
     Route::post('modify-formation', 'modifyFormation');
@@ -119,5 +122,25 @@ Route::controller(AdminController::class)->group(function () {
     Route::post('delete-formation', 'deleteFormation');
 
 
+
     
+});
+
+Route::controller(CoursController::class)->group(function () {
+
+    // CREATE API //
+    Route::post('add-cours', 'addCours');
+
+    // MODIFY API //
+    Route::post('modify-cours', 'modifyCours');
+
+    // READ API // 
+    Route::post('get-cours', 'getCours');
+
+    // DELETE API // 
+    Route::post('delete-cours', 'deleteCours');
+
+
+
+
 });
