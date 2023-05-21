@@ -61,7 +61,7 @@ class ListInscri extends StatelessWidget {
                                 color: Colors.grey.withOpacity(0.3),
                                 width: double.infinity,
                                 height: 50,
-                                child: const Row(
+                                child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
                                     children: [
