@@ -1,10 +1,10 @@
 
   import 'package:eschoolapp/controller/dashboard_controller.dart';
-import 'package:eschoolapp/view/dashboard/home/screens/admin/menu/menu_items.dart';
+import 'package:eschoolapp/view/dashboard/home/screens/Formateur/menu/menu_items.dart';
 import 'package:eschoolapp/view/dashboard/home/widgets/menu_item_widget.dart';
 import 'package:flutter/material.dart';
 
-Container buildAdminMenu(BuildContext context, dashboardController) {
+Container buildFormateurMenu(BuildContext context, dashboardController) {
     return Container(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width * 0.2,
@@ -24,15 +24,15 @@ Container buildAdminMenu(BuildContext context, dashboardController) {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 for (int index = 0;
-                    index < listDashboardAdminKeys.length;
+                    index < listDashboardFormateurKeys.length;
                     index++)
                   Column(
                     children: [
                       MenuItemWidget(
                         dashboardController: dashboardController,
                         pageIndex: index,
-                        text: listDashboardAdminKeys[index],
-                        icon: listIconAdminKeys[index],
+                        text: listDashboardFormateurKeys[index],
+                        icon: listIconFormateurKeys[index],
                       ),
                       const Padding(
                         padding: EdgeInsets.symmetric(vertical: 20),

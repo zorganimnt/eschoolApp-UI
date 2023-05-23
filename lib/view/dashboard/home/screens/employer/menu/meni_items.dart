@@ -1,28 +1,29 @@
+
 import 'package:eschoolapp/view/dashboard/home/screens/admin/screens/list_formation.dart';
 import 'package:eschoolapp/view/dashboard/home/screens/admin/screens/list_inscri.dart';
 import 'package:eschoolapp/view/dashboard/home/screens/admin/screens/list_users.dart';
-import 'package:eschoolapp/view/dashboard/home/screens/admin/screens/stat_screen.dart';
 import 'package:eschoolapp/view/dashboard/home/screens/commun/acceuil_screen.dart';
 import 'package:eschoolapp/view/dashboard/home/screens/commun/profile_screen.dart';
 import 'package:eschoolapp/view/dashboard/home/widgets/test_stat.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 
-final List<Widget> listDashboardApprenantValues = <Widget>[
+final List<Widget> listDashboardEmployerValues = <Widget>[
   AcceuilScreen(),
   ListUsers(),
-  ListFormation(),
+  ListInscri(),
   ProfileScreen()
 ];
 
-final List<String> listDashboardApprenantKeys = <String>[
+final List<String> listDashboardEmployerKeys = <String>[
   "Acceuil",
-  "Cours",
+  "Absence",
   "Chat",
 ];
 
-final List<IconData> listIconApprenantKeys = [
+final List<IconData> listIconEmployerKeys = [
   LineIcons.home,
-  LineIcons.book,
+  LineIcons.list,
   LineIcons.facebookMessenger,
+  
 ];

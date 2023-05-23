@@ -1,8 +1,15 @@
 import 'package:eschoolapp/controller/dashboard_controller.dart';
 import 'package:eschoolapp/utils/color.dart';
-import 'package:eschoolapp/view/dashboard/home/menu_dashboard.dart';
+import 'package:eschoolapp/view/dashboard/home/screens/Apprenant/menu/menu_items.dart';
+import 'package:eschoolapp/view/dashboard/home/screens/Formateur/menu/menu_items.dart';
 import 'package:eschoolapp/view/dashboard/home/screens/admin/menu/menu.dart';
 import 'package:eschoolapp/view/dashboard/home/screens/admin/menu/menu_items.dart';
+import 'package:eschoolapp/view/dashboard/home/screens/apprenant/menu/menu.dart';
+import 'package:eschoolapp/view/dashboard/home/screens/employer/menu/meni_items.dart';
+import 'package:eschoolapp/view/dashboard/home/screens/employer/menu/menu.dart';
+import 'package:eschoolapp/view/dashboard/home/screens/formateur/menu/menu.dart';
+import 'package:eschoolapp/view/dashboard/home/screens/parents/menu/menu.dart';
+import 'package:eschoolapp/view/dashboard/home/screens/parents/menu/menu_items.dart';
 import 'package:eschoolapp/view/dashboard/home/widgets/menu_item_widget.dart';
 import 'package:eschoolapp/view/dashboard/home/widgets/test_stat.dart';
 import 'package:flutter/material.dart';
@@ -31,8 +38,21 @@ class _DashboardHomeScreenState extends State<DashboardHomeScreen>
                   children: [
                     Row(
                       children: [
-                        //_buildAdminMenu(context),
-                      buildAdminMenu(context, dashboardController), 
+                        if (dashboardController.roleCurrentUser.value ==
+                            'Admin ')
+                          buildAdminMenu(context, dashboardController),
+                        if (dashboardController.roleCurrentUser.value ==
+                            'Employer')
+                          buildEmployerMenu(context, dashboardController),
+                        if (dashboardController.roleCurrentUser.value ==
+                            'Formateur')
+                          buildFormateurMenu(context, dashboardController),
+                        if (dashboardController.roleCurrentUser.value ==
+                            'Parent')
+                          buildParentMenu(context, dashboardController),
+                        if (dashboardController.roleCurrentUser.value ==
+                            'Apprenant')
+                          buildApprenantMenu(context, dashboardController),
                         Container(
                           height: MediaQuery.of(context).size.height,
                           width: MediaQuery.of(context).size.width * 0.8,
@@ -44,12 +64,31 @@ class _DashboardHomeScreenState extends State<DashboardHomeScreen>
                               child: Column(
                                 children: [
                                   _buildHead(context),
-                                  // authController.roleUser == "Admin"
-                                  //     ?
-                                  listDashboardAdminValues.elementAt(
-                                      dashboardController.selectedIndex)
-                                  // : _dashboardEmployer.elementAt(
-                                  //     dashboardController.selectedIndex)
+                                  if (dashboardController
+                                          .roleCurrentUser.value ==
+                                      'Admin ')
+                                    listDashboardAdminValues.elementAt(
+                                        dashboardController.selectedIndex),
+                                  if (dashboardController
+                                          .roleCurrentUser.value ==
+                                      'Employer')
+                                    listDashboardEmployerValues.elementAt(
+                                        dashboardController.selectedIndex),
+                                  if (dashboardController
+                                          .roleCurrentUser.value ==
+                                      'Formateur')
+                                    listDashboardFormateurValues.elementAt(
+                                        dashboardController.selectedIndex),
+                                  if (dashboardController
+                                          .roleCurrentUser.value ==
+                                      'Parent')
+                                    listDashboardParentValues.elementAt(
+                                        dashboardController.selectedIndex),
+                                  if (dashboardController
+                                          .roleCurrentUser.value ==
+                                      'Apprenant')
+                                    listDashboardApprenantValues.elementAt(
+                                        dashboardController.selectedIndex),
                                 ],
                               ),
                             ),
@@ -77,8 +116,37 @@ class _DashboardHomeScreenState extends State<DashboardHomeScreen>
                                   ListTile(
                                     onTap: () {
                                       _toggleDropdown();
-                                      dashboardController.onChangeItem(
-                                          listDashboardAdminValues.length - 1);
+                                      switch (dashboardController
+                                          .roleCurrentUser.value) {
+                                        case 'Admin':
+                                          dashboardController.onChangeItem(
+                                              listDashboardAdminValues.length -
+                                                  1);
+                                          break;
+                                        case 'Employer':
+                                          dashboardController.onChangeItem(
+                                              listDashboardEmployerValues
+                                                      .length -
+                                                  1);
+                                          break;
+                                        case 'Formateur':
+                                          dashboardController.onChangeItem(
+                                              listDashboardFormateurValues
+                                                      .length -
+                                                  1);
+                                          break;
+                                        case 'Parent':
+                                          dashboardController.onChangeItem(
+                                              listDashboardParentValues.length -
+                                                  1);
+                                          break;
+                                        case 'Apprenant':
+                                          dashboardController.onChangeItem(
+                                              listDashboardApprenantValues
+                                                      .length -
+                                                  1);
+                                          break;
+                                      }
                                     },
                                     title: const Text('Profil'),
                                   ),
@@ -128,9 +196,9 @@ class _DashboardHomeScreenState extends State<DashboardHomeScreen>
               _toggleDropdown();
             },
             child: SizedBox(
-              width: 200,
+              width: 300,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(right: 14.0),
@@ -138,7 +206,7 @@ class _DashboardHomeScreenState extends State<DashboardHomeScreen>
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Row(
-                          children: const [
+                          children: [
                             Icon(
                               Icons.verified,
                               size: 17,
@@ -148,13 +216,13 @@ class _DashboardHomeScreenState extends State<DashboardHomeScreen>
                               width: 4,
                             ),
                             Text(
-                              'Jihene Abidi',
+                              '${dashboardController.nameCurrentUser.value} ${dashboardController.lastNameCurrentUser.value}',
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
-                        const Text("Admin",
+                        Text(dashboardController.roleCurrentUser.value,
                             style: TextStyle(
                                 fontSize: 13,
                                 color: Colors.grey,
@@ -173,9 +241,6 @@ class _DashboardHomeScreenState extends State<DashboardHomeScreen>
       ],
     );
   }
-
-  
-
 
   late AnimationController _animationController;
   bool _isDropdownOpen = false;
@@ -206,5 +271,3 @@ class _DashboardHomeScreenState extends State<DashboardHomeScreen>
     super.dispose();
   }
 }
-
-

@@ -33,16 +33,9 @@ class AuthController extends GetxController {
     isLoading.value = false;
     if (json != null) {
       if (json['success']) {
-        if (json['data']['user_data']['role'] == 'Admin') {
-        
-          Get.offAllNamed(AppRoutes.homeDashboard);
-           } else if (json['data']['user_data']['role'] == 'Employer') {
-          // Ajoutez ici la logique pour rediriger vers la page employerdashboard
-           Get.offAllNamed(AppRoutes.dashboardEmployer);
-        } else {
-          showError(
-              "Erreur", "Vous n'avez pas le droit", LineIcons.exclamation);
-        }
+        await saveValue("token", json['data']['token']);
+        await saveValue("id", json['data']['user_data']['id']);
+        Get.offAllNamed(AppRoutes.homeDashboard);
       } else {
         showError("Error", json['message'], LineIcons.exclamationTriangle);
       }

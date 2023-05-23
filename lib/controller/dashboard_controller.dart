@@ -10,18 +10,49 @@ class DashboardController extends GetxController {
   @override
   void onInit() {
     getUsers("all");
+    getCurrentUser();
     super.onInit();
   }
- 
 
- //RxBool isLoading = RxBool(false);
+  RxString roleCurrentUser = ''.obs;
+  RxString nameCurrentUser = ''.obs;
+  RxString lastNameCurrentUser = ''.obs;
+  RxString phoneCurrentUser = ''.obs;
+  RxString emailCurrentUser = ''.obs;
+
+  getCurrentUser() async {
+    int id = await getValue('id');
+    isLoading.value = true;
+    var data = {
+      "user": id,
+    };
+    print(data);
+    dynamic json = await API.getUserService(data);
+    isLoading.value = false;
+    if (json != null) {
+      if (json['success']) {
+        print(json);
+        nameCurrentUser.value = json['data']['name'];
+        lastNameCurrentUser.value = json['data']['lastName'];
+        emailCurrentUser.value = json['data']['email'];
+        phoneCurrentUser.value = json['data']['phone'];
+        roleCurrentUser.value = json['data']['role'];
+        update();
+      } else {
+        showError("Error", json['message'], LineIcons.exclamationTriangle);
+      }
+    }
+    isLoading.value = false;
+    return null;
+  }
+
+  //RxBool isLoading = RxBool(false);
   TextEditingController titleFormation = TextEditingController();
   TextEditingController photoFormation = TextEditingController();
   TextEditingController priceFormation = TextEditingController();
   TextEditingController formateurFormation = TextEditingController();
   TextEditingController dureeFormation = TextEditingController();
   TextEditingController categoryFormation = TextEditingController();
-
 
   RxString nameUser = ''.obs;
   RxString lastNameUser = ''.obs;
@@ -215,7 +246,7 @@ class DashboardController extends GetxController {
     isLoading.value = true;
     clearAllList();
 
-   // FocusManager.instance.primaryFocus?.unfocus();
+    // FocusManager.instance.primaryFocus?.unfocus();
 
     var data = {
       "user": user,
@@ -243,11 +274,11 @@ class DashboardController extends GetxController {
     return null;
   }
 
-   getFormation(user) async {
+  getFormation(user) async {
     isLoading.value = true;
     clearAllList();
 
-   // FocusManager.instance.primaryFocus?.unfocus();
+    // FocusManager.instance.primaryFocus?.unfocus();
 
     var data = {
       "user": user,
@@ -280,7 +311,7 @@ class DashboardController extends GetxController {
     isLoading.value = true;
     clearAllList();
 
-   // FocusManager.instance.primaryFocus?.unfocus();
+    // FocusManager.instance.primaryFocus?.unfocus();
 
     var data = {
       "email": searchEmail.text,
@@ -291,7 +322,7 @@ class DashboardController extends GetxController {
     if (json != null) {
       if (json['success']) {
         List<dynamic> data = json['data'];
-        print(data); 
+        print(data);
         for (var element in data) {
           id.add(element['id']);
           nom.add(element['name']);
@@ -544,7 +575,7 @@ class DashboardController extends GetxController {
   }
 
   // Méthode pour ajouter une formation
-    addFormation() async {
+  addFormation() async {
     var data = {
       "formation_title": titleFormation.text,
       "formation_picture": photoFormation.text,
