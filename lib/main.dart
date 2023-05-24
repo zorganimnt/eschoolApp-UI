@@ -3,7 +3,6 @@ import 'package:eschoolapp/controller/register_controller.dart';
 import 'package:eschoolapp/routes/app_pages.dart';
 import 'package:eschoolapp/routes/app_routes.dart';
 import 'package:eschoolapp/view/auth/login_screen.dart';
-import 'package:eschoolapp/view/home/main_screen.dart';
 import 'package:eschoolapp/view/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

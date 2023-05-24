@@ -54,7 +54,7 @@ class ChatScreen extends StatelessWidget {
                                   
                                       child: Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: Center(child: Text("Ahla cv? "),),
+                                        child: Center(child: Text("Bonjour !"),),
                                       ),
 
                                     ),
@@ -66,7 +66,7 @@ class ChatScreen extends StatelessWidget {
                                     
                                       child: Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: Center(child: Text("Cha3malet fi rapport rakahtou??!!"),),
+                                        child: Center(child: Text("Bienvenue au eschoolapp"),),
                                       ),
                                     ),
                                   ],
@@ -88,14 +88,7 @@ class ChatScreen extends StatelessWidget {
                             
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Center(child: Row(
-                                      children: [
-                                        Text("Hani wlh motnaa motén !! "),
-                                        SizedBox(width: 4,), 
-                                        Icon(LineIcons.angryFace, 
-                                        size: 16,)
-                                      ],
-                                    ),),
+                                    child: Center(child: Text("Merci"),),
                                   ),
                                 ),
                                   SizedBox(width: 10,), 

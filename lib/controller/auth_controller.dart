@@ -4,7 +4,6 @@ import 'package:eschoolapp/routes/app_routes.dart';
 import 'package:eschoolapp/service/api.dart';
 import 'package:eschoolapp/utils/notifications.dart';
 import 'package:eschoolapp/utils/storage.dart';
-import 'package:eschoolapp/view/home/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart';

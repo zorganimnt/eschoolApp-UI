@@ -1,3 +1,4 @@
+import 'package:eschoolapp/controller/welcome_controller.dart';
 import 'package:eschoolapp/routes/app_pages.dart';
 import 'package:eschoolapp/routes/app_routes.dart';
 import 'package:eschoolapp/utils/color.dart';
@@ -15,6 +16,275 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class WelcomePage extends StatelessWidget {
+  WelcomePage({Key? key}) : super(key: key);
+  final WelcomeController controller = Get.put(WelcomeController());
+  @override
+  Widget build(BuildContext context) {
+    return GetBuilder<WelcomeController>(
+        builder: (_) => Scaffold(
+            appBar: ResponsiveWrapper.of(context).isSmallerThan("TABLET")
+                ? AppBar(
+                    backgroundColor: Colors.transparent,
+                    iconTheme: IconThemeData(color: Colors.black87),
+                    elevation: 0,
+                    actions: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: _buildLoginRegister(),
+                      )
+                    ],
+                  )
+                : DeffaultAppBar(),
+            drawer: _buildDrawerWelcome(),
+            body: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: [
+                      SizedBox(
+                        height: 50,
+                      ),
+                      ResponsiveWrapper.of(context).isSmallerThan("TABLET")
+                          ? _mobileLandingSection1()
+                          : _webLandingSection1(context),
+                      SizedBox(
+                        height: 50,
+                      ),
+                      ResponsiveWrapper.of(context).isSmallerThan("TABLET")
+                          ? Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 25.0),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            CircleAvatar(
+                                              backgroundColor:
+                                                  Colors.white.withOpacity(0.5),
+                                              radius: 30,
+                                              child: Icon(
+                                                LineIcons.book,
+                                                size: 30,
+                                                color: Colors.blue,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            Text("10K+",
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 30,
+                                                    color: primaryColor)),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Text(
+                                          "Total Courses",
+                                          style: TextStyle(
+                                            color: Colors.grey,
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    height: 120,
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                        color:
+                                            Colors.deepPurple.withOpacity(0.1),
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
+                                  ),
+                                  SizedBox(
+                                    height: 22,
+                                  ),
+                                  Container(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            CircleAvatar(
+                                              backgroundColor:
+                                                  Colors.white.withOpacity(0.5),
+                                              radius: 30,
+                                              child: Icon(
+                                                LineIcons.book,
+                                                size: 30,
+                                                color: Colors.deepOrange,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            Text("500+",
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 30,
+                                                    color: primaryColor)),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Text(
+                                          "Expert Formateur",
+                                          style: TextStyle(
+                                            color: Colors.grey,
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    height: 120,
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                        color:
+                                            Colors.deepPurple.withOpacity(0.1),
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
+                                  ),
+                                  SizedBox(
+                                    height: 22,
+                                  ),
+                                  Container(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            CircleAvatar(
+                                              backgroundColor:
+                                                  Colors.white.withOpacity(0.5),
+                                              radius: 30,
+                                              child: Icon(
+                                                LineIcons.university,
+                                                size: 30,
+                                                color: Colors.deepPurple,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            Text("800+",
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 30,
+                                                    color: primaryColor)),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Text(
+                                          "Total Etudiants",
+                                          style: TextStyle(
+                                            color: Colors.grey,
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    height: 120,
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                        color:
+                                            Colors.deepPurple.withOpacity(0.1),
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
+                                  )
+                                ],
+                              ),
+                            )
+                          : _webLandingSection2(context),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: primaryColor.withOpacity(0.1),
+                          ),
+                          height: 1000,
+                          child: Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Les Formation Disponible",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 25),
+                                ),
+                                Text(
+                                  "Notre centre de formation fournit plusieurs formations..",
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        Get.toNamed(AppRoutes.formation);
+                                      },
+                                      child: Container(
+                                        height: 40,
+                                        width: 180,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            color: Colors.white),
+                                        child: Center(
+                                            child: Text(
+                                          "Voir tout les formations",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: primaryColor),
+                                        )),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                buildFormationCatalogue(context),
+                              ],
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  _buildFooterSection()
+                ],
+              ),
+            )));
+  }
+
   Future<void> _showConfirmationParticip(context) async {
     return showDialog<void>(
       context: context,
@@ -49,343 +319,58 @@ class WelcomePage extends StatelessWidget {
     );
   }
 
-  WelcomePage({Key? key}) : super(key: key);
-  final _controller = PageController();
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: ResponsiveWrapper.of(context).isSmallerThan("TABLET")
-            ? AppBar(
-                backgroundColor: Colors.transparent,
-                iconTheme: IconThemeData(color: Colors.black87),
-                elevation: 0,
-                actions: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: _buildLoginRegister(),
-                  )
-                ],
-              )
-            : DeffaultAppBar(),
-        drawer: _buildDrawerWelcome(),
-        body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  SizedBox(
-                    height: 50,
-                  ),
-                  ResponsiveWrapper.of(context).isSmallerThan("TABLET")
-                      ? _mobileLandingSection1()
-                      : _webLandingSection1(context),
-                  SizedBox(
-                    height: 50,
-                  ),
-                  ResponsiveWrapper.of(context).isSmallerThan("TABLET")
-                      ? Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                          child: Column(
-                            children: [
-                              Container(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        CircleAvatar(
-                                          backgroundColor:
-                                              Colors.white.withOpacity(0.5),
-                                          radius: 30,
-                                          child: Icon(
-                                            LineIcons.book,
-                                            size: 30,
-                                            color: Colors.blue,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text("10K+",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 30,
-                                                color: primaryColor)),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      "Total Courses",
-                                      style: TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 18,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                height: 120,
-                                width: MediaQuery.of(context).size.width,
-                                decoration: BoxDecoration(
-                                    color: Colors.deepPurple.withOpacity(0.1),
-                                    borderRadius: BorderRadius.circular(15)),
-                              ),
-                              SizedBox(
-                                height: 22,
-                              ),
-                              Container(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        CircleAvatar(
-                                          backgroundColor:
-                                              Colors.white.withOpacity(0.5),
-                                          radius: 30,
-                                          child: Icon(
-                                            LineIcons.book,
-                                            size: 30,
-                                            color: Colors.deepOrange,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text("500+",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 30,
-                                                color: primaryColor)),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      "Expert Formateur",
-                                      style: TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 18,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                height: 120,
-                                width: MediaQuery.of(context).size.width,
-                                decoration: BoxDecoration(
-                                    color: Colors.deepPurple.withOpacity(0.1),
-                                    borderRadius: BorderRadius.circular(15)),
-                              ),
-                              SizedBox(
-                                height: 22,
-                              ),
-                              Container(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        CircleAvatar(
-                                          backgroundColor:
-                                              Colors.white.withOpacity(0.5),
-                                          radius: 30,
-                                          child: Icon(
-                                            LineIcons.university,
-                                            size: 30,
-                                            color: Colors.deepPurple,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text("800+",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 30,
-                                                color: primaryColor)),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      "Total Etudiants",
-                                      style: TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 18,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                height: 120,
-                                width: MediaQuery.of(context).size.width,
-                                decoration: BoxDecoration(
-                                    color: Colors.deepPurple.withOpacity(0.1),
-                                    borderRadius: BorderRadius.circular(15)),
-                              )
-                            ],
-                          ),
-                        )
-                      : _webLandingSection2(context),
-                  SizedBox(
-                    height: 40,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: primaryColor.withOpacity(0.1),
-                      ),
-                      height: 1000,
-                      child: Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Les Formation Disponible",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 25),
-                            ),
-                            Text(
-                              "Notre centre de formation fournit plusieurs formations..",
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                InkWell(
-                                  onTap: () {
-                                    Get.toNamed(AppRoutes.formation);
-                                  },
-                                  child: Container(
-                                    height: 40,
-                                    width: 180,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8),
-                                        color: Colors.white),
-                                    child: Center(
-                                        child: Text(
-                                      "Voir tout les formations",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: primaryColor),
-                                    )),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            buildFormationCatalogue(context),
-                          ],
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              _buildFooterSection()
-            ],
-          ),
-        ));
-  }
-
   Column buildFormationCatalogue(BuildContext context) {
     return Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  FormationWidget(
-                                    onPressed: () {
-                                      Get.to(LoginScreen());
-                                     // _showConfirmationParticip(context);
-                                    },
-                                    image: 'assets/icons/dev.jpeg',
-                                    title: 'Dévelopement Fullstack',
-                                    categorie: 'Informatique',
-                                    bgCategorie: Colors.deepOrange,
-                                    formateur: 'Mourad M.',
-                                    prix: '420 DT',
-                                    dure: '4 Mois',
-                                  ),
-                                  FormationWidget(
-                                    onPressed: () {
-                                      _showConfirmationParticip(context);
-                                    },
-                                    image: 'assets/icons/marketing.jpeg',
-                                    title: 'Digitale Marketing',
-                                    categorie: 'Marketing',
-                                    bgCategorie: Colors.deepPurple,
-                                    formateur: 'Ramzi A.',
-                                    prix: '200 DT',
-                                    dure: '2 Mois',
-                                  ),
-                                  FormationWidget(
-                                    image: 'assets/icons/dev.jpeg',
-                                    title: 'Développement mobile',
-                                    categorie: 'Informatique',
-                                    bgCategorie: Colors.deepOrange,
-                                    formateur: 'Ahlem N.',
-                                    prix: '390 DT',
-                                    dure: '3 Mois',
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 40,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: const [
-                                  FormationWidget(
-                                    image: 'assets/icons/dev.jpeg',
-                                    title: 'Dévelopement Fullstack',
-                                    categorie: 'Informatique',
-                                    bgCategorie: Colors.deepOrange,
-                                    formateur: 'Naim R.',
-                                    prix: '420 DT',
-                                    dure: '4 Mois',
-                                  ),
-                                  FormationWidget(
-                                    image: 'assets/icons/marketing.jpeg',
-                                    title: 'Digitale Marketing',
-                                    categorie: 'Marketing',
-                                    bgCategorie: Colors.deepPurple,
-                                    formateur: 'Ghazi W.',
-                                    prix: '200 DT',
-                                    dure: '2 Mois',
-                                  ),
-                                  FormationWidget(
-                                    image: 'assets/icons/dev.jpeg',
-                                    title: 'Développement mobile',
-                                    categorie: 'Informatique',
-                                    bgCategorie: Colors.deepOrange,
-                                    formateur: 'Oumaima B.',
-                                    prix: '390 DT',
-                                    dure: '3 Mois',
-                                  ),
-                                ],
-                              ),
-                            ],
-                          );
+      children: [
+        Obx(
+          () => controller.isLoading.value
+              ? CircularProgressIndicator()
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    for (int i = 0; i < 3; i++)
+                      FormationWidget(
+                        onPressed: () {
+                          Get.to(LoginScreen());
+                        },
+                        image: controller.image[i],
+                        title: controller.title[i],
+                        categorie: controller.categorie[i],
+                        bgCategorie: Colors.deepOrange,
+                        formateur: controller.formateur[i].toString(),
+                        prix: ' ${controller.prix[i]} DT',
+                        dure: controller.duree[i],
+                      ),
+                  ],
+                ),
+        ),
+        SizedBox(
+          height: 40,
+        ),
+        Obx(
+          () => controller.isLoading.value
+              ? CircularProgressIndicator()
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    for (int i = 3; i < 6; i++)
+                      FormationWidget(
+                        onPressed: () {
+                          Get.to(LoginScreen());
+                        },
+                        image: controller.image[i],
+                        title: controller.title[i],
+                        categorie: controller.categorie[i],
+                        bgCategorie: Colors.deepOrange,
+                        formateur: controller.formateur[i].toString(),
+                        prix: ' ${controller.prix[i]} DT',
+                        dure: controller.duree[i],
+                      ),
+                  ],
+                ),
+        ),
+      ],
+    );
   }
 
   Container _buildFooterSection() {
@@ -512,19 +497,22 @@ class WelcomePage extends StatelessWidget {
             //mainAxisAlignment: MainAxisAlignment.center,
             children: [
               InkWell(
-                    onTap: () {
-                    Get.to(GuideWidget());
-                    },
-             child: Container(
-                height: 50,
-                width: 180,
-                decoration: BoxDecoration(
-                    color: primaryColor,
-                    borderRadius: BorderRadius.circular(15)),
-                child: Center(
-                    child: Text("Plus détails",style: TextStyle(color: Colors.white),
-                )),
-              ),),
+                onTap: () {
+                  Get.to(GuideWidget());
+                },
+                child: Container(
+                  height: 50,
+                  width: 180,
+                  decoration: BoxDecoration(
+                      color: primaryColor,
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Center(
+                      child: Text(
+                    "Plus détails",
+                    style: TextStyle(color: Colors.white),
+                  )),
+                ),
+              ),
               SizedBox(
                 width: 10,
               ),
@@ -700,7 +688,7 @@ class WelcomePage extends StatelessWidget {
                 height: 20,
               ),
               //Row(
-                //mainAxisAlignment: MainAxisAlignment.center,
+              //mainAxisAlignment: MainAxisAlignment.center,
               //   children: [
               //     Container(
               //       height: 50,
@@ -733,40 +721,43 @@ class WelcomePage extends StatelessWidget {
               // )
 
               Row(
-            //mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              InkWell(
+                //mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  InkWell(
                     onTap: () {
-                    Get.to(GuideWidget());
+                      Get.to(GuideWidget());
                     },
-             child: Container(
-                height: 50,
-                width: 180,
-                decoration: BoxDecoration(
-                    color: primaryColor,
-                    borderRadius: BorderRadius.circular(15)),
-                child: Center(
-                    child: Text("Plus détails",style: TextStyle(color: Colors.white),
-                )),
-              ),),
-              SizedBox(
-                width: 10,
-              ),
-              // Container(
-              //   height: 50,
-              //   width: 120,
-              //   decoration: BoxDecoration(
-              //       color: Colors.grey.withOpacity(0.1),
-              //       borderRadius: BorderRadius.circular(15)),
-              //   child: Center(
-              //       child: Text(
-              //     "Plus détails",
-              //     style: TextStyle(color: primaryColor),
-              //   )),
-              // )
+                    child: Container(
+                      height: 50,
+                      width: 180,
+                      decoration: BoxDecoration(
+                          color: primaryColor,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Center(
+                          child: Text(
+                        "Plus détails",
+                        style: TextStyle(color: Colors.white),
+                      )),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  // Container(
+                  //   height: 50,
+                  //   width: 120,
+                  //   decoration: BoxDecoration(
+                  //       color: Colors.grey.withOpacity(0.1),
+                  //       borderRadius: BorderRadius.circular(15)),
+                  //   child: Center(
+                  //       child: Text(
+                  //     "Plus détails",
+                  //     style: TextStyle(color: primaryColor),
+                  //   )),
+                  // )
+                ],
+              )
             ],
-          )
-          ],
           ),
         ),
         SizedBox(
@@ -1015,7 +1006,7 @@ class WelcomePage extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
-           Get.toNamed(AppRoutes.login); 
+            Get.toNamed(AppRoutes.login);
           },
           borderRadius: BorderRadius.circular(15),
           child: Container(
