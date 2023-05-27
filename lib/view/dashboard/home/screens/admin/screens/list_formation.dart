@@ -385,7 +385,7 @@ class ListFormation extends StatelessWidget {
                 TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
-                      // controller.deleteUser(id);
+                      controller.deleteFormation(id);
                       controller.getFormation("all");
                     },
                     child: Text("Confirmer")),
@@ -461,12 +461,12 @@ class ListFormation extends StatelessWidget {
                 height: 20,
               ),
               WidgetTextField(
-                  validator: Validators.validateEmail,
+                  validator: Validators.validateNotNullOrEmpty,
                   controller: controller.formateurFormation,
                   context: context,
                   hintText: "Nom formateur",
                   label: "Nom formateur",
-                  icon: LineIcons.envelope),
+                  icon: LineIcons.user),
             ]),
           ),
           actions: <Widget>[

@@ -7,9 +7,11 @@ import 'package:eschoolapp/utils/color.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:http/http.dart';
 
+import '../../../../../../routes/app_routes.dart';
 
-class ListAbsence extends StatelessWidget {
-  ListAbsence({super.key});
+
+class CoursScreen extends StatelessWidget {
+  CoursScreen({super.key});
 
   final DashboardController controller = Get.put(DashboardController());
 
@@ -40,7 +42,7 @@ class ListAbsence extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Liste des absences",
+                                "Liste des Formations",
                                 style: TextStyle(
                                     fontSize: 25, fontWeight: FontWeight.bold),
                               ),
@@ -69,33 +71,25 @@ class ListAbsence extends StatelessWidget {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
                                     children: const[
-                                     Text(
-                                        "ID",
+                                      
+                                      Text(
+                                        "Titre",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
                                       ),
                                       Text(
-                                        "Nom",
+                                        "Catégorie",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
                                       ),
+                                      
                                       Text(
-                                        "Prénom",
+                                        "Durée",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
                                       ),
-                                      Text(
-                                        "E-mail",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "Numéro de téléphone",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "Action",
+                                       Text(
+                                        "Support du cours",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
                                       )
@@ -110,17 +104,29 @@ class ListAbsence extends StatelessWidget {
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                                       children: [
-                                        Text("1"),
-                                        Text("Ben Ammar"),
-                                        Text("Rania"),
-                                        Text("Rania@gmail.com"),
-                                        Text("26023212"),
-                                        Checkbox(
-                                          value: false, // Replace with your checkbox value variable
-                                          onChanged: (newValue) {
-                                            // Handle checkbox state changes
-                                          },
-                                        ),
+                                        Text("Développement mobile"),
+                                        Text("Informatique"),
+                                        Text("4 Mois"),
+
+InkWell(
+                                                onTap: () {
+                                                  Get.toNamed(AppRoutes.supportCours);
+                                                },
+                                                child: Container(
+                                                  height: 30,
+                                                  width: MediaQuery.of(context).size.width * .1,
+                                                  child: Center(
+                                                      child: Text(
+                                                    "Voir cours",
+                                                    style: TextStyle(
+                                                        color: Color.fromARGB(255, 40, 97, 204),
+                                                        fontWeight: FontWeight.bold),
+                                                  )),
+                                                  decoration: BoxDecoration(
+                                                      color: Color.fromARGB(255, 255, 255, 255),
+                                                      borderRadius: BorderRadius.circular(15)),
+                                                ),
+                              ),
                                       ],
                                     ),
                                   ),
@@ -135,17 +141,28 @@ class ListAbsence extends StatelessWidget {
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                                       children: [
-                                        Text("2"),
-                                        Text("Abidi"),
-                                        Text("Jihene"),
-                                        Text("iihene@gmail.com"),
-                                        Text("50123658"),
-                                        Checkbox(
-                                          value: true, // Replace with your checkbox value variable
-                                          onChanged: (newValue) {
-                                            // Handle checkbox state changes
-                                          },
-                                        ),
+                                       Text("Photoshop et Illustrater"),
+                                        Text("Design"),
+                                        Text("4 Mois"),
+InkWell(
+                                                onTap: () {
+                                                  Get.toNamed(AppRoutes.supportCours);
+                                                },
+                                                child: Container(
+                                                  height: 30,
+                                                  width: MediaQuery.of(context).size.width * .1,
+                                                  child: Center(
+                                                      child: Text(
+                                                    "Voir cours",
+                                                    style: TextStyle(
+                                                        color: Color.fromARGB(255, 40, 97, 204),
+                                                        fontWeight: FontWeight.bold),
+                                                  )),
+                                                  decoration: BoxDecoration(
+                                                      color: Color.fromARGB(255, 255, 255, 255),
+                                                      borderRadius: BorderRadius.circular(15)),
+                                                ),
+                              ),
                                       ],
                                     ),
                                   ),
@@ -160,19 +177,28 @@ class ListAbsence extends StatelessWidget {
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                                       children: [
-                                        Text("3"),
-                                        Text("Ben Ammar"),
-                                        Text("Rayen"),
-                                        Text("Rayen@gmail.com"),
-                                        Text("23154753"),
-                                        
-                                        Checkbox(
-                                          value: true, // Replace with your checkbox value variable
-                                          onChanged: (newValue) {
-                                            // Handle checkbox state changes
-                                          },
-                                        ),
-
+                                        Text("Développement web"),
+                                        Text("Informatique"),
+                                        Text("4 Mois"),
+InkWell(
+                                                onTap: () {
+                                                  Get.toNamed(AppRoutes.supportCours);
+                                                },
+                                                child: Container(
+                                                  height: 30,
+                                                  width: MediaQuery.of(context).size.width * .1,
+                                                  child: Center(
+                                                      child: Text(
+                                                    "Voir cours",
+                                                    style: TextStyle(
+                                                        color: Color.fromARGB(255, 40, 97, 204),
+                                                        fontWeight: FontWeight.bold),
+                                                  )),
+                                                  decoration: BoxDecoration(
+                                                      color: Color.fromARGB(255, 255, 255, 255),
+                                                      borderRadius: BorderRadius.circular(15)),
+                                                ),
+                              ),
                                       ],
                                     ),
                                   ),
@@ -180,7 +206,6 @@ class ListAbsence extends StatelessWidget {
                               )
                             ],
                           ),
-
                           /*Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -273,3 +298,4 @@ class ListAbsence extends StatelessWidget {
  
  
 }
+

@@ -19,4 +19,6 @@ class AppRoutes {
     static const String dashboardEmployer = '/dashboard-employer';
   static const String nextStepRegister = '/next-step-register';
   static const String formation = '/formation-catalogue';
+  static const String supportCours = '/voir_cours';
+  static const String formationapp = '/formation';
 }

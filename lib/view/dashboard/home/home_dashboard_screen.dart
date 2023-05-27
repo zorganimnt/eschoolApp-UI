@@ -15,6 +15,8 @@ import 'package:eschoolapp/view/dashboard/home/widgets/test_stat.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../routes/app_routes.dart';
+
 class DashboardHomeScreen extends StatefulWidget {
   const DashboardHomeScreen({Key? key}) : super(key: key);
 
@@ -39,7 +41,7 @@ class _DashboardHomeScreenState extends State<DashboardHomeScreen>
                     Row(
                       children: [
                         if (dashboardController.roleCurrentUser.value ==
-                            'Admin ')
+                            'Admin')
                           buildAdminMenu(context, dashboardController),
                         if (dashboardController.roleCurrentUser.value ==
                             'Employer')
@@ -66,7 +68,7 @@ class _DashboardHomeScreenState extends State<DashboardHomeScreen>
                                   _buildHead(context),
                                   if (dashboardController
                                           .roleCurrentUser.value ==
-                                      'Admin ')
+                                      'Admin')
                                     listDashboardAdminValues.elementAt(
                                         dashboardController.selectedIndex),
                                   if (dashboardController
@@ -151,7 +153,9 @@ class _DashboardHomeScreenState extends State<DashboardHomeScreen>
                                     title: const Text('Profil'),
                                   ),
                                   ListTile(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Get.toNamed(AppRoutes.welcome);
+                                    },
                                     title: const Text('Déconnexion',
                                         style: TextStyle(color: Colors.red)),
                                   ),
@@ -232,7 +236,7 @@ class _DashboardHomeScreenState extends State<DashboardHomeScreen>
                   ),
                   const CircleAvatar(
                       radius: 24,
-                      backgroundImage: AssetImage('assets/icons/pdp1.png')),
+                      backgroundImage: AssetImage('assets/icons/admin.png')),
                 ],
               ),
             ),
