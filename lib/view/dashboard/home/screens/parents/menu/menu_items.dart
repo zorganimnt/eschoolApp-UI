@@ -9,10 +9,12 @@ import 'package:eschoolapp/view/dashboard/home/widgets/test_stat.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 
+import '../screens/List_notif.dart';
+
 final List<Widget> listDashboardParentValues = <Widget>[
   AcceuilScreen(),
   AvancementScreen(), 
-  ListInscri(),
+  Listnotif(),
   ChatScreen(),
   ProfileScreen()
 ];
@@ -20,7 +22,7 @@ final List<Widget> listDashboardParentValues = <Widget>[
 final List<String> listDashboardParentKeys = <String>[
   "Acceuil",
   "Avancement",
-  "Notifications",
+  "Notification",
   "Chat",
 ];
 

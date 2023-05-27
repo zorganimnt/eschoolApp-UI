@@ -8,8 +8,8 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:http/http.dart';
 
 
-class ListAbsence extends StatelessWidget {
-  ListAbsence({super.key});
+class Listpaiement extends StatelessWidget {
+  Listpaiement({super.key});
 
   final DashboardController controller = Get.put(DashboardController());
 
@@ -40,7 +40,7 @@ class ListAbsence extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Liste des absences",
+                                "Paiement",
                                 style: TextStyle(
                                     fontSize: 25, fontWeight: FontWeight.bold),
                               ),

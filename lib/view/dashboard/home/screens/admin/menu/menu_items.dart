@@ -10,13 +10,15 @@ import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 
 final List<Widget> listDashboardAdminValues = <Widget>[
+   
   AcceuilScreen(),
   ListUsers(),
   ListInscri(),
   ListFormation(),
-  StatScreen(),
-  ChatScreen(),
-  ProfileScreen()
+  const ChatScreen(),
+   const StatScreen(),
+   ProfileScreen(),
+ 
 ];
 
 final List<String> listDashboardAdminKeys = <String>[
@@ -24,8 +26,8 @@ final List<String> listDashboardAdminKeys = <String>[
   "Utilisateurs",
   "Inscriptions",
   "Formations",
-  "Chat"
-      "Statistique",
+  "Chat",
+  "Statistique",
 ];
 
 final List<IconData> listIconAdminKeys = [

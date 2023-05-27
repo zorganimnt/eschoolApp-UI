@@ -392,7 +392,24 @@ class FormationController extends GetxController {
 
     return null;
   }
-
+  // SUPPRIMER UN UTILISATEUR
+  deleteFormation(formation) async {
+    var data = {
+      "formation_id": formation,
+    };
+    print(data);
+    dynamic json = await API.deleteFormationService(data);
+    isLoading.value = false;
+    if (json != null) {
+      if (json['success']) {
+        showSuccess("Success", "Formation supprimer", LineIcons.checkCircle);
+      } else {
+        showError("Error", json['message'], LineIcons.exclamationTriangle);
+      }
+    }
+    isLoading.value = false;
+    return null;
+  }
 
   List<DataColumn> columns = const [
     DataColumn(

@@ -8,8 +8,8 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:http/http.dart';
 
 
-class ListAbsence extends StatelessWidget {
-  ListAbsence({super.key});
+class Listnotif extends StatelessWidget {
+  Listnotif({super.key});
 
   final DashboardController controller = Get.put(DashboardController());
 
@@ -69,31 +69,18 @@ class ListAbsence extends StatelessWidget {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
                                     children: const[
-                                     Text(
-                                        "ID",
+                                      
+                                      Text(
+                                        "Date",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
                                       ),
                                       Text(
-                                        "Nom",
+                                        "Notification",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
                                       ),
-                                      Text(
-                                        "Prénom",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "E-mail",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "Numéro de téléphone",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
+                                      
                                       Text(
                                         "Action",
                                         style: TextStyle(
@@ -110,11 +97,8 @@ class ListAbsence extends StatelessWidget {
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                                       children: [
-                                        Text("1"),
-                                        Text("Ben Ammar"),
-                                        Text("Rania"),
-                                        Text("Rania@gmail.com"),
-                                        Text("26023212"),
+                                        Text("18/05/2023"),
+                                        Text("Votre enfant Jihene n'est pas passé son examen de Marketing digitale"),
                                         Checkbox(
                                           value: false, // Replace with your checkbox value variable
                                           onChanged: (newValue) {
@@ -135,11 +119,8 @@ class ListAbsence extends StatelessWidget {
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                                       children: [
-                                        Text("2"),
-                                        Text("Abidi"),
-                                        Text("Jihene"),
-                                        Text("iihene@gmail.com"),
-                                        Text("50123658"),
+                                        Text("10/03/2023"),
+                                        Text("Votre enfant Rania n'est pas passé son examen de développement web"),
                                         Checkbox(
                                           value: true, // Replace with your checkbox value variable
                                           onChanged: (newValue) {
@@ -160,19 +141,14 @@ class ListAbsence extends StatelessWidget {
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                                       children: [
-                                        Text("3"),
-                                        Text("Ben Ammar"),
-                                        Text("Rayen"),
-                                        Text("Rayen@gmail.com"),
-                                        Text("23154753"),
-                                        
+                                        Text("02/02/2023"),
+                                        Text("Votre enfant Jihene n'est pas passé son examen de développement mobile"),
                                         Checkbox(
                                           value: true, // Replace with your checkbox value variable
                                           onChanged: (newValue) {
                                             // Handle checkbox state changes
                                           },
                                         ),
-
                                       ],
                                     ),
                                   ),
@@ -180,7 +156,6 @@ class ListAbsence extends StatelessWidget {
                               )
                             ],
                           ),
-
                           /*Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -273,3 +248,4 @@ class ListAbsence extends StatelessWidget {
  
  
 }
+

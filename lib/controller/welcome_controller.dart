@@ -18,7 +18,6 @@ class WelcomeController extends GetxController {
   List<int> formateur = [];
   List<double> prix = [];
   List<String> duree = [];
-
   RxBool isLoading = RxBool(false);
 
   getFormations(formation) async {
@@ -28,6 +27,7 @@ class WelcomeController extends GetxController {
     formateur.clear();
     prix.clear();
     duree.clear();
+   
 
     var data = {
       "formation": formation,

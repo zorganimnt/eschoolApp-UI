@@ -224,7 +224,7 @@ class WelcomePage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(15),
                             color: primaryColor.withOpacity(0.1),
                           ),
-                          height: 1000,
+                         
                           child: Padding(
                             padding: const EdgeInsets.all(20.0),
                             child: Column(
@@ -344,31 +344,30 @@ class WelcomePage extends StatelessWidget {
                   ],
                 ),
         ),
-        SizedBox(
-          height: 40,
-        ),
-        Obx(
-          () => controller.isLoading.value
-              ? CircularProgressIndicator()
-              : Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    for (int i = 3; i < 6; i++)
-                      FormationWidget(
-                        onPressed: () {
-                          Get.to(LoginScreen());
-                        },
-                        image: controller.image[i],
-                        title: controller.title[i],
-                        categorie: controller.categorie[i],
-                        bgCategorie: Colors.deepOrange,
-                        formateur: controller.formateur[i].toString(),
-                        prix: ' ${controller.prix[i]} DT',
-                        dure: controller.duree[i],
-                      ),
-                  ],
-                ),
-        ),
+       
+        // Obx(
+        //   () => controller.isLoading.value
+        //       ? CircularProgressIndicator()
+        //       : Row(
+        //           mainAxisAlignment: MainAxisAlignment.spaceAround,
+        //           children: [
+        //             for (int i = 3; i < 6; i++)
+        //               FormationWidget(
+        //                 onPressed: () {
+        //                   Get.to(LoginScreen());
+        //                 },
+        //                 image: controller.image[i],
+        //                 title: controller.title[i],
+        //                 categorie: controller.categorie[i],
+        //                 bgCategorie: Colors.deepOrange,
+        //                 formateur: controller.formateur[i].toString(),
+        //                 prix: ' ${controller.prix[i]} DT',
+        //                 dure: controller.duree[i],
+        //               ),
+        //           ],
+        //         ),
+        // ),
+     
       ],
     );
   }
@@ -908,10 +907,7 @@ class WelcomePage extends StatelessWidget {
                       SizedBox(
                         width: 8,
                       ),
-                      Text(
-                        "Actualités",
-                        style: TextStyle(fontSize: 20),
-                      ),
+                      
                     ],
                   ),
                   Icon(
@@ -982,15 +978,7 @@ class WelcomePage extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16)),
                       ),
-                      InkWell(
-                        borderRadius: BorderRadius.circular(10),
-                        onTap: () {},
-                        child: Text("Actualités",
-                            style: TextStyle(
-                                color: Colors.black54,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16)),
-                      ),
+                     
                     ],
                   ),
                 ),
