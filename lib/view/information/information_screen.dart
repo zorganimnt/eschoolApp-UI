@@ -178,15 +178,7 @@ class InfoScreen extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16)),
                       ),
-                      InkWell(
-                        borderRadius: BorderRadius.circular(10),
-                        onTap: () {},
-                        child: Text("Actualités",
-                            style: TextStyle(
-                                color: Colors.black54,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16)),
-                      ),
+                     
                     ],
                   ),
                 ),

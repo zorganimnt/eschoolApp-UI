@@ -13,7 +13,6 @@ final List<Widget> listDashboardAdminValues = <Widget>[
    
   AcceuilScreen(),
   ListUsers(),
-  ListInscri(),
   ListFormation(),
   const ChatScreen(),
    const StatScreen(),
@@ -24,7 +23,6 @@ final List<Widget> listDashboardAdminValues = <Widget>[
 final List<String> listDashboardAdminKeys = <String>[
   "Acceuil",
   "Utilisateurs",
-  "Inscriptions",
   "Formations",
   "Chat",
   "Statistique",
@@ -33,7 +31,6 @@ final List<String> listDashboardAdminKeys = <String>[
 final List<IconData> listIconAdminKeys = [
   LineIcons.home,
   LineIcons.user,
-  LineIcons.file,
   LineIcons.chalkboardTeacher,
   LineIcons.facebookMessenger,
   LineIcons.percentage,

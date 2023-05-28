@@ -20,12 +20,12 @@ class PieChartSample1State extends State {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Utilisateur de Eschoolapp", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+          Text("Les niveuax scolaire de Eschoolapp", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
           SizedBox(height: 8,),  
           Padding(
             padding: const EdgeInsets.all(50.0),
             child: AspectRatio(
-              aspectRatio: 4,
+              aspectRatio: 2,
               child: Column(
                 children: <Widget>[
                  
@@ -34,31 +34,31 @@ class PieChartSample1State extends State {
                     children: <Widget>[
                       Indicator(
                         color: Colors.blue,
-                        text: 'Apprenant',
+                        text: 'Primaire',
                         isSquare: false,
-                        size: touchedIndex == 0 ? 18 : 16,
-                        textColor: touchedIndex == 0 ? Colors.red : Colors.blue,
+                        size: touchedIndex == 0 ? 20 : 16,
+                        textColor: touchedIndex == 0 ? Colors.black54 : Colors.blue,
                       ),
                       Indicator(
                         color: Colors.yellow,
-                        text: 'Parent',
+                        text: 'Secondaire',
                         isSquare: false,
-                        size: touchedIndex == 1 ? 18 : 16,
-                        textColor: touchedIndex == 1 ? Colors.red : Colors.blue,
+                        size: touchedIndex == 1 ? 20 : 16,
+                        textColor: touchedIndex == 1 ? Colors.black54 : Colors.yellow,
                       ),
                       Indicator(
                         color: Colors.pink,
-                        text: 'Fomateur',
+                        text: 'avec bac',
                         isSquare: false,
-                        size: touchedIndex == 2 ? 18 : 16,
-                        textColor: touchedIndex == 2 ? Colors.red : Colors.blue,
+                        size: touchedIndex == 2 ? 20 : 16,
+                        textColor: touchedIndex == 2 ? Colors.black54 : Colors.pink,
                       ),
                       Indicator(
-                        color: Colors.black,
-                        text: 'Emplyer',
+                        color: Colors.green,
+                        text: 'Bac +',
                         isSquare: false,
-                        size: touchedIndex == 3 ? 18 : 16,
-                        textColor: touchedIndex == 3 ? Colors.red : Colors.blue,
+                        size: touchedIndex == 3 ? 20 : 16,
+                        textColor: touchedIndex == 3 ? Colors.black54 : Colors.green,
                       ),
                     ],
                   ),
@@ -109,55 +109,55 @@ class PieChartSample1State extends State {
       4,
       (i) {
         final isTouched = i == touchedIndex;
-        const color0 = Colors.blue;
+        const color0 = Colors.blueAccent;
         const color1 = Colors.yellow;
-        const color2 = Colors.red;
+        const color2 = Colors.redAccent;
         const color3 = Colors.green;
 
         switch (i) {
           case 0:
             return PieChartSectionData(
               color: color0,
-              value: 25,
-              title: '',
-              radius: 80,
+              value: 10,
+              title: '10%',
+              radius: 120,
               titlePositionPercentageOffset: 0.55,
               borderSide: isTouched
-                  ? const BorderSide(color: Colors.black, width: 6)
-                  : BorderSide(color: Colors.blue.withOpacity(0)),
+                  ? const BorderSide(color: Colors.white, width: 5)
+                  : BorderSide(color: Colors.black),
             );
           case 1:
             return PieChartSectionData(
               color: color1,
-              value: 25,
-              title: '',
-              radius: 65,
+              value: 30,
+              title: '30%',
+              radius: 105,
               titlePositionPercentageOffset: 0.55,
               borderSide: isTouched
-                  ? const BorderSide(color: Colors.black, width: 6)
-                  : BorderSide(color: Colors.blue.withOpacity(0)),
+                  ? const BorderSide(color: Colors.white, width: 5)
+                  : BorderSide(color: Colors.black),
             );
           case 2:
             return PieChartSectionData(
               color: color2,
-              value: 25,
-              title: '',
-              radius: 60,
+              value: 40,
+              title: '40%',
+              radius: 100,
               titlePositionPercentageOffset: 0.6,
               borderSide: isTouched
-                  ? const BorderSide(color: Colors.black, width: 6)
-                  : BorderSide(color: Colors.blue.withOpacity(0)),
+                  ? const BorderSide(color: Colors.white, width: 5)
+                  : BorderSide(color: Colors.black),
             );
           case 3:
             return PieChartSectionData(
               color: color3,
-              value: 25,
-              title: '',
-              radius: 70,
+              value: 20,
+              title: '20%',
+              radius: 110,
               titlePositionPercentageOffset: 0.55,
               borderSide: isTouched
-                  ? const BorderSide(color: Colors.black, width: 6)
-                  : BorderSide(color: Colors.blue.withOpacity(0)),
+                  ? const BorderSide(color: Colors.white, width: 5)
+                  : BorderSide(color: Colors.black),
             );
           default:
             throw Error();

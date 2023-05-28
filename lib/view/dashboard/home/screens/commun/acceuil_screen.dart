@@ -13,9 +13,21 @@ class AcceuilScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(40.0),
-      child: acceuilAdmin(context),
-    );
+        padding: const EdgeInsets.all(40.0),
+        child: Column(
+          children: [
+            if (controller.roleCurrentUser.value == "Admin")
+              acceuilAdmin(context),
+            if (controller.roleCurrentUser.value == "Formateur")
+              acceuilFormateur(context),
+            if (controller.roleCurrentUser.value == "Employer")
+              acceuilEmployer(context),
+            if (controller.roleCurrentUser.value == "Apprenant")
+              acceuilApprenant(context),
+            if (controller.roleCurrentUser.value == "Parent")
+              acceuilParent(context)
+          ],
+        ));
   }
 
   Column acceuilAdmin(BuildContext context) {
@@ -41,7 +53,217 @@ class AcceuilScreen extends StatelessWidget {
                   color: Colors.blue.shade900,
                   addPerson: true,
                   onAddPressed: () {
-                    addEmp(context); 
+                    addEmp(context);
+                  },
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                UserItemDashboard(
+                  icon: LineIcons.school,
+                  color: Colors.orange.shade900,
+                  title: "Apprenant",
+                  number: "400",
+                  addPerson: true,
+                  onAddPressed: () {
+                    addFormat(context);
+                  },
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                UserItemDashboard(
+                    icon: LineIcons.chalkboardTeacher,
+                    title: "Formateur",
+                    number: "230",
+                    addPerson: true,
+                    onAddPressed: () {},
+                    color: Colors.pink.shade900),
+              ],
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Row(
+              //  mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                UserItemDashboard(
+                    icon: LineIcons.user,
+                    addPerson: true,
+                    onAddPressed: () {},
+                    title: "Parent",
+                    number: "100",
+                    color: Colors.purple.shade900),
+              ],
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 40,
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Les Formations",
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Row(
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                UserItemDashboard(
+                    icon: LineIcons.user,
+                    title: "Informatique",
+                    number: "3",
+                    color: Colors.teal.shade900),
+                SizedBox(
+                  width: 20,
+                ),
+                UserItemDashboard(
+                    icon: LineIcons.school,
+                    title: "Marketing",
+                    number: "2",
+                    color: Colors.red.shade900),
+              ],
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Column acceuilApprenant(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "exemple pour apprenant",
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Row(
+              children: [
+                UserItemDashboard(
+                  icon: LineIcons.user,
+                  title: "Employer",
+                  number: "200",
+                  color: Colors.blue.shade900,
+                  addPerson: true,
+                  onAddPressed: () {
+                    addEmp(context);
+                  },
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                UserItemDashboard(
+                  icon: LineIcons.school,
+                  color: Colors.orange.shade900,
+                  title: "Formation",
+                  number: "400",
+                  addPerson: true,
+                  onAddPressed: () {
+                    addFormat(context);
+                  },
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                UserItemDashboard(
+                    icon: LineIcons.chalkboardTeacher,
+                    title: "Formateur",
+                    number: "230",
+                    addPerson: true,
+                    onAddPressed: () {},
+                    color: Colors.pink.shade900),
+              ],
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Row(
+              //  mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                UserItemDashboard(
+                    icon: LineIcons.user,
+                    addPerson: true,
+                    onAddPressed: () {},
+                    title: "Parent",
+                    number: "100",
+                    color: Colors.purple.shade900),
+              ],
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 40,
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Les Formation",
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Row(
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                UserItemDashboard(
+                    icon: LineIcons.user,
+                    title: "Informatique",
+                    number: "3",
+                    color: Colors.teal.shade900),
+                SizedBox(
+                  width: 20,
+                ),
+                UserItemDashboard(
+                    icon: LineIcons.school,
+                    title: "Marketing",
+                    number: "2",
+                    color: Colors.red.shade900),
+              ],
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Column acceuilEmployer(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "exemple pour employer",
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Row(
+              children: [
+                UserItemDashboard(
+                  icon: LineIcons.user,
+                  title: "Employer",
+                  number: "200",
+                  color: Colors.blue.shade900,
+                  addPerson: true,
+                  onAddPressed: () {
+                    addEmp(context);
                   },
                 ),
                 SizedBox(
@@ -114,6 +336,176 @@ class AcceuilScreen extends StatelessWidget {
                     icon: LineIcons.school,
                     title: "Rejeter",
                     number: "4d0",
+                    color: Colors.red.shade900),
+              ],
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Column acceuilFormateur(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "exemple pour formateur",
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Row(
+          children: [
+            UserItemDashboard(
+              icon: LineIcons.user,
+              title: "exemple",
+              number: "200",
+              color: Colors.blue.shade900,
+              addPerson: true,
+              onAddPressed: () {
+                addEmp(context);
+              },
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            UserItemDashboard(
+              icon: LineIcons.school,
+              color: Colors.orange.shade900,
+              title: "exemple",
+              number: "400",
+              addPerson: true,
+              onAddPressed: () {
+                addFormat(context);
+              },
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            UserItemDashboard(
+                icon: LineIcons.chalkboardTeacher,
+                title: "exemple",
+                number: "230",
+                addPerson: true,
+                onAddPressed: () {},
+                color: Colors.pink.shade900),
+          ],
+        ),
+        SizedBox(
+          height: 40,
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "exemple",
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Row(
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                UserItemDashboard(
+                    icon: LineIcons.user,
+                    title: "exemple",
+                    number: "20",
+                    color: Colors.teal.shade900),
+                SizedBox(
+                  width: 20,
+                ),
+                UserItemDashboard(
+                    icon: LineIcons.school,
+                    title: "exemple",
+                    number: "4d0",
+                    color: Colors.red.shade900),
+              ],
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Column acceuilParent(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Les séances",
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Row(
+          children: [
+            UserItemDashboard(
+              icon: LineIcons.user,
+              title: "Dévelopement",
+              number: "20 Heures",
+              color: Colors.blue.shade900,
+              addPerson: true,
+              onAddPressed: () {
+                addEmp(context);
+              },
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            UserItemDashboard(
+              icon: LineIcons.school,
+              color: Colors.orange.shade900,
+              title: "Design",
+              number: "3 Heures",
+              addPerson: true,
+              onAddPressed: () {
+                addFormat(context);
+              },
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            UserItemDashboard(
+                icon: LineIcons.chalkboardTeacher,
+                title: "Marketing",
+                number: "10 Heures",
+                addPerson: true,
+                onAddPressed: () {},
+                color: Colors.pink.shade900),
+          ],
+        ),
+        SizedBox(
+          height: 40,
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Les présences",
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Row(
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                UserItemDashboard(
+                    icon: LineIcons.user,
+                    title: "Présence",
+                    number: "20",
+                    color: Colors.teal.shade900),
+                SizedBox(
+                  width: 20,
+                ),
+                UserItemDashboard(
+                    icon: LineIcons.school,
+                    title: "Absence",
+                    number: "3",
                     color: Colors.red.shade900),
               ],
             ),
@@ -202,7 +594,7 @@ class AcceuilScreen extends StatelessWidget {
                 TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
-                     controller.addEmployer(); 
+                      controller.addEmployer();
                     },
                     child: Text("Confirmer")),
               ],
@@ -212,6 +604,7 @@ class AcceuilScreen extends StatelessWidget {
       },
     );
   }
+
   Future<void> addFormat(context) async {
     return showDialog<void>(
       context: context,
@@ -223,12 +616,12 @@ class AcceuilScreen extends StatelessWidget {
           content: Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListBody(children: [
-               Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                    SizedBox(height: 150, child: PickPhoto()),
-                    ],
-                    ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(height: 150, child: PickPhoto()),
+                ],
+              ),
               WidgetTextField(
                   validator: Validators.validateNotNullOrEmpty,
                   controller: controller.titleFormation,
@@ -256,7 +649,7 @@ class AcceuilScreen extends StatelessWidget {
                   hintText: "duree du formation",
                   label: "duree du formation",
                   icon: LineIcons.calendarTimes),
-                        SizedBox(
+              SizedBox(
                 height: 15,
               ),
               WidgetTextField(
@@ -268,7 +661,6 @@ class AcceuilScreen extends StatelessWidget {
                   icon: LineIcons.tag),
               SizedBox(
                 height: 20,
-                
               ),
               Divider(
                 height: 1.5,
@@ -297,7 +689,7 @@ class AcceuilScreen extends StatelessWidget {
                 TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
-                     controller.addFormation(); 
+                      controller.addFormation();
                     },
                     child: Text("Confirmer")),
               ],

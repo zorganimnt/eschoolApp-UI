@@ -7,13 +7,13 @@ import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:get/state_manager.dart';
 
-
 class FormationController extends GetxController {
   @override
   void onInit() {
     getFormation("all");
     super.onInit();
   }
+
   List<String> role = [];
   List<int> id = [];
   List<String> formationnom = [];
@@ -86,10 +86,10 @@ class FormationController extends GetxController {
 
 // Méthode pour rechercher une formation
   Future<void> searchFormation(value) async {
-    RxString nomFormateur = ''.obs; 
+    RxString nomFormateur = ''.obs;
     rows.clear();
     var data = {
-      "title":value,
+      "title": value,
     };
     try {
       dynamic json = await API.searchFormationService(data);
@@ -138,8 +138,8 @@ class FormationController extends GetxController {
                     size: 21,
                   ),
                   onPressed: (
-                    //controller.addFormation Function() ; 
-                  ) {},
+                      //controller.addFormation Function() ;
+                      ) {},
                 ),
                 SizedBox(
                   width: 10,
@@ -238,7 +238,10 @@ class FormationController extends GetxController {
                     size: 21,
                     color: Colors.redAccent,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    deleteFormation(element['id']);
+                    getFormation('all');
+                  },
                 )
               ]))
             ]);
@@ -299,9 +302,8 @@ class FormationController extends GetxController {
     ));
   }
 
-
   // Méthode pour modifier une formation
-  
+
   // MODIFIER UNE FORMATION
   RxBool nameFormationInChange = RxBool(false);
   RxBool PictureFormationInChnage = RxBool(false);
@@ -327,7 +329,8 @@ class FormationController extends GetxController {
 
     update();
   }
-    void modifyFormation(inputID) {
+
+  void modifyFormation(inputID) {
     switch (inputID) {
       case 1:
         nameFormationInChange.value = !nameFormationInChange.value;
@@ -349,7 +352,7 @@ class FormationController extends GetxController {
         DureeFormationInChange.value = !DureeFormationInChange.value;
 
         break;
-         case 6:
+      case 6:
         CategoryFormationInChange.value = !CategoryFormationInChange.value;
 
         break;
@@ -392,6 +395,7 @@ class FormationController extends GetxController {
 
     return null;
   }
+
   // SUPPRIMER UN UTILISATEUR
   deleteFormation(formation) async {
     var data = {
@@ -413,15 +417,20 @@ class FormationController extends GetxController {
 
   List<DataColumn> columns = const [
     DataColumn(
-        label: Text('ID', style: TextStyle(fontWeight: FontWeight.bold),)),
+        label: Text(
+      'ID',
+      style: TextStyle(fontWeight: FontWeight.bold),
+    )),
     DataColumn(
         label: Text('Titre', style: TextStyle(fontWeight: FontWeight.bold))),
     DataColumn(
-        label: Text('Catégorie', style: TextStyle(fontWeight: FontWeight.bold))),
+        label:
+            Text('Catégorie', style: TextStyle(fontWeight: FontWeight.bold))),
     DataColumn(
         label: Text('Prix', style: TextStyle(fontWeight: FontWeight.bold))),
     DataColumn(
-        label:Text('Formateur', style: TextStyle(fontWeight: FontWeight.bold))),
+        label:
+            Text('Formateur', style: TextStyle(fontWeight: FontWeight.bold))),
     DataColumn(
         label: Text('Durée', style: TextStyle(fontWeight: FontWeight.bold))),
     DataColumn(
@@ -429,12 +438,12 @@ class FormationController extends GetxController {
     DataColumn(
         label: Text('Action', style: TextStyle(fontWeight: FontWeight.bold))),
   ];
-      //  id.add(element['id']);
-      //       title.add(element['formation_title']);
-      //       price.add(element['formation_price']);
-      //       photo.add(element['formation_picture']);
-      //       formateur.add(element['formation_formateur']);
-      //       category.add(element['formation_category']);
-      //       duree.add(element['formation_duree']); 
+  //  id.add(element['id']);
+  //       title.add(element['formation_title']);
+  //       price.add(element['formation_price']);
+  //       photo.add(element['formation_picture']);
+  //       formateur.add(element['formation_formateur']);
+  //       category.add(element['formation_category']);
+  //       duree.add(element['formation_duree']);
 
 }

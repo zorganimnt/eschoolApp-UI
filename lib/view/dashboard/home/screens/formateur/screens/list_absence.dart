@@ -143,7 +143,7 @@ class ListAbsence extends StatelessWidget {
                                         Checkbox(
                                           value: true, // Replace with your checkbox value variable
                                           onChanged: (newValue) {
-                                            // Handle checkbox state changes
+                                            
                                           },
                                         ),
                                       ],

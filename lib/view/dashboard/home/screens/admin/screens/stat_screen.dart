@@ -1,3 +1,4 @@
+import 'package:eschoolapp/view/dashboard/home/widgets/test_stat.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:eschoolapp/controller/dashboard_controller.dart';
@@ -17,13 +18,7 @@ class _StatScreenState extends State<StatScreen> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: BarChart(
-        BarChartData(
-            // read about it in the BarChartData section
-            ),
-        swapAnimationDuration: Duration(milliseconds: 150), // Optional
-        swapAnimationCurve: Curves.linear, // Optional
-      ),
+      child: PieChartSample1()
     );
   }
 }

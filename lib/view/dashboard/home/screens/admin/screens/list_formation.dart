@@ -477,7 +477,7 @@ class ListFormation extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: Text("Anuller")),
+                    child: Text("Annuler")),
                 TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
