@@ -10,8 +10,11 @@ import 'package:eschoolapp/view/information/information_screen.dart';
 import 'package:eschoolapp/view/welcome/welcome_screen.dart';
 import 'package:get/get.dart';
 
+
 import '../view/dashboard/home/screens/apprenant/screen/list_cours.dart';
 import '../view/dashboard/home/screens/apprenant/screen/list_for.dart';
+import '../view/dashboard/home/screens/formateur/screens/List_formation.dart';
+import '../view/dashboard/home/screens/formateur/screens/list_cours.dart';
 
 
 
@@ -68,6 +71,10 @@ class AppPages {
       name: AppRoutes.formationapp,
       page: () => CoursScreen(),
     ),
-   
+    
+    GetPage(
+      name: AppRoutes.cours,
+      page: () => Cours(),
+    ),
   ];
 }

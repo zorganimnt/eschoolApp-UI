@@ -115,7 +115,43 @@ InkWell(
                                       )
                                     ]),
                               ),
-                                  
+                                  Column(
+                                children: [
+                                  Container(
+                                    color: Colors.white30,
+                                    width: double.infinity,
+                                    height: 50,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      children: [
+                                       Text("Base de données"),
+                                        Text("Cours qui contient Base de données"),
+                                        
+
+                                    // Espacement entre les deux colonnes
+    Row(
+      
+      children: [
+        Icon(Icons.picture_as_pdf)
+        , // Icône PDF
+         // Espacement entre l'icône et le checkbox
+        
+      ],
+    ),
+          
+            
+                                        Checkbox(
+                                          value: false, // Replace with your checkbox value variable
+                                          onChanged: (newValue) {
+                                            // Handle checkbox state changes
+                                          },
+                                        ),
+                                                
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
                                Column(
                                 children: [
                                   Container(
@@ -157,6 +193,96 @@ InkWell(
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                                       children: [
+                                       Text("JavaScript"),
+                                        Text("Cours qui contient JavaScript"),
+                                       Row(
+      children: [
+        Icon(Icons.picture_as_pdf), // Icône PDF
+        // Espacement entre l'icône et le checkbox
+        
+      ],
+    ),
+                                        Checkbox(
+                                          value: false, // Replace with your checkbox value variable
+                                          onChanged: (newValue) {
+                                            // Handle checkbox state changes
+                                          },
+                                        ),
+                                                
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),   
+                                Column(
+                                children: [
+                                  Container(
+                                    color: Colors.white30,
+                                    width: double.infinity,
+                                    height: 50,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      children: [
+                                       Text("BootStrap"),
+                                        Text("Cours qui contient BootStrap"),
+                                       Row(
+      children: [
+        Icon(Icons.picture_as_pdf), // Icône PDF
+        // Espacement entre l'icône et le checkbox
+        
+      ],
+    ),
+                                        Checkbox(
+                                          value: false, // Replace with your checkbox value variable
+                                          onChanged: (newValue) {
+                                            // Handle checkbox state changes
+                                          },
+                                        ),
+                                                
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),   
+                                Column(
+                                children: [
+                                  Container(
+                                    color: Colors.white30,
+                                    width: double.infinity,
+                                    height: 50,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      children: [
+                                       Text("Css"),
+                                        Text("Cours qui contient Css"),
+                                       Row(
+      children: [
+        Icon(Icons.picture_as_pdf), // Icône PDF
+        // Espacement entre l'icône et le checkbox
+        
+      ],
+    ),
+                                        Checkbox(
+                                          value: false, // Replace with your checkbox value variable
+                                          onChanged: (newValue) {
+                                            // Handle checkbox state changes
+                                          },
+                                        ),
+                                                
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),   
+                                Column(
+                                children: [
+                                  Container(
+                                    color: Colors.white30,
+                                    width: double.infinity,
+                                    height: 50,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      children: [
                                        Text("Html"),
                                         Text("Cours qui contient Html"),
                                        Row(
@@ -178,42 +304,7 @@ InkWell(
                                   ),
                                 ],
                               ),   
-                              Column(
-                                children: [
-                                  Container(
-                                    color: Colors.white30,
-                                    width: double.infinity,
-                                    height: 50,
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                      children: [
-                                       Text("Css"),
-                                        Text("Cours qui contient Css"),
-                                        
-
-                                    // Espacement entre les deux colonnes
-    Row(
-      
-      children: [
-        Icon(Icons.picture_as_pdf), // Icône PDF
-         // Espacement entre l'icône et le checkbox
-        
-      ],
-    ),
-          
-            
-                                        Checkbox(
-                                          value: false, // Replace with your checkbox value variable
-                                          onChanged: (newValue) {
-                                            // Handle checkbox state changes
-                                          },
-                                        ),
-                                                
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              
                             ],
                           ),
                          ],

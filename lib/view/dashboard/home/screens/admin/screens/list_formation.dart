@@ -52,11 +52,11 @@ class ListFormation extends StatelessWidget {
                                       child: Text(
                                     "+ Ajouter Formation",
                                     style: TextStyle(
-                                        color: Colors.white,
+                                        color: Color.fromARGB(255, 56, 84, 207),
                                         fontWeight: FontWeight.bold),
                                   )),
                                   decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 77, 144, 239),
+                                      color: Color.fromARGB(255, 255, 255, 255),
                                       borderRadius: BorderRadius.circular(15)),
                                 ),
                               ),
@@ -345,7 +345,7 @@ class ListFormation extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: Text("Anuller")),
+                    child: Text("Annuler")),
                 TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
@@ -381,7 +381,7 @@ class ListFormation extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: Text("Anuller")),
+                    child: Text("Annuler")),
                 TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();

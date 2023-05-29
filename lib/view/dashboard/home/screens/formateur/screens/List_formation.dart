@@ -1,4 +1,5 @@
 import 'package:eschoolapp/controller/dashboard_controller.dart';
+import 'package:eschoolapp/view/dashboard/home/screens/formateur/screens/list_cours.dart';
 import 'package:eschoolapp/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,6 +7,9 @@ import 'package:line_icons/line_icons.dart';
 import 'package:eschoolapp/utils/color.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:http/http.dart';
+
+import '../../../../../../routes/app_routes.dart';
+import 'list_cours.dart';
 
 
 class Formation extends StatelessWidget {
@@ -85,6 +89,11 @@ class Formation extends StatelessWidget {
                                         "Durée",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
+                                      ),
+                                       Text(
+                                        "Cours",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
                                       )
                                     ]),
                               ),
@@ -100,7 +109,25 @@ class Formation extends StatelessWidget {
                                         Text("Développement mobile"),
                                         Text("Informatique"),
                                         Text("4 Mois"),
-
+InkWell(
+                                                onTap: () {
+                                                  Get.toNamed(AppRoutes.cours);
+                                                },
+                                                child: Container(
+                                                  height: 30,
+                                                  width: MediaQuery.of(context).size.width * .1,
+                                                  child: Center(
+                                                      child: Text(
+                                                    "Voir cours",
+                                                    style: TextStyle(
+                                                        color: Color.fromARGB(255, 40, 97, 204),
+                                                        fontWeight: FontWeight.bold),
+                                                  )),
+                                                  decoration: BoxDecoration(
+                                                      color: Color.fromARGB(255, 255, 255, 255),
+                                                      borderRadius: BorderRadius.circular(15)),
+                                                ),
+                              ),
                                         
                                       ],
                                     ),
@@ -116,10 +143,28 @@ class Formation extends StatelessWidget {
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                                       children: [
-                                       Text("photoshop"),
+                                       Text("photoshop et Illustrateur"),
                                         Text("Design"),
                                         Text("4 Mois"),
-
+InkWell(
+                                                onTap: () {
+                                                  Get.toNamed(AppRoutes.cours);
+                                                },
+                                                child: Container(
+                                                  height: 30,
+                                                  width: MediaQuery.of(context).size.width * .1,
+                                                  child: Center(
+                                                      child: Text(
+                                                    "Voir cours",
+                                                    style: TextStyle(
+                                                        color: Color.fromARGB(255, 40, 97, 204),
+                                                        fontWeight: FontWeight.bold),
+                                                  )),
+                                                  decoration: BoxDecoration(
+                                                      color: Color.fromARGB(255, 255, 255, 255),
+                                                      borderRadius: BorderRadius.circular(15)),
+                                                ),
+                              ),
                                       ],
                                     ),
                                   ),
@@ -134,10 +179,28 @@ class Formation extends StatelessWidget {
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                                       children: [
-                                        Text("développement web"),
+                                        Text("Développement web"),
                                         Text("Informatique"),
                                         Text("4 Mois"),
-
+InkWell(
+                                                onTap: () {
+                                                  Get.toNamed(AppRoutes.cours);
+                                                },
+                                                child: Container(
+                                                  height: 30,
+                                                  width: MediaQuery.of(context).size.width * .1,
+                                                  child: Center(
+                                                      child: Text(
+                                                    "Voir cours",
+                                                    style: TextStyle(
+                                                        color: Color.fromARGB(255, 40, 97, 204),
+                                                        fontWeight: FontWeight.bold),
+                                                  )),
+                                                  decoration: BoxDecoration(
+                                                      color: Color.fromARGB(255, 255, 255, 255),
+                                                      borderRadius: BorderRadius.circular(15)),
+                                                ),
+                              ),
                                       ],
                                     ),
                                   ),
@@ -237,4 +300,5 @@ class Formation extends StatelessWidget {
  
  
 }
+
 

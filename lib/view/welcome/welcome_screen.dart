@@ -305,7 +305,7 @@ class WelcomePage extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: Text("Anuler")),
+                    child: Text("Annuler")),
                 TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
