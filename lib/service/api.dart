@@ -283,5 +283,35 @@ class API {
       showError("Erreur", "Erreur est servenue", LineIcons.exclamationCircle);
     }
   }
+
+  // getcoursByformationid
+
+  static Future<dynamic> getcoursByformationidService(var data) async {
+    String theUrl = '$url/getcoursByformationid';
+    print(theUrl);
+    try {
+      Response response =
+          await client.post(theUrl, data: convert.jsonEncode(data));
+      return response.data;
+    } catch (e) {
+      print(e.toString());
+      showError("Erreur", "Erreur est servenue", LineIcons.exclamationCircle);
+    }
+  }
+
+  // getformationByformateur
+
+  static Future<dynamic> getformationByformateurService(var data) async {
+    String theUrl = '$url/getformationByformateur';
+    print(theUrl);
+    try {
+      Response response =
+          await client.post(theUrl, data: convert.jsonEncode(data));
+      return response.data;
+    } catch (e) {
+      print(e.toString());
+      showError("Erreur", "Erreur est servenue", LineIcons.exclamationCircle);
+    }
+  }
  // ******** END Cours API ************ //
 }

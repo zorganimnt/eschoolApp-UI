@@ -396,6 +396,10 @@ class FormationController extends GetxController {
     return null;
   }
 
+
+
+
+
   // SUPPRIMER UN UTILISATEUR
   deleteFormation(formation) async {
     var data = {
@@ -445,5 +449,6 @@ class FormationController extends GetxController {
   //       formateur.add(element['formation_formateur']);
   //       category.add(element['formation_category']);
   //       duree.add(element['formation_duree']);
+
 
 }

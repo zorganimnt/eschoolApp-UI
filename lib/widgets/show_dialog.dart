@@ -18,12 +18,12 @@ class ShowDialog extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TextButton(
-                  child: Text("Confirmer", 
+                  child: Text("Annuler", 
                   style: TextStyle(color: Colors.teal, fontWeight: FontWeight.w600),),
                   onPressed: onConfirm ,
                 ),
                 TextButton(
-                  child: Text("Annuler", 
+                  child: Text("Confirmer", 
                     style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.w600),),
                   onPressed: () {
                   

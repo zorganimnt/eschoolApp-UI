@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:get/state_manager.dart';
+import 'package:eschoolapp/utils/storage.dart';
 
 
 class CoursController extends GetxController {
@@ -20,14 +21,14 @@ class CoursController extends GetxController {
     support_cours.clear();
   }
   List<int> id_cours = [];
-  List<double> formation_id = [];
+  List<int> formation_id = [];
   List<String> nom_cours = [];
   List<String> description_cours = [];
   List<String> support_cours = [];
 
   RxBool isLoading = RxBool(false);
 
-  // RECÉPURER TOUT LES COURS
+  //RECÉPURER TOUT LES COURS
   getCours(cours) async {
     isLoading.value = true;
     clearAllList();
@@ -37,6 +38,38 @@ class CoursController extends GetxController {
     };
     print(data);
     dynamic json = await API.getCoursService(data);
+    
+    isLoading.value = false;
+    if (json != null) {
+      if (json['success']) {
+        List<dynamic> data = json['data'];
+        for (var element in data) {
+          id_cours.add(element['id']);
+          formation_id.add(element['IdFormation']);
+          nom_cours.add(element['NameCours']);
+          description_cours.add(element['DescriptionCours']);
+          support_cours.add(element['SupportCours']);
+        }
+        update();
+      } else {
+        showError("Error", json['message'], LineIcons.exclamationTriangle);
+      }
+    }
+    isLoading.value = false;
+    return null;
+  }
+
+
+  // RECÉPURER COURS ByformationId
+  getcoursByformationId(cours) async {
+    isLoading.value = true;
+    clearAllList();
+   // FocusManager.instance.primaryFocus?.unfocus();
+    var data = {
+      "formation_id": cours,
+    };
+    print(data);
+    dynamic json = await API.getcoursByformationidService(data);
     isLoading.value = false;
     if (json != null) {
       if (json['success']) {

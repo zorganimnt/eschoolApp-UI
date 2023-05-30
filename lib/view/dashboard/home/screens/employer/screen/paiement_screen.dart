@@ -7,11 +7,14 @@ import 'package:eschoolapp/utils/color.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:http/http.dart';
 
+import '../../../../../auth/components/select paiement.dart';
+
+
+
 class Listpaiement extends StatelessWidget {
   Listpaiement({super.key});
 
-  final DashboardController controller = Get.put(DashboardController());
-
+ // final DashboardController controller = Get.put(DashboardController());
   @override
   Widget build(BuildContext context) {
     return GetBuilder<DashboardController>(
@@ -53,6 +56,8 @@ class Listpaiement extends StatelessWidget {
                               ),
                             ],
                           ),
+                        
+                         
                           SizedBox(
                             height: 20,
                           ),
@@ -65,8 +70,8 @@ class Listpaiement extends StatelessWidget {
                                 child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
-                                    children: const [
-                                      Text(
+                                    children: const[
+                                     Text(
                                         "ID",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
@@ -98,56 +103,30 @@ class Listpaiement extends StatelessWidget {
                                       )
                                     ]),
                               ),
-                              Column(
+                                  Column(
                                 children: [
                                   Container(
                                     color: Colors.white30,
                                     width: double.infinity,
                                     height: 50,
                                     child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                                       children: [
                                         Text("1"),
                                         Text("Ben Ammar"),
                                         Text("Rania"),
                                         Text("Rania@gmail.com"),
                                         Text("26023212"),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 2.0),
-                                          child: Column(
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  CircleAvatar(
-                                                      backgroundColor:
-                                                          Colors.orange,
-                                                      radius: 8),
-                                                  SizedBox(
-                                                    width: 8,
-                                                  ),
-                                                  Text(
-                                                    "Non Payé",
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                ],
-                                              ),
-                                              TextButton(
-                                                  onPressed: () {},
-                                                  child:
-                                                      Text('Cliquer pour payé'))
-                                            ],
-                                          ),
-                                        ),
-                                        /* Checkbox(
-                                          value: false, // Replace with your checkbox value variable
-                                          onChanged: (newValue) {
-                                            // Handle checkbox state changes
-                                          },
-                                        ) */
+                                       Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              
+                              SizedBox(
+                                width: 1,
+                              ),
+                              paiement(),
+                            ],
+                          ),
                                       ],
                                     ),
                                   ),
@@ -160,64 +139,54 @@ class Listpaiement extends StatelessWidget {
                                     width: double.infinity,
                                     height: 50,
                                     child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                                       children: [
                                         Text("2"),
                                         Text("Abidi"),
                                         Text("Jihene"),
-                                        Text("iihene@gmail.com"),
+                                        Text("jihene@gmail.com"),
                                         Text("50123658"),
                                         Row(
-                                          children: [
-                                            CircleAvatar(
-                                                backgroundColor: Colors.green,
-                                                radius: 8),
-                                            SizedBox(
-                                              width: 8,
-                                            ),
-                                            Text(
-                                              "Payé",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ],
-                                        ),
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              
+                              SizedBox(
+                                width: 1,
+                              ),
+                              paiement(),
+                            ],
+                          ),
                                       ],
                                     ),
                                   ),
                                 ],
                               ),
-                              Column(
+                                 Column(
                                 children: [
                                   Container(
                                     color: Colors.white30,
                                     width: double.infinity,
                                     height: 50,
                                     child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                                       children: [
                                         Text("3"),
                                         Text("Ben Ammar"),
                                         Text("Rayen"),
                                         Text("Rayen@gmail.com"),
                                         Text("23154753"),
-                                        Row(
-                                          children: [
-                                            CircleAvatar(
-                                                backgroundColor: Colors.red,
-                                                radius: 8),
-                                            SizedBox(
-                                              width: 8,
-                                            ),
-                                            Text(
-                                              "Refusé",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ],
-                                        ),
+                                        
+                                      Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              
+                              SizedBox(
+                                width: 1,
+                              ),
+                              paiement(),
+                            ],
+                          ),
+
                                       ],
                                     ),
                                   ),
@@ -306,8 +275,7 @@ class Listpaiement extends StatelessWidget {
                               )
                             ],
                           )
-                        */
-                        ],
+                        */],
                       ),
                     ),
                   ),
@@ -315,4 +283,7 @@ class Listpaiement extends StatelessWidget {
               ),
             ));
   }
+
+ 
+ 
 }

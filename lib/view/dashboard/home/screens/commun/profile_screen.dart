@@ -138,7 +138,7 @@ class ProfileScreen extends StatelessWidget {
                             icon: LineIcons.user),
                       ));
                 },
-                textData: "Jihene Abidi"),
+                textData: "Ben Ammar Rania"),
             Divider(
               height: 1.5,
             ),
@@ -158,7 +158,7 @@ class ProfileScreen extends StatelessWidget {
                             icon: LineIcons.envelope),
                       ));
                 },
-                textData: "admin@admin.com"),
+                textData: "Raniabenammar@gmail.com"),
             Divider(
               height: 1.5,
             ),
@@ -178,7 +178,7 @@ class ProfileScreen extends StatelessWidget {
                             icon: LineIcons.phone),
                       ));
                 },
-                textData: "20100200"),
+                textData: "26023212"),
           ],
         ),
       ),

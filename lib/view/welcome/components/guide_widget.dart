@@ -7,11 +7,15 @@ class GuideWidget extends StatelessWidget {
   const GuideWidget({Key? key,}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-       return Row(
-      children: [
+       return Scaffold(
+        
+              body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+     child:Column( children: [
         Container(
-          width: 50,
-          height: 50,
+          width: 80,
+          height: 80,
           decoration: BoxDecoration(
             color: Colors.blue,
             shape: BoxShape.circle,
@@ -38,16 +42,140 @@ class GuideWidget extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+        
             Text(
               'Tu dois fait une inscription en ligne sur la plateforme',
               style: TextStyle(
-                fontSize: 14, color: Colors.white,
+                fontSize: 14, color: Colors.black,
               ),
             ),
           ],
         ),
         SizedBox(height: 20), 
+Container(
+          width: 80,
+          height: 80,
+          decoration: BoxDecoration(
+            color: Color.fromARGB(255, 219, 100, 194),
+            shape: BoxShape.circle,
+          ),
+          child: Center(
+            child: Text(
+              '2',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(width: 16), // Adjust the spacing between the circle and the text
+        Column(
+          //crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '2er Etape',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              'Tu dois fait une inscription en ligne sur la plateforme',
+              style: TextStyle(
+                fontSize: 14, color: Colors.black,
+              ),
+            ),
+          ],
+        ),
+         SizedBox(height: 20),
+        Container(
+          width: 80,
+          height:80,
+          decoration: BoxDecoration(
+            color: Color.fromARGB(255, 49, 221, 86),
+            shape: BoxShape.circle,
+          ),
+          child: Center(
+            child: Text(
+              '3',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(width: 16), 
+        // Adjust the spacing between the circle and the text
+        Column(
+          //crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '3er Etape',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                
+              ),
+            ),
+            Text(
+              'Tu dois fait une inscription en ligne sur la plateforme',
+              style: TextStyle(
+                fontSize: 14, color: Colors.black,
+              ),
+            ),
+          ],
+        ),
+       
+
+          SizedBox(height: 20), 
+Container(
+          width: 80,
+          height: 80,
+          decoration: BoxDecoration(
+            color: Color.fromARGB(255, 226, 149, 34),
+            shape: BoxShape.circle,
+          ),
+          child: Center(
+            child: Text(
+              '4',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(width: 16), // Adjust the spacing between the circle and the text
+        Column(
+          //crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '4er Etape',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              'Tu dois fait une inscription en ligne sur la plateforme',
+              style: TextStyle(
+                fontSize: 14, color: Colors.black,
+              ),
+            ),
+          ],
+        ),
       ],
-    );
+     ),
+     
+
+     
+    ),
+              ),
+       );
     }
 }

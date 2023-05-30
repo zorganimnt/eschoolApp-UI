@@ -21,4 +21,5 @@ class AppRoutes {
   static const String formation = '/formation-catalogue';
   static const String supportCours = '/voir_cours';
   static const String formationapp = '/formation';
+    static const String cours = '/cours';
 }
