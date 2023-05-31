@@ -11,7 +11,6 @@ import '../screen/paiement_screen.dart';
 
 final List<Widget> listDashboardEmployerValues = <Widget>[
   AcceuilScreen(),
-  Listpaiement(),
    Listcanal(),
   ChatScreen(),
   ProfileScreen()
@@ -19,14 +18,13 @@ final List<Widget> listDashboardEmployerValues = <Widget>[
 
 final List<String> listDashboardEmployerKeys = <String>[
   "Acceuil",
-  "Paiement",
-  'Affecter cours'
+  'Affecter cours',
   "Chat",
 ];
 
 final List<IconData> listIconEmployerKeys = [
   LineIcons.home,
-  LineIcons.moneyBill,
+  LineIcons.book,
   LineIcons.facebookMessenger,
   
 ];

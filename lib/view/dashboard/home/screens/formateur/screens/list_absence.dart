@@ -51,7 +51,7 @@ class ListAbsence extends StatelessWidget {
                                 child: WidgetTextField(
                                     context: context,
                                     label: "Recherche",
-                                    hintText: "Rechercher un utilisateur",
+                                    hintText: "Rechercher un apprenant",
                                     icon: LineIcons.search),
                               ),
                             ],
@@ -127,6 +127,7 @@ class ListAbsence extends StatelessWidget {
                               absent(),
                             ],
                           ),
+
                                       ],
                                     ),
                                   ),
@@ -197,11 +198,13 @@ class ListAbsence extends StatelessWidget {
 
                         ],
                       ),
+                      
                     ),
                   ),
                 ),
               ),
             ));
+            
   }
 
  

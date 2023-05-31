@@ -81,11 +81,7 @@ class Listnotif extends StatelessWidget {
                                             fontWeight: FontWeight.bold),
                                       ),
                                       
-                                      Text(
-                                        "Action",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      )
+                                     
                                     ]),
                               ),
                                   Column(
@@ -99,12 +95,7 @@ class Listnotif extends StatelessWidget {
                                       children: [
                                         Text("18/05/2023"),
                                         Text("Votre enfant Jihene n'est pas passé son examen de Marketing digitale"),
-                                        Checkbox(
-                                          value: false, // Replace with your checkbox value variable
-                                          onChanged: (newValue) {
-                                            // Handle checkbox state changes
-                                          },
-                                        ),
+                                      
                                       ],
                                     ),
                                   ),
@@ -121,12 +112,7 @@ class Listnotif extends StatelessWidget {
                                       children: [
                                         Text("10/03/2023"),
                                         Text("Votre enfant Rania n'est pas passé son examen de développement web"),
-                                        Checkbox(
-                                          value: true, // Replace with your checkbox value variable
-                                          onChanged: (newValue) {
-                                            // Handle checkbox state changes
-                                          },
-                                        ),
+                                       
                                       ],
                                     ),
                                   ),
@@ -143,12 +129,7 @@ class Listnotif extends StatelessWidget {
                                       children: [
                                         Text("02/02/2023"),
                                         Text("Votre enfant Jihene n'est pas passé son examen de développement mobile"),
-                                        Checkbox(
-                                          value: true, // Replace with your checkbox value variable
-                                          onChanged: (newValue) {
-                                            // Handle checkbox state changes
-                                          },
-                                        ),
+                                     
                                       ],
                                     ),
                                   ),

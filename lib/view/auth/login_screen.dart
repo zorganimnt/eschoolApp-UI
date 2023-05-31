@@ -28,7 +28,22 @@ class LoginScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
+                  
                   children: [
+                      Container(
+                    width: 325,
+                    height: 225,
+                    decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.3),
+                        borderRadius: BorderRadius.circular(15),
+                        image: DecorationImage(
+                            image: AssetImage('assets/icons/login1.png'),
+                            fit: BoxFit.cover)),
+                         
+                  ),
+                    SizedBox(
+                      height: 30,
+                    ),
                     WidgetTextField(
                         controller: controller.email,
                         context: context,

@@ -820,7 +820,7 @@ class WelcomePage extends StatelessWidget {
               height: 10,
             ),
             InkWell(
-              onTap: () {},
+              onTap: () { Get.to(InfoScreen());},
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -960,7 +960,7 @@ class WelcomePage extends StatelessWidget {
                       ),
                       InkWell(
                         borderRadius: BorderRadius.circular(10),
-                        onTap: () {},
+                        onTap: () { Get.to(InfoScreen());},
                         child: Text("À propos",
                             style: TextStyle(
                                 color: Colors.black54,

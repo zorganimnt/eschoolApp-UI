@@ -60,14 +60,11 @@ class AcceuilScreen extends StatelessWidget {
                   width: 20,
                 ),
                 UserItemDashboard(
-                  icon: LineIcons.school,
+                  icon: LineIcons.user,
                   color: Colors.orange.shade900,
                   title: "Apprenant",
                   number: "400",
-                  addPerson: true,
-                  onAddPressed: () {
-                    addFormat(context);
-                  },
+                 
                 ),
                 SizedBox(
                   width: 20,
@@ -76,30 +73,23 @@ class AcceuilScreen extends StatelessWidget {
                     icon: LineIcons.chalkboardTeacher,
                     title: "Formateur",
                     number: "230",
-                    addPerson: true,
-                    onAddPressed: () {},
                     color: Colors.pink.shade900),
-              ],
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Row(
-              //  mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+
+                     SizedBox(
+                  width: 20,
+                ),
                 UserItemDashboard(
-                    icon: LineIcons.user,
-                    addPerson: true,
-                    onAddPressed: () {},
+                    icon: LineIcons.peopleCarry,
                     title: "Parent",
                     number: "100",
-                    color: Colors.purple.shade900),
+                    color: Color.fromARGB(255, 92, 9, 170)),
               ],
             ),
+          
           ],
         ),
         SizedBox(
-          height: 40,
+          height: 90,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,404 +105,171 @@ class AcceuilScreen extends StatelessWidget {
               // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 UserItemDashboard(
-                    icon: LineIcons.user,
+                    icon: LineIcons.laptop,
                     title: "Informatique",
                     number: "3",
-                    color: Colors.teal.shade900),
+                    color: Color.fromARGB(255, 180, 41, 106)),
                 SizedBox(
                   width: 20,
                 ),
                 UserItemDashboard(
-                    icon: LineIcons.school,
+                    icon: LineIcons.digitalTachograph,
                     title: "Marketing",
                     number: "2",
-                    color: Colors.red.shade900),
+                    color: Color.fromARGB(255, 52, 119, 182)),
+                     SizedBox(
+                  width: 20,
+                ),
+                UserItemDashboard(
+                    icon: LineIcons.photoVideo,
+                    title: "Design",
+                    number: "5",
+                    color: Color.fromARGB(255, 64, 183, 28)),
               ],
             ),
+            
           ],
         ),
       ],
     );
+    
   }
 
   Column acceuilApprenant(BuildContext context) {
-    return Column(
+    return   Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Column(
+         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "exemple pour apprenant",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              "Mes chers apprenant bienvenue à notre centre de formation ",
+             
+              style: TextStyle( fontSize: 25, fontWeight: FontWeight.w900),
             ),
             SizedBox(
               height: 15,
             ),
-            Row(
-              children: [
-                UserItemDashboard(
-                  icon: LineIcons.user,
-                  title: "Employer",
-                  number: "200",
-                  color: Colors.blue.shade900,
-                  addPerson: true,
-                  onAddPressed: () {
-                    addEmp(context);
-                  },
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                UserItemDashboard(
-                  icon: LineIcons.school,
-                  color: Colors.orange.shade900,
-                  title: "Formation",
-                  number: "400",
-                  addPerson: true,
-                  onAddPressed: () {
-                    addFormat(context);
-                  },
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                UserItemDashboard(
-                    icon: LineIcons.chalkboardTeacher,
-                    title: "Formateur",
-                    number: "230",
-                    addPerson: true,
-                    onAddPressed: () {},
-                    color: Colors.pink.shade900),
-              ],
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Row(
-              //  mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                UserItemDashboard(
-                    icon: LineIcons.user,
-                    addPerson: true,
-                    onAddPressed: () {},
-                    title: "Parent",
-                    number: "100",
-                    color: Colors.purple.shade900),
-              ],
-            ),
+           
           ],
         ),
-        SizedBox(
-          height: 40,
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Les Formation",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Row(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                UserItemDashboard(
-                    icon: LineIcons.user,
-                    title: "Informatique",
-                    number: "3",
-                    color: Colors.teal.shade900),
-                SizedBox(
-                  width: 20,
-                ),
-                UserItemDashboard(
-                    icon: LineIcons.school,
-                    title: "Marketing",
-                    number: "2",
-                    color: Colors.red.shade900),
-              ],
-            ),
-          ],
-        ),
+         Container(
+                    width: 670,
+                    height: 460,
+                    decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.3),
+                        borderRadius: BorderRadius.circular(15),
+                        image: DecorationImage(
+                            image: AssetImage('assets/icons/apprenant.png'),
+                            fit: BoxFit.cover)),
+                           
+                  ),
+       
+      
+       
       ],
     );
   }
 
   Column acceuilEmployer(BuildContext context) {
-    return Column(
+     return   Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "exemple pour employer",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Row(
-              children: [
-                UserItemDashboard(
-                  icon: LineIcons.user,
-                  title: "Employer",
-                  number: "200",
-                  color: Colors.blue.shade900,
-                  addPerson: true,
-                  onAddPressed: () {
-                    addEmp(context);
-                  },
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                UserItemDashboard(
-                  icon: LineIcons.school,
-                  color: Colors.orange.shade900,
-                  title: "Formation",
-                  number: "400",
-                  addPerson: true,
-                  onAddPressed: () {
-                    addFormat(context);
-                  },
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                UserItemDashboard(
-                    icon: LineIcons.chalkboardTeacher,
-                    title: "Formateur",
-                    number: "230",
-                    addPerson: true,
-                    onAddPressed: () {},
-                    color: Colors.pink.shade900),
-              ],
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Row(
-              //  mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                UserItemDashboard(
-                    icon: LineIcons.user,
-                    addPerson: true,
-                    onAddPressed: () {},
-                    title: "Parent",
-                    number: "100",
-                    color: Colors.purple.shade900),
-              ],
-            ),
-          ],
-        ),
-        SizedBox(
-          height: 40,
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Les Inscriptions",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Row(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                UserItemDashboard(
-                    icon: LineIcons.user,
-                    title: "Accepter",
-                    number: "20",
-                    color: Colors.teal.shade900),
-                SizedBox(
-                  width: 20,
-                ),
-                UserItemDashboard(
-                    icon: LineIcons.school,
-                    title: "Rejeter",
-                    number: "4d0",
-                    color: Colors.red.shade900),
-              ],
-            ),
-          ],
-        ),
+        
+        
+         Container(
+                    width: 1000,
+                    height: 510,
+                    decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.3),
+                        borderRadius: BorderRadius.circular(15),
+                        image: DecorationImage(
+                            image: AssetImage('assets/icons/empemp.jpg'),
+                            fit: BoxFit.cover)),
+                           
+                  ),
+       
+      
+       
       ],
     );
   }
 
   Column acceuilFormateur(BuildContext context) {
-    return Column(
+     return   Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          "exemple pour formateur",
-          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-        ),
-        SizedBox(
-          height: 15,
-        ),
-        Row(
-          children: [
-            UserItemDashboard(
-              icon: LineIcons.user,
-              title: "exemple",
-              number: "200",
-              color: Colors.blue.shade900,
-              addPerson: true,
-              onAddPressed: () {
-                addEmp(context);
-              },
-            ),
-            SizedBox(
-              width: 20,
-            ),
-            UserItemDashboard(
-              icon: LineIcons.school,
-              color: Colors.orange.shade900,
-              title: "exemple",
-              number: "400",
-              addPerson: true,
-              onAddPressed: () {
-                addFormat(context);
-              },
-            ),
-            SizedBox(
-              width: 20,
-            ),
-            UserItemDashboard(
-                icon: LineIcons.chalkboardTeacher,
-                title: "exemple",
-                number: "230",
-                addPerson: true,
-                onAddPressed: () {},
-                color: Colors.pink.shade900),
-          ],
-        ),
-        SizedBox(
-          height: 40,
-        ),
-        Column(
+         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "exemple",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              "Bienvenue parmi notre équipe on compte sur vous pour réussir la formation",
+             
+              style: TextStyle( fontSize: 25, fontWeight: FontWeight.w900),
             ),
             SizedBox(
               height: 15,
             ),
-            Row(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                UserItemDashboard(
-                    icon: LineIcons.user,
-                    title: "exemple",
-                    number: "20",
-                    color: Colors.teal.shade900),
-                SizedBox(
-                  width: 20,
-                ),
-                UserItemDashboard(
-                    icon: LineIcons.school,
-                    title: "exemple",
-                    number: "4d0",
-                    color: Colors.red.shade900),
-              ],
-            ),
+           
           ],
         ),
+         Container(
+                    width: 840,
+                    height: 460,
+                    decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.3),
+                        borderRadius: BorderRadius.circular(15),
+                        image: DecorationImage(
+                            image: AssetImage('assets/icons/form.png'),
+                            fit: BoxFit.cover)),
+                           
+                  ),
+       
+      
+       
       ],
     );
   }
 
   Column acceuilParent(BuildContext context) {
-    return Column(
+   return   Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          "Les séances",
-          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-        ),
-        SizedBox(
-          height: 15,
-        ),
-        Row(
-          children: [
-            UserItemDashboard(
-              icon: LineIcons.user,
-              title: "Dévelopement",
-              number: "20 Heures",
-              color: Colors.blue.shade900,
-              addPerson: true,
-              onAddPressed: () {
-                addEmp(context);
-              },
-            ),
-            SizedBox(
-              width: 20,
-            ),
-            UserItemDashboard(
-              icon: LineIcons.school,
-              color: Colors.orange.shade900,
-              title: "Design",
-              number: "3 Heures",
-              addPerson: true,
-              onAddPressed: () {
-                addFormat(context);
-              },
-            ),
-            SizedBox(
-              width: 20,
-            ),
-            UserItemDashboard(
-                icon: LineIcons.chalkboardTeacher,
-                title: "Marketing",
-                number: "10 Heures",
-                addPerson: true,
-                onAddPressed: () {},
-                color: Colors.pink.shade900),
-          ],
-        ),
-        SizedBox(
-          height: 40,
-        ),
-        Column(
+         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Les présences",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              "Vous êtes le bienvenue chez notre centre ESCHOOL",
+             
+              style: TextStyle( fontSize: 25, fontWeight: FontWeight.w900),
             ),
             SizedBox(
               height: 15,
             ),
-            Row(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                UserItemDashboard(
-                    icon: LineIcons.user,
-                    title: "Présence",
-                    number: "20",
-                    color: Colors.teal.shade900),
-                SizedBox(
-                  width: 20,
-                ),
-                UserItemDashboard(
-                    icon: LineIcons.school,
-                    title: "Absence",
-                    number: "3",
-                    color: Colors.red.shade900),
-              ],
-            ),
+           
           ],
         ),
+         Container(
+                    width: 900,
+                    height: 450,
+                    decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.3),
+                        borderRadius: BorderRadius.circular(15),
+                        image: DecorationImage(
+                            image: AssetImage('assets/icons/acc parent.PNG'),
+                            fit: BoxFit.cover)),
+                           
+                  ),
+       
+      
+       
       ],
     );
+        
   }
 
   Future<void> addEmp(context) async {
