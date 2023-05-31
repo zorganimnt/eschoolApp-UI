@@ -10,8 +10,11 @@ import 'package:get/state_manager.dart';
 class FormationController extends GetxController {
   @override
   void onInit() {
-    getFormation("all");
+     getFormation("all");
+     getFormationByFormateurId(28);
     super.onInit();
+   // getFormationByFormateurId("formateur_id");
+    
   }
 
   List<String> role = [];
@@ -450,5 +453,37 @@ class FormationController extends GetxController {
   //       category.add(element['formation_category']);
   //       duree.add(element['formation_duree']);
 
+  void clearAllList() {
+    //id.clear();
+    formationnom.clear();
+    formationcategory.clear();
+    formationduree.clear();
+  }
 
+getFormationByFormateurId(formation) async {
+    isLoading.value = true;
+    clearAllList();
+    // FocusManager.instance.primaryFocus?.unfocus();
+    var data = {
+      "formateur_id": formation,
+    };
+    print(data);
+    dynamic json = await API.getFormationByFormateurIdService(data);
+    isLoading.value = false;
+    if (json != null) {
+      if (json['success']) {
+        List<dynamic> data = json['data'];
+        for (var element in data) {
+          formationnom.add(element['formation_title']);
+          formationcategory.add(element['categoryFormation']);
+          formationduree.add(element['formation_duree']);
+        }
+        update();
+      } else {
+        showError("Error", json['message'], LineIcons.exclamationTriangle);
+      }
+    }
+    isLoading.value = false;
+    return null;
+  }
 }

@@ -12,6 +12,7 @@ class CoursController extends GetxController {
   void onInit() {
     getCours("all");
     super.onInit();
+    getcoursByformationId("formation_id");
   }
   void clearAllList() {
     id_cours.clear();
@@ -60,35 +61,7 @@ class CoursController extends GetxController {
   }
 
 
-  // RECÉPURER COURS ByformationId
-  getcoursByformationId(cours) async {
-    isLoading.value = true;
-    clearAllList();
-   // FocusManager.instance.primaryFocus?.unfocus();
-    var data = {
-      "formation_id": cours,
-    };
-    print(data);
-    dynamic json = await API.getcoursByformationidService(data);
-    isLoading.value = false;
-    if (json != null) {
-      if (json['success']) {
-        List<dynamic> data = json['data'];
-        for (var element in data) {
-          id_cours.add(element['id']);
-          formation_id.add(element['IdFormation']);
-          nom_cours.add(element['NameCours']);
-          description_cours.add(element['DescriptionCours']);
-          support_cours.add(element['SupportCours']);
-        }
-        update();
-      } else {
-        showError("Error", json['message'], LineIcons.exclamationTriangle);
-      }
-    }
-    isLoading.value = false;
-    return null;
-  }
+
 // RECÉPURER UN COURS
    getOneCours(cours) async {
     isLoading.value = true;
@@ -233,6 +206,36 @@ class CoursController extends GetxController {
     descriptionCoursInChange.value = false;
     supportCoursInChange.value = false;
 
+    return null;
+  }
+
+    // RECÉPURER COURS ByformationId
+  getcoursByformationId(formation_id) async {
+    isLoading.value = true;
+    clearAllList();
+   // FocusManager.instance.primaryFocus?.unfocus();
+    var data = {
+      "formation_id": formation_id,
+    };
+    print(data);
+    dynamic json = await API.getcoursByformationidService(data);
+    isLoading.value = false;
+    if (json != null) {
+      if (json['success']) {
+        List<dynamic> data = json['data'];
+        for (var element in data) {
+          id_cours.add(element['id']);
+          formation_id.add(element['IdFormation']);
+          nom_cours.add(element['NameCours']);
+          description_cours.add(element['DescriptionCours']);
+          support_cours.add(element['SupportCours']);
+        }
+        update();
+      } else {
+        showError("Error", json['message'], LineIcons.exclamationTriangle);
+      }
+    }
+    isLoading.value = false;
     return null;
   }
 

@@ -467,6 +467,8 @@ class DashboardController extends GetxController {
     return null;
   }
 
+ 
+
   getEmployer(user) async {
     isLoading.value = true;
     clearAllList();

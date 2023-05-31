@@ -1,4 +1,5 @@
 import 'package:eschoolapp/controller/dashboard_controller.dart';
+import 'package:eschoolapp/controller/formation_controller.dart';
 import 'package:eschoolapp/view/dashboard/home/screens/formateur/screens/list_cours.dart';
 import 'package:eschoolapp/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -9,296 +10,112 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:http/http.dart';
 
 import '../../../../../../routes/app_routes.dart';
-import 'list_cours.dart';
-
 
 class Formation extends StatelessWidget {
- Formation({super.key});
+  Formation({super.key});
 
-  final DashboardController controller = Get.put(DashboardController());
+  final FormationController controller = Get.put(FormationController());
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<DashboardController>(
+    return GetBuilder<FormationController>(
         builder: (_) => Padding(
-              padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(12.0),
+            child: SingleChildScrollView(
+              child: Container(
+              height: MediaQuery.of(context).size.height / 1.2,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: const [
+                    BoxShadow(
+                        blurRadius: 1, spreadRadius: 0.2, color: Colors.grey)
+                  ],
+                  borderRadius: BorderRadius.circular(15)),
               child: SingleChildScrollView(
-                child: Container(
-                  height: MediaQuery.of(context).size.height / 1.2,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: const [
-                        BoxShadow(
-                            blurRadius: 1,
-                            spreadRadius: 0.2,
-                            color: Colors.grey)
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Liste des Formations",
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          width: 350,
+                          child: WidgetTextField(
+                              context: context,
+                              label: "Recherche",
+                              hintText: "Rechercher un utilisateur",
+                              icon: LineIcons.search),
+                        ),
                       ],
-                      borderRadius: BorderRadius.circular(15)),
-                  child: SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Liste des Formations",
-                                style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                width: 350,
-                                child: WidgetTextField(
-                                    context: context,
-                                    label: "Recherche",
-                                    hintText: "Rechercher un utilisateur",
-                                    icon: LineIcons.search),
-                              ),
-                            ],
-                          ),
-                        
-                         
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Column(
-                            children: [
-                              Container(
-                                color: Colors.grey.withOpacity(0.3),
-                                width: double.infinity,
-                                height: 50,
-                                child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: const[
-                                      
-                                      Text(
-                                        "Titre",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "Catégorie",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      
-                                      Text(
-                                        "Durée",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                       Text(
-                                        "Cours",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      )
-                                    ]),
-                              ),
-                                  Column(
-                                children: [
-                                  Container(
-                                    color: Colors.white30,
-                                    width: double.infinity,
-                                    height: 50,
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Text("Développement mobile"),
-                                        Text("Informatique"),
-                                        Text("4 Mois"),
-InkWell(
-                                                onTap: () {
-                                                  Get.toNamed(AppRoutes.cours);
-                                                },
-                                                child: Container(
-                                                  height: 30,
-                                                  width: MediaQuery.of(context).size.width * .1,
-                                                  child: Center(
-                                                      child: Text(
-                                                    "Voir cours",
-                                                    style: TextStyle(
-                                                        color: Color.fromARGB(255, 40, 97, 204),
-                                                        fontWeight: FontWeight.bold),
-                                                  )),
-                                                  decoration: BoxDecoration(
-                                                      color: Color.fromARGB(255, 255, 255, 255),
-                                                      borderRadius: BorderRadius.circular(15)),
-                                                ),
-                              ),
-                                        
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Column(
-                                children: [
-                                  Container(
-                                    color: Colors.white30,
-                                    width: double.infinity,
-                                    height: 50,
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                      children: [
-                                       Text("photoshop et Illustrateur"),
-                                        Text("Design"),
-                                        Text("4 Mois"),
-InkWell(
-                                                onTap: () {
-                                                  Get.toNamed(AppRoutes.cours);
-                                                },
-                                                child: Container(
-                                                  height: 30,
-                                                  width: MediaQuery.of(context).size.width * .1,
-                                                  child: Center(
-                                                      child: Text(
-                                                    "Voir cours",
-                                                    style: TextStyle(
-                                                        color: Color.fromARGB(255, 40, 97, 204),
-                                                        fontWeight: FontWeight.bold),
-                                                  )),
-                                                  decoration: BoxDecoration(
-                                                      color: Color.fromARGB(255, 255, 255, 255),
-                                                      borderRadius: BorderRadius.circular(15)),
-                                                ),
-                              ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                                 Column(
-                                children: [
-                                  Container(
-                                    color: Colors.white30,
-                                    width: double.infinity,
-                                    height: 50,
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Text("Développement web"),
-                                        Text("Informatique"),
-                                        Text("4 Mois"),
-InkWell(
-                                                onTap: () {
-                                                  Get.toNamed(AppRoutes.cours);
-                                                },
-                                                child: Container(
-                                                  height: 30,
-                                                  width: MediaQuery.of(context).size.width * .1,
-                                                  child: Center(
-                                                      child: Text(
-                                                    "Voir cours",
-                                                    style: TextStyle(
-                                                        color: Color.fromARGB(255, 40, 97, 204),
-                                                        fontWeight: FontWeight.bold),
-                                                  )),
-                                                  decoration: BoxDecoration(
-                                                      color: Color.fromARGB(255, 255, 255, 255),
-                                                      borderRadius: BorderRadius.circular(15)),
-                                                ),
-                              ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                          /*Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                color: Colors.grey.withOpacity(0.3),
-                                width: double.infinity,
-                                height: 50,
-                                child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: const [
-                                      Text(
-                                        "ID",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "Nom",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "Prénom",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "Paiment",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "E-mail",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    
-                                    ]),
-                              ),
-                              SizedBox(
-                                height: MediaQuery.of(context).size.height,
-                                child: ListView.builder(
-                                    itemCount: 4,
-                                    itemBuilder: (context, index) {
-                                      return Container(
-                                        color: Colors.white,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Column(
+                      children: [
+                        Container(
+                          color: Colors.grey.withOpacity(0.3),
+                          width: double.infinity,
+                          height: 50,
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: const [
+                                Text(
+                                  "Titre",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "Catégorie",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "Durée",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "Cours",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                )
+                              ]),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height,
+                          child: ListView.builder(
+                              itemCount: controller.id.length,
+                              itemBuilder: (context, index) {
+                                return controller.role[index] == 'Admin'?
+                                     SizedBox()
+                                    : Container(
                                         width: double.infinity,
                                         height: 50,
                                         child: Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceAround,
                                             children: [
-                                              Text("id"),
-                                              Text("nom"),
-                                           
-                                              Text("ddd@email.com"),
-                                              
-                                              Row(
-                                                children: [
-                                                 Container(
-                                                  height: 45,
-                                                  width: 80,
-                                                  child: Center(child: Text("Accepter", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),)),
-                                                  decoration: BoxDecoration(color: Colors.green.shade700, borderRadius: BorderRadius.circular(15)),
-                                                 ), 
-                                                 SizedBox(width: 8,), 
-                                                   Container(
-                                                     height: 45,
-                                                     width: 80,
-                                                  child: Center(child: Text("Refuser", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),)),
-                                                  decoration: BoxDecoration(color: Colors.red.shade700, borderRadius: BorderRadius.circular(15)),
-                                                 ),
-                                                ],
-                                              )
+                                              Text(controller.formationnom[index]),
+                                              Text(controller.formationcategory[index]),
+                                              Text(controller.formationduree[index]),
+                                              // Container(
+                                              //   height: 60,
+                                              //   width: 80,
+                                              //   decoration: BoxDecoration(image: DecorationImage(image:NetworkImage(controller.formationphoto[index])) ),
+                                              // )
+                                             
                                             ]),
                                       );
-                                    }),
-                              )
-                            ],
-                          )
-                        */],
-                      ),
+                              }),
+                        )
+                      ],
                     ),
-                  ),
+                  ]),
                 ),
               ),
-            ));
+            ))));
   }
-
- 
- 
 }
-
-
