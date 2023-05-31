@@ -13,19 +13,16 @@ class GuideWidget extends StatelessWidget {
        return Scaffold(
    
              body: Container(
-              width:900,
-               height:1000,
-               
-        decoration: BoxDecoration(
-      
-          image: DecorationImage(
           
-           // image: AssetImage('assets/icons/guide.png'),
-            fit: BoxFit.cover,
-            alignment: Alignment.center,
-              
-          ),
-        ),
+               
+       decoration: BoxDecoration(
+  image: DecorationImage(
+    image: AssetImage('assets/icons/logo-test.png'),
+    fit: BoxFit.cover,
+    alignment: Alignment.center,
+    colorFilter: ColorFilter.mode(Colors.white.withOpacity(0.3), BlendMode.dstATop),
+  ),
+),
         child: Center(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -46,7 +43,7 @@ class GuideWidget extends StatelessWidget {
     ),
     child: Icon(
       Icons.arrow_back,
-      color: Color.fromARGB(255, 97, 147, 223),
+      color: Color.fromARGB(255, 0, 0, 0),
       size: 24,
     ),
   ),
@@ -56,7 +53,7 @@ class GuideWidget extends StatelessWidget {
           width: 80,
           height: 80,
           decoration: BoxDecoration(
-            color: Colors.blue,
+            color: Color.fromARGB(255, 77, 162, 219),
             shape: BoxShape.circle,
           ),
           child: Center(
@@ -85,7 +82,7 @@ class GuideWidget extends StatelessWidget {
             Text(
               'Tu dois fait une inscription en ligne sur la plateforme',
               style: TextStyle(
-                fontSize: 14, color: Colors.black,
+                fontSize: 20, color: Color.fromARGB(255, 0, 0, 0),
               ),
             ),
           ],
@@ -95,7 +92,7 @@ Container(
           width: 80,
           height: 80,
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 219, 100, 194),
+            color: Color.fromRGBO(255, 98, 208, 1),
             shape: BoxShape.circle,
           ),
           child: Center(
@@ -123,7 +120,7 @@ Container(
             Text(
               'Tu dois fait une inscription en ligne sur la plateforme',
               style: TextStyle(
-                fontSize: 14, color: Colors.black,
+                fontSize: 20, color: Colors.black,
               ),
             ),
           ],
@@ -133,7 +130,7 @@ Container(
           width: 80,
           height:80,
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 49, 221, 86),
+            color: Color.fromARGB(255, 81, 236, 42),
             shape: BoxShape.circle,
           ),
           child: Center(
@@ -163,7 +160,7 @@ Container(
             Text(
               'Tu dois fait une inscription en ligne sur la plateforme',
               style: TextStyle(
-                fontSize: 14, color: Colors.black,
+                fontSize: 20, color: Colors.black,
               ),
             ),
           ],
@@ -175,7 +172,7 @@ Container(
           width: 80,
           height: 80,
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 226, 149, 34),
+            color: Color.fromARGB(255, 245, 177, 32),
             shape: BoxShape.circle,
           ),
           child: Center(
@@ -203,7 +200,7 @@ Container(
             Text(
               'Tu dois fait une inscription en ligne sur la plateforme',
               style: TextStyle(
-                fontSize: 14, color: Colors.black,
+                fontSize: 20, color: Colors.black,
               ),
             ),
           ],
