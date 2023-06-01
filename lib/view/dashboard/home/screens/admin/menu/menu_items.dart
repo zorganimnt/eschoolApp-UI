@@ -30,7 +30,7 @@ final List<Widget> listDashboardAdminValues = <Widget>[
 final List<String> listDashboardAdminKeys = <String>[
   "Acceuil",
   "Utilisateurs",
-  "Inscriptions",
+  "Affecter cours",
   "Formations",
   "Chat",
   "Statistique",
@@ -40,7 +40,7 @@ final List<String> listDashboardAdminKeys = <String>[
 final List<IconData> listIconAdminKeys = [
   LineIcons.home,
   LineIcons.user,
-  LineIcons.file,
+  LineIcons.book,
   LineIcons.chalkboardTeacher,
   LineIcons.facebookMessenger,
   LineIcons.percentage,

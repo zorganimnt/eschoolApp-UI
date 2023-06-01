@@ -357,7 +357,7 @@ class ListUsers extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: Text("Anuller")),
+                    child: Text("Annuler")),
                 TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
@@ -471,7 +471,7 @@ class ListUsers extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: Text("Anuller")),
+                    child: Text("Annuler")),
                 TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();

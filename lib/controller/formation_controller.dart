@@ -226,7 +226,9 @@ class FormationController extends GetxController {
                     color: Colors.grey,
                     size: 21,
                   ),
-                  onPressed: () {},
+
+                  onPressed: () {updateFormation(element['id']);},
+
                 ),
                 SizedBox(
                   width: 10,
@@ -270,7 +272,9 @@ class FormationController extends GetxController {
           color: Colors.grey,
           size: 21,
         ),
-        onPressed: () {},
+        onPressed: () {
+          //updateFormation('id');
+        },
       ),
       SizedBox(
         width: 10,
@@ -282,7 +286,10 @@ class FormationController extends GetxController {
           size: 21,
           color: Colors.redAccent,
         ),
-        onPressed: () {},
+        onPressed: () {
+          //deleteFormation('id');
+          //getFormation('all');
+        },
       )
     ]));
   }
@@ -396,10 +403,6 @@ class FormationController extends GetxController {
     return null;
   }
 
-
-
-
-
   // SUPPRIMER UN UTILISATEUR
   deleteFormation(formation) async {
     var data = {
@@ -449,6 +452,4 @@ class FormationController extends GetxController {
   //       formateur.add(element['formation_formateur']);
   //       category.add(element['formation_category']);
   //       duree.add(element['formation_duree']);
-
-
 }

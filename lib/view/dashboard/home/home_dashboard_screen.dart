@@ -236,7 +236,7 @@ class _DashboardHomeScreenState extends State<DashboardHomeScreen>
                   ),
                   const CircleAvatar(
                       radius: 24,
-                      backgroundImage: AssetImage('assets/icons/emp.jpg')),
+                      backgroundImage: AssetImage('assets/icons/formateur.jpg')),
                 ],
               ),
             ),
