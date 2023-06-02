@@ -7,7 +7,6 @@ import 'package:eschoolapp/view/dashboard/home/screens/parents/screens/chat_scre
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import '../screen/Affecter_canal.dart';
-import '../screen/paiement_screen.dart';
 
 final List<Widget> listDashboardEmployerValues = <Widget>[
   AcceuilScreen(),

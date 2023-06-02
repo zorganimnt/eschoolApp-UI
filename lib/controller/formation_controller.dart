@@ -31,8 +31,7 @@ class FormationController extends GetxController {
   TextEditingController categoryFormation = TextEditingController();
 
   List<String> formateurNames = [];
-  // RxString dureeFormation = ''.obs;
-  // RxString categoryFormation = ''.obs;
+  
 
   TextEditingController searchBar = TextEditingController();
 
@@ -45,30 +44,9 @@ class FormationController extends GetxController {
       "formation_formateur": formateurFormation.text,
       "formation_duree": dureeFormation.text,
       "categoryFormation": categoryFormation.text,
-      //"formation_duree": dureeFormation.value
+      
     };
-    // try {
-    //   dynamic json = await API.addFormationService(data);
-    //   if (json != null) {
-    //     if (json['success']) {
-    //       showSuccess("Success", "Formation ajouté avec succées",
-    //           LineIcons.checkCircle);
-    //     } else {
-    //       showError("Error", json['message'], LineIcons.exclamationTriangle);
-    //     }
-    //   }
-    // } catch (e) {
-    //   showError(
-    //       "Erreur est servenue", e.toString(), LineIcons.exclamationTriangle);
-    // } finally {
-    //   titleFormation.clear();
-    //   photoFormation.clear();
-    //   priceFormation.clear();
-    //   formateurFormation.clear();
-    //   dureeFormation.clear();
-    //   categoryFormation.clear();
-    //   isLoading.value = false;
-    // }
+
     print(data);
     dynamic json = await API.addFormationService(data);
     isLoading.value = false;
@@ -138,7 +116,7 @@ class FormationController extends GetxController {
                     size: 21,
                   ),
                   onPressed: (
-                      //controller.addFormation Function() ;
+                     
                       ) {},
                 ),
                 SizedBox(
@@ -273,7 +251,6 @@ class FormationController extends GetxController {
           size: 21,
         ),
         onPressed: () {
-          //updateFormation('id');
         },
       ),
       SizedBox(
@@ -287,8 +264,7 @@ class FormationController extends GetxController {
           color: Colors.redAccent,
         ),
         onPressed: () {
-          //deleteFormation('id');
-          //getFormation('all');
+          
         },
       )
     ]));
@@ -445,11 +421,5 @@ class FormationController extends GetxController {
     DataColumn(
         label: Text('Action', style: TextStyle(fontWeight: FontWeight.bold))),
   ];
-  //  id.add(element['id']);
-  //       title.add(element['formation_title']);
-  //       price.add(element['formation_price']);
-  //       photo.add(element['formation_picture']);
-  //       formateur.add(element['formation_formateur']);
-  //       category.add(element['formation_category']);
-  //       duree.add(element['formation_duree']);
+ 
 }

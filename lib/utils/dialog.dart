@@ -9,17 +9,16 @@ Future<void> showConfirmation(context) async {
     barrierDismissible: false, // user must tap button!
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text("Succées"),
+        title: Text("Succés"),
         content: SingleChildScrollView(
           child: ListBody(
-            children: <Widget>[Text("Inscription en cours de traitement")],
+            children: <Widget>[Text("Inscription effectué avec succès")],
           ),
         ),
         actions: <Widget>[
           TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
-               // Get.offAllNamed(AppRoutes.welcome); 
               },
               child: Text("D'accord"))
         ],

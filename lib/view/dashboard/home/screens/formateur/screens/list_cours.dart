@@ -57,18 +57,7 @@ final CoursController controller = Get.put(CoursController());
                                           decoration: BoxDecoration(color: Color.fromARGB(255, 255, 255, 255), borderRadius: BorderRadius.circular(15)),
                                           ), 
                                      ),
-                              // SizedBox(
-                              //   width: 350,
-                              //   child: WidgetTextField(
-                              //     onChanged: (value) {
-                              //      value==""? controller.getCours('all') :  controller.searchFormation(value); 
-                              //     },
-                                 
-                              //       context: context,
-                              //       label: "Recherche",
-                              //       hintText: "Rechercher une formation",
-                              //       icon: LineIcons.search),
-                              // ),
+                             
                             ],
                           ),
                           SizedBox(
@@ -182,10 +171,7 @@ final CoursController controller = Get.put(CoursController());
             ));
   }
   
-                          // DataTable(
-                          //   columns: controller.columns,
-                          //   rows: controller.rows,
-                          // ),
+                         
 
 } 
 Future<void> addCours(context, controller) async {

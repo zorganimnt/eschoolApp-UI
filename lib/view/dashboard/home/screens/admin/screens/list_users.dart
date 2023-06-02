@@ -451,15 +451,7 @@ class ListUsers extends StatelessWidget {
                         height: 2,
                       ),
                     ),
-                    /*    ModifyInputItem(
-                        inputContent: dateBirth,
-                        inputLable: "Date de naissance",
-                        inputHintText: "Ex. 20/2/2000",
-                        inputIcon: LineIcons.birthdayCake,
-                        inputIndex: 5,
-                        inputController: controller.changeDateBirth,
-                        inChange: controller.dateBirthInChange.value,
-                        controller: controller), */
+                   
                   ],
                 ),
               )),

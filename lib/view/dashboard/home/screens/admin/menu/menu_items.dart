@@ -5,7 +5,6 @@ import 'package:eschoolapp/view/dashboard/home/screens/admin/screens/stat_screen
 import 'package:eschoolapp/view/dashboard/home/screens/commun/acceuil_screen.dart';
 import 'package:eschoolapp/view/dashboard/home/screens/commun/profile_screen.dart';
 import 'package:eschoolapp/view/dashboard/home/screens/employer/screen/Affecter_canal.dart';
-import 'package:eschoolapp/view/dashboard/home/screens/employer/screen/paiement_screen.dart';
 import 'package:eschoolapp/view/dashboard/home/screens/parents/screens/chat_screen.dart';
 import 'package:eschoolapp/view/dashboard/home/widgets/test_stat.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +16,7 @@ final List<Widget> listDashboardAdminValues = <Widget>[
    
   AcceuilScreen(),
   ListUsers(),
-  ListInscri(),
+  Listcanal(),
   ListFormation(),
   
   const ChatScreen(),
