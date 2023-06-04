@@ -51,7 +51,7 @@ class AdminController extends BaseController
     }
 
 
-    // MODIFIER UN UTILISATEUR
+
 
     // MODIFIER UN UTILISATEUR
     public function modifyUser(Request $request)
@@ -338,87 +338,7 @@ class AdminController extends BaseController
     }
 
 
-    public function modifyStatusUser(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'user_id' => 'required',
-            'action' => 'required'
-        ]);
-        if ($validator->fails()) {
-            return $this->sendError('Informations Incorrect', $validator->errors());
-        }
-        $user = User::where('id', $request['user_id'])->first();
-        if (!$user) {
-            return $this->sendError('Utilisateur non trouvable', $validator->errors());
-        }
-        switch ($user->role) {
-            case 'Apprenant':
-               // $apprenant = Apprenant::where('apprenant_id', $request['user_id'])->first();
-                switch ($request['action']) {
-                    case 1:
-                        Apprenant::where('apprenant_id', $request['user_id'])->update([
-                            'apprenant_statut' => "ACCEPTED",
-                        ]);
-                        return $this->sendResponse([], "Apprenant Accepté");
-                    case 0:
-                        Apprenant::where('apprenant_id', $request['user_id'])->update([
-                            'apprenant_statut' => "DECLINED",
-                        ]);
-                        return $this->sendResponse([], "Apprenant Refusé");
-                    default:
-                        return $this->sendError('Action non acceptable', $validator->errors());
-                }
-            case 'Formateur':
-                $formateur = Formateur::where('formateur_id', $user->id)->first();
-                switch ($request['action']) {
-                    case 1:
-                        $formateur->update([
-                            'formateur_statut' => "ACCEPTED",
-                        ]);
-                        return $this->sendResponse([], "Formateur Accepté");
-                    case 0:
-                        $formateur->update([
-                            'formateur_statut' => "DECLINED",
-                        ]);
-                        return $this->sendResponse([], "Formateur Refusé");
-                    default:
-                        return $this->sendError('Action non acceptable', $validator->errors());
-                }
-            case 'Parent':
-                $parent = Parents::where('parent_id', $user->id)->first();
-                switch ($request['action']) {
-                    case 1:
-                        $parent->update([
-                            'parent_statut' => "ACCPETED",
-                        ]);
-                        return $this->sendResponse([], "Parent Accepté");
-                    case 0:
-                        $parent->update([
-                            'parent_statut' => "DECLINED",
-                        ]);
-                        return $this->sendResponse([], "Parent Refusé");
-                    default:
-                        return $this->sendError('Action non acceptable', $validator->errors());
-                }
-            default:
-                return $this->sendError('Erreur est servenue', $validator->errors());
-        }
-    }
+    
 
-    public function declineRegister(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'formation_id' => 'required',
-        ]);
-        if ($validator->fails()) {
-            return $this->sendError('Informations Incorrect', $validator->errors());
-        }
-        $formation = Formation::where('id', $request['formation_id'])->first();
-        if ($formation) {
-            $formation->delete();
-            return $this->sendResponse([], "formation supprimer");
-        } else {
-            return $this->sendError('Erreur est servenue', $validator->errors());
-        }
-    }
+
 }
