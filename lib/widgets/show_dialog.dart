@@ -20,15 +20,14 @@ class ShowDialog extends StatelessWidget {
                 TextButton(
                   child: Text("Annuler", 
                   style: TextStyle(color: Colors.teal, fontWeight: FontWeight.w600),),
-                  onPressed: onConfirm ,
+                  onPressed: () {
+                      Navigator.of(context).pop();
+                  } ,
                 ),
                 TextButton(
                   child: Text("Confirmer", 
                     style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.w600),),
-                  onPressed: () {
-                  
-                    Navigator.of(context).pop();
-                  },
+                  onPressed: onConfirm,
                 ),
               ],
             ),

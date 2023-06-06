@@ -19,7 +19,7 @@ final List<Widget> listDashboardAdminValues = <Widget>[
   Listcanal(),
   ListFormation(),
   
-  const ChatScreen(),
+   ChatScreen(),
    const StatScreen(),
    ProfileScreen()
    

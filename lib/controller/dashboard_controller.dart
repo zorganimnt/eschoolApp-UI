@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:eschoolapp/service/api.dart';
 import 'package:eschoolapp/utils/notifications.dart';
 import 'package:eschoolapp/utils/storage.dart';
@@ -44,6 +46,76 @@ class DashboardController extends GetxController {
     }
     isLoading.value = false;
     return null;
+  }
+
+  TextEditingController newEmail = TextEditingController(); 
+  TextEditingController newName = TextEditingController(); 
+  TextEditingController newLastName = TextEditingController(); 
+  TextEditingController newPhone = TextEditingController(); 
+
+  modifyProfile() async {
+    int id = await getValue('id');
+
+    if(newName.text!='') {
+      var data = {
+              
+            "user_id": id,
+            "name": newName.text,
+            "lastName": lastNameCurrentUser.value,
+            "phone": phoneCurrentUser.value,
+            "email":emailCurrentUser.value
+        
+      };
+           dynamic json = await API.modifyUserService(data);
+
+      newName.clear();
+    }
+      if(newLastName.text!='') {
+      var data = {
+              
+            "user_id": id,
+            "name": nameCurrentUser.value,
+            "lastName": newLastName.text,
+            "phone": phoneCurrentUser.value,
+            "email":emailCurrentUser.value
+        
+      };
+           dynamic json = await API.modifyUserService(data);
+
+      newLastName.clear(); 
+    }
+      if(newPhone.text!='') {
+      var data = {
+              
+            "user_id": id,
+            "name": nameCurrentUser.value,
+            "lastName": lastNameCurrentUser.value,
+            "phone": newPhone.text,
+            "email":emailCurrentUser.value
+        
+      };
+           dynamic json = await API.modifyUserService(data);
+
+      newPhone.clear();
+    }
+      if(newEmail.text!='') {
+      var data = {
+              
+            "user_id": id,
+            "name": nameCurrentUser.value,
+            "lastName": lastNameCurrentUser.value,
+            "phone": phoneCurrentUser.value,
+            "email":newPhone.text
+        
+      };
+      print('data :::: ' + data.toString());
+           dynamic json = await API.modifyUserService(data);
+      newEmail.clear(); 
+    }
+          print(json);
+
+    update(); 
+    getCurrentUser(); 
   }
 
   //RxBool isLoading = RxBool(false);

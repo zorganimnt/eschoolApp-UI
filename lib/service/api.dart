@@ -115,7 +115,8 @@ class API {
 
   // MODIFIER UN UTILISATEUR
   static Future<dynamic> modifyUserService(var data) async {
-    String theUrl = '$url/modify-user';
+    String theUrl = '$url/update-profile';
+    print(data); 
     print(theUrl);
     try {
       Response response =
@@ -314,4 +315,48 @@ class API {
     }
   }
  // ******** END Cours API ************ //
+
+
+   static Future<dynamic> sendMsgService(var data) async {
+    String theUrl = '$url/send-message';
+    print(theUrl);
+    try {
+      Response response =
+          await client.post(theUrl, data: convert.jsonEncode(data));
+      return response.data;
+    } catch (e) {
+      print(e.toString());
+      showError("Erreur", "Erreur est servenue", LineIcons.exclamationCircle);
+    }
+  }
+
+  static Future<dynamic> searchByNameService(var data) async {
+    String theUrl = '$url/search-user-by-name';
+    print(theUrl);
+    try {
+      Response response =
+          await client.post(theUrl, data: convert.jsonEncode(data));
+      return response.data;
+    } catch (e) {
+      print(e.toString());
+      showError("Erreur", "Erreur est servenue", LineIcons.exclamationCircle);
+    }
+  }
+
+    static Future<dynamic> getChatService(var data) async {
+    String theUrl = '$url/get-chat';
+    print(theUrl);
+    try {
+      Response response =
+          await client.post(theUrl, data: convert.jsonEncode(data));
+      return response.data;
+    } catch (e) {
+      print(e.toString());
+      showError("Erreur", "Erreur est servenue", LineIcons.exclamationCircle);
+    }
+  }
+
+  
+
+
 }

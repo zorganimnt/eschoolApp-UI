@@ -6,9 +6,7 @@ import 'package:line_icons/line_icons.dart';
 
 import 'package:eschoolapp/utils/color.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:get/get.dart';
 import 'package:http/http.dart';
-import 'package:line_icons/line_icons.dart';
 
 class ListInscri extends StatelessWidget {
   ListInscri({super.key});

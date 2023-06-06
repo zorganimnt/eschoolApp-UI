@@ -19,6 +19,7 @@ Future<void> _editDialog(context, dialogContent) async {
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({super.key});
   final ProfileController controller = Get.put(ProfileController());
+  final DashboardController dashController = Get.put(DashboardController()); 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ProfileController>(
@@ -74,10 +75,7 @@ class ProfileScreen extends StatelessWidget {
                         ),
                       ));
                       }
-                  
-  }
-
-  Container buildContantInfo(context) {
+            Container buildContantInfo(context) {
     return Container(
       height: 180,
       decoration: BoxDecoration(boxShadow: [
@@ -101,14 +99,17 @@ class ProfileScreen extends StatelessWidget {
                       ShowDialog(
                         title: Text("Modifier nom "),
                         body: WidgetTextField(
-                            //controller: controller.nameUser,
+                            controller: dashController.newName,
                             context: context,
                             hintText: "Ex. Foulen",
                             label: "Nouveau nom ",
                             icon: LineIcons.user),
+                            onConfirm: () {
+                              dashController.modifyProfile(); 
+                            },
                       ));
                 },
-                textData: "Admin"),
+                textData: dashController.nameCurrentUser.value),
             Divider(
               height: 1.5,
             ),
@@ -121,14 +122,18 @@ class ProfileScreen extends StatelessWidget {
                       ShowDialog(
                         title: Text("Modifier prénom"),
                         body: WidgetTextField(
-                            //controller: controller.nameUser,
+                            controller: dashController.newLastName,
                             context: context,
                             hintText: "Ex. Foulen",
                             label: "Nouveau prénom",
                             icon: LineIcons.user),
+                            onConfirm: () {
+                                                            dashController.modifyProfile(); 
+
+                            },
                       ));
                 },
-                textData: "Admin"),
+                textData: dashController.lastNameCurrentUser.value),
             Divider(
               height: 1.5,
             ),
@@ -141,14 +146,18 @@ class ProfileScreen extends StatelessWidget {
                       ShowDialog(
                         title: Text("Modifier e-mail"),
                         body: WidgetTextField(
-                            //controller: controller.nameUser,
+                          controller: dashController.newEmail,
                             context: context,
                             hintText: "Ex. mail@exemple.com",
                             label: "Nouveau e-mail",
                             icon: LineIcons.envelope),
+                            onConfirm: () {
+                                                            dashController.modifyProfile(); 
+
+                            },
                       ));
                 },
-                textData: "admin@gmail.com"),
+                textData: dashController.emailCurrentUser.value),
             Divider(
               height: 1.5,
             ),
@@ -161,19 +170,26 @@ class ProfileScreen extends StatelessWidget {
                       ShowDialog(
                         title: Text("Modifier téléphone"),
                         body: WidgetTextField(
-                            //controller: controller.nameUser,
+                           controller: dashController.newPhone,
                             context: context,
                             hintText: "Ex. 21300200",
                             label: "Nouveau téléphone",
                             icon: LineIcons.phone),
+                            onConfirm: () {
+                                                            dashController.modifyProfile(); 
+
+                            },
                       ));
                 },
-                textData: "25154789"),
+                textData: dashController.phoneCurrentUser.value),
           ],
         ),
       ),
     );
+  }      
   }
+
+  
 
 
 class EditProfileItem extends StatelessWidget {

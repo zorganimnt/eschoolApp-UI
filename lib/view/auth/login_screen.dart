@@ -33,12 +33,7 @@ class LoginScreen extends StatelessWidget {
                       Container(
                     width: 325,
                     height: 225,
-                    decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.3),
-                        borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(
-                            image: AssetImage('assets/icons/login1.png'),
-                            fit: BoxFit.cover)),
+                    child : Image.asset('assets/icons/login1.png')
                          
                   ),
                     SizedBox(
