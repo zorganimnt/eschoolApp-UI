@@ -17,7 +17,7 @@ final List<Widget> listDashboardEmployerValues = <Widget>[
 
 final List<String> listDashboardEmployerKeys = <String>[
   "Acceuil",
-  'Affecter cours',
+  'Affecter apprenant',
   "Chat",
 ];
 

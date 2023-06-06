@@ -144,7 +144,7 @@ class AcceuilScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Mes chers apprenant bienvenue à notre centre de formation ",
+              "Cher apprenant bienvenue à notre centre de formation ",
              
               style: TextStyle( fontSize: 25, fontWeight: FontWeight.w900),
             ),

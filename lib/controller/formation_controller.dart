@@ -11,6 +11,7 @@ class FormationController extends GetxController {
   @override
   void onInit() {
     getFormation("all");
+    getFormationByFormateurId("formateur_id");
     super.onInit();
   }
 
@@ -117,7 +118,7 @@ class FormationController extends GetxController {
                   ),
                   onPressed: (
                      
-                      ) {},
+                      ) {updateFormation(element['id']);},
                 ),
                 SizedBox(
                   width: 10,
@@ -129,7 +130,7 @@ class FormationController extends GetxController {
                     size: 21,
                     color: Colors.redAccent,
                   ),
-                  onPressed: () {},
+                  onPressed: () {updateFormation(element['id']);},
                 )
               ]))
             ]);
@@ -251,6 +252,7 @@ class FormationController extends GetxController {
           size: 21,
         ),
         onPressed: () {
+          updateFormation(['id']);
         },
       ),
       SizedBox(
@@ -264,7 +266,7 @@ class FormationController extends GetxController {
           color: Colors.redAccent,
         ),
         onPressed: () {
-          
+          deleteFormation(['id']);
         },
       )
     ]));
@@ -284,8 +286,6 @@ class FormationController extends GetxController {
       ),
     ));
   }
-
-  // Méthode pour modifier une formation
 
   // MODIFIER UNE FORMATION
   RxBool nameFormationInChange = RxBool(false);
@@ -379,7 +379,7 @@ class FormationController extends GetxController {
     return null;
   }
 
-  // SUPPRIMER UN UTILISATEUR
+  // SUPPRIMER UNE FORMATION
   deleteFormation(formation) async {
     var data = {
       "formation_id": formation,
@@ -397,23 +397,19 @@ class FormationController extends GetxController {
     isLoading.value = false;
     return null;
   }
+  
 
   List<DataColumn> columns = const [
     DataColumn(
-        label: Text(
-      'ID',
-      style: TextStyle(fontWeight: FontWeight.bold),
-    )),
+        label: Text('ID',style: TextStyle(fontWeight: FontWeight.bold),)),
     DataColumn(
         label: Text('Titre', style: TextStyle(fontWeight: FontWeight.bold))),
     DataColumn(
-        label:
-            Text('Catégorie', style: TextStyle(fontWeight: FontWeight.bold))),
+        label: Text('Catégorie', style: TextStyle(fontWeight: FontWeight.bold))),
     DataColumn(
         label: Text('Prix', style: TextStyle(fontWeight: FontWeight.bold))),
     DataColumn(
-        label:
-            Text('Formateur', style: TextStyle(fontWeight: FontWeight.bold))),
+        label: Text('Formateur', style: TextStyle(fontWeight: FontWeight.bold))),
     DataColumn(
         label: Text('Durée', style: TextStyle(fontWeight: FontWeight.bold))),
     DataColumn(
@@ -421,5 +417,42 @@ class FormationController extends GetxController {
     DataColumn(
         label: Text('Action', style: TextStyle(fontWeight: FontWeight.bold))),
   ];
- 
+  void clearAllList() {
+    //id.clear();
+    formationnom.clear();
+    formationcategory.clear();
+    formationduree.clear();
+  }
+ getFormationByFormateurId(formation) async {
+    isLoading.value = true;
+    clearAllList();
+    var data = {
+      "formateur_id": formation,
+    };
+    print(data);
+    dynamic json = await API.getformationByformateurIdService(data);
+    isLoading.value = false;
+    if (json != null) {
+      if (json['success']) {
+        List<dynamic> data = json['data'];
+        for (var element in data) {
+          formationnom.add(element['formation_title']);
+          formationcategory.add(element['categoryFormation']);
+          formationduree.add(element['formation_duree']);
+
+            DataRow row = DataRow(cells: [
+              DataCell(Text(element['formation_title'])),
+              DataCell(Text(element['formation_category'])),
+              DataCell(Text(element['formation_duree'])),
+              ]);
+        }
+        update();
+      } else {
+        showError("Error", json['message'], LineIcons.exclamationTriangle);
+      }
+    }
+    isLoading.value = false;
+    return null;
+  }
 }
+

@@ -656,7 +656,7 @@ class WelcomePage extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                Get.toNamed(AppRoutes.info);
+                //Get.toNamed(AppRoutes.info);
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -694,7 +694,8 @@ class WelcomePage extends StatelessWidget {
               height: 10,
             ),
             InkWell(
-              onTap: () { Get.to(InfoScreen());},
+              onTap: () { //Get.to(InfoScreen());
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -731,7 +732,7 @@ class WelcomePage extends StatelessWidget {
               height: 10,
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {Get.to((InfoScreen));},
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -774,10 +775,10 @@ class WelcomePage extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Icon(
-                        LineIcons.newspaper,
-                        size: 25,
-                      ),
+                     // Icon(
+                        //LineIcons.newspaper,
+                        //size: 25,
+                     // ),
                       SizedBox(
                         width: 8,
                       ),
