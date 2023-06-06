@@ -301,7 +301,7 @@ class API {
 
   // getformationByformateur
 
-  static Future<dynamic> getformationByformateurService(var data) async {
+  static Future<dynamic> getformationByformateurIdService(var data) async {
     String theUrl = '$url/getformationByformateur';
     print(theUrl);
     try {

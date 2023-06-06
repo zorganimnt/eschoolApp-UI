@@ -39,7 +39,7 @@ class ProfileScreen extends StatelessWidget {
                           CircleAvatar(
                             radius: 60,
                             backgroundImage:
-                                AssetImage("assets/icons/bb.jpg"),
+                                AssetImage("assets/icons/admin.png"),
                           ),
                           controller.isHover.value
                               ? Stack(
@@ -68,43 +68,13 @@ class ProfileScreen extends StatelessWidget {
                     SizedBox(
                       height: 20,
                     ),
-                    ParametreItemWidget(
-                      icon: Icons.lock_outline_rounded,
-                      title: "Change mot de passe",
-                      direction: () {
-                         _editDialog(
-                      context,
-                      ShowDialog(
-                        title: Text("Modifier mot de passe"),
-                        body: SizedBox(
-                          height: 140,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              WidgetTextField(
-                                  //controller: controller.nameUser,
-                                  context: context,
-                                  hintText: "******",
-                                  label: "Ancien mot de passe",
-                                  icon: LineIcons.lock),
-                                  SizedBox(height: 20,),
-                                      WidgetTextField(
-                                  //controller: controller.nameUser,
-                                  context: context,
-                                  hintText: "******",
-                                  label: "Nouveau mot de passe",
-                                  icon: LineIcons.lock),
+                  
                             ],
                           ),
                         ),
                       ));
-                      },
-                    ),
-
-                  ],
-                ),
-              ),
-            ));
+                      }
+                  
   }
 
   Container buildContantInfo(context) {
@@ -123,22 +93,42 @@ class ProfileScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             EditProfileItem(
-                title: "Nom et prénom",
+                title: "Nom ",
                 icon: LineIcons.user,
                 onTap: () {
                   _editDialog(
                       context,
                       ShowDialog(
-                        title: Text("Modifier nom et prénom"),
+                        title: Text("Modifier nom "),
                         body: WidgetTextField(
                             //controller: controller.nameUser,
                             context: context,
                             hintText: "Ex. Foulen",
-                            label: "Nouveau nom et prénom",
+                            label: "Nouveau nom ",
                             icon: LineIcons.user),
                       ));
                 },
-                textData: "Ben Ammar Rania"),
+                textData: "Admin"),
+            Divider(
+              height: 1.5,
+            ),
+            EditProfileItem(
+                title: "prénom",
+                icon: LineIcons.user,
+                onTap: () {
+                  _editDialog(
+                      context,
+                      ShowDialog(
+                        title: Text("Modifier prénom"),
+                        body: WidgetTextField(
+                            //controller: controller.nameUser,
+                            context: context,
+                            hintText: "Ex. Foulen",
+                            label: "Nouveau prénom",
+                            icon: LineIcons.user),
+                      ));
+                },
+                textData: "Admin"),
             Divider(
               height: 1.5,
             ),
@@ -158,7 +148,7 @@ class ProfileScreen extends StatelessWidget {
                             icon: LineIcons.envelope),
                       ));
                 },
-                textData: "Raniabenammar@gmail.com"),
+                textData: "admin@gmail.com"),
             Divider(
               height: 1.5,
             ),
@@ -178,13 +168,13 @@ class ProfileScreen extends StatelessWidget {
                             icon: LineIcons.phone),
                       ));
                 },
-                textData: "26023212"),
+                textData: "25154789"),
           ],
         ),
       ),
     );
   }
-}
+
 
 class EditProfileItem extends StatelessWidget {
   final String title;

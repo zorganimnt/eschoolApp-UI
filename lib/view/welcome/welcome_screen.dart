@@ -285,39 +285,7 @@ class WelcomePage extends StatelessWidget {
             )));
   }
 
-  Future<void> _showConfirmationParticip(context) async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text("Confirmation"),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[Text("Confirmer votre particiption")],
-            ),
-          ),
-          actions: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Text("Annuler")),
-                TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Text("Confirmer")),
-              ],
-            )
-          ],
-        );
-      },
-    );
-  }
+  
 
   Column buildFormationCatalogue(BuildContext context) {
     return Column(
@@ -345,28 +313,7 @@ class WelcomePage extends StatelessWidget {
                 ),
         ),
        
-        // Obx(
-        //   () => controller.isLoading.value
-        //       ? CircularProgressIndicator()
-        //       : Row(
-        //           mainAxisAlignment: MainAxisAlignment.spaceAround,
-        //           children: [
-        //             for (int i = 3; i < 6; i++)
-        //               FormationWidget(
-        //                 onPressed: () {
-        //                   Get.to(LoginScreen());
-        //                 },
-        //                 image: controller.image[i],
-        //                 title: controller.title[i],
-        //                 categorie: controller.categorie[i],
-        //                 bgCategorie: Colors.deepOrange,
-        //                 formateur: controller.formateur[i].toString(),
-        //                 prix: ' ${controller.prix[i]} DT',
-        //                 dure: controller.duree[i],
-        //               ),
-        //           ],
-        //         ),
-        // ),
+       
      
       ],
     );
@@ -388,8 +335,8 @@ class WelcomePage extends StatelessWidget {
                   'assets/icons/logo-app.png',
                   width: 100,
                 ),
-                Text("Decsription ..."),
-                Text("Social media")
+                Text("ESCHOOL est un centre de formation qualifié qui  propose des formations \n en plusieures domaines pour le milieu professionnel est partculier"),
+               
               ],
             ),
           ),
@@ -400,16 +347,16 @@ class WelcomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  "Lien",
+                  "nos qualité",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
                   height: 10,
                 ),
-                Text("Home"),
-                Text("About"),
-                Text("Our process"),
-                Text("Services"),
+                Text("Innovation"),
+                Text("savoir faire"),
+                Text("Expérience"),
+                
               ],
             ),
           ),
@@ -420,39 +367,20 @@ class WelcomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  "Lien",
+                  "Contact",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
                   height: 10,
                 ),
-                Text("Home"),
-                Text("About"),
-                Text("Our process"),
-                Text("Services"),
+                Text(" +330781283191"),
+                Text("8 bis rue du bois en val 60570 Mortefontaine En Thelle France"),
+                
+                Text("contact@ESCHOOL.com"),
               ],
             ),
           ),
-          SizedBox(
-            height: 150,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  "Lien",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text("Home"),
-                Text("About"),
-                Text("Our process"),
-                Text("Services"),
-              ],
-            ),
-          ),
+         
         ],
       ),
     );
@@ -515,18 +443,7 @@ class WelcomePage extends StatelessWidget {
               SizedBox(
                 width: 10,
               ),
-              // Container(
-              //   height: 50,
-              //   width: 120,
-              //   decoration: BoxDecoration(
-              //       color: Colors.grey.withOpacity(0.1),
-              //       borderRadius: BorderRadius.circular(15)),
-              //   child: Center(
-              //       child: Text(
-              //     "Plus détails",
-              //     style: TextStyle(color: primaryColor),
-              //   )),
-              // )
+             
             ],
           )
         ],
@@ -686,39 +603,7 @@ class WelcomePage extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              //Row(
-              //mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     Container(
-              //       height: 50,
-              //       width: 120,
-              //       decoration: BoxDecoration(
-              //           color: primaryColor,
-              //           borderRadius: BorderRadius.circular(15)),
-              //       child: Center(
-              //           child: Text(
-              //         "Commencer",
-              //         style: TextStyle(color: Colors.white),
-              //       )),
-              //     ),
-              //     SizedBox(
-              //       width: 10,
-              //     ),
-              //     Container(
-              //       height: 50,
-              //       width: 120,
-              //       decoration: BoxDecoration(
-              //           color: Colors.grey.withOpacity(0.1),
-              //           borderRadius: BorderRadius.circular(15)),
-              //       child: Center(
-              //           child: Text(
-              //         "Plus détails",
-              //         style: TextStyle(color: primaryColor),
-              //       )),
-              //     )
-              //   ],
-              // )
-
+            
               Row(
                 //mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -742,18 +627,7 @@ class WelcomePage extends StatelessWidget {
                   SizedBox(
                     width: 10,
                   ),
-                  // Container(
-                  //   height: 50,
-                  //   width: 120,
-                  //   decoration: BoxDecoration(
-                  //       color: Colors.grey.withOpacity(0.1),
-                  //       borderRadius: BorderRadius.circular(15)),
-                  //   child: Center(
-                  //       child: Text(
-                  //     "Plus détails",
-                  //     style: TextStyle(color: primaryColor),
-                  //   )),
-                  // )
+                 
                 ],
               )
             ],
@@ -782,7 +656,7 @@ class WelcomePage extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                Get.toNamed(AppRoutes.info);
+                //Get.toNamed(AppRoutes.info);
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -820,7 +694,8 @@ class WelcomePage extends StatelessWidget {
               height: 10,
             ),
             InkWell(
-              onTap: () {},
+              onTap: () { //Get.to(InfoScreen());
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -857,7 +732,7 @@ class WelcomePage extends StatelessWidget {
               height: 10,
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {Get.to((InfoScreen));},
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -900,10 +775,10 @@ class WelcomePage extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Icon(
-                        LineIcons.newspaper,
-                        size: 25,
-                      ),
+                     // Icon(
+                        //LineIcons.newspaper,
+                        //size: 25,
+                     // ),
                       SizedBox(
                         width: 8,
                       ),
@@ -960,7 +835,7 @@ class WelcomePage extends StatelessWidget {
                       ),
                       InkWell(
                         borderRadius: BorderRadius.circular(10),
-                        onTap: () {},
+                        onTap: () { Get.to(InfoScreen());},
                         child: Text("À propos",
                             style: TextStyle(
                                 color: Colors.black54,

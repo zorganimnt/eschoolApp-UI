@@ -51,6 +51,7 @@ class Listcanal extends StatelessWidget {
                               SizedBox(
                                 width: 350,
                                 child: WidgetTextField(
+                                 
                                     context: context,
                                     label: "Recherche",
                                     hintText: "Rechercher une formations",
@@ -236,27 +237,14 @@ Future<void> add(context) async {
                SizedBox(
                                 width: 350,
                                 child: WidgetTextField(
+                                 
+                                    
                                     context: context,
                                     label: "Recherche",
-                                    hintText: "Rechercher un utilisateur",
+                                    hintText: "Rechercher un apprenant",
                                     icon: LineIcons.search),
                               ),
-                               SizedBox(
-                height: 15,
-              ),
-               Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Role: ",
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                width: 8,
-                              ),
-                              Role(),
-                            ],
-                          ),
+                               
              
               Divider(
                 height: 1.5,

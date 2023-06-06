@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 const List<String> category = <String>[
   'Séléctioner',
   'Apprenant',
-  'Formateur', 
+  
 ];
 
 class Role extends StatefulWidget {

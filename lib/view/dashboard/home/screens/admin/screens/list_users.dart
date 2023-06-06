@@ -357,7 +357,7 @@ class ListUsers extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: Text("Anuller")),
+                    child: Text("Annuler")),
                 TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
@@ -451,15 +451,7 @@ class ListUsers extends StatelessWidget {
                         height: 2,
                       ),
                     ),
-                    /*    ModifyInputItem(
-                        inputContent: dateBirth,
-                        inputLable: "Date de naissance",
-                        inputHintText: "Ex. 20/2/2000",
-                        inputIcon: LineIcons.birthdayCake,
-                        inputIndex: 5,
-                        inputController: controller.changeDateBirth,
-                        inChange: controller.dateBirthInChange.value,
-                        controller: controller), */
+                   
                   ],
                 ),
               )),
@@ -471,7 +463,7 @@ class ListUsers extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: Text("Anuller")),
+                    child: Text("Annuler")),
                 TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();

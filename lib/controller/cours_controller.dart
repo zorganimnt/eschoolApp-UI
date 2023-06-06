@@ -11,6 +11,7 @@ class CoursController extends GetxController {
   @override
   void onInit() {
     getCours("all");
+    getcoursByformationId("formation_id");
     super.onInit();
   }
   void clearAllList() {

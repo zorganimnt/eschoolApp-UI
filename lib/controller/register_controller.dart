@@ -119,9 +119,7 @@ class RegisterController extends GetxController {
     isLoading.value = false;
     if (json != null) {
       if (json['success']) {
-        // Get.to(NextStepRegister(
-        //   role: role.value,
-        // ));
+       
         showConfirmation(context);
       } else {
         showError("Error", json['message'], LineIcons.exclamationTriangle);
@@ -152,9 +150,7 @@ class RegisterController extends GetxController {
     isLoading.value = false;
     if (json != null) {
       if (json['success']) {
-        // Get.to(NextStepRegister(
-        //   role: role.value,
-        // ));
+        
         showConfirmation(context);
       } else {
         showError("Error", json['message'], LineIcons.exclamationTriangle);
@@ -170,10 +166,10 @@ class RegisterController extends GetxController {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Succées"),
+          title: Text("Succès"),
           content: SingleChildScrollView(
             child: ListBody(
-              children: <Widget>[Text("Inscription en cours de traitement")],
+              children: <Widget>[Text("Inscription effectué avec succès")],
             ),
           ),
           actions: <Widget>[

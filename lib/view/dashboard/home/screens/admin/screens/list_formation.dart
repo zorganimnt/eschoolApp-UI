@@ -83,23 +83,7 @@ class ListFormation extends StatelessWidget {
                             rows: controller.rows,
                           ),
 
-                          /*  Container(
-                                        color: Colors.white,
-                                        width: double.infinity,
-                                        height: 50,
-                                        child: Row(
-                                    
-                                            children:  [
-                                              Text(controller.id[index].toString()),
-                                              Text(controller.title[index]),
-                                              SizedBox(width: 30,), 
-                                              Text(controller.formateur[index].toString()),
-                                           SizedBox(width: 30,), 
-                                              Text(controller.duree[index]),
-                                              Text('${controller.price[index]}DT'),
-                                              Text("modifier"),
-                                            ]),
-                                      ); */
+                          
 
                           SizedBox(
                             height: MediaQuery.of(context).size.height,
@@ -121,7 +105,6 @@ class ListFormation extends StatelessWidget {
                                                     .formationnom[index]),
                                                 Text(controller
                                                     .formationphoto[index]),
-                                                // Text(controller.formationprix[index]),
                                                 Text(controller
                                                     .formationformateur[index]),
                                                 Text(controller

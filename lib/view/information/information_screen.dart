@@ -101,24 +101,7 @@ class InfoScreen extends StatelessWidget {
             ),
           ],
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height: 50,
-              width: 180,
-              decoration: BoxDecoration(
-                  color: primaryColor.withOpacity(0.8),
-                  borderRadius: BorderRadius.circular(15)),
-              child: Center(
-                  child: Text(
-                "Participer",
-                style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-              )),
-            ),
-          ],
-        )
+        
       ],
     );
   }
@@ -169,8 +152,7 @@ class InfoScreen extends StatelessWidget {
                       InkWell(
                         borderRadius: BorderRadius.circular(10),
                         onTap: () {
-                          // zid hedhi
-                          //   Get.to(InfoScreen());
+                          
                         },
                         child: Text("Formation",
                             style: TextStyle(

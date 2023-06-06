@@ -81,11 +81,7 @@ class Listnotif extends StatelessWidget {
                                             fontWeight: FontWeight.bold),
                                       ),
                                       
-                                      Text(
-                                        "Action",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      )
+                                     
                                     ]),
                               ),
                                   Column(
@@ -99,12 +95,7 @@ class Listnotif extends StatelessWidget {
                                       children: [
                                         Text("18/05/2023"),
                                         Text("Votre enfant Jihene n'est pas passé son examen de Marketing digitale"),
-                                        Checkbox(
-                                          value: false, // Replace with your checkbox value variable
-                                          onChanged: (newValue) {
-                                            // Handle checkbox state changes
-                                          },
-                                        ),
+                                      
                                       ],
                                     ),
                                   ),
@@ -121,12 +112,7 @@ class Listnotif extends StatelessWidget {
                                       children: [
                                         Text("10/03/2023"),
                                         Text("Votre enfant Rania n'est pas passé son examen de développement web"),
-                                        Checkbox(
-                                          value: true, // Replace with your checkbox value variable
-                                          onChanged: (newValue) {
-                                            // Handle checkbox state changes
-                                          },
-                                        ),
+                                       
                                       ],
                                     ),
                                   ),
@@ -143,12 +129,7 @@ class Listnotif extends StatelessWidget {
                                       children: [
                                         Text("02/02/2023"),
                                         Text("Votre enfant Jihene n'est pas passé son examen de développement mobile"),
-                                        Checkbox(
-                                          value: true, // Replace with your checkbox value variable
-                                          onChanged: (newValue) {
-                                            // Handle checkbox state changes
-                                          },
-                                        ),
+                                     
                                       ],
                                     ),
                                   ),
@@ -156,87 +137,7 @@ class Listnotif extends StatelessWidget {
                               )
                             ],
                           ),
-                          /*Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                color: Colors.grey.withOpacity(0.3),
-                                width: double.infinity,
-                                height: 50,
-                                child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: const [
-                                      Text(
-                                        "ID",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "Nom",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "Prénom",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "Paiment",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "E-mail",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    
-                                    ]),
-                              ),
-                              SizedBox(
-                                height: MediaQuery.of(context).size.height,
-                                child: ListView.builder(
-                                    itemCount: 4,
-                                    itemBuilder: (context, index) {
-                                      return Container(
-                                        color: Colors.white,
-                                        width: double.infinity,
-                                        height: 50,
-                                        child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
-                                            children: [
-                                              Text("id"),
-                                              Text("nom"),
-                                           
-                                              Text("ddd@email.com"),
-                                              
-                                              Row(
-                                                children: [
-                                                 Container(
-                                                  height: 45,
-                                                  width: 80,
-                                                  child: Center(child: Text("Accepter", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),)),
-                                                  decoration: BoxDecoration(color: Colors.green.shade700, borderRadius: BorderRadius.circular(15)),
-                                                 ), 
-                                                 SizedBox(width: 8,), 
-                                                   Container(
-                                                     height: 45,
-                                                     width: 80,
-                                                  child: Center(child: Text("Refuser", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),)),
-                                                  decoration: BoxDecoration(color: Colors.red.shade700, borderRadius: BorderRadius.circular(15)),
-                                                 ),
-                                                ],
-                                              )
-                                            ]),
-                                      );
-                                    }),
-                              )
-                            ],
-                          )
-                        */],
+                         ],
                       ),
                     ),
                   ),
